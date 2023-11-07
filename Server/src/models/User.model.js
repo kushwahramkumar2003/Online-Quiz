@@ -24,15 +24,31 @@ const userSchema = new mongoose.Schema({
     enum: ["ADMIN", "USER"],
     default: "USER",
   },
+  resetToken: {
+    type: String,
+    default: null,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-// Hash the password before saving
 userSchema.pre("save", async function (next) {
-  const user = this;
-  if (user.isModified("password")) {
-    user.password = await bcrypt.hash(user.password, 10);
+  // Hash the password before saving
+  if (this.isModified("password")) {
+    this.password = await bcrypt.hash(this.password, 10);
   }
+  this.updatedAt = Date.now();
   next();
+});
+
+userSchema.virtual("fullName").get(function () {
+  return this.name;
 });
 
 // Check for duplicate email

@@ -12,7 +12,11 @@ const profileSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-  // More fields ...
+  avatar: {
+    type: String,
+    default: "default_avatar_url.jpg", // Set a default avatar image
+    trim: true,
+  },
 });
 
 // Delete the user before deleting the profile

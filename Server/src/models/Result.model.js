@@ -20,6 +20,9 @@ const resultSchema = new mongoose.Schema(
       type: [String],
       required: true,
     },
+    percentage: {
+      type: Number,
+    },
   },
   {
     timestamps: true, // Add createdAt and updatedAt fields
@@ -33,6 +36,7 @@ resultSchema.pre("save", async function (next) {
   const user = await User.findById(result.user);
   user.score += result.score;
   await user.save();
+  this.percentage = (this.score / this.quiz.questions.length) * 100;
   next();
 });
 

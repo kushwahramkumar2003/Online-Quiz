@@ -25,6 +25,10 @@ const quizSchema = new mongoose.Schema({
       message: "Questions must have at least one item",
     },
   },
+  times_taken: {
+    type: Number,
+    default: 0,
+  },
 });
 
 // Increment the times_taken field before saving
