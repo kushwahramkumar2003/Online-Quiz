@@ -1,6 +1,8 @@
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
+const config = require("../config/index.js");
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -18,6 +20,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength: 6,
+    maxLength: 1024,
   },
   role: {
     type: String,
@@ -70,13 +73,22 @@ userSchema.pre("deleteOne", { document: true }, async function (next) {
 // Compare the password with the hashed password
 userSchema.methods.comparePassword = async function (password) {
   const user = this;
-  return await bcrypt.compare(password, user.password);
+  console.log("HasedPassword : ", this.password);
+  console.log("password : ", password);
+
+  return await bcrypt.compareSync(password, user.password);
 };
 
 // Generate a JWT for the user
 userSchema.methods.generateToken = function () {
   const user = this;
-  const token = jwt.sign({ _id: user._id, role: user.role }, "secret");
+  const token = jwt.sign(
+    { _id: user._id, role: user.role },
+    config.JWT_SECRET,
+    {
+      expiresIn: config.JWT_EXPIRE,
+    }
+  );
   return token;
 };
 
@@ -122,3 +134,5 @@ userSchema.methods.createSession = async function () {
 };
 
 const User = mongoose.model("User", userSchema);
+
+module.exports = User;

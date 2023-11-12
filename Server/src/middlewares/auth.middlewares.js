@@ -1,17 +1,23 @@
 const asyncHandler = require("./../services/asyncHandler.js");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User.model.js");
+const config = require("../config/index.js");
 
 // Middleware to check if user is authenticated
 const isAuthenticated = asyncHandler(async (req, res, next) => {
   let token;
   if (
-    req.headers.authorization &&
-    req.headers.authorization.startsWith("Bearer")
+    req.cookies.token ||
+    (req.headers.authorization &&
+      req.headers.authorization.startsWith("Bearer"))
   ) {
     try {
-      token = req.headers.authorization.split(" ")[1];
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      console.log("req.cookies.token", req.cookies.token);
+      token = req.cookies.token || req.headers.authorization.split(" ")[1];
+
+      console.log("token", token);
+      const decoded = jwt.verify(token, config.JWT_SECRET);
+      console.log("decoded", decoded);
       req.user = await User.findById(decoded.id).select("-password");
       next();
     } catch (error) {
@@ -29,7 +35,8 @@ const isAuthenticated = asyncHandler(async (req, res, next) => {
 
 // Middleware to check if user is an admin
 const isAdmin = (req, res, next) => {
-  if (req.user && req.user.isAdmin) {
+  console.log("req.user", req);
+  if (req.user && req.role === "ADMIN") {
     next();
   } else {
     res.status(401);

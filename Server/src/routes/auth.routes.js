@@ -21,7 +21,7 @@ routes.post("/register", signup);
 routes.post("/login", login);
 
 // Logout the user
-routes.post("/logout", isAuthenticated, logout);
+routes.get("/logout", isAuthenticated, logout);
 
 // Request password reset
 routes.post("/reset-password", requestPasswordReset);

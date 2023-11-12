@@ -1,8 +1,16 @@
 const asyncHandler = require("./../services/asyncHandler.js");
 const User = require("../models/User.model.js");
 const { validationResult } = require("express-validator");
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
+// const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const config = require("../config/index.js");
+
+const cookieOptions = {
+  expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+  httpOnly: true,
+};
 
 // Signup controller
 exports.signup = asyncHandler(async (req, res) => {
@@ -19,35 +27,16 @@ exports.signup = asyncHandler(async (req, res) => {
   if (user) {
     return res.status(400).json({ msg: "User already exists" });
   }
-
   user = new User({
     name,
     email,
     password,
   });
-
-  const salt = await bcrypt.genSalt(10);
-  user.password = await bcrypt.hash(password, salt);
-
   await user.save();
 
-  const payload = {
-    user: {
-      id: user.id,
-    },
-  };
-
-  jwt.sign(
-    payload,
-    process.env.JWT_SECRET,
-    { expiresIn: "1h" },
-    (err, token) => {
-      if (err) throw err;
-      res.json({ token });
-    }
-  );
-
-  // res.json({ msg: "User registered successfully" });
+  user.password = undefined;
+  const token = user.generateToken();
+  res.cookie = ("token", token, cookieOptions);
 
   res.status(201).json({
     success: true,
@@ -65,33 +54,30 @@ exports.login = asyncHandler(async (req, res) => {
 
   const { email, password } = req.body;
 
-  let user = await User.findOne({ email });
-
+  let user = await User.findOne({ email }, { email: 1, password: 1, name: 1 });
+  // console.log("user", user);
   if (!user) {
     return res.status(400).json({ msg: "Invalid Credentials" });
   }
 
-  const isMatch = await bcrypt.compare(password, user.password);
+  const isMatch = await user.comparePassword(password);
+
+  console.log("isMatch", isMatch);
 
   if (!isMatch) {
     return res.status(400).json({ msg: "Invalid Credentials" });
   }
 
-  const payload = {
-    user: {
-      id: user.id,
-    },
-  };
+  const token = user.generateToken();
+  user.token = token;
 
-  jwt.sign(
-    payload,
-    process.env.JWT_SECRET,
-    { expiresIn: "1h" },
-    (err, token) => {
-      if (err) throw err;
-      res.json({ token });
-    }
-  );
+  res.cookie("token", token, cookieOptions);
+  user.password = undefined;
+  res.status(200).json({
+    success: true,
+    message: "User logged in successfully",
+    data: user,
+  });
 });
 
 // Logout controller

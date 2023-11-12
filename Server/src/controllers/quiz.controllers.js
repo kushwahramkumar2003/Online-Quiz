@@ -1,4 +1,5 @@
 const Quiz = require("../models/Quiz.model.js");
+const Question = require("../models/Question.model.js");
 const asyncHandler = require("./../services/asyncHandler.js");
 
 // @desc    Get all quizzes
@@ -26,16 +27,17 @@ exports.getQuizById = asyncHandler(async (req, res) => {
 // @route   POST /api/quizzes
 // @access  Private/Admin
 exports.createQuiz = asyncHandler(async (req, res) => {
-  const { name, questions } = req.body;
+  const { title, description, category } = req.body;
 
-  if (!name || !questions) {
+  if (!title || !description || !category) {
     res.status(400);
-    throw new Error("Name and questions are required");
+    throw new Error("Title, Description and category are required");
   }
 
   const quiz = new Quiz({
-    name,
-    questions,
+    title,
+    description,
+    category,
   });
 
   const createdQuiz = await quiz.save();
@@ -184,4 +186,44 @@ exports.getQuizResults = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("Quiz not found");
   }
+});
+
+// @desc    Add a new question to a quiz
+// @route   POST /api/quizzes/:quizId/questions
+// @access  Private/Admin
+exports.addQuestionToQuiz = asyncHandler(async (req, res) => {
+  const quiz = await Quiz.findById(req.params.quizId);
+
+  if (!quiz) {
+    res.status(404);
+    throw new Error("Quiz not found");
+  }
+
+  const { question, options, correctAnswer } = req.body;
+
+  // Validate request body
+  if (!question || !options || !correctAnswer) {
+    res.status(400);
+    throw new Error("Missing required fields");
+  }
+
+  // Create new question
+  const newQuestion = new Question({
+    question,
+    options,
+    correctAnswer,
+    quiz: quiz._id,
+  });
+
+  // Save new question to database
+  await newQuestion.save();
+
+  // Add new question to quiz
+  quiz.questions.push(newQuestion._id);
+  await quiz.save();
+
+  res.status(201).json({
+    success: true,
+    data: newQuestion,
+  });
 });
