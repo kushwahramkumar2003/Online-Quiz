@@ -124,29 +124,81 @@ exports.getQuizById = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Update a quiz by ID
-// @route   PUT /api/quizzes/:id
-// @access  Private/Admin
+/*************************************************************************
+ * @desc    Update a quiz by ID
+ * @route   PUT /api/v1/quiz/:id/update
+ * @access  Private/Admin
+ * @kushwahramkumar2003
+ *************************************************************************/
 exports.updateQuizById = asyncHandler(async (req, res) => {
-  const { name, questions } = req.body;
+  let { title, description, category } = req.body;
+  const id = req.params.id;
 
-  if (!name || !questions) {
-    res.status(400);
-    throw new Error("Name and questions are required");
+  if (!id) {
+    res.status(401).json({
+      success: false,
+      message: "Must have QuizId",
+    });
   }
 
-  const quiz = await Quiz.findById(req.params.id);
+  const quiz = await Quiz.findById(id);
 
-  if (quiz) {
-    quiz.name = name;
-    quiz.questions = questions;
-
-    const updatedQuiz = await quiz.save();
-    res.json(updatedQuiz);
-  } else {
+  if (!quiz) {
     res.status(404);
     throw new Error("Quiz not found");
   }
+
+  quiz.title = title || quiz.title;
+  quiz.description = description || quiz.description;
+  quiz.category = category || quiz.category;
+
+  const updatedQuiz = await quiz.save();
+
+  res.status(200).json({
+    success: true,
+    data: updatedQuiz,
+  });
+});
+
+/*************************************************************************
+ * @desc    Update a question by Quiz ID and Question ID
+ * @route   PUT /api/v1/quiz/:quizId/question/:questionId/update
+ * @access  Private/Admin
+ * @kushwahramkumar2003
+ *************************************************************************/
+exports.updateQuestionById = asyncHandler(async (req, res) => {
+  const quizId = req.params.quizId;
+  const questionId = req.params.questionId;
+  if (!quizId || !questionId) {
+    res.status(401).json({
+      success: false,
+      message: "Must have QuizId or QuestionId",
+    });
+  }
+  const quiz = await Quiz.findById(quizId);
+
+  if (!quiz) {
+    res.status(404);
+    throw new Error("Quiz not found");
+  }
+
+  const question = await Question.findById(questionId);
+
+  if (!question) {
+    res.status(404);
+    throw new Error("Question not found");
+  }
+
+  question.text = req.body.question || question.title;
+  question.options = req.body.options || question.options;
+  question.answer = req.body.correctAnswer || question.correctOption;
+
+  const updatedQuestion = await question.save();
+
+  res.status(200).json({
+    success: true,
+    data: updatedQuestion,
+  });
 });
 
 // @desc    Delete a quiz by ID
