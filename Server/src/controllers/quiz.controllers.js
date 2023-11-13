@@ -1,4 +1,5 @@
-const { Quiz, Question } = require("../models/Quiz.model.js");
+const Quiz = require("../models/Quiz.model.js");
+const Question = require("../models/Question.model.js");
 const { ObjectId } = require("bson");
 const asyncHandler = require("./../services/asyncHandler.js");
 
@@ -94,19 +95,27 @@ exports.addQuestionToQuiz = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Get all quizzes
-// @route   GET /api/quizzes
-// @access  Public
+/**************************************************************************
+ * @desc    Get all quizzes
+ * @route  GET /api/v1/quiz
+ * @access  Public
+ * @kushwahramkumar2003
+ **************************************************************************/
 exports.getAllQuizzes = asyncHandler(async (req, res) => {
-  const quizzes = await Quiz.find({});
+  const quizzes = await Quiz.find({}, { questions: 0 }).populate().exec();
   res.json(quizzes);
 });
 
-// @desc    Get quiz by ID
-// @route   GET /api/quizzes/:id
-// @access  Public
+/*************************************************************************
+ * @desc    Get quiz by ID
+ * @route   GET /api/v1/quiz/:id
+ * @access  Public
+ * @kushwahramkumar2003
+ *************************************************************************/
 exports.getQuizById = asyncHandler(async (req, res) => {
-  const quiz = await Quiz.findById(req.params.id);
+  const quiz = await Quiz.findById(req.params.id)
+    .populate("questions", "text options")
+    .exec();
   if (quiz) {
     res.json(quiz);
   } else {
