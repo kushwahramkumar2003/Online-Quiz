@@ -1,6 +1,100 @@
-const Quiz = require("../models/Quiz.model.js");
-const Question = require("../models/Question.model.js");
+const { Quiz, Question } = require("../models/Quiz.model.js");
+const { ObjectId } = require("bson");
 const asyncHandler = require("./../services/asyncHandler.js");
+
+/**********************************************************************
+ * 
+ * @desc    Create a quiz
+ * @route   POST /api/v1/quiz/create
+ * @access  Private/Admin
+ * @kushwahramkumar2003
+ **********************************************************************/
+exports.createQuiz = asyncHandler(async (req, res) => {
+  const { title, description, category } = req.body;
+
+  if (!title || !description || !category) {
+    res.status(400);
+    throw new Error("Title, Description and category are required");
+  }
+
+  const quiz = new Quiz({
+    title,
+    description,
+    category,
+  });
+
+  const createdQuiz = await quiz.save();
+  res.status(201).json(createdQuiz);
+});
+
+/************************************************************************
+ * 
+ * @desc    Add a new question to a quiz
+ * @route   POST /api/v1/quiz//create/addQuestion/:_id
+ * @access  Private/Admin
+ * @kushwahramkumar2003
+ *************************************************************************/
+
+exports.addQuestionToQuiz = asyncHandler(async (req, res) => {
+  console.log("Reached addQuestionToQuiz");
+  const quizId = req.params.quizId;
+  // console.log("quizId : ", quizId);
+  if (!quizId) {
+    res.status(401).json({
+      success: false,
+      message: "Must have QuizId",
+    });
+  }
+
+  // const myObjectId = new ObjectId(quizId);
+  // console.log("myObjectId : ", myObjectId);
+  const quiz = await Quiz.findById({ _id: quizId });
+  // console.log("quiz : ", quiz);
+
+  if (!quiz) {
+    res.status(404);
+    throw new Error("Quiz not found");
+  }
+
+  const { question, options, correctAnswer } = req.body;
+
+  // Validate request body
+  if (!question || !options || !correctAnswer) {
+    res.status(400);
+    throw new Error("Missing required fields");
+  }
+  console.log("Options :", options);
+
+  if (options.length !== 4) {
+    res.status(401).json({
+      success: false,
+      message: "Options must have 4 options",
+    });
+  }
+  console.log("Reached addQuestionToQuiz 2");
+  // Create new question
+  const newQuestion = new Question({
+    text: question,
+    options,
+    answer: correctAnswer,
+    quiz: quiz._id,
+  });
+
+  console.log("newQuestion : ", newQuestion);
+
+  // Save new question to database
+  await newQuestion.save();
+
+  // Add new question to quiz
+  quiz.questions.push(newQuestion._id);
+  await quiz.save();
+  console.log("Reached addQuestionToQuiz 3");
+
+  res.status(201).json({
+    success: true,
+    data: newQuestion,
+  });
+});
 
 // @desc    Get all quizzes
 // @route   GET /api/quizzes
@@ -21,27 +115,6 @@ exports.getQuizById = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("Quiz not found");
   }
-});
-
-// @desc    Create a quiz
-// @route   POST /api/quizzes
-// @access  Private/Admin
-exports.createQuiz = asyncHandler(async (req, res) => {
-  const { title, description, category } = req.body;
-
-  if (!title || !description || !category) {
-    res.status(400);
-    throw new Error("Title, Description and category are required");
-  }
-
-  const quiz = new Quiz({
-    title,
-    description,
-    category,
-  });
-
-  const createdQuiz = await quiz.save();
-  res.status(201).json(createdQuiz);
 });
 
 // @desc    Update a quiz by ID
@@ -186,57 +259,4 @@ exports.getQuizResults = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("Quiz not found");
   }
-});
-
-// @desc    Add a new question to a quiz
-// @route   POST /api/quizzes/:quizId/questions
-// @access  Private/Admin
-exports.addQuestionToQuiz = asyncHandler(async (req, res) => {
-  const quizId = req.params.quizId;
-  if (!quizId) {
-    res.status(401).json({
-      success: false,
-      message: "Must have QuizId",
-    });
-  }
-  const quiz = await Quiz.findById(quizId);
-
-  if (!quiz) {
-    res.status(404);
-    throw new Error("Quiz not found");
-  }
-
-  const { question, options, correctAnswer } = req.body;
-
-  // Validate request body
-  if (!question || !options || !correctAnswer) {
-    res.status(400);
-    throw new Error("Missing required fields");
-  }
-
-  if (options.length <= 0) {
-    res.status(401).json({
-      success: false,
-      message: "Options must have 4 options",
-    });
-  }
-  // Create new question
-  const newQuestion = new Question({
-    question,
-    options,
-    correctAnswer,
-    quiz: quiz._id,
-  });
-
-  // Save new question to database
-  await newQuestion.save();
-
-  // Add new question to quiz
-  quiz.questions.push(newQuestion._id);
-  await quiz.save();
-
-  res.status(201).json({
-    success: true,
-    data: newQuestion,
-  });
 });

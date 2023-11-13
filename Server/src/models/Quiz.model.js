@@ -17,7 +17,6 @@ const questionSchema = new mongoose.Schema({
     },
   },
   answer: {
-    
     type: String,
     required: true,
     trim: true,
@@ -47,7 +46,8 @@ const quizSchema = new mongoose.Schema({
     trim: true,
   },
   questions: {
-    type: [questionSchema],
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: "question",
     required: true,
     validate: {
       validator: function (value) {
@@ -60,22 +60,12 @@ const quizSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  id: {
-    type: Number,
-    default: 0,
-  },
 });
 
 // Increment the times_taken field before saving
 quizSchema.pre("save", async function (next) {
   const quiz = this;
   quiz.times_taken += 1;
-  if (!quiz.isNew) {
-    return next();
-  }
-  const count = await Quiz.countDocuments();
-  console.log("count", count);
-  quiz.id = count + 1;
   next();
 });
 
@@ -155,6 +145,8 @@ questionSchema.virtual("correctAnswerIndex").get(function () {
   return this.options.indexOf(this.answer);
 });
 
+const Question = mongoose.model("Question", questionSchema);
+
 const Quiz = mongoose.model("Quiz", quizSchema);
 
-module.exports = Quiz;
+module.exports = { Quiz, Question };
