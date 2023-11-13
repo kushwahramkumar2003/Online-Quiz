@@ -62,7 +62,7 @@ exports.login = asyncHandler(async (req, res) => {
 
   const isMatch = await user.comparePassword(password);
 
-  console.log("isMatch", isMatch);
+  // console.log("isMatch", isMatch);
 
   if (!isMatch) {
     return res.status(400).json({ msg: "Invalid Credentials" });
@@ -72,11 +72,14 @@ exports.login = asyncHandler(async (req, res) => {
   user.token = token;
 
   res.cookie("token", token, cookieOptions);
+
   user.password = undefined;
+  res.user = user;
   res.status(200).json({
     success: true,
     message: "User logged in successfully",
     data: user,
+    user,
   });
 });
 

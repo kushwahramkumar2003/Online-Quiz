@@ -192,7 +192,14 @@ exports.getQuizResults = asyncHandler(async (req, res) => {
 // @route   POST /api/quizzes/:quizId/questions
 // @access  Private/Admin
 exports.addQuestionToQuiz = asyncHandler(async (req, res) => {
-  const quiz = await Quiz.findById(req.params.quizId);
+  const quizId = req.params.quizId;
+  if (!quizId) {
+    res.status(401).json({
+      success: false,
+      message: "Must have QuizId",
+    });
+  }
+  const quiz = await Quiz.findById(quizId);
 
   if (!quiz) {
     res.status(404);
@@ -207,6 +214,12 @@ exports.addQuestionToQuiz = asyncHandler(async (req, res) => {
     throw new Error("Missing required fields");
   }
 
+  if (options.length <= 0) {
+    res.status(401).json({
+      success: false,
+      message: "Options must have 4 options",
+    });
+  }
   // Create new question
   const newQuestion = new Question({
     question,

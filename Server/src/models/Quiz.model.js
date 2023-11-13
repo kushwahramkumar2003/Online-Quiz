@@ -29,7 +29,6 @@ const questionSchema = new mongoose.Schema({
   },
 });
 
-
 const quizSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -51,12 +50,16 @@ const quizSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: function (value) {
-        return value.length > 0; // At least one question per quiz
+        return value.length >= 0; // At least one question per quiz
       },
       message: "Questions must have at least one item",
     },
   },
   times_taken: {
+    type: Number,
+    default: 0,
+  },
+  id: {
     type: Number,
     default: 0,
   },
@@ -66,8 +69,20 @@ const quizSchema = new mongoose.Schema({
 quizSchema.pre("save", async function (next) {
   const quiz = this;
   quiz.times_taken += 1;
+  if (!quiz.isNew) {
+    return next();
+  }
+  const count = await Quiz.countDocuments();
+  console.log("count", count);
+  quiz.id = count + 1;
   next();
 });
+
+// quizSchema.pre("save", async function (next) {
+//   const quiz = this;
+
+//   next();
+// });
 
 // Log the quiz title after saving
 quizSchema.post("save", function (doc, next) {
@@ -140,3 +155,5 @@ questionSchema.virtual("correctAnswerIndex").get(function () {
 });
 
 const Quiz = mongoose.model("Quiz", quizSchema);
+
+module.exports = Quiz;

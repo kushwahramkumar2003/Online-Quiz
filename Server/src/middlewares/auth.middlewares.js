@@ -12,13 +12,14 @@ const isAuthenticated = asyncHandler(async (req, res, next) => {
       req.headers.authorization.startsWith("Bearer"))
   ) {
     try {
-      console.log("req.cookies.token", req.cookies.token);
+      // console.log("req.cookies.token ", req.cookies.token);
       token = req.cookies.token || req.headers.authorization.split(" ")[1];
 
-      console.log("token", token);
+      // console.log("token", token);
       const decoded = jwt.verify(token, config.JWT_SECRET);
-      console.log("decoded", decoded);
-      req.user = await User.findById(decoded.id).select("-password");
+      // console.log("decoded", decoded);
+      req.user = await User.findById(decoded._id).select("-password");
+      // console.log("req.user : ", req.user);
       next();
     } catch (error) {
       console.error(error);
@@ -35,8 +36,8 @@ const isAuthenticated = asyncHandler(async (req, res, next) => {
 
 // Middleware to check if user is an admin
 const isAdmin = (req, res, next) => {
-  console.log("req.user", req);
-  if (req.user && req.role === "ADMIN") {
+  // console.log("req.user : ", req);
+  if (req.user && req.user.role === "ADMIN") {
     next();
   } else {
     res.status(401);

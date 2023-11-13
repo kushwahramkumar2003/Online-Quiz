@@ -11,7 +11,10 @@ const {
   submitQuizAnswers,
   getQuizResults,
 } = require("../controllers/quiz.controllers.js");
-const { isAdmin } = require("../middlewares/auth.middlewares.js");
+const {
+  isAdmin,
+  isAuthenticated,
+} = require("../middlewares/auth.middlewares.js");
 
 // GET all quizzes
 router.get("/", getAllQuizzes);
@@ -20,7 +23,7 @@ router.get("/", getAllQuizzes);
 router.get("/:id", getQuizById);
 
 // POST - Create a new quiz
-router.post("/create", isAdmin, createQuiz);
+router.post("/create", isAuthenticated, isAdmin, createQuiz);
 
 // PUT - Update an existing quiz by ID
 router.put("/:id/update", isAdmin, updateQuizById);
