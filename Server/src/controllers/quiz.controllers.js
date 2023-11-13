@@ -3,7 +3,6 @@ const { ObjectId } = require("bson");
 const asyncHandler = require("./../services/asyncHandler.js");
 
 /**********************************************************************
- * 
  * @desc    Create a quiz
  * @route   POST /api/v1/quiz/create
  * @access  Private/Admin
@@ -28,7 +27,6 @@ exports.createQuiz = asyncHandler(async (req, res) => {
 });
 
 /************************************************************************
- * 
  * @desc    Add a new question to a quiz
  * @route   POST /api/v1/quiz//create/addQuestion/:_id
  * @access  Private/Admin
