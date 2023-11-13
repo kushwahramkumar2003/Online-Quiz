@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const Result = require("./Result.model.js");
+const Question = require("./Question.model");
 const quizSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -54,8 +56,13 @@ quizSchema.post("save", function (doc, next) {
 // Delete the results of the quiz before deleting the quiz
 quizSchema.pre("deleteOne", { document: true }, async function (next) {
   const quiz = this;
-  await Result.deleteMany({ quiz: quiz._id });
-  next();
+  try {
+    await Result.deleteMany({ quiz: quiz._id });
+    await Question.deleteMany({ quiz: quiz._id });
+    next();
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // Check if the user's answers are correct and return the score

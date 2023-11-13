@@ -1,6 +1,7 @@
 const Quiz = require("../models/Quiz.model.js");
 const Question = require("../models/Question.model.js");
 const { ObjectId } = require("bson");
+const Result = require("../models/Result.model.js");
 const asyncHandler = require("./../services/asyncHandler.js");
 
 /**********************************************************************
@@ -201,19 +202,25 @@ exports.updateQuestionById = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Delete a quiz by ID
-// @route   DELETE /api/quizzes/:id
-// @access  Private/Admin
+/*************************************************************************
+ * @desc    Delete a quiz by ID
+ * @route   DELETE api/v1/quiz/:id/delete
+ * @access  Private/Admin
+ *************************************************************************/
 exports.deleteQuizById = asyncHandler(async (req, res) => {
-  const quiz = await Quiz.findById(req.params.id);
+  const quizId = req.params.id;
 
-  if (quiz) {
-    await quiz.remove();
-    res.json({ message: "Quiz removed" });
-  } else {
-    res.status(404);
-    throw new Error("Quiz not found");
-  }
+  // Delete all questions corresponding to the quiz
+  await Question.deleteMany({ quiz: quizId });
+
+  // Delete all results corresponding to the quiz
+  await Result.deleteMany({ quiz: quizId });
+
+  // Delete the quiz itself
+  // await Quiz.findByIdAndDelete(quizId);
+  await Quiz.deleteOne({ _id: quizId });
+
+  res.status(200).json({ success: true, message: "Quiz deleted successfully" });
 });
 
 // @desc    Get quiz for attempt

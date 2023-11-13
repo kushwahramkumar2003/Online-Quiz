@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const Result = require("./Result.model.js");
 const questionSchema = new mongoose.Schema({
   text: {
     type: String,
@@ -27,6 +27,11 @@ const questionSchema = new mongoose.Schema({
       message: "Answer must be one of the options",
     },
   },
+  quiz: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Quiz",
+    required: true,
+  },
 });
 
 // Log the question text before saving
@@ -43,6 +48,13 @@ questionSchema.pre("deleteOne", { document: true }, async function (next) {
     { quiz: question.quiz },
     { $pull: { answers: question.answer } }
   );
+
+  // Delete all questions corresponding to the quiz
+  await Question.deleteMany({ quiz: this._id });
+
+  // Delete all results corresponding to the quiz
+  await Result.deleteMany({ quiz: this._id });
+
   next();
 });
 
