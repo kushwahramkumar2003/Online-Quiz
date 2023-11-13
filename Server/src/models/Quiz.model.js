@@ -17,6 +17,7 @@ const questionSchema = new mongoose.Schema({
     },
   },
   answer: {
+    
     type: String,
     required: true,
     trim: true,
