@@ -11,6 +11,7 @@ const {
   submitQuizAnswers,
   getQuizResults,
   addQuestionToQuiz,
+  updateQuestionById,
 } = require("../controllers/quiz.controllers.js");
 const {
   isAdmin,
@@ -47,5 +48,8 @@ router.post("/:id/submit", submitQuizAnswers);
 
 // GET - Fetch results of a specific quiz
 router.get("/:id/results", getQuizResults);
+
+//PUT - Update question in quiz by Quiz id and Question id
+router.put("/:quizId/question/:questionId/update", updateQuestionById);
 
 module.exports = router;
