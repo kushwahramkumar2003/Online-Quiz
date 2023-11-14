@@ -1,5 +1,7 @@
-const { Quiz, Question } = require("../models/Quiz.model.js");
+const Quiz = require("../models/Quiz.model.js");
+const Question = require("../models/Question.model.js");
 const { ObjectId } = require("bson");
+const Result = require("../models/Result.model.js");
 const asyncHandler = require("./../services/asyncHandler.js");
 
 /**********************************************************************
@@ -94,19 +96,27 @@ exports.addQuestionToQuiz = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Get all quizzes
-// @route   GET /api/quizzes
-// @access  Public
+/**************************************************************************
+ * @desc    Get all quizzes
+ * @route  GET /api/v1/quiz
+ * @access  Public
+ * @kushwahramkumar2003
+ **************************************************************************/
 exports.getAllQuizzes = asyncHandler(async (req, res) => {
-  const quizzes = await Quiz.find({});
+  const quizzes = await Quiz.find({}, { questions: 0 }).populate().exec();
   res.json(quizzes);
 });
 
-// @desc    Get quiz by ID
-// @route   GET /api/quizzes/:id
-// @access  Public
+/*************************************************************************
+ * @desc    Get quiz by ID
+ * @route   GET /api/v1/quiz/:id
+ * @access  Public
+ * @kushwahramkumar2003
+ *************************************************************************/
 exports.getQuizById = asyncHandler(async (req, res) => {
-  const quiz = await Quiz.findById(req.params.id);
+  const quiz = await Quiz.findById(req.params.id)
+    .populate("questions", "text options")
+    .exec();
   if (quiz) {
     res.json(quiz);
   } else {
@@ -115,44 +125,102 @@ exports.getQuizById = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Update a quiz by ID
-// @route   PUT /api/quizzes/:id
-// @access  Private/Admin
+/*************************************************************************
+ * @desc    Update a quiz by ID
+ * @route   PUT /api/v1/quiz/:id/update
+ * @access  Private/Admin
+ * @kushwahramkumar2003
+ *************************************************************************/
 exports.updateQuizById = asyncHandler(async (req, res) => {
-  const { name, questions } = req.body;
+  let { title, description, category } = req.body;
+  const id = req.params.id;
 
-  if (!name || !questions) {
-    res.status(400);
-    throw new Error("Name and questions are required");
+  if (!id) {
+    res.status(401).json({
+      success: false,
+      message: "Must have QuizId",
+    });
   }
 
-  const quiz = await Quiz.findById(req.params.id);
+  const quiz = await Quiz.findById(id);
 
-  if (quiz) {
-    quiz.name = name;
-    quiz.questions = questions;
-
-    const updatedQuiz = await quiz.save();
-    res.json(updatedQuiz);
-  } else {
+  if (!quiz) {
     res.status(404);
     throw new Error("Quiz not found");
   }
+
+  quiz.title = title || quiz.title;
+  quiz.description = description || quiz.description;
+  quiz.category = category || quiz.category;
+
+  const updatedQuiz = await quiz.save();
+
+  res.status(200).json({
+    success: true,
+    data: updatedQuiz,
+  });
 });
 
-// @desc    Delete a quiz by ID
-// @route   DELETE /api/quizzes/:id
-// @access  Private/Admin
-exports.deleteQuizById = asyncHandler(async (req, res) => {
-  const quiz = await Quiz.findById(req.params.id);
+/*************************************************************************
+ * @desc    Update a question by Quiz ID and Question ID
+ * @route   PUT /api/v1/quiz/:quizId/question/:questionId/update
+ * @access  Private/Admin
+ * @kushwahramkumar2003
+ *************************************************************************/
+exports.updateQuestionById = asyncHandler(async (req, res) => {
+  const quizId = req.params.quizId;
+  const questionId = req.params.questionId;
+  if (!quizId || !questionId) {
+    res.status(401).json({
+      success: false,
+      message: "Must have QuizId or QuestionId",
+    });
+  }
+  const quiz = await Quiz.findById(quizId);
 
-  if (quiz) {
-    await quiz.remove();
-    res.json({ message: "Quiz removed" });
-  } else {
+  if (!quiz) {
     res.status(404);
     throw new Error("Quiz not found");
   }
+
+  const question = await Question.findById(questionId);
+
+  if (!question) {
+    res.status(404);
+    throw new Error("Question not found");
+  }
+
+  question.text = req.body.question || question.title;
+  question.options = req.body.options || question.options;
+  question.answer = req.body.correctAnswer || question.correctOption;
+
+  const updatedQuestion = await question.save();
+
+  res.status(200).json({
+    success: true,
+    data: updatedQuestion,
+  });
+});
+
+/*************************************************************************
+ * @desc    Delete a quiz by ID
+ * @route   DELETE api/v1/quiz/:id/delete
+ * @access  Private/Admin
+ *************************************************************************/
+exports.deleteQuizById = asyncHandler(async (req, res) => {
+  const quizId = req.params.id;
+
+  // Delete all questions corresponding to the quiz
+  await Question.deleteMany({ quiz: quizId });
+
+  // Delete all results corresponding to the quiz
+  await Result.deleteMany({ quiz: quizId });
+
+  // Delete the quiz itself
+  // await Quiz.findByIdAndDelete(quizId);
+  await Quiz.deleteOne({ _id: quizId });
+
+  res.status(200).json({ success: true, message: "Quiz deleted successfully" });
 });
 
 // @desc    Get quiz for attempt
