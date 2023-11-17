@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const User = require("./User.model.js");
+const Feedback = require("./Feedback.model.js");
 const resultSchema = new mongoose.Schema(
   {
     user: {
@@ -66,3 +68,5 @@ resultSchema.statics.findByUserAndQuiz = async function (user, quiz) {
 };
 
 const Result = mongoose.model("Result", resultSchema);
+
+module.exports = Result;
