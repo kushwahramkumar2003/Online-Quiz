@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+body {
+    background: #FFF;
+}
+.main {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    justify-content: space-evenly;
+}
+.right-img {
+    background-color: #c0c0c0 | rgb(192,192,192);
+    /* border: 2px solid black; */
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.right-img img {
+    width: 17.88881rem;
+    height: 14.47794rem;
+}
+.Left-content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.Left-content nav {
+    /* margin-top: -14%; */
+    margin-left: -5.15rem;
+}
+
+.form-details {
+    /* padding-top: 2.72rem; */
+    margin-top: 1rem;
+    margin-right: 5rem;
+    /* border: 2px solid black; */
+    width: 100%;
+}
+
+/************ Input CSS ***********/
+input{
+    width: 26rem;
+    height: 3.8rem;
+    flex-shrink: 0;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    border: 0.581px solid #C1BBBB;
+    background: #FFF;
+    /* margin: 0 2.96rem 0 -5rem; */
+    flex-wrap: wrap;
+    padding-left: 16px;
+    margin-top: 2.72rem;
+}
+input:hover {
+    border: 2px solid #FCC822;
+    transition: 0.2s;
+}
+label {
+    /* margin-left: 5rem; */
+}
+
+/************ Hide/show Button CSS ***********/
+.password-input {
+  position: relative;
+  /* border:  2px solid black; */
+}
+
+.password-toggle {
+  position: absolute;
+  margin-top: 5%;
+  margin-right: 16%;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* Style for Font Awesome icons (adjust as needed) */
+.password-toggle i {
+  font-size: 18px;
+  color: #007bff; /* Change color as needed */
+}
+.password-toggle i:hover {
+  color: #FCC822;
+  transition: 0.2s;
+}
+
+/* forget password css */
+.form-details a {
+    margin-top: 5rem;
+    color: rgba(0, 0, 0, 0.61);
+}
+
+.forget-pass {
+    /* border: 2px solid black; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 10%;
+}
+.forget-pass a:hover {
+    color: #FCC822;
+    transition: 0.2s;
+}
+
+.btns {
+    /* border: 2px solid black; */
+    width: 80%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    /* align-items: center; */
+    padding-bottom: 3rem;
+    /* height: 25%; */
+}
+.btns button {
+    width: 4.46313rem;
+    height: 2.32225rem;
+    margin-top: 4rem;
+    margin-right: 2.5rem;
+    margin-left: 5%;
+    border: none;
+    /* box-shadow: 0px 10.45024px 23.22276px -6.96683px #FBE18F; */
+    border: 0.581px solid #FCC822;
+    background: #FFF;
+    transition: 0.2s;
+    color: #FCC822;
+    font-size: 1rem;
+    box-shadow: 0px 10.45024px 23.22276px -8.96683px #FBE18F;
+}
+button:hover {
+    background: linear-gradient(95deg, #FCC822 0%, #FFCD2E 100%);
+    transition: 0.2s;
+    /* box-shadow: 0px 10.45024px 23.22276px -6.96683px #FBE18F; */
+    box-shadow: 0 0 30px #FCC822;
+    color: #FFF;
+}
+button::before {
+    transition: opacity 0.3s, border 0.3s
+}
+
+
+
+#head {
+    color: rgba(0, 0, 0, 0.60);
+    text-align: center;
+    font-family: Roboto;
+    font-size: 0.90194rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: -10rem;
+    margin-top: 2.36rem;
+}
+
+
+.password-input {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.password-toggle.visible {
+  color: #007bff; /* Change color as needed */
+}
+

@@ -1,7 +1,6 @@
 const Quiz = require("../models/Quiz.model.js");
 const Question = require("../models/Question.model.js");
-const { ObjectId } = require("bson");
-const Result = require("../models/Result.model.js");
+const QuizResult = require("../models/Result.model.js");
 const asyncHandler = require("./../services/asyncHandler.js");
 
 /**********************************************************************
@@ -206,6 +205,7 @@ exports.updateQuestionById = asyncHandler(async (req, res) => {
  * @desc    Delete a quiz by ID
  * @route   DELETE api/v1/quiz/:id/delete
  * @access  Private/Admin
+ * @kushwahramkumar2003
  *************************************************************************/
 exports.deleteQuizById = asyncHandler(async (req, res) => {
   const quizId = req.params.id;
@@ -223,106 +223,326 @@ exports.deleteQuizById = asyncHandler(async (req, res) => {
   res.status(200).json({ success: true, message: "Quiz deleted successfully" });
 });
 
-// @desc    Get quiz for attempt
-// @route   GET /api/quizzes/:id/attempt
-// @access  Public
+/*************************************************************************
+ * @desc    Delete a question by ID
+ * @route   DELETE api/v1/quiz/:quizId/question/:questionId/delete
+ * @access  Private/Admin
+ * @kushwahramkumar2003
+ *************************************************************************/
+exports.deleteQuestionById = asyncHandler(async (req, res) => {
+  const { quizId, questionId } = req.params;
+
+  const quiz = await Quiz.findById(quizId);
+
+  if (!quiz) {
+    return res.status(404).json({ success: false, message: "Quiz not found" });
+  }
+
+  const question = await Question.findById(questionId);
+
+  if (!question) {
+    return res
+      .status(404)
+      .json({ success: false, message: "Question not found" });
+  }
+
+  await question.remove();
+
+  res
+    .status(200)
+    .json({ success: true, message: "Question deleted successfully" });
+});
+
+/*************************************************************************
+ * @desc    Get quiz for attempt
+ * @route   GET /api/quizzes/:id/attempt
+ * @access  Public
+ *************************************************************************/
 exports.getQuizForAttempt = asyncHandler(async (req, res) => {
-  const quiz = await Quiz.findById(req.params.id);
+  const quiz = await Quiz.findById(req.params.id).populate({
+    path: "questions",
+    select: "-correctAnswer",
+  });
 
-  if (quiz) {
-    const { name, questions } = quiz;
-    const quizForAttempt = {
-      name,
-      questions: questions.map((question) => {
-        const { _id, text, options } = question;
-        return { _id, text, options };
-      }),
+  if (!quiz) {
+    return res.status(404).json({ message: "Quiz not found" });
+  }
+
+  const { questions } = quiz;
+
+  const quizForAttempt = questions.map((question) => {
+    const { _id, questionText, options } = question;
+    return {
+      _id,
+      questionText,
+      options,
     };
-    res.json(quizForAttempt);
-  } else {
-    res.status(404);
-    throw new Error("Quiz not found");
-  }
+  });
+
+  res.status(200).json({ quiz: quizForAttempt });
 });
 
-// @desc    Submit quiz answers
-// @route   POST /api/quizzes/:id/submit
-// @access  Public
+/*************************************************************************
+ * @desc    Submit quiz answers
+ * @route   POST /api/quizzes/:id/submit
+ * @access  Public
+ *************************************************************************/
 exports.submitQuizAnswers = asyncHandler(async (req, res) => {
-  const quiz = await Quiz.findById(req.params.id);
+  const quizId = req.params.id;
+  const { answers } = req.body;
 
-  if (quiz) {
-    const { answers } = req.body;
-    const { questions } = quiz;
-    const score = questions.reduce((totalScore, question, index) => {
-      const correctAnswer = question.options.find((option) => option.isCorrect);
-      const selectedAnswer = answers[index];
-      if (correctAnswer._id === selectedAnswer) {
-        return totalScore + 1;
-      } else {
-        return totalScore;
-      }
-    }, 0);
-    res.json({ score });
-  } else {
-    res.status(404);
-    throw new Error("Quiz not found");
+  const quiz = await Quiz.findById(quizId).populate("questions");
+
+  if (!quiz) {
+    return res.status(404).json({ message: "Quiz not found" });
+  }
+
+  const { questions } = quiz;
+
+  let score = 0;
+
+  const results = questions.map((question) => {
+    const { _id, correctAnswer } = question;
+    const userAnswer = answers[_id];
+
+    const isCorrect = userAnswer === correctAnswer;
+
+    if (isCorrect) {
+      score++;
+    }
+
+    return {
+      questionId: _id,
+      userAnswer,
+      isCorrect,
+    };
+  });
+
+  const totalQuestions = questions.length;
+  const percentageScore = (score / totalQuestions) * 100;
+
+  const quizResult = new QuizResult({
+    quiz: quizId,
+    user: req.user._id,
+    score,
+    totalQuestions,
+    percentageScore,
+    results,
+  });
+
+  await quizResult.save();
+
+  res.status(200).json({ quizResult });
+});
+
+/*************************************************************************
+ * @desc    Get quiz results
+ * @route   GET /api/quizzes/:id/results
+ * @access  Private/Admin
+ *************************************************************************/
+exports.getQuizResults = asyncHandler(async (req, res) => {
+  try {
+    const quiz = await Quiz.findById(req.params.id).populate("questions");
+    if (!quiz) {
+      return res.status(404).json({ message: "Quiz not found" });
+    }
+
+    const results = await Result.find({ quiz: quiz._id }).populate(
+      "user",
+      "name email"
+    );
+    res.status(200).json({ results });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
 });
 
-// @desc    Get quiz results
-// @route   GET /api/quizzes/:id/results
-// @access  Private/Admin
-exports.getQuizResults = asyncHandler(async (req, res) => {
-  const quiz = await Quiz.findById(req.params.id);
+/*************************************************************************
+ * @desc    Update user's answer to a question
+ * @route   PUT /api/quizzes/:quizId/questions/:questionId/answer
+ * @access  Public
+ *************************************************************************/
+exports.updateUserAnswer = asyncHandler(async (req, res) => {
+  try {
+    const { quizId, questionId } = req.params;
+    const { answer } = req.body;
 
-  if (quiz) {
-    const { name, questions } = quiz;
-    const results = await Promise.all(
-      questions.map(async (question) => {
-        const { _id, text } = question;
-        const correctAnswer = question.options.find(
-          (option) => option.isCorrect
-        );
-        const resultsForQuestion = await Quiz.aggregate([
-          { $unwind: "$attempts" },
-          {
-            $match: {
-              _id: quiz._id,
-              "attempts.answers.questionId": question._id,
-            },
-          },
-          {
-            $group: {
-              _id: "$attempts.answers.questionId",
-              totalAttempts: { $sum: 1 },
-              totalCorrect: {
-                $sum: {
-                  $cond: [
-                    {
-                      $eq: [
-                        "$attempts.answers.selectedOptionId",
-                        correctAnswer._id,
-                      ],
-                    },
-                    1,
-                    0,
-                  ],
-                },
-              },
-            },
-          },
-        ]);
-        return {
-          _id,
-          text,
-          results: resultsForQuestion[0],
-        };
-      })
+    const quiz = await Quiz.findById(quizId);
+    if (!quiz) {
+      return res.status(404).json({ message: "Quiz not found" });
+    }
+
+    const question = await Question.findById(questionId);
+    if (!question) {
+      return res.status(404).json({ message: "Question not found" });
+    }
+
+    const userAnswer = await UserAnswer.findOneAndUpdate(
+      { user: req.user._id, question: questionId },
+      { answer },
+      { new: true, upsert: true }
     );
-    res.json({ name, results });
-  } else {
-    res.status(404);
-    throw new Error("Quiz not found");
+
+    res.status(200).json({ userAnswer });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+/*************************************************************************
+ * @desc    Get remaining time for quiz
+ * @route   GET /api/quizzes/:id/time
+ * @access  Public
+ *************************************************************************/
+exports.getRemainingTime = asyncHandler(async (req, res) => {
+  try {
+    const { id } = req.params;
+    const quiz = await Quiz.findById(id);
+    if (!quiz) {
+      return res.status(404).json({ message: "Quiz not found" });
+    }
+    const remainingTime = quiz.duration - (Date.now() - quiz.startTime);
+    res.status(200).json({ remainingTime });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+/*************************************************************************
+ * @desc    Automatically submit quiz when time is up
+ * @route   POST /api/quizzes/:id/submit-on-time-up
+ * @access  Public
+ *************************************************************************/
+exports.submitQuizOnTimeUp = asyncHandler(async (req, res) => {
+  try {
+    const { id } = req.params;
+    const quiz = await Quiz.findById(id);
+    if (!quiz) {
+      return res.status(404).json({ message: "Quiz not found" });
+    }
+    const remainingTime = quiz.duration - (Date.now() - quiz.startTime);
+    if (remainingTime > 0) {
+      return res.status(400).json({ message: "Quiz time has not expired yet" });
+    }
+    const { answers } = req.body;
+    if (!answers) {
+      return res.status(400).json({ message: "Answers not provided" });
+    }
+    const quizResults = new QuizResult({
+      quiz: id,
+      user: req.user._id,
+      answers,
+    });
+    await quizResults.save();
+    res.status(200).json({ message: "Quiz submitted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+/*************************************************************************
+ * @desc    Get quiz results for a user
+ * @route   GET /api/quizzes/:id/results/:userId
+ * @access  Private/Admin
+ *************************************************************************/
+exports.getQuizResultsForUser = asyncHandler(async (req, res) => {
+  try {
+    const { id, userId } = req.params;
+    const quizResults = await QuizResults.findOne({
+      quiz: id,
+      user: userId,
+    }).populate("quiz", "title");
+    if (!quizResults) {
+      return res.status(404).json({ message: "Quiz results not found" });
+    }
+    res.status(200).json({ quizResults });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+/*************************************************************************
+ * @desc    Get all results for a quiz
+ * @route   GET /api/quizzes/:id/all-results
+ * @access  Private/Admin
+ *************************************************************************/
+exports.getAllResultsForQuiz = asyncHandler(async (req, res) => {
+  try {
+    const { id } = req.params;
+    const quizResults = await QuizResults.find({ quiz: id }).populate(
+      "user",
+      "name email"
+    );
+    if (!quizResults) {
+      return res.status(404).json({ message: "No quiz results found" });
+    }
+    res.status(200).json({ quizResults });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+/*************************************************************************
+ * @desc    Get all quizzes created by a user
+ * @route   GET /api/quizzes/user/:userId
+ * @access  Private/Admin
+ *************************************************************************/
+exports.getQuizzesByUser = asyncHandler(async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const quizzes = await Quiz.find({ user: userId });
+    if (!quizzes) {
+      return res.status(404).json({ message: "No quizzes found" });
+    }
+    res.status(200).json({ quizzes });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+/*************************************************************************
+ * @desc    Delete a quiz result by ID
+ * @route   DELETE api/v1/quiz/results/:id/delete
+ * @access  Private/Admin
+ *************************************************************************/
+exports.deleteQuizResultById = asyncHandler(async (req, res) => {
+  try {
+    const { id } = req.params;
+    const quizResult = await QuizResult.findById(id);
+    if (!quizResult) {
+      return res.status(404).json({ message: "Quiz result not found" });
+    }
+    await quizResult.remove();
+    res.status(200).json({ message: "Quiz result deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+/*************************************************************************
+ * @desc    Delete all quiz results for a quiz
+ * @route   DELETE api/v1/quiz/:id/results/delete
+ * @access  Private/Admin
+ *************************************************************************/
+exports.deleteAllQuizResults = asyncHandler(async (req, res) => {
+  try {
+    const { id } = req.params;
+    const quizResults = await QuizResult.find({ quiz: id });
+    if (!quizResults) {
+      return res.status(404).json({ message: "No quiz results found" });
+    }
+    await QuizResult.deleteMany({ quiz: id });
+    res.status(200).json({ message: "All quiz results deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
 });

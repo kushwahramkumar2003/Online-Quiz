@@ -68,3 +68,5 @@ resultSchema.statics.findByUserAndQuiz = async function (user, quiz) {
 };
 
 const Result = mongoose.model("Result", resultSchema);
+
+module.exports = Result;

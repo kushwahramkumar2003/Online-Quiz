@@ -111,13 +111,15 @@ userSchema.statics.sendPasswordResetEmail = async function (email) {
   if (!user) {
     throw new Error("User not found");
   }
-  const token = jwt.sign({ _id: user._id }, "secret", { expiresIn: "1h" });
+  const token = jwt.sign({ _id: user._id }, config.JWT_SECRET, {
+    expiresIn: "1h",
+  });
   // Send email with password reset link containing token
 };
 
 // Reset the user's password
 userSchema.statics.resetPassword = async function (token, newPassword) {
-  const decoded = jwt.verify(token, "secret");
+  const decoded = jwt.verify(token, config.JWT_SECRET);
   const user = await User.findById(decoded._id);
   if (!user) {
     throw new Error("User not found");
