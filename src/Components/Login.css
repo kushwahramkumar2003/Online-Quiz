@@ -16,18 +16,7 @@ body {
     /* align-items: center; */
     justify-content: space-evenly;
 }
-.right-img {
-    background-color: #c0c0c0 | rgb(192,192,192);
-    /* border: 2px solid black; */
-    width: 50%;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
-.right-img img {
-    width: 17.88881rem;
-    height: 14.47794rem;
-}
+
 .Left-content {
     width: 50%;
     display: flex;
@@ -38,6 +27,7 @@ body {
 .Left-content nav {
     /* margin-top: -14%; */
     margin-left: -5.15rem;
+    cursor: pointer;
 }
 
 .form-details {
@@ -91,7 +81,6 @@ label {
 
 /* Style for Font Awesome icons (adjust as needed) */
 .password-toggle i {
-  font-size: 18px;
   color: #007bff; /* Change color as needed */
 }
 .password-toggle i:hover {
@@ -100,17 +89,19 @@ label {
 }
 
 /* forget password css */
-.form-details a {
-    margin-top: 5rem;
+.form-details {
+    /* margin-top: 5rem; */
     color: rgba(0, 0, 0, 0.61);
 }
 
 .forget-pass {
     /* border: 2px solid black; */
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding-top: 10%;
+    justify-content: right;
+    margin-right: 16%;
+    /* align-items: flex-start; */
+    padding-top: 4%;
+    color: rgba(0, 0, 0, 0.014);
 }
 .forget-pass a:hover {
     color: #FCC822;
@@ -184,3 +175,35 @@ button::before {
   color: #007bff; /* Change color as needed */
 }
 
+.another-Login {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-left: -40%;  
+    font-size: 0.8rem; 
+    font-style: normal;
+font-weight: 400;
+}
+.another-Login p {
+    padding-right: 25px;
+}
+.same-lo {
+    color: #FCC822;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/************ Right Side CSS ***********/
+.right-img {
+    /* background-color: #c0c0c0 | rgb(192,192,192); */
+    /* border: 2px solid black; */
+    background-color: 	#f5f2f286;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.right-img img {
+    width: 17.88881rem;
+    height: 14.47794rem;
+}
