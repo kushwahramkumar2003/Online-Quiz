@@ -178,52 +178,60 @@ body {
     }  
 }
 
-
-@media screen and (max-width: 992px) and (min-width: 768px) {
+@media screen and (max-width: 992px) and (min-width: 723px)  {
     .main {
         display: flex;
+        max-height: 100%;
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        flex-wrap: wrap;
+    }
 
-    }
+    /* Hide the right-img div */
     .right-img {
-        display: none;
+        display: none !important;
     }
-    .right-img img {
-        display: none;
-    }
+
     .Left-content {
-        width: 65%;
+        width: 100% !important;
+        height: 100% !important;
         display: flex;
-        flex-direction: column;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
         flex-wrap: wrap;
         /* border: 2px solid black; */
-        padding-left: 5%;
+        /* padding-left: 5%; */
+        overflow: hidden;
     }
+
+    /* Adjust other styles for responsiveness within this media query */
     #log1 {
         cursor: pointer;
-        width: 80%;
+        width: 60%;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: center !important;
+        align-items: center !important;
+        flex-wrap: wrap;
+        margin-left: 18%;
     }
     #head {
-        font-size: 1.2rem;
-        /* border:  2px solid black; */
+        margin-left: -18% !important;
     }
+    /* Adjust other styles for responsiveness within this media query */
     .form-details {
         margin-top: -3%;
         margin-right: 5rem;
         /* border: 2px solid black; */
-        width: 50%;
+        flex-wrap: wrap !important;
+        /* width: 20%; */
     }
-    input{
-        width: 14rem;
-        height: 2rem;
-        /* border: 2px solid black; */
+
+    /* Adjust other styles for responsiveness within this media query */
+    input {
+        width: 22rem !important;
+        height: 3rem !important;
+        margin-top: 1.5rem !important;
         flex-shrink: 0;
         display: flex;
         justify-content: center;
@@ -231,18 +239,23 @@ body {
         justify-content: space-around;
         background: #FFF;
         flex-wrap: wrap;
-        padding-left: 16px;
     }
+    .password-toggle {
+        margin-top: 1rem !important;
+        padding-right: 0.5rem;
+    }
+
+    /* Adjust other styles for responsiveness within this media query */
     .btns {
-        /* border: 2px solid black; */
         width: 25%;
         height: auto;
         display: flex;
         justify-content: flex-start;
-        padding-bottom: 1.5rem;
-        /* height: 15%; */
+        /* padding-bottom: 1.5rem; */
         margin-top: -10%;
     }
+
+    /* Adjust other styles for responsiveness within this media query */
     .btns button {
         width: 5.5rem;
         height: 1.5rem;
@@ -257,15 +270,251 @@ body {
         font-size: 0.7rem;
         box-shadow: 0px 10.45024px 23.22276px -8.96683px #FBE18F;
     }
+
+    /* Adjust other styles for responsiveness within this media query */
     #forget {
         font-size: 0.7rem;
         margin-right: 1%;
         margin-top: -1%;
-    }  
+    }
+
+    /* Adjust other styles for responsiveness within this media query */
     .another-Login {
         margin-top: -2%;
     }
 }
+
+/********* Media Query for Phone *********/
+@media screen and (max-width: 723px) and (min-width: 640px)  {
+    .main {
+        display: flex;
+        max-height: 100%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    /* Hide the right-img div */
+    .right-img {
+        display: none !important;
+    }
+
+    .Left-content {
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        flex-wrap: wrap !important;
+        overflow: hidden;
+    }
+
+    /* Adjust other styles for responsiveness within this media query */
+    #log1 {
+        cursor: pointer;
+        width: 55% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        flex-wrap: wrap !important;
+        margin-left: 18%;
+    }
+    #head {
+        padding-left: 16% !important;
+        font-size: 14px !important;
+    }
+    /* Adjust other styles for responsiveness within this media query */
+    .form-details {
+        margin-top: -4% !important;
+        margin-right: 5rem;
+        flex-wrap: wrap !important;
+    }
+
+    .input-same {
+        font-size: 16px !important;
+    }
+
+    /* Adjust other styles for responsiveness within this media query */
+    input {
+        width: 21rem !important;
+        height: 2.7rem !important;
+        /* margin-top: -1% !important; */
+        flex-shrink: 0;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        justify-content: space-around !important; 
+        background: #FFF;
+        flex-wrap: wrap !important;
+    }
+    .password-toggle {
+        margin-top: 1.5rem !important;
+        padding-right: 0.8rem;
+    }
+
+    /* Adjust other styles for responsiveness within this media query */
+    .btns {
+        width: 70vh !important;
+        height: 32% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        /* border: 2px solid black; */
+        overflow: hidden;
+    }
+
+    /* Adjust other styles for responsiveness within this media query */
+    .btns button {
+        width: 5.5rem;
+        height: 1.5rem;
+        /* margin-top: 2.5rem; */
+        margin-right: 2.5rem;
+        margin-left: 5%;
+        border: none;
+        border: 0.581px solid #FCC822;
+        background: #FFF;
+        transition: 0.2s;
+        color: #FCC822;
+        font-size: 1.2rem !important;
+        box-shadow: 0px 10.45024px 23.22276px -8.96683px #FBE18F;
+    }
+
+    /* Adjust other styles for responsiveness within this media query */
+    #forget {
+        font-size: 15px;
+        margin-right: 8%;
+        margin-top: 2.5%;
+    }
+
+    /* Adjust other styles for responsiveness within this media query */
+    .another-Login {
+        flex-wrap: wrap !important;
+        margin-top: 5%;
+        font-size: 16px !important;
+        padding-left: 15% !important;
+    }
+}
+
+
+@media screen and (max-width: 640px) {
+    .main {
+        display: flex;
+        max-height: 100%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    /* Hide the right-img div */
+    .right-img {
+        display: none !important;
+    }
+
+    .Left-content {
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        flex-wrap: wrap !important;
+        border: 2px solid black;
+        /* padding-left: 5%; */
+        overflow: hidden;
+    }
+
+    /* Adjust other styles for responsiveness within this media query */
+    #log1 {
+        cursor: pointer;
+        width: 50% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        flex-wrap: wrap !important;
+        margin-left: 28% !important;
+    }
+    #head {
+        text-align: center !important;
+        padding-left: 30% !important;
+        line-height: 1.4rem !important;
+        font-size: 13px !important;
+    }
+    /* Adjust other styles for responsiveness within this media query */
+    .form-details {
+        margin-top: -3%;
+        margin-right: 5rem;
+        flex-wrap: wrap !important;
+    }
+
+    .input-same {
+        font-size: 14px !important;
+    }
+
+    /* Adjust other styles for responsiveness within this media query */
+    input {
+        width: 20rem !important;
+        height: 2.6rem !important;
+        margin-top: 2.5rem !important;
+        margin-left: 4% !important;
+        flex-shrink: 0;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        justify-content: space-around !important;
+        background: #FFF;
+        flex-wrap: wrap !important;
+    }
+    .password-toggle {
+        margin-top: 1.5rem !important;
+        padding-right: 1.2rem;
+    }
+
+    /* Adjust other styles for responsiveness within this media query */
+    .btns {
+        width: 50vh !important;
+        height: 28% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        /* border: 2px solid black; */
+        overflow: hidden;
+        margin-top: 6%;
+    }
+
+    /* Adjust other styles for responsiveness within this media query */
+    .btns button {
+        width: 5rem !important;
+        height: 2.5rem !important;
+        /* margin-top: 2.5rem; */
+        margin-right: 2.5rem;
+        margin-left: 5%;
+        border: none;
+        border: 0.581px solid #FCC822;
+        background: #FFF;
+        transition: 0.2s;
+        color: #FCC822;
+        font-size: 0.9rem !important;
+        box-shadow: 0px 10.45024px 23.22276px -8.96683px #FBE18F;
+    }
+
+    /* Adjust other styles for responsiveness within this media query */
+    #forget {
+        font-size: 12px !important;
+        margin-right: 8%;
+        margin-top: 2.5%;
+    }
+
+    /* Adjust other styles for responsiveness within this media query */
+    .another-Login {
+        flex-wrap: wrap !important;
+        margin-top: 12% !important;
+        font-size: 13px !important;
+        padding-left: 35% !important;
+    }
+}
+
+
 
 
 .Left-content {

@@ -76,8 +76,8 @@ export default function Login() {
                   type='email'
                   value={email}
                   onChange={handleEmailChange}
-                  placeholder='Email Address'/>
-              </label>
+                  placeholder='Email Address' className='input-same'/>
+    </label>
 
 
  {/* *********** Eye Icon ************ */}
@@ -88,6 +88,7 @@ export default function Login() {
       value={password}
       onChange={handlePassword}
       placeholder='Password'
+      className='input-same'
     />
     <span className='password-toggle' onClick={handlePasswordVisibility}>
       {showPassword ? (
