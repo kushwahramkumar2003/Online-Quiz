@@ -3,6 +3,9 @@ import cap from './Images/graduate.svg';
 import logo from './Images/logo.svg';
 import './Login.css';
 
+import { useNavigate, Link } from "react-router-dom"
+
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" /> 
 
 
@@ -122,7 +125,10 @@ export default function Login() {
     <p className='same-lo'>Google</p>
     <p className='same-lo'>Facebook</p>
   </div>
-
+  <div className='changing-status'>
+  <p>Your have not any account</p>
+  <Link to='/SignUp'>redirect SignUp</Link>
+</div>
     </form>
   </div>
 
