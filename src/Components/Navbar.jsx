@@ -1,6 +1,8 @@
 import React from 'react';
 import  capLogo  from './Images/logo.svg'
 import rightimg from './Images/Right-img.svg'
+import {Link} from 'react-router-dom';
+
 const menuLinks = [
   { name: "How it works", link: "#works" },
   { name: "Features", link: "#features" },
@@ -53,7 +55,7 @@ const Navbar = () => {
 
           </div>
     </div>
-    
+    <Link to="/login">Go to Login</Link>
     </div>
   </>
   );
