@@ -2,6 +2,7 @@ import React from 'react';
 import  capLogo  from './Images/logo.svg'
 import rightimg from './Images/Right-img.svg'
 import {Link} from 'react-router-dom';
+import './navbar.css'
 
 const menuLinks = [
   { name: "How it works", link: "#works" },
@@ -11,7 +12,8 @@ const menuLinks = [
 ];
 const Navbar = () => {
   return (
-    <>
+    <> 
+    
       <nav>
       <div className="flex items-center justify-between">
         <div className="mx-7">
