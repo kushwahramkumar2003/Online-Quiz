@@ -5,16 +5,190 @@
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
 }
-body {
-    background: #fff;
-}
 .main {
     height: 100vh;
     width: 100%;
     display: flex;
-    /* justify-content: center; */
-    /* align-items: center; */
     justify-content: space-evenly;
+}
+.right-img {
+    background-color: rgba(15, 15, 15, 0.833);
+}
+.right-img img {
+    width: 50% !important;
+    /* border:  2px solid black; */
+}
+.Left-content {
+    width: 50% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+}
+.Left-content nav {
+    /* margin-top: -14%; */
+    /* margin-left: -5.15rem; */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center!important;
+    flex-wrap: wrap !important;
+    cursor: pointer;
+}
+#head {
+    margin-left: 1rem !important;
+    font-size: 1.1rem !important;
+    color: rgba(0, 0, 0, 0.60);
+    text-align: center;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 3.5%;
+}
+.form-details {
+    margin-top: 1rem;
+    width: 95% !important;
+    /* border: 2px solid black; */
+}
+
+/************ Input CSS ***********/
+.input-same {
+    width: 22rem;
+    height: 3.8rem;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    border: 0.581px solid #C1BBBB;
+    flex-wrap: wrap !important;
+    padding-left: 15px !important;
+    margin-top: 2.72rem !important;
+    margin-left: 6.2rem;
+}
+input:hover {
+    border: 2px solid #FCC822;
+    transition: 0.2s !important;
+}
+
+/************ Hide/show Button CSS ***********/
+.password-input {
+  position: relative;
+}
+.password-toggle {
+  position: absolute;
+  margin-top: 5%;
+  margin-right: 11%;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* Style for Font Awesome icons (adjust as needed) */
+.password-toggle i {
+  color: #007bff; /* Change color as needed */
+}
+.password-toggle i:hover {
+  color: #FCC822;
+  transition: 0.2s;
+}
+#forget {
+    display: flex !important;
+    justify-content: right !important;
+    margin-right: 16%;
+    padding-top: 4%;
+    font-size: 0.9rem !important;
+    cursor: pointer;
+}
+.btns {
+    /* border: 2px solid black; */
+    width: 40% !important; 
+    height: auto;
+    display: flex !important;
+    padding-bottom: 3rem;
+    margin-left: 10.5rem;
+}
+.btns button {
+    width: 8.2rem !important;
+    height: 2.5rem !important;
+    display: flex !important;
+    justify-content: center!important;
+    align-items: center!important;
+    flex-wrap: wrap!important;
+    margin-top: 15% !important;
+    margin-bottom: 5% !important;
+    margin-left: 15% !important;
+    border-radius: 12px !important;
+    color: #FFF !important;
+    transition: 0.2s;
+    background-color: #FCC822 !important;
+    font-size: 1rem !important;
+    /* background: linear-gradient(95deg, #FCC822 0%, #FFCD2E 100%) !important; */
+    /* box-shadow: 0px 10.45024px 23.22276px -8.96683px #FBE18F; */
+}
+.btns button:hover {
+    transition: 0.2s !important;
+    border: 0.581px solid #FCC822 !important;
+    /* box-shadow: 0px 10.45024px 23.22276px -6.96683px #FBE18F !important; */
+    /* box-shadow: 0 0 30px #FCC822; */
+    color: #FCC822 !important;
+    background-color: #FFF !important; 
+    box-shadow: 0 0 30px #FBE18F !important;
+    transition: 0.2s;
+}
+button::before {
+    transition: opacity 0.3s, border 0.3s
+}
+
+.changing-status {
+    justify-content: center !important;
+    align-items: center !important; 
+    color: rgba(0, 0, 0, 0.60);
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 1% !important;
+}
+.link{
+    text-decoration: none;
+    color: #FCC822 !important;
+    padding-left: 0.9% !important;
+}
+.another-Login {
+    color: rgba(0, 0, 0, 0.60) !important;
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;  
+    margin-left: -40%;  
+    /* font-size: 1rem;  */
+    font-style: normal;
+    font-weight: 400;
+    padding-top: 1.2%;
+    margin-left: 0% !important;
+}
+.another-Login p {
+    padding-left: 12px;
+}
+.same-lo {
+    color: #FCC822;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/************ Right Side CSS ***********/
+.right-img {
+    /* background-color: #c0c0c0 | rgb(192,192,192); */
+    /* border: 2px solid black; */
+    background-color: 	#f5f2f286;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.right-img img {
+    width: 17.88881rem;
+    height: 14.47794rem;
 }
 
 
@@ -512,197 +686,4 @@ body {
         font-size: 13px !important;
         padding-left: 35% !important;
     }
-}
-
-
-
-
-.Left-content {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-.Left-content nav {
-    /* margin-top: -14%; */
-    margin-left: -5.15rem;
-    cursor: pointer;
-}
-.form-details {
-    margin-top: 1rem;
-    margin-right: 5rem;
-    width: 100%;
-}
-
-/************ Input CSS ***********/
-input{
-    width: 26rem;
-    height: 3.8rem;
-    flex-shrink: 0;
-    display: flex;
-    /* flex-direction: column; */
-    justify-content: center;
-    align-items: center;
-    justify-content: space-around;
-    border: 0.581px solid #C1BBBB;
-    background: #FFF;
-    /* margin: 0 2.96rem 0 -5rem; */
-    flex-wrap: wrap;
-    padding-left: 16px;
-    margin-top: 2.72rem;
-}
-input:hover {
-    border: 2px solid #FCC822;
-    transition: 0.2s;
-}
-
-/************ Hide/show Button CSS ***********/
-.password-input {
-  position: relative;
-  /* border:  2px solid black; */
-}
-
-.password-toggle {
-  position: absolute;
-  margin-top: 5%;
-  margin-right: 16%;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
-
-/* Style for Font Awesome icons (adjust as needed) */
-.password-toggle i {
-  color: #007bff; /* Change color as needed */
-}
-.password-toggle i:hover {
-  color: #FCC822;
-  transition: 0.2s;
-}
-
-/* forget password css */
-.form-details {
-    /* margin-top: 5rem; */
-    color: rgba(0, 0, 0, 0.61);
-}
-
-.forget-pass {
-    /* border: 2px solid black; */
-    display: flex;
-    justify-content: right;
-    margin-right: 16%;
-    padding-top: 4%;
-    color: rgba(0, 0, 0, 0.014);
-}
-.forget-pass a:hover {
-    color: #FCC822;
-    transition: 0.2s;
-}
-
-.btns {
-    /* border: 2px solid black; */
-    width: 80%;
-    height: auto;
-    display: flex;
-    justify-content: flex-start;
-    /* align-items: center; */
-    padding-bottom: 3rem;
-    /* height: 25%; */
-}
-.btns button {
-    width: 4.46313rem;
-    height: 2.32225rem;
-    margin-top: 4rem;
-    margin-right: 2.5rem;
-    margin-left: 5%;
-    border: none;
-    /* box-shadow: 0px 10.45024px 23.22276px -6.96683px #FBE18F; */
-    border: 0.581px solid #FCC822;
-    background: #FFF;
-    transition: 0.2s;
-    color: #FCC822;
-    font-size: 1rem;
-    box-shadow: 0px 10.45024px 23.22276px -8.96683px #FBE18F;
-}
-button:hover {
-    background: linear-gradient(95deg, #FCC822 0%, #FFCD2E 100%);
-    transition: 0.2s;
-    /* box-shadow: 0px 10.45024px 23.22276px -6.96683px #FBE18F; */
-    box-shadow: 0 0 30px #FCC822;
-    color: #FFF;
-}
-button::before {
-    transition: opacity 0.3s, border 0.3s
-}
-
-
-
-#head {
-    color: rgba(0, 0, 0, 0.60);
-    text-align: center;
-    font-family: Roboto;
-    font-size: 0.90194rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin-left: -10rem;
-    margin-top: 2.36rem;
-}
-
-
-.password-input {
-  position: relative;
-}
-
-.password-toggle {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
-
-.password-toggle.visible {
-  color: #007bff; /* Change color as needed */
-}
-
-.another-Login {
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    margin-left: -40%;  
-    font-size: 0.8rem; 
-    font-style: normal;
-font-weight: 400;
-}
-.another-Login p {
-    padding-right: 25px;
-}
-.same-lo {
-    color: #FCC822;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-/************ Right Side CSS ***********/
-.right-img {
-    /* background-color: #c0c0c0 | rgb(192,192,192); */
-    /* border: 2px solid black; */
-    background-color: 	#f5f2f286;
-    width: 50%;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
-.right-img img {
-    width: 17.88881rem;
-    height: 14.47794rem;
-}
-.link{
-    text-decoration: none;
-    color: #FCC822;
-
 }
