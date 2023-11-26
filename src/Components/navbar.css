@@ -1,10 +1,66 @@
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box; 
-} 
-  
-.mx-7{
-    height: 25rem;
-    width: 25rem;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#loginpage {
+    border: 2px solid black;
+}
+
+#nav1 {
+    margin-left: 9rem;
+    margin-top: 0.5rem;
+}
+
+#links1 {
+    margin-left: 7rem;
+
+}
+
+#links1:hover {
+    transition: ease-in-out .5s;
+    color: white;
+    border: 1.5px solid rgba(0, 0, 0, 0.498);
+    background-color: rgba(0, 0, 0, 0.498);
+
+}
+
+.line {
+    border-bottom: 2px solid black;
+    /* margin-left: 5rem; 
+    margin-right: 5rem; */
+}
+
+.main {
+    margin-top: 5rem;
+}
+
+.container {
+    width: 40rem;
+}
+
+#logo1 {
+    width: 12rem;
+}
+
+#text1 {
+    margin-left: 10rem;
+    margin-top: 3rem;
+}
+
+#text2 {
+    margin-left: 10rem;
+    margin-top: 3rem;
+    border-left: 2px solid black;
+}
+
+#startbt {
+    margin-left: 10rem;
+}
+
+#homeImage {
+    width: 43rem;
+    padding-right: 10rem;
+
 }
