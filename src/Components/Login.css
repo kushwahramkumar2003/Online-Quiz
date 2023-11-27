@@ -12,7 +12,7 @@
     justify-content: space-evenly;
 }
 .right-img {
-    background-color: rgba(15, 15, 15, 0.833);
+    background-color: rgba(86, 83, 83, 0.216) !important;
 }
 .right-img img {
     width: 50% !important;
@@ -180,7 +180,7 @@ button::before {
 .right-img {
     /* background-color: #c0c0c0 | rgb(192,192,192); */
     /* border: 2px solid black; */
-    background-color: 	#f5f2f286;
+    background-color:#f5f2f286;
     width: 50%;
     justify-content: center;
     align-items: center;

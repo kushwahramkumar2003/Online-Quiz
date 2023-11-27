@@ -73,7 +73,7 @@ export default function Login() {
         <p id='head'>
           <span> Welcome back! </span>
           <br />
-          <span> Please login/Signup to your account. </span>
+          <span> Please login to your account. </span>
         </p>
 
         <form action='/login' method='post'>
