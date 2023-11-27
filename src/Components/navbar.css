@@ -1,35 +1,46 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; 
+    /* background-color: rgba(86, 83, 83, 0.216); */
 }
-
+.landinpage{
+    height: 46.5rem; 
+    overflow-y: hidden;
+}
 #loginpage {
     border: 2px solid black;
 }
+.navbartop{
+    margin-left: 27rem;
+}
+#nav1 { 
+    margin-left: 90px;
+    margin-right: 90px;
 
-#nav1 {
-    margin-left: 9rem;
+    /* margin-left: 9rem; */
     margin-top: 0.5rem;
 }
 
 #links1 {
-    margin-left: 7rem;
-
+    margin-left: 2rem;
+    color: rgba(0, 0, 0, 0.60) ;
 }
 
 #links1:hover {
-    transition: ease-in-out .5s;
-    color: white;
-    border: 1.5px solid rgba(0, 0, 0, 0.498);
-    background-color: rgba(0, 0, 0, 0.498);
+    transition: ease-in-out .2s;
+    color: #FCC822;
+   
+    
 
 }
 
 .line {
-    border-bottom: 2px solid black;
-    /* margin-left: 5rem; 
-    margin-right: 5rem; */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.60) ; 
+    opacity: 0.2; 
+    margin-left: 65px; 
+    margin-right: 65px;
+    
 }
 
 .main {
@@ -37,7 +48,8 @@
 }
 
 .container {
-    width: 40rem;
+    width: 40rem; 
+    margin-right:-10rem;
 }
 
 #logo1 {
@@ -45,22 +57,108 @@
 }
 
 #text1 {
-    margin-left: 10rem;
+    margin-left: 90px;
     margin-top: 3rem;
 }
 
 #text2 {
-    margin-left: 10rem;
+    margin-left: 90px;
     margin-top: 3rem;
-    border-left: 2px solid black;
+    
 }
 
 #startbt {
-    margin-left: 10rem;
+    margin-left: 90px;  
+    color: #FCC822;
+    border: 2px solid #FCC822 ;
+} 
+#go-to-login{
+    margin-left: 90px;  
+    color: #FCC822;
+    border: 2px solid #FCC822 ; 
 }
-
+#startbt:hover {
+    background-color: #FCC822;
+    color: white;
+}
 #homeImage {
     width: 43rem;
     padding-right: 10rem;
 
+}  
+.line2{
+    border-bottom: 1px solid black;
+}
+ 
+/* second  card section start here  */
+
+
+.how-it-work h2{ 
+    margin-top: 5rem;
+   color: black; 
+   font-size: 32px; 
+   font-weight: 700; 
+   text-align: center;
+}
+.work {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4rem;
+    margin-left: 90px;
+    margin-right: 90px;
+
+}
+
+.grid_item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 300px;
+    height: 250px;
+    transition: 0.2s ease-in-out; 
+    border:  2px solid #FCC822; 
+    overflow-y: hidden;
+} 
+.card:hover{
+    background-color: #FCC822; 
+    transition: 0.2s ease-in-out;
+}
+
+.card_content {
+    padding: 20px;
+}
+
+.card_content h2 {
+    margin-bottom: 10px; 
+    font-weight: 700; 
+    font-size: 22px;
+}
+
+.card_content p{
+   color: rgba(0, 0, 0, 0.60) !important;;
+}
+/* second card section end here */ 
+ 
+/* footer section start here */ 
+footer{ 
+    margin-top: 7rem;
+    height: 30rem; 
+    background-color: rgba(86, 83, 83, 0.216); 
+     
+    display: flex; 
+    justify-content: center; 
+    justify-content: space-between; 
+    align-items: center;
+} 
+#footerlogo{
+width: 10rem;
+} 
+#footer-icon{
+    width: 2rem; 
+    height: 2rem;
 }
