@@ -6,7 +6,7 @@
     overflow-x: hidden;
 }
 body {
-    background: #FFF;
+    background: #fff;
 }
 .main {
     height: 100vh;
@@ -700,4 +700,9 @@ font-weight: 400;
 .right-img img {
     width: 17.88881rem;
     height: 14.47794rem;
+}
+.link{
+    text-decoration: none;
+    color: #FCC822;
+
 }
