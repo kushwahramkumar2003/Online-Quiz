@@ -120,9 +120,13 @@ export default function Login() {
               <Link className='link' to='/SignUp'>
                 SignUp
               </Link>
+              
             </button>
+           
           </div>
-
+          <Link className='Quiz' to='/Quiz'>
+                Quiz
+              </Link>
           <div className='another-Login'>
             <p> Or Login with </p>
             <p className='same-lo'>Google</p>
