@@ -348,7 +348,7 @@ line-height: normal !important;
 
 
 /*********** Footer CSS *********/
-footer{ 
+/* footer{ 
    margin-top: 7rem;
    height: 30rem; 
    background-color: rgba(86, 83, 83, 0.216); 
@@ -363,4 +363,82 @@ footer{
 #footer-icon{
   width: 2rem; 
     height: 2rem;
+} */ 
+ 
+ 
+
+
+
+/* footer section start here */
+footer {
+    margin-top: 7rem;
+    background-color: rgba(86, 83, 83, 0.216);
 }
+
+.footerBox {
+    margin-top: 3rem;
+    margin-left: 90px;
+    margin-right: 90px;
+    height: 20rem;
+
+
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+
+}
+
+#footerlogo {
+    width: 10rem;
+}
+
+#footer-icon {
+    width: 2rem;
+    height: 2rem;
+}
+
+.section1 h3 {
+    margin-top: 5px;
+}
+
+.section1 {
+    width: 25%; 
+    overflow-y: hidden;
+}
+
+.section1 h3 {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.section1 p {
+    font-size: 14px;
+    margin-top: 5px; 
+    line-height: 1.5rem;
+}
+
+.box1 {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 1rem;
+
+}
+
+.box1 p {
+    margin-left: 10px;
+}
+
+.section1 h2 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.contacts {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+/* footer section styling end  here */

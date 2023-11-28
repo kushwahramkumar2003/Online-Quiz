@@ -307,16 +307,17 @@ const Navbar = () => {
 
 {/****************** footer section start here ******************/} 
     
-    <footer>      
-      <div className="section1">  
+    <footer> 
+    <div className="footerBox"> 
 
+      <div className="section1">  
         <img src={capLogo} alt='Footer-Logo' id='footerlogo'></img>
         <h3>Home|About|Contact|Quizs</h3> 
         <p>Copyright @2023 QuizGrad All right reserved</p>
       </div> 
        
       
-      <div className="section2">   
+      <div className="section1">   
 
         <div className="box1">  
           <img src={location} alt='location' id='footer-icon'></img> 
@@ -335,8 +336,8 @@ const Navbar = () => {
 
     </div> 
        
-       <div className="section3">  
-          <h2>Abuout the QuizGrad</h2> 
+       <div className="section1">  
+          <h2>About the QuizGrad</h2> 
           <p>Quizgrad is a web app which provide  a variety of quizzes! Explore engaging challenges in programming, aptitude, reasoning, and more Elevate your knowledge effortlessly at Quizgrad – where learning meets excitement!"</p> 
        
           <div className="contacts">  
@@ -346,7 +347,8 @@ const Navbar = () => {
             <img src={twitter} alt='twitter' id='footer-icon'></img> 
           </div>
        </div> 
-
+ 
+       </div>
     </footer>
     </>
   );
