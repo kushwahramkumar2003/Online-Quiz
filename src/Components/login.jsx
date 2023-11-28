@@ -73,7 +73,7 @@ export default function Login() {
         <p id='head'>
           <span> Welcome back! </span>
           <br />
-          <span> Please login/Signup to your account. </span>
+          <span> Please login to your account. </span>
         </p>
 
         <form action='/login' method='post'>
@@ -115,26 +115,31 @@ export default function Login() {
           </div>
 
           <div className='btns' style={{}}>
-            <button type='submit' onClick={handleSubmit}>Login</button>
-            <button type='submit'>
-              <Link className='link' to='/SignUp'>
-                SignUp
-              </Link>
+            <button type='submit' onClick={handleSubmit}> Login </button>
+            {/* <button type='submit'>
               
-            </button>
+              
+            </button> */}
            
           </div>
-          <Link className='Quiz' to='/Quiz'>
+              <Link className='Quiz' to='/Quiz'>
                 Quiz
               </Link>
-          <div className='another-Login'>
-            <p> Or Login with </p>
-            <p className='same-lo'>Google</p>
-            <p className='same-lo'>Facebook</p>
+
+            <div className='changing-status'>
+              <p> Don't have an account? 
+                <Link className='link' to='/SignUp'>
+                   Signup 
+                </Link>
+              </p>
+            </div>
+
+            <div className='another-Login'>
+              <p> Or Login with </p>
+              <p className='same-lo'>Google</p>
+              <p className='same-lo'>Facebook</p>
           </div>
-          <div className='changing-status'>
-            <p>Your have not any account</p>
-          </div>
+
         </form>
       </div>
 

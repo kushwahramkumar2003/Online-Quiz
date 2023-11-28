@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import cap from './Images/graduate.svg';
 import logo from './Images/logo.svg';
 import { Link } from 'react-router-dom';
-import './Login.css';
+import './Signup.css';
 
 export default function Login() {
   const textD = {
@@ -63,44 +63,52 @@ export default function Login() {
   };
 
   return (
-    <div className='main'>
-      <div className='Left-content'>
+    <div className='Main'>
+      <div className='L-content'>
         <nav>
-          <img src={logo} alt='Logo' id='log1' />
+          <img src={logo} alt='Logo' id='log2' />
         </nav>
 
-        <p id='head'>
-          <span> Welcome back! </span>
+        <p id='head-2'>
+          <span> Welcome to QuizGrad! </span>
           <br />
-          <span> Please login/Signup to your account. </span>
+          <span> Please Signup to your account. </span>
         </p>
 
         <form>
-          <div className='form-details'>
+          <div className='form-details-2'>
+            {/* <label> */}
+
             <label>
             <input
                 type='name'
                 value={name}
                 onChange={handleNameChange}
-                placeholder='Enter you name'
-              />
-              <input
-                type='email'
-                value={email}
-                onChange={handleEmailChange}
-                placeholder='Email Address'
+                placeholder='Username'
+                className='input-same-2'
               />
             </label>
 
             <label>
-              <div className='password-input'>
+              <input
+                type='email'
+                value={email}
+                onChange={handleEmailChange}
+                placeholder='Email'
+                className='input-same-2'
+              />
+            </label>
+
+            <label>
+              <div className='password-input-2'>
                 <input
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={handlePassword}
                   placeholder='Password'
+                  className='input-same-2'
                 />
-                <span className='password-toggle' onClick={handlePasswordVisibility}>
+                <span className='password-toggle-2' onClick={handlePasswordVisibility}>
                   {showPassword ? <i className='far fa-eye-slash'></i> : <i className='far fa-eye'></i>}
                 </span>
               </div>
@@ -109,31 +117,22 @@ export default function Login() {
             {message && <p>{message}</p>}
           </div>
 
-          <div className='forget-pass'>
-            <Link to='/forgot' style={textD} id='forget'>
-              Forgot Password?
-            </Link>
-          </div>
-
-          <div className='btns'>
-            <button type='submit'>Login</button>
+          <div className='btn-2'>
             <button type='submit' onClick={handleSubmit}>SignUp</button>
           </div>
 
-          <div className='changing-status'>
-  <p>Your have already account</p>
-  <Link to='/'>redirect SignUp</Link>
-</div>
-
-          <div className='another-Login'>
-            <p> Or Login with </p>
-            <p className='same-lo'>Google</p>
-            <p className='same-lo'>Facebook</p>
+          <div className='changing-status-2'>
+          <p> Already have an account?
+                <Link className='link-2' to='/login'>
+                  Login 
+                </Link>
+              </p>
           </div>
+
         </form>
       </div>
 
-      <div className='right-img'>
+      <div className='right-img-2'>
         <img src={cap} alt='Cap' />
       </div>
     </div>
