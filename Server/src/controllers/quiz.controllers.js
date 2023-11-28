@@ -347,7 +347,7 @@ exports.getQuizResults = asyncHandler(async (req, res) => {
       return res.status(404).json({ message: "Quiz not found" });
     }
 
-    const results = await Result.find({ quiz: quiz._id }).populate(
+    const results = await QuizResult.find({ quiz: quiz._id }).populate(
       "user",
       "name email"
     );
@@ -452,7 +452,7 @@ exports.submitQuizOnTimeUp = asyncHandler(async (req, res) => {
 exports.getQuizResultsForUser = asyncHandler(async (req, res) => {
   try {
     const { id, userId } = req.params;
-    const quizResults = await QuizResults.findOne({
+    const quizResults = await QuizResult.findOne({
       quiz: id,
       user: userId,
     }).populate("quiz", "title");
@@ -474,7 +474,7 @@ exports.getQuizResultsForUser = asyncHandler(async (req, res) => {
 exports.getAllResultsForQuiz = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
-    const quizResults = await QuizResults.find({ quiz: id }).populate(
+    const quizResults = await QuizResult.find({ quiz: id }).populate(
       "user",
       "name email"
     );
