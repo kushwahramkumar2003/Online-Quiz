@@ -100,7 +100,59 @@ const Navbar = () => {
         <h2> How does it works?</h2> 
     </div>
 
-    <section class="work">
+
+<div className='time-line-page-2'>
+
+<div class="timeline">
+  <div class="timeline__component">
+  </div>
+  <div class="timeline__middle">
+    <div class="timeline__point"></div>
+  </div>
+  <div class="timeline__component timeline__component--bg">
+    <h2 class="timeline__title"> User Registration/Login </h2>
+    <p class="timeline__paragraph">
+      Seamlessly log in or register to establish your personalized account, unlocking a tailored quiz experience.
+    </p>
+  </div>
+  <div class="timeline__component timeline__component--bg">
+    <h2 class="timeline__title">Explore Quiz Categories </h2>
+    <p class="timeline__paragraph">
+    Navigate through diverse quiz categories based on your interests or specific skill focus, ensuring a personalized and engaging quiz selection.
+    </p>
+  </div>
+  <div class="timeline__middle">
+    <div class="timeline__point"></div>
+  </div>
+  <div class="timeline__component">
+  </div>
+  <div class="timeline__component">
+  </div>
+  <div class="timeline__middle">
+    <div class="timeline__point"></div>
+  </div>
+  <div class="timeline__component timeline__component--bg">
+    <h2 class="timeline__title">Real-time Feedback </h2>
+    <p class="timeline__paragraph">
+      Receive instant feedback for each question, providing immediate clarity on the correctness of your responses.
+    </p>
+  </div>
+  <div class="timeline__component timeline__component--bottom timeline__component--bg">
+    <h2 class="timeline__title">Completion and Results </h2>
+    <p class="timeline__paragraph">
+      Instantly access a comprehensive result summary upon completing a quiz, offering insights into your performance.
+    </p>
+  </div>
+  <div class="timeline__middle">
+    <div class="timeline__point"></div>
+    <div class="timeline__point timeline__point--bottom"></div>
+  </div>
+</div>
+
+</div>
+
+    
+    {/* <section class="work">
 
         <div class="grid_item">
             <div class="card">
@@ -155,7 +207,7 @@ const Navbar = () => {
                
             </div>
         </div>
-    </section>
+    </section> */}
 </div>
 
      
@@ -167,7 +219,7 @@ const Navbar = () => {
 
   <section class="work-2">
     <div class="grid-item-2">
-        <div class="card-2">
+        <div class="card-2" id='f-card-1'>
             
             <div class="card-content-2"> 
                 <img src={feature_1} ></img>
@@ -181,10 +233,10 @@ const Navbar = () => {
     </div>
 
     <div class="grid-item-2">
-        <div class="card-2">
+        <div class="card-2" id='f-card-2'>
          
             <div class="card-content-2"> 
-                <img src={feature_2} ></img>
+                <img src={feature_2} id='feature-img-2'></img>
                 <h2>Personalized Skill Profiles </h2>
                 <p>Track your progress in each category, allowing you to identify strengths and areas for improvement.</p>
             </div>
@@ -194,40 +246,27 @@ const Navbar = () => {
 
     <div class="grid_item-2">
 
-        <div class="card-2">
+        <div class="card-2" id='f-card-3'>
             <div class="image_container">
             </div>
 
             <div class="card-content-2"> 
-                <img src={feature_3} ></img>
-                <h2>Detailed Explanations </h2>
-                <p> Understand the reasoning behind correct answers with comprehensive explanations, facilitating a deeper understanding of concepts.</p>
+                <img src={feature_5} ></img> 
+                <h2> Timed Programming Quizzes</h2>
+                <p> Practice time management in coding with quizzes featuring realistic time constraints.
+                </p>
             </div>
  
         </div>
     </div>
-
-    {/* <div class="grid_item-2">
-
-        <div class="card-2">
-            <div class="image_container">
-            </div>
-
-            <div class="card-content-2"> 
-                <h2>Feedback for Improvement </h2>
-                <p> Leverage detailed feedback to enhance your knowledge and refine your problem-solving strategies.</p>
-            </div>
-
-        </div>
-    </div> */}
 </section> 
  
   
-<section class="work-2">
+<section class="work-2" id='work-2-2'>
 
 <div class="grid_item-2">
 
-    <div class="card-2">
+    <div class="card-2" id='f-card-4'>
         <div class="image_container">
         </div>
 
@@ -242,18 +281,17 @@ const Navbar = () => {
 
     <div class="grid_item-2">
         
-        <div class="card-2">    
+        <div class="card-2" id='f-card-5'>    
             <div class="card-content-2">
-                <img src={feature_5} ></img> 
-                <h2> Timed Programming Quizzes</h2>
-                <p> Practice time management in coding with quizzes featuring realistic time constraints.
-                </p>
+                <img src={feature_3} ></img>
+                <h2>Detailed Explanations </h2>
+                <p> Understand the reasoning behind correct answers with comprehensive explanations, facilitating a deeper understanding of concepts.</p>
             </div>
         </div>
     </div>
 
     <div class="grid_item-2">
-        <div class="card-2">
+        <div class="card-2" id='f-card-6'>
 
             <div class="card-content-2"> 
                 <img src={feature_6} ></img>

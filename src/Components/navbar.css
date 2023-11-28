@@ -107,9 +107,80 @@ line-height: normal !important;
 
 /*********** How does it Works? CSS *********/
 .page-2 {
-    height: 43.7rem !important;
-    border: 2px solid black;
+    height: 70rem !important;
+    /* border: 2px solid black; */
 }
+
+
+/*********** Timeline CSS *********/  
+  .time-line-page-2 {
+     margin-top: 3rem !important;
+     margin-bottom: 5rem !important;
+  }
+
+.timeline {
+    margin: 0 auto;
+    max-width: 750px;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 1fr 3px 1fr;
+    font-family: "Fira Sans", sans-serif;
+    color: black;
+  }
+  .timeline__component {
+    margin: 0 20px 20px 20px;
+  }
+  .timeline__component--bg {
+    padding: 1.5em;
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+  .timeline__component--bg:hover {
+    background: rgba(0, 0, 0, 0.3);
+    /* color: #FCC822 !important;
+    background-color: #fff !important;
+    border: 0.1px solid #FCC822 !important;
+    box-shadow: 0 0 30px #FBE18F !important; */
+  }
+  /* LEAVE TILL LAST */
+  .timeline__component--bottom {
+    margin-bottom: 0;
+  }
+  .timeline__middle {
+    position: relative;
+    background: #FCC822;
+  }
+  .timeline__point {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px !important;
+    height: 20px !important;
+    background: black;
+    /* border-radius: 50%; */
+  }
+  /* LEAVE TILL LAST */
+  .timeline__point--bottom {
+    top: initial;
+    bottom: 0;
+  }
+  .timeline__date--right {
+    text-align: right;
+  }
+  .timeline__title {
+    margin: 0;
+    font-size: 1.15em;
+    font-weight: bold;
+  }
+  .timeline__paragraph {
+    line-height: 1.5;
+  }
+/********** Time line CSS END ********/
+
+
+
 .how-it-work h2{ 
     margin-top: 3.92%;
     /* color: black; 
@@ -181,6 +252,9 @@ line-height: normal !important;
     margin-right: 11%;
     /* border: 2px solid green; */
 }
+#work-2-2 {
+    margin-top: 8% !important;
+}
 .grid-item-2 {
     display: flex;
     justify-content: center;
@@ -217,6 +291,7 @@ line-height: normal !important;
     align-items: center!important;
     text-align: center !important;
     opacity: 0.8;
+    margin-top: 1.5rem !important;
 }
 .card-content-2 p {
     font-size: 16px;
@@ -226,6 +301,50 @@ line-height: normal !important;
    text-align: center !important;
 }
 
+
+/******* Features Images CSS *********/
+#feature-img-2 {
+    width: 82% !important;
+    justify-content: center !important;
+    align-items: center!important;
+    margin-top: 2.7rem !important;
+    margin-left: 2rem !important;
+}
+
+#f-card-2 h2 {
+    margin-top: 12% !important;
+}
+#f-card-2 p {
+    padding-left: 0.3%;
+    padding-right: 0.3%;
+}
+#f-card-3 h2 {
+    margin-top: 32% !important;
+}
+#f-card-3 img {
+    margin-top: 14% !important;
+    margin-left: 6.5% !important;
+    width: 92% !important;
+}
+#f-card-4 h2 {
+    margin-top: 3.2% !important;
+}
+#f-card-5 h2 {
+    margin-top: 21% !important;
+}
+#f-card-5 img {
+    margin-top: 14% !important;
+    margin-left: 1% !important;
+    width: 98% !important;
+}
+#f-card-6 h2 {
+    margin-top: 23% !important;
+}
+#f-card-6 img {
+    margin-top: 13% !important;
+    /* margin-left: 1% !important; */
+    height: 100% !important;
+}
 
 
 /*********** Footer CSS *********/
