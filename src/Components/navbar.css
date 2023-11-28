@@ -6,7 +6,7 @@
     /* background-color: rgba(86, 83, 83, 0.216); */
 }
 .landinpage{
-    height: 41.92rem; 
+    height: 44rem; 
     overflow-y: hidden;
 }
 #loginpage {
@@ -73,7 +73,7 @@ line-height: normal !important;
     color: #828282 !important;
 }
 
-/******* Start button *********/
+/********** Start button ***********/
 #startbt {
     margin-left: 90px; 
     margin-top: 8%; 
@@ -81,37 +81,44 @@ line-height: normal !important;
     color: white;
     width: 7.53225rem;
     height: 2.6rem;
+    /* background: linear-gradient(95deg, #FCC822 0%, #FFCD2E 100%); */
+    box-shadow: 0px 10.53052px 23.40116px -7.02035px #FBE18F;
 } 
+#startbt:hover {
+    color: #FCC822 !important;
+    background-color: #fff !important;
+    border: 2px solid #FCC822 !important;
+    box-shadow: 0 0 30px #FBE18F !important;
+}
 #go-to-login{
     margin-left: 90px;  
     color: #FCC822;
     border: 2px solid #FCC822 ; 
-}
-#startbt:hover {
-    color: #FCC822;
-    background-color: #fff;
-    border: 2px solid #FCC822 ;
-    box-shadow: 0 0 30px #FBE18F !important;
 }
 #homeImage {
     width: 43rem;
     padding-right: 10rem;
 
 }  
-.line2{
+/* .line2{
     border-bottom: 1px solid black;
-}
+} */
  
-/* second  card section start here  */
 
-
-.how-it-work h2{ 
-    margin-top: 5rem;
-   color: black; 
-   font-size: 32px; 
-   font-weight: 700; 
-   text-align: center;
+/*********** How does it Works? CSS *********/
+.page-2 {
+    height: 43.7rem !important;
+    border: 2px solid black;
 }
+.how-it-work h2{ 
+    margin-top: 3.92%;
+    /* color: black; 
+    font-size: 32px;  */
+    font-size: 2.32225rem;
+    color: #333;
+    font-weight: 700; 
+    text-align: center;
+ }
 .work {
     display: flex;
     justify-content: center;
@@ -120,7 +127,6 @@ line-height: normal !important;
     margin-top: 4rem;
     margin-left: 90px;
     margin-right: 90px;
-
 }
 
 .grid_item {
@@ -128,7 +134,6 @@ line-height: normal !important;
     justify-content: center;
     align-items: center;
 }
-
 .card {
     width: 300px;
     height: 250px;
@@ -140,37 +145,103 @@ line-height: normal !important;
     background-color: #FCC822; 
     transition: 0.2s ease-in-out;
 }
-
 .card_content {
     padding: 20px;
 }
-
 .card_content h2 {
     margin-bottom: 10px; 
     font-weight: 700; 
     font-size: 22px;
 }
-
 .card_content p{
    color: rgba(0, 0, 0, 0.60) !important;;
 }
 /* second card section end here */ 
  
-/* footer section start here */ 
-footer{ 
-    margin-top: 7rem;
-    height: 30rem; 
-    background-color: rgba(86, 83, 83, 0.216); 
-     
-    display: flex; 
-    justify-content: center; 
-    justify-content: space-between; 
+
+
+/*********** Our Features & Services CSS *********/
+.how-it-work-2 {
+    margin-top: 3.92%;
+    font-size: 2.32225rem;
+    color: #333;
+    font-weight: 700; 
+    text-align: center;
+}
+.work-2 h2 {
+    color: #FCC822 !important;
+}
+.work-2 {
+    display: flex;
+    justify-content: center;
     align-items: center;
+    justify-content: space-between;
+    margin-top: 4rem;
+    margin-left: 11%;
+    margin-right: 11%;
+    /* border: 2px solid green; */
+}
+.grid-item-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-2 {
+    width: 350px;
+    height: 480px;
+    transition: 0.2s ease-in-out; 
+    border-radius: 6%;
+    border:  0.1px solid rgba(0, 0, 0, 0.2); 
+    /* opacity: 0.2; */
+    overflow-y: hidden;
+    /* box-shadow: 0px 10.53052px 23.40116px -7.02035px #FBE18F; */
 } 
-#footerlogo{
-width: 10rem;
+.card-2:hover{
+    /* background-color: #FCC822;  */
+    transition: 0.2s ease-in;
+
+    color: #FCC822 !important;
+    background-color: #fff !important;
+    border: 2px solid #FCC822 !important;
+    /* box-shadow: 0 0 30px #FBE18F !important; */
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+.card-content-2 {
+    padding: 20px;
+}
+.card-content-2 h2 {
+    margin-bottom: 10px; 
+    font-weight: 700; 
+    font-size: 20px;
+    justify-content: center !important;
+    align-items: center!important;
+    text-align: center !important;
+    opacity: 0.8;
+}
+.card-content-2 p {
+    font-size: 16px;
+   color: rgba(0, 0, 0, 0.60) !important;
+   justify-content: center !important;
+   align-items: center!important;
+   text-align: center !important;
+}
+
+
+
+/*********** Footer CSS *********/
+footer{ 
+   margin-top: 7rem;
+   height: 30rem; 
+   background-color: rgba(86, 83, 83, 0.216); 
+   display: flex; 
+   justify-content: center; 
+   justify-content: space-between; 
+   align-items: center;
+} 
+#footerlogo {
+   width: 10rem;
 } 
 #footer-icon{
-    width: 2rem; 
+  width: 2rem; 
     height: 2rem;
 }

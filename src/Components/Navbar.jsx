@@ -11,6 +11,13 @@ import email from './Images/icons/email-mesage.svg'
 import phone from './Images/icons/phone-call.svg' 
 import  location from './Images/icons/location.svg' 
 import  twitter from './Images/icons/twitter.svg'
+
+import feature_1 from './Images/Features images/Diverse Language Coverage.svg'
+import feature_2 from './Images/Features images/Personalized Skill Profiles.svg'
+import feature_3 from './Images/Features images/Detailed Explanations.jpg'
+import feature_4 from './Images/Features images/Feedback for Improvement.svg'
+import feature_5 from './Images/Features images/Timed Programming Quizzes.svg'
+import feature_6 from './Images/Features images/Aptitude Speed Challenges.svg'
 import './navbar.css'
 
 const menuLinks = [
@@ -87,20 +94,21 @@ const Navbar = () => {
          <div className="line2"></div>
    
     
-{/***************** How it wokrs page **********************************/}
-
-       <div className='how-it-work'>
-          <h2>How does it works?</h2> 
-       </div>
+{/***************** How does it Works? page **********************************/}
+<div className="page-2">
+    <div className='how-it-work'>
+        <h2> How does it works?</h2> 
+    </div>
 
     <section class="work">
+
         <div class="grid_item">
             <div class="card">
                 
                 <div class="card_content"> 
-                    <h2>Sign Up/Login</h2>
+                    <h2> User Registration/Login </h2>
                     <p>
-                      Begin by creating a quick account to unlock personalized features.
+                    Seamlessly log in or register to establish your personalized account, unlocking a tailored quiz experience.
                     </p>
                 </div>
 
@@ -111,8 +119,9 @@ const Navbar = () => {
 
             <div class="card">        
                 <div class="card_content"> 
-                    <h2>Start Playing</h2>
-                    <p>With an account, start solving quizzes instantly.</p>
+                    <h2> Real-time Feedback </h2>
+                    <p> Receive instant feedback for each question, providing immediate clarity on the correctness of your responses.
+                    </p>
                 </div>
 
             </div>
@@ -126,10 +135,9 @@ const Navbar = () => {
                 </div>
 
                 <div class="card_content"> 
-                    <h2>Compete and Track</h2>
-                    <p> Challenge others, check your rank on leaderboards, and aim for the top spot.</p>
+                    <h2> Completion and Results </h2>
+                    <p> Instantly access a comprehensive result summary upon completing a quiz, offering insights into your performance.</p>
                 </div>
-
             </div>
         </div>
 
@@ -148,176 +156,160 @@ const Navbar = () => {
             </div>
         </div>
     </section>
+</div>
 
      
-   {/************** feature start here *******************/}  
+{/************** Our Features & Services Page *******************/}  
 
-   <div className='how-it-work'>
-   <h2>Our features & Services</h2>
+   <div className='how-it-work-2'>
+      <h2>Our features & Services</h2>
    </div> 
 
-  <section class="work">
-    <div class="grid_item">
-        <div class="card">
+  <section class="work-2">
+    <div class="grid-item-2">
+        <div class="card-2">
             
-            <div class="card_content"> 
-                <h2>Programming Language Quizzes</h2>
+            <div class="card-content-2"> 
+                <img src={feature_1} ></img>
+                <h2>Diverse Language Coverage </h2>
                 <p>
-                  Begin by creating a quick account to unlock personalized features.
+                  Explore quizzes covering a variety of programming languages, Aptitude, Reasoning Challenges and more.
                 </p>
             </div>
 
         </div>
     </div>
 
-    <div class="grid_item">
-        <div class="card">
+    <div class="grid-item-2">
+        <div class="card-2">
          
-            <div class="card_content"> 
-                <h2>Start Playing</h2>
-                <p>With an account, start solving quizzes instantly.</p>
+            <div class="card-content-2"> 
+                <img src={feature_2} ></img>
+                <h2>Personalized Skill Profiles </h2>
+                <p>Track your progress in each category, allowing you to identify strengths and areas for improvement.</p>
             </div>
 
         </div>
     </div>
 
-    <div class="grid_item">
+    <div class="grid_item-2">
 
-        <div class="card">
+        <div class="card-2">
             <div class="image_container">
             </div>
 
-            <div class="card_content"> 
-                <h2>Compete and Track</h2>
-                <p> Challenge others, check your rank on leaderboards, and aim for the top spot.</p>
+            <div class="card-content-2"> 
+                <img src={feature_3} ></img>
+                <h2>Detailed Explanations </h2>
+                <p> Understand the reasoning behind correct answers with comprehensive explanations, facilitating a deeper understanding of concepts.</p>
             </div>
  
         </div>
     </div>
 
-    <div class="grid_item">
+    {/* <div class="grid_item-2">
 
-        <div class="card">
+        <div class="card-2">
             <div class="image_container">
             </div>
 
-            <div class="card_content"> 
-                <h2>Cross-Platform Accessibility</h2>
-                <p> Whether on mobile, tablet, or desktop, our quizzes are designed for a consistent and enjoyable experience.</p>
+            <div class="card-content-2"> 
+                <h2>Feedback for Improvement </h2>
+                <p> Leverage detailed feedback to enhance your knowledge and refine your problem-solving strategies.</p>
             </div>
 
         </div>
-    </div>
+    </div> */}
 </section> 
  
   
+<section class="work-2">
 
+<div class="grid_item-2">
 
-<section class="work">
-    <div class="grid_item">
-        <div class="card">
-            
-            <div class="card_content"> 
-           
-                <h2>Sign Up/Login</h2>
-                <p>Begin by creating a quick account to unlock personalized features.
-</p>
+    <div class="card-2">
+        <div class="image_container">
+        </div>
 
-            </div>
+        <div class="card-content-2"> 
+            <img src={feature_4} ></img>
+            <h2>Feedback for Improvement </h2>
+            <p> Leverage detailed feedback to enhance your knowledge and refine your problem-solving strategies.</p>
+        </div>
 
         </div>
     </div>
 
-    <div class="grid_item">
-        <div class="card">
-            
-            <div class="card_content"> 
-            
-                <h2>Start Playing</h2>
-                <p>With an account, start solving quizzes instantly.</p>
+    <div class="grid_item-2">
+        
+        <div class="card-2">    
+            <div class="card-content-2">
+                <img src={feature_5} ></img> 
+                <h2> Timed Programming Quizzes</h2>
+                <p> Practice time management in coding with quizzes featuring realistic time constraints.
+                </p>
             </div>
-
-            
         </div>
     </div>
 
-    <div class="grid_item">
+    <div class="grid_item-2">
+        <div class="card-2">
 
-        <div class="card">
-            <div class="image_container">
-                
+            <div class="card-content-2"> 
+                <img src={feature_6} ></img>
+                <h2>Aptitude Speed Challenges </h2>
+                <p>Enhance your speed and accuracy in aptitude and reasoning with timed challenges.</p>
             </div>
-            <div class="card_content"> 
-            
-                <h2>Compete and Track</h2>
-                <p> Challenge others, check your rank on leaderboards, and aim for the top spot.</p>
-            </div>
-
-            
-        </div>
-    </div>
-
-    <div class="grid_item">
-
-        <div class="card">
-            <div class="image_container">
-                
-            </div>
-            <div class="card_content"> 
-              
-                <h2>Cross-Platform Accessibility</h2>
-                <p> Whether on mobile, tablet, or desktop, our quizzes are designed for a consistent and enjoyable experience.</p>
-            </div>
-
-           
         </div>
     </div>
 </section>
-  {/* features & services end here   */} 
+{/********** features & services end here ***********/} 
    
-   {/* footer section start here */} 
-    
-    <footer>  
 
+
+{/****************** footer section start here ******************/} 
+    
+    <footer>      
       <div className="section1">  
-      <img src={capLogo} alt='Footer-Logo' id='footerlogo'></img>
-      <h3>Home|About|Contact|Quizs</h3> 
-      <p>Copyright @2023 QuizGrad All right reserved</p>
+
+        <img src={capLogo} alt='Footer-Logo' id='footerlogo'></img>
+        <h3>Home|About|Contact|Quizs</h3> 
+        <p>Copyright @2023 QuizGrad All right reserved</p>
       </div> 
        
+      
       <div className="section2">   
 
-      <div className="box1">  
-      <img src={location} alt='location' id='footer-icon'></img> 
-      <p>Bhopal M.P.</p>
-      </div>  
+        <div className="box1">  
+          <img src={location} alt='location' id='footer-icon'></img> 
+          <p>Bhopal M.P.</p>
+        </div>  
      
-      <div className="box1">  
-      <img src={phone} alt='phone' id='footer-icon'></img> 
-      <p>+9198******12</p>
-      </div> 
+        <div className="box1">  
+          <img src={phone} alt='phone' id='footer-icon'></img> 
+          <p>+9198******12</p>
+        </div> 
  
-      <div className="box1">  
-      <img src={email} alt='emailId' id='footer-icon'></img> 
-      <p>quizgrad123@gmail.com</p>
-      </div>  
+        <div className="box1">  
+          <img src={email} alt='emailId' id='footer-icon'></img> 
+          <p>quizgrad123@gmail.com</p>
+        </div>  
 
-      </div> 
+    </div> 
        
        <div className="section3">  
-       <h2>Abuout the QuizGrad</h2> 
-       <p>Quizgrad is a web app which provide  a variety of quizzes! Explore engaging challenges in programming, aptitude, reasoning, and more Elevate your knowledge effortlessly at Quizgrad – where learning meets excitement!"</p> 
+          <h2>Abuout the QuizGrad</h2> 
+          <p>Quizgrad is a web app which provide  a variety of quizzes! Explore engaging challenges in programming, aptitude, reasoning, and more Elevate your knowledge effortlessly at Quizgrad – where learning meets excitement!"</p> 
        
-       <div className="contacts">  
-       <img src={fb} alt='facebook' id='footer-icon'></img>  
-       <img src={ld} alt='linkedin' id='footer-icon'></img> 
-       <img src={insta} alt='Instagram' id='footer-icon'></img>  
-       <img src={twitter} alt='twitter' id='footer-icon'></img> 
-       </div>
+          <div className="contacts">  
+            <img src={fb} alt='facebook' id='footer-icon'></img>  
+            <img src={ld} alt='linkedin' id='footer-icon'></img> 
+            <img src={insta} alt='Instagram' id='footer-icon'></img>  
+            <img src={twitter} alt='twitter' id='footer-icon'></img> 
+          </div>
        </div> 
 
     </footer>
-
     </>
   );
 }
