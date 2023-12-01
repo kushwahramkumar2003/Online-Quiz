@@ -96,53 +96,65 @@ const Navbar = () => {
     
 {/***************** How does it Works? page **********************************/}
 <div className="page-2">
+    
     <div className='how-it-work'>
         <h2> How does it works?</h2> 
     </div>
 
 
 <div className='time-line-page-2'>
+  <div class="timeline">
 
-<div class="timeline">
-  <div class="timeline__component">
-  </div>
-  <div class="timeline__middle">
+    <div class="timeline__component">
+    </div>
+
+    <div class="timeline__middle">
     <div class="timeline__point"></div>
+
   </div>
-  <div class="timeline__component timeline__component--bg">
+
+  <div class="timeline__component timeline__component--bg" id='work-card-1'>
     <h2 class="timeline__title"> User Registration/Login </h2>
     <p class="timeline__paragraph">
       Seamlessly log in or register to establish your personalized account, unlocking a tailored quiz experience.
     </p>
   </div>
-  <div class="timeline__component timeline__component--bg">
+
+  <div class="timeline__component timeline__component--bg" id='work-card-2'>
     <h2 class="timeline__title">Explore Quiz Categories </h2>
     <p class="timeline__paragraph">
     Navigate through diverse quiz categories based on your interests or specific skill focus, ensuring a personalized and engaging quiz selection.
     </p>
   </div>
+
   <div class="timeline__middle">
     <div class="timeline__point"></div>
   </div>
+
   <div class="timeline__component">
   </div>
+
   <div class="timeline__component">
   </div>
+
   <div class="timeline__middle">
     <div class="timeline__point"></div>
   </div>
-  <div class="timeline__component timeline__component--bg">
+
+  <div class="timeline__component timeline__component--bg" id='work-card-3'>
     <h2 class="timeline__title">Real-time Feedback </h2>
     <p class="timeline__paragraph">
       Receive instant feedback for each question, providing immediate clarity on the correctness of your responses.
     </p>
   </div>
-  <div class="timeline__component timeline__component--bottom timeline__component--bg">
+
+  <div class="timeline__component timeline__component--bottom timeline__component--bg" id='work-card-4'>
     <h2 class="timeline__title">Completion and Results </h2>
     <p class="timeline__paragraph">
       Instantly access a comprehensive result summary upon completing a quiz, offering insights into your performance.
     </p>
   </div>
+
   <div class="timeline__middle">
     <div class="timeline__point"></div>
     <div class="timeline__point timeline__point--bottom"></div>
@@ -307,37 +319,40 @@ const Navbar = () => {
 
 {/****************** footer section start here ******************/} 
     
-    <footer>      
-      <div className="section1">  
+  <footer> 
+    <div className="footerBox"> 
 
+{/************ Box - 1 ****************/}
+      <div className="section1">  
         <img src={capLogo} alt='Footer-Logo' id='footerlogo'></img>
-        <h3>Home|About|Contact|Quizs</h3> 
+        <h3>Home | About | Contact | Quizes</h3> 
         <p>Copyright @2023 QuizGrad All right reserved</p>
       </div> 
        
-      
-      <div className="section2">   
+{/************ Box - 2 ****************/}      
+      <div className="section1">   
 
         <div className="box1">  
           <img src={location} alt='location' id='footer-icon'></img> 
-          <p>Bhopal M.P.</p>
+          <p>Bhopal M.P</p>
         </div>  
      
         <div className="box1">  
           <img src={phone} alt='phone' id='footer-icon'></img> 
-          <p>+9198******12</p>
+          <p>+91 98******12</p>
         </div> 
  
         <div className="box1">  
           <img src={email} alt='emailId' id='footer-icon'></img> 
-          <p>quizgrad123@gmail.com</p>
+          <p>QuizGrad123@gmail.com</p>
         </div>  
 
     </div> 
        
-       <div className="section3">  
-          <h2>Abuout the QuizGrad</h2> 
-          <p>Quizgrad is a web app which provide  a variety of quizzes! Explore engaging challenges in programming, aptitude, reasoning, and more Elevate your knowledge effortlessly at Quizgrad – where learning meets excitement!"</p> 
+{/************ Box - 3 ****************/}       
+      <div className="section1" id='footer-box-3'>  
+          <h2>About the QuizGrad</h2> 
+          <p>Quizgrad is a web app which provide  a variety of quizzes! Explore engaging challenges in programming, aptitude, reasoning, and more. Elevate your knowledge effortlessly at Quizgrad – where learning meets excitement !"</p> 
        
           <div className="contacts">  
             <img src={fb} alt='facebook' id='footer-icon'></img>  
@@ -345,8 +360,9 @@ const Navbar = () => {
             <img src={insta} alt='Instagram' id='footer-icon'></img>  
             <img src={twitter} alt='twitter' id='footer-icon'></img> 
           </div>
-       </div> 
-
+      </div> 
+ 
+    </div>
     </footer>
     </>
   );
