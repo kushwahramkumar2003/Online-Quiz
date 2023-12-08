@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { createNewQuiz } from "../../services/quiz";
 
 const CreateNewQuiz = ({ setIsOpen }) => {
+  
   const { mutate, isLoading } = useMutation({
     mutationFn: ({ title, description, category }) => {
       return createNewQuiz({ title, description, category });

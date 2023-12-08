@@ -23,6 +23,10 @@ export const addQuestionInQuiz = async ({
   quizId,
 }) => {
   try {
+    console.log("Quiz Id", quizId);
+    console.log("Question", question);
+    console.log("Options", options);
+    console.log("Correct Answer", correctAnswer);
     const { data } = await axios.post(
       `/api/v1/quiz//create/addQuestion/${quizId}`,
       {

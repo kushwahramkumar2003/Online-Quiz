@@ -4,8 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getQuizById } from "../../services/quiz";
 import QuestionCard from "../../Components/Admin/QuestionCard";
+import { IoMdAdd } from "react-icons/io";
+import AddNewQuestion from "../../Components/Admin/AddNewQuestion";
+import Modal from "../../Components/modal/Modal";
 
 const EditQuiz = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
   const userState = useSelector((state) => state.user);
   const { quiz_id } = useParams();
   const navigate = useNavigate();
@@ -22,27 +26,38 @@ const EditQuiz = () => {
   useEffect(() => {
     async function fetchData() {
       const quiz = await getQuizById({ quizId: quiz_id });
-    //   console.log("Quiz ", quiz.questions);
+      //   console.log("Quiz ", quiz.questions);
       setQuestions(quiz.questions);
     }
     fetchData();
-  }, []);
+  }, [isOpen, quiz_id]);
   return (
     <div>
       <h1>Edit Quiz</h1>
-
-      {questions.map((q) => {
-        
-        return (
-          <QuestionCard
-            question={q.text}
-            options={q.options}
-            questionId={q._id}
-            answer={q.answer}
-            key={q._id}
-          />
-        );
-      })}
+      <div>
+        {questions.map((q) => {
+          return (
+            <QuestionCard
+              question={q.text}
+              options={q.options}
+              questionId={q._id}
+              answer={q.answer}
+              key={q._id}
+            />
+          );
+        })}
+      </div>
+      {isOpen && (
+        <Modal setIsOpen={setIsOpen}>
+          <AddNewQuestion setIsOpen={setIsOpen} quizId={quiz_id} />
+        </Modal>
+      )}
+      <button
+        className="bg-red-500 rounded-full"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <IoMdAdd className="w-auto h-10 text-white" />
+      </button>
     </div>
   );
 };
