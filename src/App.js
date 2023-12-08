@@ -8,6 +8,7 @@ import Quiz from "./Components/Quiz";
 import "./App.css";
 import UserPage from "./pages/user/UserPage.jsx";
 import Admin from "./pages/admin/Admin.jsx";
+import EditQuiz from "./pages/admin/EditQuiz.jsx";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/Quiz" element={<Quiz />}></Route>
         <Route exact path="/User" element={<UserPage />}></Route>
         <Route exact path="/Admin" element={<Admin />}></Route>
+        <Route exact path="/quiz/edit/:quiz_id" element={<EditQuiz />}></Route>
       </Routes>
       <Toaster />
     </div>
