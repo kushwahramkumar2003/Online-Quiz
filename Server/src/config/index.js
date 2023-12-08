@@ -5,7 +5,7 @@ const config = {
   MONGODB_URL: process.env.MONGODB_URL || "mongodb://localhost:27017/quiz-app",
   PORT: process.env.PORT || 3001,
 
-  JWT_SECRET: process.env.JWT_SECRET,
+  JWT_SECRET: process.env.JWT_SECRET || "thisisasecret",
   JWT_EXPIRE: process.env.JWT_EXPIRE || "1d",
 
   SMTP_HOST: process.env.SMTP_HOST,
