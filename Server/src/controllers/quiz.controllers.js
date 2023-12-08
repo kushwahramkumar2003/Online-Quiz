@@ -214,7 +214,7 @@ exports.deleteQuizById = asyncHandler(async (req, res) => {
   await Question.deleteMany({ quiz: quizId });
 
   // Delete all results corresponding to the quiz
-  await Result.deleteMany({ quiz: quizId });
+  await QuizResult.deleteMany({ quiz: quizId });
 
   // Delete the quiz itself
   // await Quiz.findByIdAndDelete(quizId);
