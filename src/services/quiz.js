@@ -122,7 +122,7 @@ export const deleteQuiz = async ({ quizId }) => {
 export const deleteQuestionByQuizId = async ({ quizId, questionId }) => {
   try {
     const { data } = await axios.delete(
-      `/api/v1/auth/quiz/${quizId}/question/${questionId}`
+      `/api/v1/quiz/${quizId}/question/${questionId}/delete`
     );
     return data;
   } catch (error) {

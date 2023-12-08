@@ -14,6 +14,7 @@ const EditQuiz = () => {
   const { quiz_id } = useParams();
   const navigate = useNavigate();
   const [questions, setQuestions] = React.useState([]);
+  const [refresh, setRefresh] = React.useState(false);
 
   useEffect(() => {
     const role = userState.userInfo.user.role || userState.userInfo.data.role;
@@ -30,7 +31,7 @@ const EditQuiz = () => {
       setQuestions(quiz.questions);
     }
     fetchData();
-  }, [isOpen, quiz_id]);
+  }, [isOpen, quiz_id, refresh]);
   return (
     <div>
       <h1>Edit Quiz</h1>
@@ -43,6 +44,8 @@ const EditQuiz = () => {
               questionId={q._id}
               answer={q.answer}
               key={q._id}
+              quizId={quiz_id}
+              setRefresh={setRefresh}
             />
           );
         })}

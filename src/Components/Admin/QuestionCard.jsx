@@ -1,6 +1,37 @@
 import React from "react";
+import { useMutation } from "@tanstack/react-query";
+import toast from "react-hot-toast";
+import { deleteQuestionByQuizId } from "../../services/quiz";
 
-const QuestionCard = ({ question, options, questionId, answer }) => {
+const QuestionCard = ({
+  question,
+  options,
+  questionId,
+  answer,
+  quizId,
+  setRefresh,
+}) => {
+  const { mutate, isLoading } = useMutation({
+    mutationFn: ({ questionId, quizId }) => {
+      return deleteQuestionByQuizId({
+        questionId,
+        quizId,
+      });
+    },
+    onSuccess: (data) => {
+      toast.success("Question deleted successfully");
+      setRefresh((prev) => !prev);
+      console.log(data);
+    },
+    onError: (error) => {
+      toast.error(error.message);
+      console.log(error);
+    },
+  });
+
+  const deleteHandler = () => {
+    mutate({ questionId, quizId });
+  };
   return (
     <div>
       <div>
@@ -14,7 +45,7 @@ const QuestionCard = ({ question, options, questionId, answer }) => {
       </div>
       <div>
         <button>Edit</button>
-        <button>Delete</button>
+        <button onClick={deleteHandler}>Delete</button>
       </div>
     </div>
   );

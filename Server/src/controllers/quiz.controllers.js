@@ -238,15 +238,13 @@ exports.deleteQuestionById = asyncHandler(async (req, res) => {
     return res.status(404).json({ success: false, message: "Quiz not found" });
   }
 
-  const question = await Question.findById(questionId);
+  const question = await Question.findOneAndDelete(questionId);
 
   if (!question) {
     return res
       .status(404)
       .json({ success: false, message: "Question not found" });
   }
-
-  await question.remove();
 
   res
     .status(200)
