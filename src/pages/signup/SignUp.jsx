@@ -31,12 +31,16 @@ export default function Login() {
       return signup({ name, email, password });
     },
     onSuccess: (data) => {
-      toast.success("Register successfully");
       dispatch(userActions.setUserInfo(data));
       localStorage.setItem("account", JSON.stringify(data));
       console.log(data);
+      naviage("/User");
+      toast.success("Register successfully");
     },
     onError: (error) => {
+      console.log("error.response", error.response);
+      console.log("error.response.data", error.response.data);
+      console.log("error.response.data.msg", error.response.data.msg);
       toast.error(error.message);
       console.log(error);
     },
@@ -63,32 +67,10 @@ export default function Login() {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = async (e) => {
+
+  const submitHandler = (e) => {
     e.preventDefault();
-
-    try {
-      console.log("Reached Here");
-      // Make API call to register the user
-      const response = await fetch(
-        "http://localhost:3001/api/v1/auth/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ name, email, password }),
-        }
-      );
-      console.log(response);
-
-      if (response.ok) {
-        setMessage("User registered successfully!");
-      } else {
-        setMessage("Error registering user. Please try again.");
-      }
-    } catch (error) {
-      setMessage("An error occurred. Please try again later.");
-    }
+    mutate({ name, email, password });
   };
 
   return (
@@ -154,7 +136,7 @@ export default function Login() {
           </div>
 
           <div className="btn-2">
-            <button type="submit" onClick={handleSubmit}>
+            <button type="submit" onClick={submitHandler}>
               SignUp
             </button>
           </div>

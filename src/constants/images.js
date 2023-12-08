@@ -7,6 +7,7 @@ import email from "../assets/Images/icons/email-mesage.svg";
 import phone from "../assets/Images/icons/phone-call.svg";
 import location from "../assets/Images/icons/location.svg";
 import twitter from "../assets/Images/icons/twitter.svg";
+import logo from "../assets/Images/logo.svg";
 
 import feature_1 from "../assets/Images/Features images/Diverse Language Coverage.svg";
 import feature_2 from "../assets/Images/Features images/Personalized Skill Profiles.svg";
@@ -16,6 +17,7 @@ import feature_5 from "../assets/Images/Features images/Timed Programming Quizze
 import feature_6 from "../assets/Images/Features images/Aptitude Speed Challenges.svg";
 
 const images = {
+  logo,
   capLogo,
   rightimg,
   fb,

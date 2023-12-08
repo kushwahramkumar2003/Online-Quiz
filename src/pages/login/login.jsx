@@ -143,9 +143,6 @@ export default function Login() {
               
             </button> */}
           </div>
-          <Link className="Quiz" to="/Quiz">
-            Quiz
-          </Link>
 
           <div className="changing-status">
             <p>
