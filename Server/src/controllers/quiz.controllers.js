@@ -102,7 +102,7 @@ exports.addQuestionToQuiz = asyncHandler(async (req, res) => {
  * @kushwahramkumar2003
  **************************************************************************/
 exports.getAllQuizzes = asyncHandler(async (req, res) => {
-  const quizzes = await Quiz.find({}, { questions: 0 }).populate().exec();
+  const quizzes = await Quiz.find({}).populate().exec();
   res.json(quizzes);
 });
 
@@ -114,7 +114,7 @@ exports.getAllQuizzes = asyncHandler(async (req, res) => {
  *************************************************************************/
 exports.getQuizById = asyncHandler(async (req, res) => {
   const quiz = await Quiz.findById(req.params.id)
-    .populate("questions", "text options")
+    .populate("questions", "text options answer")
     .exec();
   if (quiz) {
     res.json(quiz);
@@ -214,7 +214,7 @@ exports.deleteQuizById = asyncHandler(async (req, res) => {
   await Question.deleteMany({ quiz: quizId });
 
   // Delete all results corresponding to the quiz
-  await Result.deleteMany({ quiz: quizId });
+  await QuizResult.deleteMany({ quiz: quizId });
 
   // Delete the quiz itself
   // await Quiz.findByIdAndDelete(quizId);
@@ -238,15 +238,13 @@ exports.deleteQuestionById = asyncHandler(async (req, res) => {
     return res.status(404).json({ success: false, message: "Quiz not found" });
   }
 
-  const question = await Question.findById(questionId);
+  const question = await Question.findOneAndDelete(questionId);
 
   if (!question) {
     return res
       .status(404)
       .json({ success: false, message: "Question not found" });
   }
-
-  await question.remove();
 
   res
     .status(200)
