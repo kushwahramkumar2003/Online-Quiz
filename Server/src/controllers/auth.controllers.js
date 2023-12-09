@@ -54,7 +54,10 @@ exports.login = asyncHandler(async (req, res) => {
 
   const { email, password } = req.body;
 
-  let user = await User.findOne({ email }, { email: 1, password: 1, name: 1 });
+  let user = await User.findOne(
+    { email },
+    { email: 1, password: 1, name: 1, role: 1 }
+  );
   // console.log("user", user);
   if (!user) {
     return res.status(400).json({ msg: "Invalid Credentials" });
@@ -78,7 +81,6 @@ exports.login = asyncHandler(async (req, res) => {
   res.status(200).json({
     success: true,
     message: "User logged in successfully",
-    data: user,
     user,
   });
 });
