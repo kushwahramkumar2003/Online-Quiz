@@ -29,10 +29,12 @@ export default function Login() {
       return login({ email, password });
     },
     onSuccess: (data) => {
+      const { user } = data;
       toast.success("Login successfully");
       dispatch(userActions.setUserInfo(data.user));
       localStorage.setItem("account", JSON.stringify(data));
-      const { user } = data;
+      
+      // console.log("User.role : ", user.role);
 
       if (user.role === "USER") {
         naviage("/User");

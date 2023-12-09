@@ -20,20 +20,31 @@ const Admin = () => {
   // const { data } = useQuery();
 
   useEffect(() => {
-    const role = userState.userInfo.user.role || userState.userInfo.data.role;
+    // console.log("User State", userState.userInfo.role);
+    const role = userState?.userInfo?.role;
 
-    if (!userState.userInfo || !(role === "ADMIN")) {
+    if (!role) {
       navigate("/");
     }
-  }, [quiz, userState.userInfo, navigate]);
-  useEffect(() => {
+
+    console.log("Role", role);
     async function fetchData() {
       const quizArr = await getAllQuizs();
       console.log("Quiz Arr", quizArr);
       setQuiz(quizArr);
     }
-    fetchData();
-  }, [isOpen, refresh]);
+    if (!userState.userInfo || !role || !(role === "ADMIN")) {
+      navigate("/");
+    } else fetchData();
+  }, [userState.userInfo, navigate, isOpen, refresh]);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const quizArr = await getAllQuizs();
+  //     console.log("Quiz Arr", quizArr);
+  //     setQuiz(quizArr);
+  //   }
+  //   fetchData();
+  // }, [isOpen, refresh]);
   return (
     <>
       <h2>All Quizes</h2>
