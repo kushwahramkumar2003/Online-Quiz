@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-hot-toast";
 
 export const signup = async ({ name, email, password }) => {
   try {
@@ -23,6 +24,8 @@ export const login = async ({ email, password }) => {
       email,
       password,
     });
+
+ 
     return data;
   } catch (error) {
     console.log(error);

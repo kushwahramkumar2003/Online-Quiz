@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { deleteQuestionByQuizId } from "../../services/quiz";
+import Modal from "../modal/Modal";
+import UpdateQuestion from "./UpdateQuestion";
 
 const QuestionCard = ({
   question,
@@ -11,6 +13,9 @@ const QuestionCard = ({
   quizId,
   setRefresh,
 }) => {
+  const [isEdit, setIsEdit] = useState(false);
+
+
   const { mutate, isLoading } = useMutation({
     mutationFn: ({ questionId, quizId }) => {
       return deleteQuestionByQuizId({
@@ -34,18 +39,33 @@ const QuestionCard = ({
   };
   return (
     <div>
+      {isEdit && (
+        <Modal setIsOpen={setIsEdit}>
+          <UpdateQuestion
+            quizId={quizId}
+            question={question}
+            options={options}
+            questionId={questionId}
+            answer={answer}
+            setRefresh={setRefresh}
+            setIsEdit={setIsEdit}
+          />
+        </Modal>
+      )}
       <div>
-        <h3>{question}</h3>
-        <ul>
-          {options.map((option, index) => {
-            return <li key={questionId + index}>{option}</li>;
-          })}
-        </ul>
-        <p>Answer: {answer}</p>
-      </div>
-      <div>
-        <button>Edit</button>
-        <button onClick={deleteHandler}>Delete</button>
+        <div>
+          <h3>{question}</h3>
+          <ul>
+            {options.map((option, index) => {
+              return <li key={questionId + index}>{option}</li>;
+            })}
+          </ul>
+          <p>Answer: {answer}</p>
+        </div>
+        <div>
+          <button onClick={() => setIsEdit(true)}>Edit</button>
+          <button onClick={deleteHandler}>Delete</button>
+        </div>
       </div>
     </div>
   );
