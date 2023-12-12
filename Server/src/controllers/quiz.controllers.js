@@ -4,7 +4,7 @@ const QuizResult = require("../models/Result.model.js");
 const asyncHandler = require("./../services/asyncHandler.js");
 
 /**********************************************************************
- * @desc    Create a quiz
+ * @desc    Create a quiz with title, description and category  
  * @route   POST /api/v1/quiz/create
  * @access  Private/Admin
  * @kushwahramkumar2003
@@ -281,9 +281,9 @@ exports.getQuizForAttempt = asyncHandler(async (req, res) => {
 });
 
 /*************************************************************************
- * @desc    Submit quiz answers
- * @route   POST /api/quizzes/:id/submit
- * @access  Public
+ * @desc    Submit quiz answers                                          *
+ * @route   POST /api/quizzes/:id/submit                                 *
+ * @access  Public                                                       *
  *************************************************************************/
 exports.submitQuizAnswers = asyncHandler(async (req, res) => {
   const quizId = req.params.id;
@@ -334,9 +334,9 @@ exports.submitQuizAnswers = asyncHandler(async (req, res) => {
 });
 
 /*************************************************************************
- * @desc    Get quiz results
- * @route   GET /api/quizzes/:id/results
- * @access  Private/Admin
+ * @desc    Get quiz results                                             *
+ * @route   GET /api/quizzes/:id/results                                 *
+ * @access  Private/Admin                                                *
  *************************************************************************/
 exports.getQuizResults = asyncHandler(async (req, res) => {
   try {
