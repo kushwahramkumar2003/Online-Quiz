@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { Provider } from "react-redux";
+import { Toaster } from "react-hot-toast";
 import store from "./store";
-
 import "./index.css";
 import App from "./App";
 
@@ -15,7 +15,8 @@ root.render(
   <BrowserRouter>
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
-        <App />
+        <App className="transition-all scroll-smooth " />
+        <Toaster />
       </QueryClientProvider>
     </Provider>
   </BrowserRouter>

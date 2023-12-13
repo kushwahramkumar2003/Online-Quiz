@@ -30,10 +30,11 @@ export default function Login() {
     },
     onSuccess: (data) => {
       const { user } = data;
-      toast.success("Login successfully");
+
       dispatch(userActions.setUserInfo(data.user));
       localStorage.setItem("account", JSON.stringify(data));
-      
+      toast.success("Login successfully");
+
       // console.log("User.role : ", user.role);
 
       if (user.role === "USER") {

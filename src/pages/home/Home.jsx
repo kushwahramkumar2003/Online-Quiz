@@ -1,23 +1,7 @@
 import React from "react";
-// import capLogo from "./Images/logo.svg";
-// import rightimg from "./Images/Right-img.svg";
 import { Link } from "react-router-dom";
+import { Link as Link2 } from "react-scroll";
 
-// import cornerD from './Images/icons/leftcorner-design.svg'
-// import fb from "./Images/icons/facebook.svg";
-// import ld from "./Images/icons/linkedin.svg";
-// import insta from "./Images/icons/square-instagram.svg";
-// import email from "./Images/icons/email-mesage.svg";
-// import phone from "./Images/icons/phone-call.svg";
-// import location from "./Images/icons/location.svg";
-// import twitter from "./Images/icons/twitter.svg";
-
-// import feature_1 from "./Images/Features images/Diverse Language Coverage.svg";
-// import feature_2 from "./Images/Features images/Personalized Skill Profiles.svg";
-// import feature_3 from "./Images/Features images/Detailed Explanations.jpg";
-// import feature_4 from "./Images/Features images/Feedback for Improvement.svg";
-// import feature_5 from "./Images/Features images/Timed Programming Quizzes.svg";
-// import feature_6 from "./Images/Features images/Aptitude Speed Challenges.svg";
 import "./navbar.css";
 import Navbar from "../../Components/homePage/Navbar";
 import images from "../../constants/images.js";
@@ -28,7 +12,7 @@ const Home = () => {
     <>
       {/***************** Page 1 start here ******************/}
 
-      <div className="landinpage">
+      <div className="landinpage" id="start">
         <Navbar />
 
         {/************** Navbar end here *********************/}
@@ -50,7 +34,7 @@ const Home = () => {
 
             <p id="text2">We help you prepare for exams and quizes</p>
 
-            <button className="mt-8 w-28 h-12 " id="startbt">
+            <button className="h-12 mt-8 w-28 " id="startbt">
               Start solving
             </button>
           </div>
@@ -61,13 +45,13 @@ const Home = () => {
         </div>
       </div>
 
-      <Link to="/login" id="go-to-login">
+      {/* <Link to="/login" id="go-to-login">
         Go to Login
-      </Link>
+      </Link> */}
       <div className="line2"></div>
 
       {/***************** How does it Works? page **********************************/}
-      <div className="page-2">
+      <div className="page-2" id="works">
         <div className="how-it-work">
           <h2> How does it works?</h2>
         </div>
@@ -143,68 +127,11 @@ const Home = () => {
             </div>
           </div>
         </div>
-
-        {/* <section class="work">
-
-        <div class="grid_item">
-            <div class="card">
-                
-                <div class="card_content"> 
-                    <h2> User Registration/Login </h2>
-                    <p>
-                    Seamlessly log in or register to establish your personalized account, unlocking a tailored quiz experience.
-                    </p>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="grid_item">
-
-            <div class="card">        
-                <div class="card_content"> 
-                    <h2> Real-time Feedback </h2>
-                    <p> Receive instant feedback for each question, providing immediate clarity on the correctness of your responses.
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="grid_item">
-
-            <div class="card">
-                <div class="image_container">
-                </div>
-
-                <div class="card_content"> 
-                    <h2> Completion and Results </h2>
-                    <p> Instantly access a comprehensive result summary upon completing a quiz, offering insights into your performance.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="grid_item">
-
-            <div class="card">
-                <div class="image_container">
-                </div>
-
-                <div class="card_content"> 
-                    <h2>Cross-Platform Accessibility</h2>
-                    <p> Whether on mobile, tablet, or desktop, our quizzes are designed for a consistent and enjoyable experience.</p>
-                </div>
-
-               
-            </div>
-        </div>
-    </section> */}
       </div>
 
       {/************** Our Features & Services Page *******************/}
 
-      <div className="how-it-work-2">
+      <div className="how-it-work-2" id="features">
         <h2>Our features & Services</h2>
       </div>
 
@@ -301,6 +228,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <div id="about"></div>
       {/********** features & services end here ***********/}
 
       {/****************** footer section start here ******************/}
@@ -309,7 +238,17 @@ const Home = () => {
         <div className="footerBox">
           {/************ Box - 1 ****************/}
           <div className="section1">
-            <img src={images.capLogo} alt="Footer-Logo" id="footerlogo"></img>
+            <Link2
+              to={"start"}
+              spy={true}
+              smooth={true}
+              activeClass="deactive"
+              duration={500}
+              className="hover:cursor-pointer"
+            >
+              <img src={images.capLogo} alt="Footer-Logo" id="footerlogo"></img>
+            </Link2>
+
             <h3>Home | About | Contact | Quizes</h3>
             <p>Copyright @2023 QuizGrad All right reserved</p>
           </div>

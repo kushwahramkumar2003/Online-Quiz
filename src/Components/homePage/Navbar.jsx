@@ -1,11 +1,12 @@
 import React from "react";
 import image from "../../constants/images.js";
 import { Link } from "react-router-dom";
+import { Link as Link2 } from "react-scroll";
 const menuLinks = [
-  { name: "How it works", link: "/works" },
-  { name: "Features", link: "/features" },
-  { name: "About Us", link: "/about" },
-  { name: "Login", link: "/Login" },
+  { name: "How it works", link: "works" },
+  { name: "Features", link: "features" },
+  { name: "About Us", link: "about" },
+  // { name: "Login", link: "/Login" },
 ];
 const Navbar = () => {
   return (
@@ -20,9 +21,22 @@ const Navbar = () => {
             {menuLinks?.map((menu, i) => (
               <li key={i} className="px-6 hover:text-[#FCC822]" id="links1">
                 {/* <a href={menu?.link}>{menu?.name}</a> */}
-                <Link to={menu?.link}>{menu?.name}</Link>
+                <Link2
+                  to={menu?.link}
+                  spy={true}
+                  smooth={true}
+                  // offset={-200}
+                  activeClass="deactive"
+                  duration={500}
+                  className="hover:cursor-pointer"
+                >
+                  {menu?.name}
+                </Link2>
               </li>
             ))}
+            <li className="px-6 hover:text-[#FCC822]" id="links1">
+              <Link to="/login">Login</Link>
+            </li>
           </ul>
         </div>
 
