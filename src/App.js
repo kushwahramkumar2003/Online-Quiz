@@ -1,7 +1,7 @@
 import Login from "./pages/login/login.jsx";
 import Signup from "./pages/signup/SignUp.jsx";
 import Home from "./pages/home/Home.jsx";
-import { Toaster } from "react-hot-toast";
+
 import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
@@ -16,12 +16,10 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route exact path="/login" element={<Login />}></Route>
         <Route exact path="/SignUp" element={<Signup />}></Route>
-
         <Route exact path="/User" element={<UserPage />}></Route>
         <Route exact path="/Admin" element={<Admin />}></Route>
         <Route exact path="/quiz/edit/:quiz_id" element={<EditQuiz />}></Route>
       </Routes>
-      <Toaster />
     </div>
   );
 }
