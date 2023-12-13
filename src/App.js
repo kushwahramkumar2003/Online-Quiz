@@ -16,12 +16,10 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route exact path="/login" element={<Login />}></Route>
         <Route exact path="/SignUp" element={<Signup />}></Route>
-
         <Route exact path="/User" element={<UserPage />}></Route>
         <Route exact path="/Admin" element={<Admin />}></Route>
         <Route exact path="/quiz/edit/:quiz_id" element={<EditQuiz />}></Route>
       </Routes>
-
     </div>
   );
 }

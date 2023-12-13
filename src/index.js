@@ -15,10 +15,8 @@ root.render(
   <BrowserRouter>
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
-        <App />
-        <Toaster
-          
-        />
+        <App className="transition-all scroll-smooth " />
+        <Toaster />
       </QueryClientProvider>
     </Provider>
   </BrowserRouter>
