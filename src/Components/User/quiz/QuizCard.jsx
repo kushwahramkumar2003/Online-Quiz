@@ -12,9 +12,9 @@ const QuizCard = ({ title, desc, category, noQuestions, time }) => {
         <button className="px-4 py-2 mr-2 font-bold text-white bg-yellow-600 rounded hover:bg-yellow-700">
           Start Quiz
         </button>
-        <button className="px-4 py-2 ml-2 font-bold text-white bg-yellow-600 rounded hover:bg-yellow-700">
+        {/* <button className="px-4 py-2 ml-2 font-bold text-white bg-yellow-600 rounded hover:bg-yellow-700">
           Other Button
-        </button>
+        </button> */}
       </div>
     </div>
   );
