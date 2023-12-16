@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Quizes from "../../Components/User/quiz/Quizes.jsx";
 
 const UserPage = () => {
   const navigate = useNavigate();
@@ -11,7 +12,11 @@ const UserPage = () => {
       navigate("/");
     }
   }, [navigate, userState.userInfo]);
-  return <div>UserPage</div>;
+  return (
+    <div>
+      <Quizes />
+    </div>
+  );
 };
 
 export default UserPage;
