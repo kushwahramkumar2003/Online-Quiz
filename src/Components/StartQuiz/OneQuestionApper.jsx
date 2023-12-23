@@ -12,11 +12,13 @@ const OneQuestionApper = ({
   setQuestionNumber,
   setQuestions,
   setStart,
+  setOptionSelected,
 }) => {
   const handleOptionClick = (option) => {
-    setSelected(option);
+    setOptionSelected(option);
+    
     if (option === correct) {
-      setCorrect((prevCorrect) => prevCorrect + 1);
+      setOptionSelected((prevCorrect) => prevCorrect + 1);
     }
   };
 

@@ -4,10 +4,24 @@ const UserQuiz = require("../models/UserQuiz.js");
 const QuizResult = require("../models/Result.model.js");
 const asyncHandler = require("../services/asyncHandler.js");
 
+exports.getQuizByIdForUser = asyncHandler(async (req, res) => {
+  const quizData = await Quiz.findById(req.params.quizId)
+    .populate("questions", "text options")
+    .exec();
+
+  if (quizData) {
+    await this.startQuiz(req, res, quizData);
+    // res.json(quizData);
+  } else {
+    res.status(404);
+    throw new Error("Quiz not found");
+  }
+});
+
 // Inside your quiz controller or a dedicated timer service
 const quizTimers = {}; // Keep track of timers for multiple quizzes
 
-exports.startQuiz = async (req, res) => {
+exports.startQuiz = async (req, res, quizData) => {
   const { quizId } = req.params;
 
   try {
@@ -27,7 +41,7 @@ exports.startQuiz = async (req, res) => {
     await userQuiz.save();
 
     // Other logic to start the quiz
-    res.json({ message: "Quiz started" });
+    return res.json(quizData);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error" });

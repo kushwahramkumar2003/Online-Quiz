@@ -7,6 +7,7 @@ const {
   startQuizTimer,
   submitAnswer,
   finishQuiz,
+  getQuizByIdForUser,
 } = require("../controllers/userQuiz.controllers.js");
 const {
   isAdmin,
@@ -14,8 +15,9 @@ const {
 } = require("../middlewares/auth.middlewares.js");
 
 router.get("/:quizId/start", startQuiz);
-router.get("/:quizId/submit", submitQuiz);
+router.post("/:quizId/submit", submitQuiz);
 router.post("/submitAnswer", submitAnswer);
 router.post("/:quizId/finishQuiz", finishQuiz);
+router.get("/:quizId", getQuizByIdForUser);
 
 module.exports = router;

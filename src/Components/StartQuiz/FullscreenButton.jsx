@@ -17,7 +17,7 @@ const FullscreenButton = ({ onStartQuiz }) => {
 
   const toggleFullscreen = async () => {
     if (!document.fullscreenElement) {
-      await document.documentElement.requestFullscreen();
+      // await document.documentElement.requestFullscreen();
       onStartQuiz();
     } else {
       if (document.exitFullscreen) {
