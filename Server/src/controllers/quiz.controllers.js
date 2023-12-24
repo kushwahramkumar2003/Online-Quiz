@@ -4,7 +4,7 @@ const QuizResult = require("../models/Result.model.js");
 const asyncHandler = require("./../services/asyncHandler.js");
 
 /**********************************************************************
- * @desc    Create a quiz with title, description and category  
+ * @desc    Create a quiz with title, description and category
  * @route   POST /api/v1/quiz/create
  * @access  Private/Admin
  * @kushwahramkumar2003
@@ -245,6 +245,16 @@ exports.deleteQuestionById = asyncHandler(async (req, res) => {
       .status(404)
       .json({ success: false, message: "Question not found" });
   }
+
+  let questionArr = quiz.questions;
+
+  const newQuestionArr = questionArr.filter((question) => {
+    return question.toString() !== questionId;
+  });
+
+  quiz.questions = newQuestionArr;
+
+  await quiz.save();
 
   res
     .status(200)

@@ -11,10 +11,6 @@ const profileSchema = new mongoose.Schema({
   },
   avatar: {
     type: String,
-    trim: true,
-  },
-  avatar: {
-    type: String,
     default: "default_avatar_url.jpg", // Set a default avatar image
     trim: true,
   },

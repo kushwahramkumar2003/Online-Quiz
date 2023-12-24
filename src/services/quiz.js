@@ -58,6 +58,7 @@ export const getAllQuizs = async () => {
 
 export const getQuizById = async ({ quizId }) => {
   try {
+    console.log("Quiz Id", quizId);
     const { data } = await axios.get(`/api/v1/quiz/${quizId}`);
     return data;
   } catch (error) {
