@@ -85,41 +85,39 @@ export default function Login() {
           <span> Please login to your account. </span>
         </p>
 
-        <form action="/login" method="post">
+        <form action="/login" method="post" onSubmit={handleSubmit}>
           <div className="form-details">
-            <form>
-              <label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={handleEmailChange}
-                  placeholder="Email Address"
-                  className="input-same"
-                />
-              </label>
+            {/* <label> */}
+            <input
+              type="email"
+              value={email}
+              onChange={handleEmailChange}
+              placeholder="Email Address"
+              className="input-same"
+            />
+            {/* </label> */}
 
-              <label>
-                <div className="password-input">
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    value={password}
-                    onChange={handlePassword}
-                    placeholder="Password"
-                    className="input-same"
-                  />
-                  <span
-                    className="password-toggle"
-                    onClick={handlePasswordVisibility}
-                  >
-                    {showPassword ? (
-                      <i className="far fa-eye-slash"></i>
-                    ) : (
-                      <i className="far fa-eye"></i>
-                    )}
-                  </span>
-                </div>
-              </label>
-            </form>
+            {/* <label> */}
+            <div className="password-input">
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={handlePassword}
+                placeholder="Password"
+                className="input-same"
+              />
+              <span
+                className="password-toggle"
+                onClick={handlePasswordVisibility}
+              >
+                {showPassword ? (
+                  <i className="far fa-eye-slash"></i>
+                ) : (
+                  <i className="far fa-eye"></i>
+                )}
+              </span>
+            </div>
+            {/* </label> */}
 
             {message && <p>{message}</p>}
           </div>
