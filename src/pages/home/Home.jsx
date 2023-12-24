@@ -135,10 +135,11 @@ const Home = () => {
         <h2>Our features & Services</h2>
       </div>
 
-      <section class="work-2">
+      {/* <section class="parent-box"> 
+
         <div class="grid-item-2">
           
-          <div class="card-2" id="f-card-1">
+          <div class="card-2" >
             <div class="card-content-2">
               <img src={images.feature_1} alt="feature"></img>
               <h2>Diverse Language Coverage </h2>
@@ -151,7 +152,7 @@ const Home = () => {
         </div>
 
         <div class="grid-item-2">
-          <div class="card-2" id="f-card-2">
+          <div class="card-2" >
             <div class="card-content-2">
               <img
                 src={images.feature_2}
@@ -169,22 +170,19 @@ const Home = () => {
 
         <div class="grid_item-2">
           <div class="card-2" id="f-card-3">
-            <div class="image_container"></div>
+           
 
             <div class="card-content-2">
               <img src={images.feature_5} alt="feature_5"></img>
               <h2> Timed Programming Quizzes</h2>
               <p>
-                {" "}
                 Practice time management in coding with quizzes featuring
                 realistic time constraints.
               </p>
             </div>
           </div>
         </div>
-      </section>
-
-      <section class="work-2" id="work-2-2">
+      
         <div class="grid_item-2">
           <div class="card-2" id="f-card-4">
             <div class="image_container"></div>
@@ -227,18 +225,58 @@ const Home = () => {
               </p>
             </div>
           </div>
-        </div>
-      </section>
+        </div> 
 
-      <div id="about"></div>
+      </section> */} 
+       {/* <div id="about"></div> */} 
+
+
+       {/* new work for section card  start here*/}  
+ 
+
+<div className="parent-box">  
+
+<div className="card_items"> 
+</div> 
+
+<div className="card_items"> 
+</div>
+
+<div className="card_items"> 
+</div>
+
+
+<div className="card_items"> 
+</div>
+
+<div className="card_items"> 
+</div>
+
+
+<div className="card_items"> 
+</div>
+
+
+</div>
+
+       {/* new work for section card  end  here */} 
+
+ 
+
+
+
+
       {/********** features & services end here ***********/}
 
       {/****************** footer section start here ******************/}
+ 
 
-      <footer>
-        <div className="footerBox">
+
+
+       <footer>
+        <div className="footerBox"> 
           {/************ Box - 1 ****************/}
-          <div className="section1" id="footer-box-1">
+            <div className="section1" id="footer-box-1">
             <Link2
               to={"start"}
               spy={true}
@@ -290,7 +328,8 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </footer>
+      </footer>  
+            
     </>
   );
 };
