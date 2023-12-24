@@ -1,0 +1,10 @@
+
+.AdminPage{
+    height: "full";
+}  
+.sections{
+  width: 20rem;  
+  background-color:red; 
+  font-size: 2rem;
+  color: white;
+}

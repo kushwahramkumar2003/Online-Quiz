@@ -46,7 +46,30 @@ const Admin = () => {
   //   fetchData();
   // }, [isOpen, refresh]);
   return (
-    <>
+    <> 
+ 
+  {/* this code written by deepesh */}  
+
+
+     <div className="AdminPage">  
+
+     <div className="sections"> 
+      <ul className="aminSections"> 
+        <li>Logo</li>
+        <li>My Profile</li>
+        <li>Create Quiz</li>
+        <li>Edit Quiz</li>
+        <li>Help</li> 
+        <li>Settings</li>
+        <li>Logout</li>
+      </ul>
+     </div> 
+
+     </div>  
+
+     {/* this code written by deepesh */}  
+
+
       <h2>All Quizes</h2>
       <div>
         {quiz.map((q) => {
