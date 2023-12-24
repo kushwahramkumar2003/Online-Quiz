@@ -137,6 +137,7 @@ const Home = () => {
 
       <section class="work-2">
         <div class="grid-item-2">
+          
           <div class="card-2" id="f-card-1">
             <div class="card-content-2">
               <img src={images.feature_1} alt="feature"></img>
@@ -237,7 +238,7 @@ const Home = () => {
       <footer>
         <div className="footerBox">
           {/************ Box - 1 ****************/}
-          <div className="section1">
+          <div className="section1" id="footer-box-1">
             <Link2
               to={"start"}
               spy={true}
@@ -254,7 +255,7 @@ const Home = () => {
           </div>
 
           {/************ Box - 2 ****************/}
-          <div className="section1">
+          <div className="section1" id="footer-box-2">
             <div className="box1">
               <img src={images.location} alt="location" id="footer-icon"></img>
               <p>Bhopal M.P</p>
