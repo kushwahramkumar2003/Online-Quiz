@@ -217,7 +217,61 @@
 /* second card section end here */ 
 
 
-/*********** Our Features & Services CSS *********/
+/*********** Our Features & Services CSS *********/ 
+
+/* new css for section card  start here  by deepesh*/ 
+
+.parent-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly; 
+    padding-bottom: 50px; 
+    margin-left: 4rem; 
+    margin-right: 4rem; 
+    margin-top: 2rem;
+} 
+.card_items{
+    height: 700px;
+    width: 30%;
+    background-color: white;
+    padding: 20px 0px 40px;
+    margin-top: 50px; 
+    border: 2px solid black;  
+    border-radius: 15px; 
+
+}
+
+@media screen and (max-width: 1000px) and (min-width: 700px){ 
+    .card_items{
+    width: 42%;
+    } 
+    .parent-box{
+        margin-left: 2rem; 
+        margin-right: 2rem; 
+    }
+}
+@media screen and (max-width: 700px) and (min-width: 500px){ 
+    .card_items{
+    width: 42%;
+    } 
+    .parent-box{
+        margin-left: 1rem; 
+        margin-right: 1rem; 
+    }
+}
+@media screen and (max-width: 500px) and (min-width: 200px){ 
+    .card_items{
+    width: 94%;
+    } 
+    .parent-box{
+        margin-left: 1rem; 
+        margin-right: 1rem; 
+    }
+}
+/* new css for section card  start here by deepesh*/
+
+
+
 .how-it-work-2 {
     margin-top: 3.92%;
     font-size: 2.32225rem;
@@ -236,7 +290,7 @@
     margin-top: 4rem;
     margin-left: 11%;
     margin-right: 11%;
-    /* border: 2px solid green; */
+    
 }
 #work-2-2 {
     margin-top: 8% !important;

@@ -21,7 +21,7 @@ const Admin = () => {
 
   useEffect(() => {
     // console.log("User State", userState.userInfo.role);
-    const role = userState?.userInfo?.role;
+    const role = userState?.userInfo?.user?.role;
 
     if (!role) {
       navigate("/");
@@ -54,7 +54,7 @@ const Admin = () => {
      <div className="AdminPage">  
 
      <div className="sections"> 
-      <ul className="aminSections"> 
+      <ul className="adminSections"> 
         <li>Logo</li>
         <li>My Profile</li>
         <li>Create Quiz</li>

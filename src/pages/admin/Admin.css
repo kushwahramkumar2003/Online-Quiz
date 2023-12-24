@@ -3,8 +3,13 @@
     height: "full";
 }  
 .sections{
-  width: 20rem;  
-  background-color:red; 
+  width: 20rem;   
+  height: 60rem;
+  background-color: black; 
   font-size: 2rem;
-  color: white;
+  color: white; 
+
+} 
+.adminSections ul li{
+  font-size: 35px;
 }
