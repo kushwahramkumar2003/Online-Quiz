@@ -5,13 +5,15 @@ const QuizResult = require("../models/Result.model.js");
 const asyncHandler = require("../services/asyncHandler.js");
 
 exports.getQuizByIdForUser = asyncHandler(async (req, res) => {
+  const { quizId } = req.params;
+  console.log("Backend Quiz id:", req.params.quizId);
   const quizData = await Quiz.findById(req.params.quizId)
     .populate("questions", "text options")
     .exec();
 
   if (quizData) {
+    // console.log("Quiz data:", quizData);
     await this.startQuiz(req, res, quizData);
-    // res.json(quizData);
   } else {
     res.status(404);
     throw new Error("Quiz not found");
@@ -23,12 +25,28 @@ const quizTimers = {}; // Keep track of timers for multiple quizzes
 
 exports.startQuiz = async (req, res, quizData) => {
   const { quizId } = req.params;
+  console.log("Quiz id:", quizId);
 
   try {
     const quiz = await Quiz.findById(quizId);
 
     if (!quiz) {
       return res.status(404).json({ message: "Quiz not found" });
+    }
+
+    // Check if the user has already started the quiz
+    const userQuizAlredyStarted = await UserQuiz.findOne({
+      userId: req.user._id,
+      quizId,
+    });
+
+    if (userQuizAlredyStarted) {
+      console.log("Reched here 1 ");
+      return res.status(201).json({
+        message: "User has already started the quiz",
+        userQuizAlredyStarted,
+        quizData,
+      });
     }
 
     // Store user-specific quiz details in the database
@@ -99,7 +117,6 @@ const stopQuizTimer = (quizId) => {
   delete quizTimers[quizId];
 };
 
-// Controller to submit a single question's answer
 exports.submitAnswer = asyncHandler(async (req, res) => {
   const { quizId, questionId, answer } = req.body;
 
@@ -204,3 +221,26 @@ exports.finishQuiz = asyncHandler(async (req, res) => {
     result: quizResult,
   });
 });
+
+exports.getResultByQuizIdAndResultIdAndUserId = asyncHandler(
+  async (req, res) => {
+    const { quizId, resultId } = req.params;
+    const userId = req.user._id;
+
+    console.log("Quiz id:", quizId);
+    console.log("Result id:", resultId);
+    console.log("User id:", userId);
+
+    const quizResult = await QuizResult.findOne({
+      _id: resultId,
+      quiz: quizId,
+      user: userId,
+    });
+
+    if (!quizResult) {
+      return res.status(404).json({ message: "Quiz result not found" });
+    }
+
+    res.json(quizResult);
+  }
+);
