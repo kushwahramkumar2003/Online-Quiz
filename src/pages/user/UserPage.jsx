@@ -8,6 +8,7 @@ const UserPage = () => {
   const userState = useSelector((state) => state.user);
 
   useEffect(() => {
+    console.log("User State", userState.userInfo);
     if (!userState.userInfo) {
       navigate("/");
     }
