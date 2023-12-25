@@ -1,4 +1,3 @@
-
 .landinpage{
     height: 44rem; 
     overflow-y: hidden;
@@ -38,10 +37,6 @@
 
 
 /************* Main CSS **************/
-.main {
-    /* margin-top: 5rem; */
-    /* border: 2px solid black; */
-}
 .home-img {
     width: 50% !important;
     padding-top: 3%; 
@@ -52,19 +47,16 @@
     padding-left: 6.47% !important;
     padding-top: 4.17% !important;
     /* border: 2px solid black; */
-    /* margin-right:-10rem; */
 }
 #text1 {
     margin-left: 90px;
     margin-top: 3rem;
     color: #333 !important;
-    /* font-weight: 500; */
-line-height: normal !important;  
+    line-height: normal !important;  
 }
 #text2 {
     margin-left: 98px !important;
     margin-top: 3rem;
-    /* font-size: 0.87756rem; */
     color: #828282 !important;
 }
 
@@ -76,7 +68,6 @@ line-height: normal !important;
     color: white;
     width: 7.53225rem;
     height: 2.6rem;
-    /* background: linear-gradient(95deg, #FCC822 0%, #FFCD2E 100%); */
     box-shadow: 0px 10.53052px 23.40116px -7.02035px #FBE18F;
 } 
 #startbt:hover {
@@ -95,10 +86,6 @@ line-height: normal !important;
     padding-right: 10rem;
 
 }  
-/* .line2{
-    border-bottom: 1px solid black;
-} */
- 
 
 /*********** How does it Works? CSS *********/
 .page-2 {
@@ -106,13 +93,11 @@ line-height: normal !important;
     /* border: 2px solid black; */
 }
 
-
 /*********** Timeline CSS *********/  
 .time-line-page-2 {
     margin-top: 3rem !important;
     margin-bottom: 5rem !important;
-  }
-
+}
 .timeline {
     margin: 0 auto;
     max-width: 750px;
@@ -149,10 +134,6 @@ line-height: normal !important;
   }
   .timeline__component--bg:hover {
     background: rgba(0, 0, 0, 0.3);
-    /* color: #FCC822 !important;
-    background-color: #fff !important;
-    border: 0.1px solid #FCC822 !important;
-    box-shadow: 0 0 30px #FBE18F !important; */
   }
   /* LEAVE TILL LAST */
   .timeline__component--bottom {
@@ -170,7 +151,6 @@ line-height: normal !important;
     width: 25px !important;
     height: 20px !important;
     background: black;
-    /* border-radius: 50%; */
   }
   /* LEAVE TILL LAST */
   .timeline__point--bottom {
@@ -190,12 +170,8 @@ line-height: normal !important;
   }
 /********** Time line CSS END ********/
 
-
-
 .how-it-work h2{ 
     margin-top: 3.92%;
-    /* color: black; 
-    font-size: 32px;  */
     font-size: 2.32225rem;
     color: #333;
     font-weight: 700; 
@@ -210,7 +186,6 @@ line-height: normal !important;
     margin-left: 90px;
     margin-right: 90px;
 }
-
 .grid_item {
     display: flex;
     justify-content: center;
@@ -237,76 +212,39 @@ line-height: normal !important;
 }
 .card_content p{
    color: rgba(0, 0, 0, 0.60) !important;;
-}
-/* second card section end here */ 
- 
+} 
+/******* how does it work css end here  ******/
+   
 
 
-/*********** Our Features & Services CSS *********/
-.how-it-work-2 {
+/*********** Our Features & Services CSS *********/ 
+.features {
     margin-top: 3.92%;
     font-size: 2.32225rem;
     color: #333;
     font-weight: 700; 
     text-align: center;
 }
-.work-2 h2 {
-    color: #FCC822 !important;
-}
-.work-2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 4rem;
-    margin-left: 11%;
-    margin-right: 11%;
-    /* border: 2px solid green; */
-}
-#work-2-2 {
-    margin-top: 8% !important;
-}
-.grid-item-2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.card-2 {
-    width: 350px;
-    height: 480px;
-    transition: 0.2s ease-in-out; 
-    border-radius: 6%;
-    border:  0.1px solid rgba(0, 0, 0, 0.2); 
-    /* opacity: 0.2; */
-    overflow-y: hidden;
-    /* box-shadow: 0px 10.53052px 23.40116px -7.02035px #FBE18F; */
-} 
-.card-2:hover{
-    /* background-color: #FCC822;  */
-    transition: 0.2s ease-in;
-
-    color: #FCC822 !important;
-    background-color: #fff !important;
-    border: 2px solid #FCC822 !important;
-    /* box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px; */
-    /* box-shadow: 0 0 30px #FBE18F !important; */
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
-}
 .card-content-2 {
-    padding: 20px;
+    width: 100%;
+    height: 100%;
+    padding: 20px 8px 8px 8px;
+    overflow: hidden;
+    /* border: 2px solid black; */
 }
 .card-content-2 h2 {
     margin-bottom: 10px; 
     font-weight: 700; 
     font-size: 20px;
-    justify-content: center !important;
-    align-items: center!important;
-    text-align: center !important;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     opacity: 0.8;
-    margin-top: 1.5rem !important;
+    margin-top: 1.5rem;
+    color: #FCC822;
 }
 .card-content-2 p {
-    font-size: 16px;
+   font-size: 16px;
    color: rgba(0, 0, 0, 0.60) !important;
    justify-content: center !important;
    align-items: center!important;
@@ -316,47 +254,92 @@ line-height: normal !important;
 
 /******* Features Images CSS *********/
 #feature-img-2 {
-    width: 82% !important;
+    width: 96% !important;
     justify-content: center !important;
     align-items: center!important;
     margin-top: 2.7rem !important;
     margin-left: 2rem !important;
 }
+#cds-1 img {
+    margin-top: -1% !important;
+    margin-left: 3% !important;
+    margin-bottom: 18% !important;
+}
+#cds-2 img {
+    width: 75% !important;
+    margin: 14% 0 24.5% 13% !important;
+}
+#cds-3 img {
+    width: 94% !important;
+    margin: 18% 0% 32.5% 3% !important;
+}
+#cds-4 img {
+    width: 94% !important;
+    margin: -3% 0% 19% 4% !important;
+}
+#cds-5 img {
+    width: 94% !important;
+    margin: 12% 0% 33% 2.2% !important;
+}
+#cds-6 img {
+    width: 94% !important;
+    margin: 14% 0% 33% 2.2% !important;
+}
 
-#f-card-2 h2 {
-    margin-top: 12% !important;
+/* new css for section card  start here  by deepesh*/ 
+.parent-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly; 
+    padding-bottom: 50px; 
+    margin-left: 6rem; 
+    margin-right: 6rem; 
+    margin-top: 1.5rem;
+} 
+.card_items{
+    height: 560px;
+    width: 26%;
+    background-color: white;
+    /* padding: 20px 0px 40px; */
+    margin-top: 50px; 
+    border-radius: 6%;
+    border:  1px solid rgba(0, 0, 0, 0.2); 
+
 }
-#f-card-2 p {
-    padding-left: 0.3%;
-    padding-right: 0.3%;
+@media screen and (max-width: 1000px) and (min-width: 700px){ 
+    /* .card_items{
+    width: 42%;
+    } 
+    .parent-box{
+        margin-left: 2rem; 
+        margin-right: 2rem; 
+    } */
+
+    
 }
-#f-card-3 h2 {
-    margin-top: 32% !important;
+@media screen and (max-width: 700px) and (min-width: 500px){ 
+    /* .card_items{
+    width: 42%;
+    } 
+    .parent-box{
+        margin-left: 1rem; 
+        margin-right: 1rem; 
+    } */
 }
-#f-card-3 img {
-    margin-top: 14% !important;
-    margin-left: 6.5% !important;
-    width: 92% !important;
+@media screen and (max-width: 500px) and (min-width: 200px){ 
+    .card_items{
+    width: 94%;
+    } 
+    .parent-box{
+        margin-left: 1rem; 
+        margin-right: 1rem; 
+    }
 }
-#f-card-4 h2 {
-    margin-top: 3.2% !important;
-}
-#f-card-5 h2 {
-    margin-top: 21% !important;
-}
-#f-card-5 img {
-    margin-top: 14% !important;
-    margin-left: 1% !important;
-    width: 98% !important;
-}
-#f-card-6 h2 {
-    margin-top: 23% !important;
-}
-#f-card-6 img {
-    margin-top: 13% !important;
-    /* margin-left: 1% !important; */
-    height: 100% !important;
-}
+/* new css for section card  start here by deepesh*/
+
+
+
+/* 
 
 
 /*********** Footer CSS *********/
@@ -366,30 +349,25 @@ footer {
     margin-top: 7rem;
     background-color: rgba(86, 83, 83, 0.216);
 }
-
 .footerBox {
     margin-top: 3rem;
     margin-left: 90px;
     margin-right: 90px;
     height: 14rem;
-    
     display: flex;
     justify-content: center;
     justify-content: space-around;
 }
-
 #footerlogo {
     width: 12.4rem;
     margin-bottom: 5%;
     cursor: pointer !important;
 }
-
 .section1 h3 {
     margin-top: 5px;
     color: #333 !important;
     cursor: pointer !important;
 }
-
 .section1 {
     width: 30%; 
     height: 90% !important;
@@ -397,18 +375,15 @@ footer {
     overflow-y: hidden;
     /* border: 2px solid black; */
 }
-
 .section1 h3 {
     font-size: 16px;
     font-weight: 700;
 }
-
 .section1 p {
     font-size: 14px;
     margin-top: 5px; 
     line-height: 1.5rem;
 }
-
 .box1 {
     display: flex;
     justify-content: left;
@@ -419,31 +394,24 @@ footer {
     padding-bottom: 2% !important;
     /* border: 2px solid black; */
 }
-
 .box1 p {
     margin-left: 16px;
 }
-
 #footer-icon {
     width: 1.3rem;
-    /* height: 2rem; */
 }
-
 .box1 img:hover {
     transform: scale(1.1);
     transition: 0.2s ease-in-out;
 }
-
 .section1 h2 {
     font-size: 20px;
     font-weight: 700;
     color: #333;
 }
-
 #footer-box-3 p {
     letter-spacing: 0.5px;
 }
-
 .contacts {
     margin-top: 1.2rem;
     display: flex !important;
@@ -456,251 +424,304 @@ footer {
     transform: scale(1.1);
     transition: 0.2s ease-in-out;
 }
-
 /* footer section styling end  here */
 
 
 
-/************ Media Query ***********/
-@media screen and (max-width: 1600px) and (min-width: 1283px) {
-    .landinpage{
-        height: 44rem; 
-        overflow-y: hidden;
-    }
-    #loginpage {
-        border: 2px solid black;
-    }
+/**************** Media Query ******************/
+@media screen and (max-width: 1600px) and (min-width: 1275px)  {
     
     /************* Navbar CSS **************/
-    #nav1 { 
-        margin-left: 90px !important;
-        margin-right: 50px !important;
-        margin-top: 1.3rem !important;
-        /* border: 2px solid black !important; */
-        /* flex-wrap: wrap !important; */
-    }
     #logo1 {
         width: 12rem !important;
         flex-wrap: wrap !important;
     }
-    .navbartop{
-        margin-left: 23.8rem !important;
+    .navbartop {
+        margin-left: 29% !important;
         display: flex !important; 
         /* border: 2px solid black !important; */
     }
     
-    #links1 {
-        margin-left: 0.8rem;
-        color: rgba(0, 0, 0, 0.60) ;
-    }
-    #links1:hover {
-        transition: ease-in-out .2s;
-        color: #FCC822;
-    }
-    .line {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.60) ; 
-        opacity: 0.2; 
-        margin-left: 65px; 
-        margin-right: 65px;
-    }
-    
-    
-    /************* Main CSS **************/
-    .main {
-        /* margin-top: 5rem; */
-        /* border: 2px solid black; */
-    }
-    .home-img {
-        width: 50% !important;
-        padding-top: 3%; 
-        padding-left: 7%;
-    }
-    .container {
-        width: 50% !important; 
-        padding-left: 6.47% !important;
-        padding-top: 4.17% !important;
-        /* border: 2px solid black; */
-        /* margin-right:-10rem; */
-    }
-    #text1 {
-        margin-left: 90px;
-        margin-top: 3rem;
-        color: #333 !important;
-        /* font-weight: 500; */
-    line-height: normal !important;  
-    }
-    #text2 {
-        margin-left: 98px !important;
-        margin-top: 3rem;
-        /* font-size: 0.87756rem; */
-        color: #828282 !important;
-    }
-    
     /********** Start button ***********/
-    #startbt {
-        margin-left: 90px; 
-        margin-top: 8%; 
-        background-color: #FCC822;
-        color: white;
-        width: 7.53225rem;
-        height: 2.6rem;
-        /* background: linear-gradient(95deg, #FCC822 0%, #FFCD2E 100%); */
-        box-shadow: 0px 10.53052px 23.40116px -7.02035px #FBE18F;
-    } 
-    #startbt:hover {
-        color: #FCC822 !important;
-        background-color: #fff !important;
-        border: 2px solid #FCC822 !important;
-        box-shadow: 0 0 30px #FBE18F !important;
-    }
-    #go-to-login{
-        margin-left: 90px;  
-        color: #FCC822;
-        border: 2px solid #FCC822 ; 
-    }
     #homeImage {
         width: 43rem;
         padding-right: 10rem;
         margin-top: 3.6rem !important;
     }  
+    
+    /*********** Our Features & Services CSS *********/
+    .card-content-2 {
+        padding-top: 40px !important;
+    }
+}
 
 
+@media screen and (max-width: 1275px) and (min-width: 992px) {
+  /************* Navbar CSS **************/
+    #nav1 { 
+        margin-left: 40px !important;
+        margin-right: 40px !important;
+        /* border: 2px solid black !important; */
+    }
+    #logo1 {
+        width: 11rem !important;
+    }
+    .navbartop{
+        margin-left: 5rem !important;
+        /* border: 2px solid black !important; */
+    }
+    
+    /************* Main CSS **************/
+    .home-img {
+        width: 60% !important;
+        margin-right: -6% !important;
+    }
+    
+    /********** Start button ***********/
+    #homeImage {
+        width: 43rem;
+        padding-right: 10rem;
+        margin-top: 3.6rem !important;
+    }  
     
 /*********** Our Features & Services CSS *********/
-.how-it-work-2 {
-    margin-top: 3.92%;
-    font-size: 2.32225rem;
-    color: #333;
-    font-weight: 700; 
-    text-align: center;
-}
-.work-2 h2 {
-    color: #FCC822 !important;
-}
-.work-2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 4rem;
-    margin-left: 11%;
-    margin-right: 11%;
-    /* border: 2px solid green; */
-}
-#work-2-2 {
-    margin-top: 8% !important;
-}
-.grid-item-2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 .card-2 {
-    width: 310px;
-    height: 480px;
-    transition: 0.2s ease-in-out; 
-    border-radius: 6%;
-    border:  0.1px solid rgba(0, 0, 0, 0.2); 
-    /* opacity: 0.2; */
-    overflow-y: hidden;
-    /* box-shadow: 0px 10.53052px 23.40116px -7.02035px #FBE18F; */
+    width: 239px;
+    height: 430px;
 } 
-.card-2:hover{
-    /* background-color: #FCC822;  */
-    transition: 0.2s ease-in;
-
-    color: #FCC822 !important;
-    background-color: #fff !important;
-    border: 2px solid #FCC822 !important;
-    /* box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px; */
-    /* box-shadow: 0 0 30px #FBE18F !important; */
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
-}
-.card-content-2 {
-    padding: 20px;
-}
-.card-content-2 h2 {
-    margin-bottom: 10px; 
-    font-weight: 700; 
-    font-size: 20px;
-    justify-content: center !important;
-    align-items: center!important;
-    text-align: center !important;
-    opacity: 0.8;
-    margin-top: 1.5rem !important;
+.card-content-2 h2 { 
+    font-size: 19px;
 }
 .card-content-2 p {
-    font-size: 16px;
-   color: rgba(0, 0, 0, 0.60) !important;
-   justify-content: center !important;
-   align-items: center!important;
-   text-align: center !important;
+   font-size: 15px;
 }
-
-
-/******* Features Images CSS *********/
-#feature-img-2 {
-    width: 82% !important;
-    justify-content: center !important;
-    align-items: center!important;
-    margin-top: 2.7rem !important;
-    margin-left: 2rem !important;
+.parent-box {
+    margin-left: 0.5rem !important;
+    margin-right: 0.5rem !important;
 }
-
-#f-card-2 h2 {
-    margin-top: 12% !important;
+.card_items {
+    height: 450px !important;
+    /* border: 2px solid black; */
 }
-#f-card-2 p {
-    padding-left: 0.3%;
-    padding-right: 0.3%;
+#cds-1 img {
+    width: 90% !important;
 }
-#f-card-3 h2 {
-    margin-top: 32% !important;
-}
-#f-card-3 img {
+#cds-2 img {
+    width: 80% !important;
     margin-top: 14% !important;
-    margin-left: 6.5% !important;
-    width: 92% !important;
+    margin-bottom: 14% !important;
 }
-#f-card-4 h2 {
-    margin-top: 3.2% !important;
+#cds-3 img {
+    width: 90% !important;
+    margin-top: 24% !important;
+    margin-left: 6% !important;
+    margin-bottom: 22.5% !important;
 }
-#f-card-5 h2 {
-    margin-top: 21% !important;
+#cds-4 img {
+    width: 90% !important;
+    margin: 6% 0% 13% 6% !important;
 }
-#f-card-5 img {
-    margin-top: 14% !important;
-    margin-left: 1% !important;
-    width: 98% !important;
+#cds-5 img {
+    width: 90% !important;
+    margin: 22% 0% 24% 4.5% !important;
 }
-#f-card-6 h2 {
-    margin-top: 23% !important;
-}
-#f-card-6 img {
-    margin-top: 13% !important;
-    /* margin-left: 1% !important; */
-    height: 100% !important;
-}
-
+#cds-6 img {
+    width: 90% !important;
+    margin: 21% 0% 27% 5% !important;
 }
 
 
-@media screen and (max-width: 1283px) and (min-width: 992px) {
-
+/*********** Footer CSS *********/
+/* footer section start here */
+.footerBox {
+    margin-left: 55px;
+    margin-right: 55px;
+}
+#footerlogo {
+    width: 11rem;
+}
+.section1 h3 {
+    font-size: 14.5px !important;
+    /* border:  2px solid black; */
+}
+.section1 p {
+    font-size: 12.5px;
+}
+.box1 p {
+    margin-left: 12px;
+    font-size: 12px !important;
+}
+#footer-icon {
+    width: 1.3rem;
+}
+#footer-box-2 {
+    margin-left: 5% !important;
+}
+#footer-box-3 {
+    width: 45% !important; 
+    height: 90% !important;
+    /* border:  2px solid black; */
+}
+#footer-box-3 h2 {
+   font-size: 16.5px !important;
+}
+#footer-box-3 p {
+    letter-spacing: 0.5px;
+    font-size: 12px !important;
+}
+/* footer section styling end  here */
 }
 
 
 @media screen and (max-width: 992px) and (min-width: 723px) {
+    /************* Navbar CSS **************/
+    #nav1 { 
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+        /* border: 2px solid black !important; */
+    }
+    #logo1 {
+        width: 9rem !important;
+        flex-wrap: wrap !important;
+        /* border: 2px solid black !important; */
+    }
+    .navbartop{
+        margin-left: 0% !important;
+        display: flex !important; 
+        font-size: 10px !important;
+        margin-right: -3% !important;
+        /* border: 2px solid black !important; */
+    }
+    .line {
+        margin-left: 20px; 
+        margin-right: 20px;
+    }
+    #text1 {
+        font-size: 30px !important;
+        margin-top: 20% !important;
+    }
+    
+    /************* Main CSS **************/
+    .home-img {
+        width: 76% !important;
+        margin-right: -15% !important;
+        margin-top: -1.2rem !important;
+        /* border: 2px solid black; */
+    }
+    .container {
+        padding-left: 1% !important;
+        /* border: 2px solid black; */
+    }
+    #text2 {
+        font-size: 1rem !important;
+    }
+    
+    /********** Start button ***********/
+    #startbt {
+        width: 7rem;
+        height: 2.3rem;
+    } 
+    #homeImage {
+        width: 100% !important;
+        margin-top: 6rem !important;
+    }  
 
+/***************** How does it Works? page *****************/ 
+.how-it-work h2 {
+    font-size: 1.8rem !important;
+}
+    
+/*********** Our Features & Services CSS *********/
+.features {
+    font-size: 1.8rem !important;
+}
+.how-it-work-2 {
+    font-size: 2rem !important;
+}
+.work-2 {
+    margin-left: 8%;
+    margin-right: 8%;
+    /* border: 2px solid green; */
+}
+.card-2 {
+    width: 195px !important;
+    height: 420px !important;
+} 
+.card-content-2 h2 {
+    font-size: 19px;
+}
+.parent-box {
+    /* border: 2px solid black; */
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+}
+.card_items {
+    width: 42% !important;
+}
+#cds-1 img {
+    width: 100% !important;
+    margin: 4% 0% 22% 0% !important;
+}
+#cds-2 img {
+    width: 90% !important;
+    margin: 18% 0% 19% 5% !important;
+}
+#cds-3 img {
+    margin: 20% 0% 40% 4% !important;
+}
+#cds-4 img {
+    margin: 13% 0% 16% 4% !important;
+}
+#cds-5 img {
+    margin: 18% 0% 36% 3% !important;
+}
+#cds-6 img {
+    margin: 17% 0% 39.5% 3% !important;
+}
+
+/**************** Footer CSS ******************/
+/* footer section start here */
+.footerBox {
+    height: 16rem !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+.section1 {
+    /* border: 2px solid black; */
+    flex-wrap: wrap !important;
+    height: 90% !important;
+}
+#footerlogo {
+    width: 8rem !important;
+}
+.section1 h3 {
+    font-size: 16px;
+    font-weight: 700;
+}
+#footer-icon {
+    width: 1.3rem !important;
+}
+#footer-box-1 {
+    margin-left: 2% !important;
+}
+#footer-box-2 {
+    margin-left: 1% !important;
+}
+#footer-box-3 {
+    margin-right: 1% !important;
+    width: 35% !important;  
+    /* border:  2px solid black; */
+}
+/* footer section styling end  here */
 }
 
 
 /********* Media Query for Phone *********/
-@media screen and (max-width: 723px) and (min-width: 640px) {
-
+@media screen and (max-width: 723px) and (min-width: 550px) {
+     
 }
 
 
-@media screen and (max-width: 640px) and (min-width: 200px) {
+@media screen and (max-width: 550px) and (min-width: 200px) {
 
 }
