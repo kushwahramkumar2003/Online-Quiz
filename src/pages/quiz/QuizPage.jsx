@@ -23,8 +23,9 @@ const QuizPage = () => {
   // console.log("quizId : ", quizId);
 
   useEffect(() => {
-    setIsLoading(true);
+    
     const fetchQuiz = async () => {
+      setIsLoading(true);
       const data = await getQuizByIdForUser({ quizId });
       // console.log("Quiz Data : ", data);
       // console.log("data?.questions : ", data?.questions);
@@ -100,7 +101,7 @@ const QuizPage = () => {
   return (
     <div>
       {isLoading ? (
-        <h2>Loading </h2>
+        <h2>Loading... </h2>
       ) : (
         QuestionsArr && (
           <div>

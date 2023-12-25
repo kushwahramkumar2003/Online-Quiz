@@ -8,9 +8,11 @@ export const getQuizByIdForUser = async ({ quizId }) => {
     const { data } = await axios.get(`/api/v1/userQuiz/${quizId}`);
 
     // let data = undefined;
+    console.log("User Quiz Data : ", data);
     const { quizData } = data;
-    console.log("USer Quiz Data : ", quizData);
-    return quizData;
+    if (quizData) return quizData;
+
+    return data;
   } catch (error) {
     if (error?.response) {
       toast.error(error?.response?.data?.message);
