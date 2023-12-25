@@ -20,7 +20,9 @@ const Admin = () => {
   // const { data } = useQuery();
 
   useEffect(() => {
-    const role = userState?.userInfo?.user?.role;
+    const role = userState?.userInfo?.role;
+
+    console.log("userState : ", userState);
 
     if (!role) {
       navigate("/");
@@ -45,29 +47,24 @@ const Admin = () => {
   //   fetchData();
   // }, [isOpen, refresh]);
   return (
-    <> 
- 
-  {/* this code written by deepesh */}  
+    <>
+      {/* this code written by deepesh */}
 
+      <div className="AdminPage">
+        <div className="sections">
+          <ul className="adminSections">
+            <li>Logo</li>
+            <li>My Profile</li>
+            <li>Create Quiz</li>
+            <li>Edit Quiz</li>
+            <li>Help</li>
+            <li>Settings</li>
+            <li>Logout</li>
+          </ul>
+        </div>
+      </div>
 
-     <div className="AdminPage">  
-
-     <div className="sections"> 
-      <ul className="adminSections"> 
-        <li>Logo</li>
-        <li>My Profile</li>
-        <li>Create Quiz</li>
-        <li>Edit Quiz</li>
-        <li>Help</li> 
-        <li>Settings</li>
-        <li>Logout</li>
-      </ul>
-     </div> 
-
-     </div>  
-
-     {/* this code written by deepesh */}  
-
+      {/* this code written by deepesh */}
 
       <h2>All Quizes</h2>
       <div>
