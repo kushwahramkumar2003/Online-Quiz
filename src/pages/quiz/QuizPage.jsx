@@ -23,6 +23,7 @@ const QuizPage = () => {
   // console.log("quizId : ", quizId);
 
   useEffect(() => {
+    setIsLoading(true);
     const fetchQuiz = async () => {
       const data = await getQuizByIdForUser({ quizId });
       // console.log("Quiz Data : ", data);
