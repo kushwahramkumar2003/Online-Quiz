@@ -15,7 +15,6 @@ const Navbar = () => {
         <div className="mx-7" id="logo1">
           <img src={image.capLogo} alt="alt"></img>
         </div>
-
         <div className="navbartop">
           <ul className="flex items-center gap-1 py-2 text-base" id="navbar1">
             {menuLinks?.map((menu, i) => (
