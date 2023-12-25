@@ -1,13 +1,34 @@
 // Feedback.jsx
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
+import { useMutation } from "@tanstack/react-query";
+import { submitFeedback } from "../../services/feedback";
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Feedback = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
     rating: 0,
+  });
+
+  const { mutate, isLoading } = useMutation({
+    mutationFn: ({ name, email, message, rating }) => {
+      return submitFeedback({ name, email, message, rating });
+    },
+    onSuccess: (data) => {
+      toast.success("Feedback submitted successfully");
+      console.log(data);
+      navigate("/User");
+    },
+    onError: (error) => {
+      toast.error(error?.message);
+      console.log(error);
+    },
   });
 
   const handleChange = (e) => {
@@ -15,24 +36,18 @@ const Feedback = () => {
   };
 
   const handleSubmit = async (e) => {
-    
     e.preventDefault();
-
-    try {
-      // Assuming you have a backend endpoint to handle feedback submission
-      await axios.post('/api/feedback', formData);
-      // Optionally, you can add logic to handle success (e.g., redirect)
-    } catch (error) {
-      // Handle error, e.g., display an error message
-      console.error('Error submitting feedback:', error);
-    }
+    mutate({ ...formData });
   };
 
   return (
     <div className="max-w-md mx-auto mt-8">
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="name"
+            className="block text-sm font-medium text-gray-700"
+          >
             Name
           </label>
           <input
@@ -47,7 +62,10 @@ const Feedback = () => {
           />
         </div>
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-gray-700"
+          >
             Email
           </label>
           <input
@@ -62,7 +80,10 @@ const Feedback = () => {
           />
         </div>
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="message"
+            className="block text-sm font-medium text-gray-700"
+          >
             Message
           </label>
           <textarea
@@ -76,7 +97,10 @@ const Feedback = () => {
           ></textarea>
         </div>
         <div>
-          <label htmlFor="rating" className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="rating"
+            className="block text-sm font-medium text-gray-700"
+          >
             Rating (0-5)
           </label>
           <input
@@ -94,7 +118,8 @@ const Feedback = () => {
         <div>
           <button
             type="submit"
-            className="w-full p-3 text-white bg-blue-500 rounded-md hover:bg-blue-700"
+            disabled={isLoading}
+            className="w-full p-3 text-white bg-blue-500 rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:block"
           >
             Submit Feedback
           </button>
