@@ -170,7 +170,6 @@
   }
 /********** Time line CSS END ********/
 
-
 .how-it-work h2{ 
     margin-top: 3.92%;
     font-size: 2.32225rem;
@@ -213,68 +212,39 @@
 }
 .card_content p{
    color: rgba(0, 0, 0, 0.60) !important;;
-}
-/* second card section end here */ 
+} 
+/******* how does it work css end here  ******/
+   
 
 
-/*********** Our Features & Services CSS *********/
-.how-it-work-2 {
+/*********** Our Features & Services CSS *********/ 
+.features {
     margin-top: 3.92%;
     font-size: 2.32225rem;
     color: #333;
     font-weight: 700; 
     text-align: center;
 }
-.work-2 h2 {
-    color: #FCC822 !important;
-}
-.work-2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 4rem;
-    margin-left: 11%;
-    margin-right: 11%;
-    /* border: 2px solid green; */
-}
-#work-2-2 {
-    margin-top: 8% !important;
-}
-.grid-item-2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.card-2 {
-    width: 350px;
-    height: 480px;
-    transition: 0.2s ease-in-out; 
-    border-radius: 6%;
-    border:  0.1px solid rgba(0, 0, 0, 0.2); 
-    overflow-y: hidden;
-} 
-.card-2:hover{
-    transition: 0.2s ease-in;
-    color: #FCC822 !important;
-    background-color: #fff !important;
-    border: 2px solid #FCC822 !important;
-}
 .card-content-2 {
-    padding: 20px;
+    width: 100%;
+    height: 100%;
+    padding: 20px 8px 8px 8px;
+    overflow: hidden;
+    /* border: 2px solid black; */
 }
 .card-content-2 h2 {
     margin-bottom: 10px; 
     font-weight: 700; 
     font-size: 20px;
-    justify-content: center !important;
-    align-items: center!important;
-    text-align: center !important;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     opacity: 0.8;
-    margin-top: 1.5rem !important;
+    margin-top: 1.5rem;
+    color: #FCC822;
 }
 .card-content-2 p {
-    font-size: 16px;
+   font-size: 16px;
    color: rgba(0, 0, 0, 0.60) !important;
    justify-content: center !important;
    align-items: center!important;
@@ -284,45 +254,92 @@
 
 /******* Features Images CSS *********/
 #feature-img-2 {
-    width: 82% !important;
+    width: 96% !important;
     justify-content: center !important;
     align-items: center!important;
     margin-top: 2.7rem !important;
     margin-left: 2rem !important;
 }
-#f-card-2 h2 {
-    margin-top: 12% !important;
+#cds-1 img {
+    margin-top: -1% !important;
+    margin-left: 3% !important;
+    margin-bottom: 18% !important;
 }
-#f-card-2 p {
-    padding-left: 0.3%;
-    padding-right: 0.3%;
+#cds-2 img {
+    width: 75% !important;
+    margin: 14% 0 24.5% 13% !important;
 }
-#f-card-3 h2 {
-    margin-top: 32% !important;
+#cds-3 img {
+    width: 94% !important;
+    margin: 18% 0% 32.5% 3% !important;
 }
-#f-card-3 img {
-    margin-top: 14% !important;
-    margin-left: 6.5% !important;
-    width: 92% !important;
+#cds-4 img {
+    width: 94% !important;
+    margin: -3% 0% 19% 4% !important;
 }
-#f-card-4 h2 {
-    margin-top: 3.2% !important;
+#cds-5 img {
+    width: 94% !important;
+    margin: 12% 0% 33% 2.2% !important;
 }
-#f-card-5 h2 {
-    margin-top: 21% !important;
+#cds-6 img {
+    width: 94% !important;
+    margin: 14% 0% 33% 2.2% !important;
 }
-#f-card-5 img {
-    margin-top: 14% !important;
-    margin-left: 1% !important;
-    width: 98% !important;
+
+/* new css for section card  start here  by deepesh*/ 
+.parent-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly; 
+    padding-bottom: 50px; 
+    margin-left: 6rem; 
+    margin-right: 6rem; 
+    margin-top: 1.5rem;
+} 
+.card_items{
+    height: 560px;
+    width: 26%;
+    background-color: white;
+    /* padding: 20px 0px 40px; */
+    margin-top: 50px; 
+    border-radius: 6%;
+    border:  1px solid rgba(0, 0, 0, 0.2); 
+
 }
-#f-card-6 h2 {
-    margin-top: 23% !important;
+@media screen and (max-width: 1000px) and (min-width: 700px){ 
+    /* .card_items{
+    width: 42%;
+    } 
+    .parent-box{
+        margin-left: 2rem; 
+        margin-right: 2rem; 
+    } */
+
+    
 }
-#f-card-6 img {
-    margin-top: 13% !important;
-    height: 100% !important;
+@media screen and (max-width: 700px) and (min-width: 500px){ 
+    /* .card_items{
+    width: 42%;
+    } 
+    .parent-box{
+        margin-left: 1rem; 
+        margin-right: 1rem; 
+    } */
 }
+@media screen and (max-width: 500px) and (min-width: 200px){ 
+    .card_items{
+    width: 94%;
+    } 
+    .parent-box{
+        margin-left: 1rem; 
+        margin-right: 1rem; 
+    }
+}
+/* new css for section card  start here by deepesh*/
+
+
+
+/* 
 
 
 /*********** Footer CSS *********/
@@ -433,9 +450,9 @@ footer {
     }  
     
     /*********** Our Features & Services CSS *********/
-    .card-2 {
-    width: 310px;
-    } 
+    .card-content-2 {
+        padding-top: 40px !important;
+    }
 }
 
 
@@ -478,6 +495,40 @@ footer {
 .card-content-2 p {
    font-size: 15px;
 }
+.parent-box {
+    margin-left: 0.5rem !important;
+    margin-right: 0.5rem !important;
+}
+.card_items {
+    height: 450px !important;
+    /* border: 2px solid black; */
+}
+#cds-1 img {
+    width: 90% !important;
+}
+#cds-2 img {
+    width: 80% !important;
+    margin-top: 14% !important;
+    margin-bottom: 14% !important;
+}
+#cds-3 img {
+    width: 90% !important;
+    margin-top: 24% !important;
+    margin-left: 6% !important;
+    margin-bottom: 22.5% !important;
+}
+#cds-4 img {
+    width: 90% !important;
+    margin: 6% 0% 13% 6% !important;
+}
+#cds-5 img {
+    width: 90% !important;
+    margin: 22% 0% 24% 4.5% !important;
+}
+#cds-6 img {
+    width: 90% !important;
+    margin: 21% 0% 27% 5% !important;
+}
 
 
 /*********** Footer CSS *********/
@@ -501,7 +552,7 @@ footer {
     font-size: 12px !important;
 }
 #footer-icon {
-    width: 1.1rem;
+    width: 1.3rem;
 }
 #footer-box-2 {
     margin-left: 5% !important;
@@ -530,24 +581,29 @@ footer {
         /* border: 2px solid black !important; */
     }
     #logo1 {
-        width: 10rem !important;
+        width: 9rem !important;
         flex-wrap: wrap !important;
         /* border: 2px solid black !important; */
     }
     .navbartop{
         margin-left: 0% !important;
         display: flex !important; 
-        font-size: 14px !important;
+        font-size: 10px !important;
+        margin-right: -3% !important;
         /* border: 2px solid black !important; */
     }
     .line {
         margin-left: 20px; 
         margin-right: 20px;
     }
+    #text1 {
+        font-size: 30px !important;
+        margin-top: 20% !important;
+    }
     
     /************* Main CSS **************/
     .home-img {
-        width: 70% !important;
+        width: 76% !important;
         margin-right: -15% !important;
         margin-top: -1.2rem !important;
         /* border: 2px solid black; */
@@ -572,10 +628,13 @@ footer {
 
 /***************** How does it Works? page *****************/ 
 .how-it-work h2 {
-    font-size: 2rem !important;
+    font-size: 1.8rem !important;
 }
     
 /*********** Our Features & Services CSS *********/
+.features {
+    font-size: 1.8rem !important;
+}
 .how-it-work-2 {
     font-size: 2rem !important;
 }
@@ -591,30 +650,66 @@ footer {
 .card-content-2 h2 {
     font-size: 19px;
 }
-
+.parent-box {
+    /* border: 2px solid black; */
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+}
+.card_items {
+    width: 42% !important;
+}
+#cds-1 img {
+    width: 100% !important;
+    margin: 4% 0% 22% 0% !important;
+}
+#cds-2 img {
+    width: 90% !important;
+    margin: 18% 0% 19% 5% !important;
+}
+#cds-3 img {
+    margin: 20% 0% 40% 4% !important;
+}
+#cds-4 img {
+    margin: 13% 0% 16% 4% !important;
+}
+#cds-5 img {
+    margin: 18% 0% 36% 3% !important;
+}
+#cds-6 img {
+    margin: 17% 0% 39.5% 3% !important;
+}
 
 /**************** Footer CSS ******************/
 /* footer section start here */
 .footerBox {
-    margin-left: 0px;
-    margin-right: 0px;
+    height: 16rem !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
 }
 .section1 {
+    /* border: 2px solid black; */
     flex-wrap: wrap !important;
+    height: 90% !important;
+}
+#footerlogo {
+    width: 8rem !important;
 }
 .section1 h3 {
     font-size: 16px;
     font-weight: 700;
 }
+#footer-icon {
+    width: 1.3rem !important;
+}
 #footer-box-1 {
     margin-left: 2% !important;
 }
 #footer-box-2 {
-    margin-left: 2.5% !important;
+    margin-left: 1% !important;
 }
 #footer-box-3 {
-    margin-right: 2% !important;
-    width: 40% !important;  
+    margin-right: 1% !important;
+    width: 35% !important;  
     /* border:  2px solid black; */
 }
 /* footer section styling end  here */
@@ -622,11 +717,11 @@ footer {
 
 
 /********* Media Query for Phone *********/
-@media screen and (max-width: 723px) and (min-width: 640px) {
-
+@media screen and (max-width: 723px) and (min-width: 550px) {
+     
 }
 
 
-@media screen and (max-width: 640px) and (min-width: 200px) {
+@media screen and (max-width: 550px) and (min-width: 200px) {
 
 }

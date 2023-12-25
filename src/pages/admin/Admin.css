@@ -1,0 +1,15 @@
+
+.AdminPage{
+    height: "full";
+}  
+.sections{
+  width: 20rem;   
+  height: 60rem;
+  background-color: black; 
+  font-size: 2rem;
+  color: white; 
+
+} 
+.adminSections ul li{
+  font-size: 35px;
+}
