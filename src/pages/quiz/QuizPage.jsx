@@ -18,7 +18,7 @@ const QuizPage = () => {
   const [questionNumber, setQuestionNumber] = useState(0);
   const [QuestionsArr, setQuestionsArr] = useState([]);
   const [optionSelected, setOptionSelected] = useState("");
-
+  const [isLoading, setIsLoading] = useState(true);
   const { quizId } = useParams();
   // console.log("quizId : ", quizId);
 
@@ -28,6 +28,7 @@ const QuizPage = () => {
       // console.log("Quiz Data : ", data);
       // console.log("data?.questions : ", data?.questions);
       console.log("Arrived res : ", data);
+      setIsLoading(false);
       setQuestionsArr(data?.questions);
     };
     fetchQuiz();
@@ -97,49 +98,53 @@ const QuizPage = () => {
 
   return (
     <div>
-      {QuestionsArr && (
-        <div>
+      {isLoading ? (
+        <h2>Loading </h2>
+      ) : (
+        QuestionsArr && (
           <div>
-            <OneQuestionApper
-              question={QuestionsArr[questionNumber]?.text}
-              questionNumber={questionNumber + 1}
-              totalQuestions={QuestionsArr.length}
-              options={QuestionsArr[questionNumber]?.options}
-              selected={QuestionsArr[questionNumber]?.selected}
-              setSelected={QuestionsArr[questionNumber]?.setSelected}
-              correct={QuestionsArr[questionNumber]?.correct}
-              setQuestionNumber={setQuestionNumber}
-              setQuestions={setQuestionsArr}
-              setOptionSelected={setOptionSelected}
-            />
-
             <div>
-              <Timer time={1} submitHandler={submitHandler} />
-              <QuestionAttempBar
-                questionNumber={questionNumber}
-                setquestionNumber={setQuestionNumber}
+              <OneQuestionApper
+                question={QuestionsArr[questionNumber]?.text}
+                questionNumber={questionNumber + 1}
+                totalQuestions={QuestionsArr.length}
+                options={QuestionsArr[questionNumber]?.options}
+                selected={QuestionsArr[questionNumber]?.selected}
+                setSelected={QuestionsArr[questionNumber]?.setSelected}
+                correct={QuestionsArr[questionNumber]?.correct}
+                setQuestionNumber={setQuestionNumber}
+                setQuestions={setQuestionsArr}
+                setOptionSelected={setOptionSelected}
               />
+
+              <div>
+                <Timer time={1} submitHandler={submitHandler} />
+                <QuestionAttempBar
+                  questionNumber={questionNumber}
+                  setquestionNumber={setQuestionNumber}
+                />
+              </div>
+            </div>
+            <div>
+              <button
+                onClick={() => prevHandler()}
+                disabled={questionNumber <= 0 || isPending}
+              >
+                Previous
+              </button>
+              <button onClick={() => submitHandler()}>Submit</button>
+              <button
+                onClick={() => {
+                  const isNext = questionNumber !== QuestionsArr.length - 1;
+                  nextHandler({ isNext });
+                }}
+                disabled={isPending}
+              >
+                {questionNumber === QuestionsArr.length - 1 ? "Save" : "Next"}
+              </button>
             </div>
           </div>
-          <div>
-            <button
-              onClick={() => prevHandler()}
-              disabled={questionNumber <= 0 || isPending}
-            >
-              Previous
-            </button>
-            <button onClick={() => submitHandler()}>Submit</button>
-            <button
-              onClick={() => {
-                const isNext = questionNumber !== QuestionsArr.length - 1;
-                nextHandler({ isNext });
-              }}
-              disabled={isPending}
-            >
-              {questionNumber === QuestionsArr.length - 1 ? "Save" : "Next"}
-            </button>
-          </div>
-        </div>
+        )
       )}
     </div>
   );

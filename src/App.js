@@ -9,7 +9,7 @@ import UserPage from "./pages/user/UserPage.jsx";
 import Admin from "./pages/admin/Admin.jsx";
 import EditQuiz from "./pages/admin/EditQuiz.jsx";
 import QuizPage from "./pages/quiz/QuizPage.jsx";
-import Result from "./Components/User/quiz/Result.jsx";
+import Result from "./pages/user/Result.jsx";
 
 function App() {
   return (

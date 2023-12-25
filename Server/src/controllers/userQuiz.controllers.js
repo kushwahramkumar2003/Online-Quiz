@@ -179,17 +179,22 @@ exports.finishQuiz = asyncHandler(async (req, res) => {
 
   console.log("Unanswered questions:", unansweredQuestionIds.length);
 
-  if (unansweredQuestionIds?.length > 0) {
-    return res.status(400).json({
-      message: "Quiz cannot be finished until all questions are answered",
-    });
-  }
+  // if (unansweredQuestionIds?.length > 0) {
+  //   return res.status(400).json({
+  //     message: "Quiz cannot be finished until all questions are answered",
+  //   });
+  // }
 
   // Calculate the result
   let score = 0;
 
+  const userAnswersMap = new Map();
+
   for (const [questionId, userAnswer] of userQuiz.answers.entries()) {
+    userAnswersMap.set(questionId, userAnswer);
+
     const question = await Question.findById(questionId);
+
     if (question && question.answer === userAnswer) {
       score++;
     }
@@ -200,14 +205,27 @@ exports.finishQuiz = asyncHandler(async (req, res) => {
   const totalQuestions = allQuestionIds.length;
   const percentageScore = (score / totalQuestions) * 100;
 
+  const enm = ["Poor", "Average", "Good", "Excellent"];
+
+  const performance =
+    percentageScore >= 75
+      ? enm[3]
+      : percentageScore >= 50
+        ? enm[2]
+        : percentageScore >= 25
+          ? enm[1]
+          : enm[0];
+
   // Save the result
+
   const quizResult = new QuizResult({
     quiz: quizId,
     user: req.user._id,
     score,
-
     totalQuestions,
-    percentageScore,
+    percentage: percentageScore,
+    answers: userAnswersMap,
+    performance,
   });
 
   await quizResult.save();
