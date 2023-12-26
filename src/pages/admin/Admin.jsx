@@ -24,7 +24,6 @@ const Admin = () => {
   // const { data } = useQuery();
 
   useEffect(() => {
-    // console.log("User State", userState.userInfo.role);
     const role = userState?.userInfo?.user?.role;
 
     if (!role) {

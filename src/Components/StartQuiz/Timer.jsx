@@ -10,7 +10,7 @@ const Timer = ({ time, submitHandler }) => {
 
     return () => {
       clearInterval(intervalId);
-      submitHandler();
+      // submitHandler();
     };
   }, []);
 
