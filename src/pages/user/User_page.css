@@ -1,0 +1,29 @@
+/************* Navbar CSS **************/
+#nav1 { 
+    margin-left: 90px;
+    margin-right: 90px;
+    margin-top: 1.3rem;
+}
+#logo1 {
+    width: 12rem !important;
+    cursor: pointer !important;
+}
+.navbartop{
+    margin-left: 32rem;
+}
+
+#links1 {
+    margin-left: 0.8rem;
+    color: rgba(0, 0, 0, 0.60) ;
+}
+#links1:hover {
+    transition: ease-in-out .2s;
+    color: #FCC822;
+}
+.line {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.60) ; 
+    opacity: 0.2; 
+    margin-left: 65px; 
+    margin-right: 65px;
+}
+
