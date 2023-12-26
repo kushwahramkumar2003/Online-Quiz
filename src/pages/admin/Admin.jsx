@@ -52,9 +52,13 @@ const Admin = () => {
     <> 
  
   {/* this code written by deepesh */}  
+   <div className="admin-page"> 
 
      <div className="Admin-manu"> 
-     
+         <div className="Grad-logo">  
+         <img src={images.logo} alt="MyProfile" id="Admin-icon"></img>
+         </div> 
+
        <div className="admin-box"> 
        <img src={images.MyProfile} alt="MyProfile" id="Admin-icon"></img>
        <p>My Profile</p> 
@@ -86,7 +90,27 @@ const Admin = () => {
        <p>Logout</p> 
        </div>
 
+     </div>  
+ 
+   <div className="admin-right-page"> 
+
+     <div className="admin-navbar">  
+
+       <div className="admin-name">  
+           <p>Admin</p>
+       </div> 
+       <div className="admin-logo-right">
+       <img src={images.MyProfile} alt="MyProfile" id="Admin-icon"></img> 
+       </div> 
+       
+     </div>  
+
+     <div className="admin-content"> 
      </div> 
+
+     </div> 
+
+     </div>
 
     
 

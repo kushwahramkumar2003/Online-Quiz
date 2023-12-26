@@ -1,10 +1,46 @@
 
 .AdminPage{
     height: "full";
+} 
+.admin-page{
+  display: flex;
 }  
+.admin-navbar{ 
+  display: flex; 
+  justify-content: end;   
+  align-items: center;
+  margin-right: 5rem;
+  height: 5rem; 
+  width: 78rem; 
+  border-bottom: 2px solid black;
+}  
+.admin-name{ 
+   margin-right: 5rem;
+   width: 10rem; 
+   align-items: center; 
+   background-color: #DBDADA; 
+   border-radius: 10px; 
+   
+} 
+.admin-name p{
+  font-size: 25px; 
+  font-family: serif;  
+  align-items: center;
+  
+}
+.admin-logo-right img{
+  width: 3rem;
+}
+.admin-content{
+  height: 20rem; 
+  width: 60rem;   
+  margin-left: 10rem;
+  margin-top: 10rem; 
+  border: 2px solid black;
+} 
 .Admin-manu{
   height: 50rem; 
-  width: 12rem;
+  width: 13rem;
   background-color: #DBDADA;
 } 
 .admin-box{
@@ -17,7 +53,10 @@
   margin-left: 0.5rem; 
   font-size: 18px; 
   font-family: serif;
-} 
+}  
+.Grad-logo{
+  margin-top: 0.2rem;
+}
 
 .line2{ 
 
