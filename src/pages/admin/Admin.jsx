@@ -7,6 +7,10 @@ import QuizCard from "../../Components/Admin/QuizCard";
 import { IoMdAdd } from "react-icons/io";
 import Modal from "../../Components/modal/Modal";
 import CreateNewQuiz from "../../Components/Admin/CreateNewQuiz";
+import   "./Admin.css";  
+import images from "../../constants/images.js";
+
+
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -50,22 +54,44 @@ const Admin = () => {
  
   {/* this code written by deepesh */}  
 
+     <div className="Admin-manu"> 
+     
+       <div className="admin-box"> 
+       <img src={images.MyProfile} alt="MyProfile" id="Admin-icon"></img>
+       <p>My Profile</p> 
+       </div> 
 
-     <div className="AdminPage">  
+       <div className="admin-box"> 
+       <img src={images.CreateQuiz} alt="CreateQuiz" id="Admin-icon"></img>
+       <p>Create Quiz</p> 
+       </div> 
 
-     <div className="sections"> 
-      <ul className="adminSections"> 
-        <li>Logo</li>
-        <li>My Profile</li>
-        <li>Create Quiz</li>
-        <li>Edit Quiz</li>
-        <li>Help</li> 
-        <li>Settings</li>
-        <li>Logout</li>
-      </ul>
+       <div className="admin-box"> 
+       <img src={images.Update} alt="updates" id="Admin-icon"></img>
+       <p>Edit Quiz</p> 
+       </div>
+
+       <div className="admin-box"> 
+       <img src={images.Help} alt="help" id="Admin-icon"></img>
+       <p>Help</p> 
+       </div>
+
+       <div className="admin-box"> 
+       <img src={images.Setting} alt="setting" id="Admin-icon"></img>
+       <p>Settings</p> 
+       </div> 
+
+
+       <div className="admin-box"> 
+       <img src={images.Logout} alt="logout" id="Admin-icon"></img>
+       <p>Logout</p> 
+       </div>
+
      </div> 
 
-     </div>  
+    
+
+     <div className="line2"></div>
 
      {/* this code written by deepesh */}  
 

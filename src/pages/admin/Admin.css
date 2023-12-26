@@ -2,14 +2,24 @@
 .AdminPage{
     height: "full";
 }  
-.sections{
-  width: 20rem;   
-  height: 60rem;
-  background-color: black; 
-  font-size: 2rem;
-  color: white; 
-
+.Admin-manu{
+  height: 50rem; 
+  width: 12rem;
+  background-color: #DBDADA;
 } 
-.adminSections ul li{
-  font-size: 35px;
+.admin-box{
+  display: flex;  
+  margin-top: 1.5rem; 
+  margin-left: 1rem;
+  
+} 
+.admin-box p{
+  margin-left: 0.5rem; 
+  font-size: 18px; 
+  font-family: serif;
+} 
+
+.line2{ 
+
+  border-bottom: 2px solid black;
 }
