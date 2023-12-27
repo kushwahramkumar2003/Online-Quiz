@@ -31,15 +31,28 @@
 .admin-logo-right img{
   width: 3rem;
 }
-.admin-content{
-  height: 20rem; 
-  width: 60rem;   
-  margin-left: 10rem;
-  margin-top: 10rem; 
-  border: 2px solid black;
+.admin-content{ 
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  height: 32rem; 
+  width: 74rem;   
+  margin-left: 3rem;
+  margin-top: 5rem; 
+  box-shadow: 3px 5px 5px rgba(1, 1, 1, 0.4);
+  background: #dcdadada; 
+  
+}  
+
+.create-quiz-bt{
+   margin-left: 8rem;
 } 
+.quiz-create-box{ 
+  box-shadow: 3px 5px 5px rgba(1, 1, 1, 0.4);
+  background: #DBDADA;
+}
 .Admin-manu{
-  height: 50rem; 
+  height: 46.3rem; 
   width: 13rem;
   background-color: #DBDADA;
 } 

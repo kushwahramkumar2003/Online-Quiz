@@ -105,7 +105,40 @@ const Admin = () => {
        
      </div>  
 
-     <div className="admin-content"> 
+     <div className="admin-content">  
+     <div className="quiz-create-box"> 
+     <h2>All Quizes</h2>
+       
+      <div>
+        {quiz.map((q) => {
+          return (
+            <QuizCard
+              title={q.title}
+              category={q.category}
+              description={q.description}
+              times_taken={q.times_taken}
+              quiz_id={q._id}
+              questions={q.questions.length}
+              key={q._id}
+              setRefresh={setRefresh}
+            />
+          );
+        })} 
+       
+      </div>
+      {isOpen && (
+        <Modal setIsOpen={setIsOpen}>
+          <CreateNewQuiz setIsOpen={setIsOpen} />
+        </Modal>
+      )}
+
+      <button
+        className="create-quiz-bt bg-red-500 rounded-full"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <IoMdAdd className="w-auto h-10 text-white" />
+      </button> 
+      </div>
      </div> 
 
      </div> 
@@ -119,7 +152,7 @@ const Admin = () => {
      {/* this code written by deepesh */}  
 
 
-      <h2>All Quizes</h2>
+      {/* <h2>All Quizes</h2>
       <div>
         {quiz.map((q) => {
           return (
@@ -147,7 +180,8 @@ const Admin = () => {
         onClick={() => setIsOpen(!isOpen)}
       >
         <IoMdAdd className="w-auto h-10 text-white" />
-      </button>
+      </button> */} 
+
     </>
   );
 };
