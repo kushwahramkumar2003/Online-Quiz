@@ -26,13 +26,18 @@ const Quizes = () => {
         {/* <h3>  </h3>
         <p>  Quiz Experience! </p> */}
 
-        <h2> Unleash Your Knowledge, Ignite Your Curiosity: </h2>
+        <h2> Unleash Your Knowledge, Ignite Your Curiosity </h2>
         <h3> Elevate Learning with Our Dynamic</h3>
         <h3> Quiz Experience! </h3>
      </div>
 
+    <div className="quiz-message">
+      <p> Pick a category, quiz your way to knowledge! </p>
+    </div>
+
      <div className="quiz-content">
       <div className="quiz-box"> 
+
        {data &&
         data.map((quiz) => (
           <QuizCard
@@ -45,6 +50,7 @@ const Quizes = () => {
             quizId={quiz._id}
           />
         ))}
+
       </div>
      </div>
 
