@@ -116,7 +116,6 @@ const QuizPage = () => {
               <OneQuestionApper
                 question={QuestionsArr[questionNumber]?.text}
                 questionNumber={questionNumber + 1}
-
                 totalQuestions={QuestionsArr.length}
                 options={QuestionsArr[questionNumber]?.options}
                 selected={QuestionsArr[questionNumber]?.selected}
@@ -127,13 +126,14 @@ const QuizPage = () => {
                 setOptionSelected={setOptionSelected}
               />
 
-              <div>
+              <div className="quiz-Timer">
                 <Timer time={1} submitHandler={submitHandler} />
               </div>
             
 
-            <div>
+            <div className="quiz-btns">
               <button
+                className="prev-btn"
                 onClick={() => prevHandler()}
                 disabled={questionNumber <= 0 || isPending}
               >
@@ -141,6 +141,7 @@ const QuizPage = () => {
               </button>
 
               <button
+                className="next-btn"
                 onClick={() => {
                   const isNext = questionNumber !== QuestionsArr.length - 1;
                   nextHandler({ isNext });
@@ -149,6 +150,12 @@ const QuizPage = () => {
               >
                 {questionNumber === QuestionsArr.length - 1 ? "Save" : "Next"}
               </button>
+            </div>
+
+            <div className="submit-quiz-btn">
+              <button 
+                className="submit-btn"
+                onClick={() => submitHandler()}>Submit</button>
             </div>
           </div>
 
@@ -159,8 +166,6 @@ const QuizPage = () => {
                 questionNumber={questionNumber}
                 setquestionNumber={setQuestionNumber}
               />
-
-            <button onClick={() => submitHandler()}>Submit</button>
           </div>
 
 
