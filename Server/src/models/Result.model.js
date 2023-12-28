@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const User = require("./User.model.js");
 const Feedback = require("./Feedback.model.js");
+// const Quiz = require("./Quiz.model.js");
 const resultSchema = new mongoose.Schema(
   {
     user: {
@@ -12,7 +12,6 @@ const resultSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Quiz",
       required: true,
-      required: true,
     },
     score: {
       type: Number,
@@ -20,11 +19,15 @@ const resultSchema = new mongoose.Schema(
       min: 0,
     },
     answers: {
-      type: [String],
+      type: Map,
       required: true,
     },
     percentage: {
       type: Number,
+    },
+    performance: {
+      type: String,
+      enum: ["Poor", "Average", "Good", "Excellent"],
     },
   },
   {
@@ -34,12 +37,17 @@ const resultSchema = new mongoose.Schema(
 );
 
 // Update the user's score before saving
+
 // resultSchema.pre("save", async function (next) {
+//   const Quiz = mongoose.model("Quiz");
+
 //   const result = this;
 //   const user = await User.findById(result.user);
 //   user.score += result.score;
+//   const quiz = await Quiz.findById(this.quiz).populate("questions").exec();
 //   await user.save();
-//   this.percentage = (this.score / this.quiz.questions.length) * 100;
+//   console.log("quiz : ", quiz);
+//   this.percentage = (this.score / quiz.questions.length) * 100;
 //   next();
 // });
 
@@ -57,10 +65,10 @@ const resultSchema = new mongoose.Schema(
 // });
 
 // Calculate the percentage of the score
-// resultSchema.methods.calculatePercentage = function () {
-//   const result = this;
-//   return (result.score / result.quiz.questions.length) * 100;
-// };
+resultSchema.methods.calculatePercentage = function () {
+  const result = this;
+  return (result.score / result.quiz.questions.length) * 100;
+};
 
 // Find the results by user and quiz
 
