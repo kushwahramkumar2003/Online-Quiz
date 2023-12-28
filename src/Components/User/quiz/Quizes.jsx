@@ -23,8 +23,6 @@ const Quizes = () => {
     <div className="Main-quiz">
 
      <div className="tag-line"> 
-        {/* <h3>  </h3>
-        <p>  Quiz Experience! </p> */}
 
         <h2> Unleash Your Knowledge, Ignite Your Curiosity </h2>
         <h3> Elevate Learning with Our Dynamic</h3>
