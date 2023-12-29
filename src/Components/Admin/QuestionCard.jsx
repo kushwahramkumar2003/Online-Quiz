@@ -55,9 +55,9 @@ const QuestionCard = ({
       <div>
         <div>
           <h3>{question}</h3>
-          <ul>
+          <ul className="text-green-800 font-semibold ml-5">
             {options.map((option, index) => {
-              return <li key={questionId + index}>{option}</li>;
+              return <li key={questionId + index} className="text-green-800 font-semibold ml-5">{option}</li>;
             })}
           </ul>
           <p>Answer: {answer}</p>
