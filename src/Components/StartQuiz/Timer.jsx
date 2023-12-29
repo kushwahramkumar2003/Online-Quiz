@@ -27,9 +27,9 @@ const Timer = ({ time, submitHandler }) => {
   };
 
   return (
-    <div>
-      <h1>Timer</h1>
-      <p>{formatTime(seconds)}</p>
+    <div className="flex">
+      <h1> Time remaining : &nbsp; </h1>
+      <p> {formatTime(seconds)}</p>
     </div>
   );
 };

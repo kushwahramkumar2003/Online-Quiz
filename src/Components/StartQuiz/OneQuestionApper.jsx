@@ -1,4 +1,5 @@
 import React from "react";
+import "./One_question_apper.css";
 
 const OneQuestionApper = ({
   question,
@@ -24,8 +25,9 @@ const OneQuestionApper = ({
 
   return (
     <div>
-      <h2>Question {questionNumber}</h2>
-      <p>{question}</p>
+      <p className="quiz-questn"> Question {questionNumber}</p>
+      <p className="question-show">{question}</p>
+      
       <ul>
         {options?.map((option, index) => (
           <li key={index} onClick={() => handleOptionClick(option)}>
