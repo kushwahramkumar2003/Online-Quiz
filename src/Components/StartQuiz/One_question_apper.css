@@ -1,0 +1,15 @@
+.quiz-questn {
+    color: #666865;
+    text-align: center;
+    font-weight: 600;
+    font-size: 22px;
+    margin-top: 2%;
+}
+.question-show {
+    flex-wrap: wrap;
+    /* border: 2px solid black; */
+    font-size: 17px;
+    margin-top: 4.2%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
