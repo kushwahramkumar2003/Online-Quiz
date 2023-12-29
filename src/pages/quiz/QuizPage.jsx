@@ -12,6 +12,7 @@ import {
   submitQuiz,
 } from "../../services/userQuiz";
 import { toast } from "react-hot-toast";
+import "./Quiz_page.css";
 
 const QuizPage = () => {
   const navigate = useNavigate();
@@ -99,13 +100,20 @@ const QuizPage = () => {
   };
 
   return (
-    <div>
+    <div className="main-quiz-head">
       {isLoading ? (
-        <h2>Loading... </h2>
+        <h2 className="head">Loading </h2>
       ) : (
         QuestionsArr && (
-          <div>
-            <div>
+      <div>
+
+            <p className="main-heading-Quiz"> OBJECTIVE QUESTIONS</p>
+            <div className="bottom-line"></div>
+        
+         <div className="main_2-quiz"> 
+            
+
+            <div className="quiz-items">
               <OneQuestionApper
                 question={QuestionsArr[questionNumber]?.text}
                 questionNumber={questionNumber + 1}
@@ -119,23 +127,22 @@ const QuizPage = () => {
                 setOptionSelected={setOptionSelected}
               />
 
-              <div>
+              <div className="quiz-Timer">
                 <Timer time={1} submitHandler={submitHandler} />
-                <QuestionAttempBar
-                  questionNumber={questionNumber}
-                  setquestionNumber={setQuestionNumber}
-                />
               </div>
-            </div>
-            <div>
+            
+
+            <div className="quiz-btns">
               <button
+                className="prev-btn"
                 onClick={() => prevHandler()}
                 disabled={questionNumber <= 0 || isPending}
               >
                 Previous
               </button>
-              <button onClick={() => submitHandler()}>Submit</button>
+
               <button
+                className="next-btn"
                 onClick={() => {
                   const isNext = questionNumber !== QuestionsArr.length - 1;
                   nextHandler({ isNext });
@@ -145,7 +152,27 @@ const QuizPage = () => {
                 {questionNumber === QuestionsArr.length - 1 ? "Save" : "Next"}
               </button>
             </div>
+
+            <div className="submit-quiz-btn">
+              <button 
+                className="submit-btn"
+                onClick={() => submitHandler()}>Submit</button>
+            </div>
           </div>
+
+
+
+          <div className="question-bar">
+              <QuestionAttempBar
+                questionNumber={questionNumber}
+                setquestionNumber={setQuestionNumber}
+              />
+          </div>
+
+
+          </div>
+        
+      </div>
         )
       )}
     </div>

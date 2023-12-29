@@ -35,10 +35,10 @@ const QuizCard = ({
     <>
       <div className="card">
         <div className="card-body">
-          <h5 className="card-title">{title}</h5>
-          <h6 className="mb-2 card-subtitle text-muted">{category}</h6>
-          <p className="card-text">{description}</p>
-          <p className="card-text">Times taken: {times_taken}</p>
+          <h5 className="card-title">Tittle : {title}</h5>
+          <h6 className="mb-2 card-subtitle text-muted">Category : {category}</h6>
+          <p className="card-text">Description : {description}</p>
+          <p className="card-text">Time taken: {times_taken}</p>
           <p className="card-text">Questions: {questions}</p>
 
           <Link to={`/quiz/edit/${quiz_id}`}>

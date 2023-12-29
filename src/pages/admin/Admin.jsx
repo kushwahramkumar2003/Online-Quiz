@@ -7,6 +7,10 @@ import QuizCard from "../../Components/Admin/QuizCard";
 import { IoMdAdd } from "react-icons/io";
 import Modal from "../../Components/modal/Modal";
 import CreateNewQuiz from "../../Components/Admin/CreateNewQuiz";
+import   "./Admin.css";  
+import images from "../../constants/images.js";
+
+
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -20,9 +24,7 @@ const Admin = () => {
   // const { data } = useQuery();
 
   useEffect(() => {
-    const role = userState?.userInfo?.role;
-
-    console.log("userState : ", userState);
+    const role = userState?.userInfo?.user?.role;
 
     if (!role) {
       navigate("/");
@@ -47,26 +49,66 @@ const Admin = () => {
   //   fetchData();
   // }, [isOpen, refresh]);
   return (
-    <>
-      {/* this code written by deepesh */}
+    <> 
+ 
+  {/* this code written by deepesh */}  
+   <div className="admin-page"> 
 
-      <div className="AdminPage">
-        <div className="sections">
-          <ul className="adminSections">
-            <li>Logo</li>
-            <li>My Profile</li>
-            <li>Create Quiz</li>
-            <li>Edit Quiz</li>
-            <li>Help</li>
-            <li>Settings</li>
-            <li>Logout</li>
-          </ul>
-        </div>
-      </div>
+     <div className="Admin-manu"> 
+         <div className="Grad-logo">  
+         <img src={images.logo} alt="MyProfile" id="Admin-icon"></img>
+         </div> 
 
-      {/* this code written by deepesh */}
+       <div className="admin-box"> 
+       <img src={images.MyProfile} alt="MyProfile" id="Admin-icon"></img>
+       <p>My Profile</p> 
+       </div> 
 
-      <h2>All Quizes</h2>
+       <div className="admin-box"> 
+       <img src={images.CreateQuiz} alt="CreateQuiz" id="Admin-icon"></img>
+       <p>Create Quiz</p> 
+       </div> 
+
+       <div className="admin-box"> 
+       <img src={images.Update} alt="updates" id="Admin-icon"></img>
+       <p>Edit Quiz</p> 
+       </div>
+
+       <div className="admin-box"> 
+       <img src={images.Help} alt="help" id="Admin-icon"></img>
+       <p>Help</p> 
+       </div>
+
+       <div className="admin-box"> 
+       <img src={images.Setting} alt="setting" id="Admin-icon"></img>
+       <p>Settings</p> 
+       </div> 
+
+
+       <div className="admin-box"> 
+       <img src={images.Logout} alt="logout" id="Admin-icon"></img>
+       <p>Logout</p> 
+       </div>
+
+     </div>  
+ 
+   <div className="admin-right-page"> 
+
+     <div className="admin-navbar">  
+
+       <div className="admin-name">  
+           <p>Admin</p>
+       </div> 
+       <div className="admin-logo-right">
+       <img src={images.User} alt="User" id="Admin-logo"></img> 
+       </div> 
+       
+     </div>  
+
+     <div className="admin-content">  
+     <div className="quiz-create-box"> 
+     <h2>All Quizes</h2>
+       
       <div>
         {quiz.map((q) => {
           return (
@@ -81,7 +123,8 @@ const Admin = () => {
               setRefresh={setRefresh}
             />
           );
-        })}
+        })} 
+       
       </div>
       {isOpen && (
         <Modal setIsOpen={setIsOpen}>
@@ -90,11 +133,23 @@ const Admin = () => {
       )}
 
       <button
-        className="bg-red-500 rounded-full"
+        className="create-quiz-bt bg-red-500 rounded-full"
         onClick={() => setIsOpen(!isOpen)}
       >
         <IoMdAdd className="w-auto h-10 text-white" />
-      </button>
+      </button> 
+      </div>
+     </div> 
+
+     </div> 
+
+     </div>
+
+    
+
+     <div className="line2"></div>
+
+     {/* this code written by deepesh */}  
     </>
   );
 };
