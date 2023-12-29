@@ -9,15 +9,16 @@
   display: flex; 
   justify-content: end;   
   align-items: center;
-  margin-right: 5rem;
+  margin-right: 12rem; 
+  margin-left: 12px;
   height: 5rem; 
   width: 78rem; 
-  border-bottom: 2px solid black;
+  border-bottom: 0.5px solid black;
 }  
 .admin-name{ 
    margin-right: 5rem;
-   width: 10rem; 
-   align-items: center; 
+   width: 8rem; 
+   text-align: center;
    background-color: #DBDADA; 
    border-radius: 10px; 
    
@@ -28,19 +29,21 @@
   align-items: center;
   
 }
-.admin-logo-right img{
-  width: 3rem;
+.admin-logo-right img{ 
+  width: 1.8rem;
 }
 .admin-content{ 
   display: flex; 
   justify-content: center; 
   align-items: center;
-  height: 32rem; 
+  height: 37rem; 
   width: 74rem;   
   margin-left: 3rem;
-  margin-top: 5rem; 
-  box-shadow: 3px 5px 5px rgba(1, 1, 1, 0.4);
-  background: #dcdadada; 
+  margin-top: 2rem; 
+  /* box-shadow: 3px 5px 5px rgba(1, 1, 1, 0.4);
+  background: #dcdadada;  */ 
+  border: 1px solid black; 
+  border-radius: 10px;
   
 }  
 
@@ -53,22 +56,26 @@
 }
 .Admin-manu{
   height: 46.3rem; 
-  width: 13rem;
+  width: 17rem;
   background-color: #DBDADA;
 } 
 .admin-box{
   display: flex;  
-  margin-top: 1.5rem; 
-  margin-left: 1rem;
+  margin-top: 2.5rem; 
+  margin-left: 2rem;
   
 } 
 .admin-box p{
-  margin-left: 0.5rem; 
+  margin-left: 1rem; 
   font-size: 18px; 
   font-family: serif;
 }  
 .Grad-logo{
-  margin-top: 0.2rem;
+  margin-top: 1.5rem;
+} 
+.Grad-logo img{
+  width: 13rem; 
+  margin-left: 6px;
 }
 
 .line2{ 

@@ -100,7 +100,7 @@ const Admin = () => {
            <p>Admin</p>
        </div> 
        <div className="admin-logo-right">
-       <img src={images.MyProfile} alt="MyProfile" id="Admin-icon"></img> 
+       <img src={images.User} alt="User" id="Admin-logo"></img> 
        </div> 
        
      </div>  
@@ -150,38 +150,6 @@ const Admin = () => {
      <div className="line2"></div>
 
      {/* this code written by deepesh */}  
-
-
-      {/* <h2>All Quizes</h2>
-      <div>
-        {quiz.map((q) => {
-          return (
-            <QuizCard
-              title={q.title}
-              category={q.category}
-              description={q.description}
-              times_taken={q.times_taken}
-              quiz_id={q._id}
-              questions={q.questions.length}
-              key={q._id}
-              setRefresh={setRefresh}
-            />
-          );
-        })}
-      </div>
-      {isOpen && (
-        <Modal setIsOpen={setIsOpen}>
-          <CreateNewQuiz setIsOpen={setIsOpen} />
-        </Modal>
-      )}
-
-      <button
-        className="bg-red-500 rounded-full"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <IoMdAdd className="w-auto h-10 text-white" />
-      </button> */} 
-
     </>
   );
 };
