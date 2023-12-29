@@ -1,11 +1,25 @@
 import axios from "axios";
 
-export const createNewQuiz = async ({ title, description, category }) => {
+export const createNewQuiz = async ({
+  title,
+  description,
+  category,
+  duration,
+  level,
+}) => {
+  console.log("Title", title);
+  console.log("Description", description);
+  console.log("Category", category);
+  console.log("Duration", duration);
+  console.log("Level", level);
+
   try {
     const { data } = await axios.post("/api/v1/quiz/create", {
       title,
       description,
       category,
+      duration,
+      level,
     });
     return data;
   } catch (error) {
@@ -47,6 +61,7 @@ export const addQuestionInQuiz = async ({
 export const getAllQuizs = async () => {
   try {
     const { data } = await axios.get(`/api/v1/quiz`);
+    console.log("All Quezzes", data);
     return data;
   } catch (error) {
     if (error.response) {
@@ -125,6 +140,20 @@ export const deleteQuestionByQuizId = async ({ quizId, questionId }) => {
     const { data } = await axios.delete(
       `/api/v1/quiz/${quizId}/question/${questionId}/delete`
     );
+    return data;
+  } catch (error) {
+    if (error.response) {
+      throw new Error(error.response.data.message);
+    }
+    throw new Error(error.message);
+  }
+};
+
+export const publishQuiz = async ({ quizId,publish }) => {
+  try {
+    const { data } = await axios.put(`/api/v1/quiz/${quizId}/publish`, {
+      publish
+    });
     return data;
   } catch (error) {
     if (error.response) {
