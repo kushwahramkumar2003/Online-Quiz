@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from "react";
 
 const Timer = ({ time, submitHandler }) => {
-  const [seconds, setSeconds] = useState(time * 60 * 60);
+  const [seconds, setSeconds] = useState(time * 60);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setSeconds((prevSeconds) => prevSeconds - 1);
+      setSeconds((prevSeconds) => {
+        if (prevSeconds > 0) {
+          return prevSeconds - 1;
+        } else {
+          clearInterval(intervalId);
+          // submitHandler();
+          return 0;
+        }
+      });
     }, 1000);
 
     return () => {
       clearInterval(intervalId);
-      // submitHandler();
     };
-  }, []);
+  }, [submitHandler, time]);
 
   const formatTime = (timeInSeconds) => {
     const hours = Math.floor(timeInSeconds / 3600);
@@ -27,8 +34,8 @@ const Timer = ({ time, submitHandler }) => {
   };
 
   return (
-    <div>
-      <h1>Timer</h1>
+    <div className="flex">
+      <h1>Time remaining: &nbsp;</h1>
       <p>{formatTime(seconds)}</p>
     </div>
   );

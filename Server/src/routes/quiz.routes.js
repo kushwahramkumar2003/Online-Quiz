@@ -15,6 +15,7 @@ const {
   getRemainingTime,
   getQuizResultsForUser,
   deleteQuestionById,
+  updateQuizPublishStatus,
 } = require("../controllers/quiz.controllers.js");
 const {
   isAdmin,
@@ -80,7 +81,13 @@ router.get(
   getQuizResultsForUser
 );
 
-// Exporting the router
-module.exports = router;
+//PUT - Update quiz publish status
+router.put(
+  "/:quizId/publish",
+  isAuthenticated,
+  isAdmin,
+  updateQuizPublishStatus
+);
 
+// Exporting the router
 module.exports = router;

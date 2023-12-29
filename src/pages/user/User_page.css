@@ -1,0 +1,113 @@
+/************* Navbar CSS **************/
+#nav1 { 
+    margin-left: 90px;
+    margin-right: 90px;
+    margin-top: 1.3rem;
+}
+#logo1 {
+    width: 12rem !important;
+    cursor: pointer !important;
+}
+.navbartop{
+    margin-left: 32rem;
+}
+
+#links1 {
+    margin-left: 0.8rem;
+    color: rgba(0, 0, 0, 0.60);
+}
+#links1:hover {
+    transition: ease-in-out .2s;
+    color: #FCC822;
+}
+.line {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.60) ; 
+    opacity: 0.2; 
+    margin-left: 65px; 
+    margin-right: 65px;
+}
+
+
+/*********** Footer CSS *********/
+
+/* footer section start here */
+footer {
+    margin-top: 7rem;
+    background-color: rgba(86, 83, 83, 0.216);
+}
+.footerBox {
+    margin-top: 3rem;
+    margin-left: 90px;
+    margin-right: 90px;
+    height: 14rem;
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+}
+#footerlogo {
+    width: 12.4rem;
+    margin-bottom: 5%;
+    cursor: pointer !important;
+}
+.section1 h3 {
+    margin-top: 5px;
+    color: #333 !important;
+    cursor: pointer !important;
+}
+.section1 {
+    width: 30%; 
+    height: 90% !important;
+    justify-content: space-evenly !important;
+    overflow-y: hidden;
+    /* border: 2px solid black; */
+}
+.section1 h3 {
+    font-size: 16px;
+    font-weight: 700;
+}
+.section1 p {
+    font-size: 14px;
+    margin-top: 5px; 
+    line-height: 1.5rem;
+}
+.box1 {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 0.3rem;
+    padding-left: 3% !important;
+    padding-top: 2% !important;
+    padding-bottom: 2% !important;
+    /* border: 2px solid black; */
+}
+.box1 p {
+    margin-left: 16px;
+}
+#footer-icon {
+    width: 1.3rem;
+}
+.box1 img:hover {
+    transform: scale(1.1);
+    transition: 0.2s ease-in-out;
+}
+.section1 h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+}
+#footer-box-3 p {
+    letter-spacing: 0.5px;
+}
+.contacts {
+    margin-top: 1.2rem;
+    display: flex !important;
+    justify-content: space-evenly;
+    overflow-y:  hidden !important;
+    margin-left: -15%;
+    /* border: 2px solid black; */
+}
+.contacts img:hover {
+    transform: scale(1.1);
+    transition: 0.2s ease-in-out;
+}
+/* footer section styling end  here */

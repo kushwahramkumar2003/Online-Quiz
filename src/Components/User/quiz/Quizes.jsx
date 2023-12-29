@@ -4,6 +4,7 @@ import { toast } from "react-hot-toast";
 
 import QuizCard from "./QuizCard";
 import { getAllQuizs } from "../../../services/quiz";
+import "./Quizes.css";
 
 const Quizes = () => {
   const { data, error, isLoading, isError } = useQuery({
@@ -19,19 +20,34 @@ const Quizes = () => {
   }, [isError, isLoading, data]);
 
   return (
-    <div className="">
-      {data &&
-        data.map((quiz) => (
-          <QuizCard
-            key={quiz._id}
-            title={quiz.name}
-            desc={quiz.description}
-            category={quiz.category}
-            noQuestions={quiz.questions.length}
-            time={quiz.time}
-            quizId={quiz._id}
-          />
-        ))}
+    <div className="Main-quiz">
+      <div className="tag-line">
+        <h2> Unleash Your Knowledge, Ignite Your Curiosity </h2>
+        <h3> Elevate Learning with Our Dynamic</h3>
+        <h3> Quiz Experience! </h3>
+      </div>
+
+      <div className="quiz-message">
+        <p> Pick a category, quiz your way to knowledge! </p>
+      </div>
+
+      <div className="quiz-content">
+        <div className="quiz-box ">
+          {data &&
+            data.map((quiz) => (
+              <QuizCard
+                className="w-10"
+                key={quiz._id}
+                title={quiz.name}
+                desc={quiz.description}
+                category={quiz.category}
+                noQuestions={quiz.questions.length}
+                time={quiz.duration}
+                quizId={quiz._id}
+              />
+            ))}
+        </div>
+      </div>
     </div>
   );
 };

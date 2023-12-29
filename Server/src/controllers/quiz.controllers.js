@@ -10,9 +10,11 @@ const asyncHandler = require("./../services/asyncHandler.js");
  * @kushwahramkumar2003
  **********************************************************************/
 exports.createQuiz = asyncHandler(async (req, res) => {
-  const { title, description, category } = req.body;
+  const { title, description, category, duration, level } = req.body;
 
-  if (!title || !description || !category) {
+  console.log("req.body : ", req.body);
+
+  if (!title || !description || !category || !duration || !level) {
     res.status(400);
     throw new Error("Title, Description and category are required");
   }
@@ -21,6 +23,9 @@ exports.createQuiz = asyncHandler(async (req, res) => {
     title,
     description,
     category,
+    duration,
+    difficulty: level,
+    createdBy: req.user._id,
   });
 
   const createdQuiz = await quiz.save();
@@ -102,8 +107,13 @@ exports.addQuestionToQuiz = asyncHandler(async (req, res) => {
  * @kushwahramkumar2003
  **************************************************************************/
 exports.getAllQuizzes = asyncHandler(async (req, res) => {
-  const quizzes = await Quiz.find({}).populate().exec();
-  res.json(quizzes);
+  if (req.user.role === "USER") {
+    const quizzes = await Quiz.find({ published: true }).populate().exec();
+    res.json(quizzes);
+  } else {
+    const quizzes = await Quiz.find({}).populate().exec();
+    res.json(quizzes);
+  }
 });
 
 /*************************************************************************
@@ -553,4 +563,39 @@ exports.deleteAllQuizResults = asyncHandler(async (req, res) => {
     console.error(error);
     res.status(500).json({ message: "Server error" });
   }
+});
+
+exports.updateQuizPublishStatus = asyncHandler(async (req, res) => {
+  const quizId = req.params.quizId;
+  const { publish } = req.body;
+
+  if (!quizId) {
+    res.status(401).json({
+      success: false,
+      message: "Must have QuizId",
+    });
+  }
+
+  const quiz = await Quiz.findById({ _id: quizId });
+
+  if (!quiz) {
+    res.status(404);
+    throw new Error("Quiz not found");
+  }
+
+  quiz.published = publish || quiz.published;
+
+  if (quiz.questions.length !== quiz.numberOfQuestions) {
+    res.status(401).json({
+      success: false,
+      message: "Please add all questions",
+    });
+  }
+
+  const updatedQuiz = await quiz.save();
+
+  res.status(200).json({
+    success: true,
+    data: updatedQuiz,
+  });
 });

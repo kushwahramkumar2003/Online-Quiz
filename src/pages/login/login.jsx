@@ -10,7 +10,7 @@ import { userActions } from "../../store/reducers/userReducers.js";
 import "./Login.css";
 
 export default function Login() {
-  const naviage = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.user);
 
@@ -38,9 +38,9 @@ export default function Login() {
       // console.log("User.role : ", user.role);
 
       if (user.role === "USER") {
-        naviage("/User");
+        navigate("/User");
       } else if (user.role === "ADMIN") {
-        naviage("/Admin");
+        navigate("/Admin");
       }
     },
     onError: (error) => {

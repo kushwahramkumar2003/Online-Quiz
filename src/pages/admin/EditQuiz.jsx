@@ -17,7 +17,7 @@ const EditQuiz = () => {
   const [refresh, setRefresh] = React.useState(false);
 
   useEffect(() => {
-    const role = userState?.userInfo?.role;
+    const role = userState?.userInfo?.role || userState?.userInfo?.user?.role;
 
     if (!role) {
       navigate("/");
