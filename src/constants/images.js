@@ -9,6 +9,16 @@ import location from "../assets/Images/icons/location.svg";
 import twitter from "../assets/Images/icons/twitter.svg";
 import logo from "../assets/Images/logo.svg";
 
+import CreateQuiz from "../assets/Images/icons/create_quiz.svg"; 
+import Setting from "../assets/Images/icons/setting.svg"; 
+import Help from "../assets/Images/icons/help.svg"; 
+import MyProfile from "../assets/Images/icons/my_profile.svg";
+import Update from "../assets/Images/icons/update_quiz.svg"; 
+import User from "../assets/Images/icons/User.svg";
+import Logout from "../assets/Images/icons/logout.svg";
+
+
+
 import feature_1 from "../assets/Images/Features images/Diverse Language Coverage.svg";
 import feature_2 from "../assets/Images/Features images/Personalized Skill Profiles.svg";
 import feature_3 from "../assets/Images/Features images/Detailed Explanations.jpg";
@@ -26,7 +36,14 @@ const images = {
   email,
   phone,
   location,
-  twitter,
+  twitter, 
+  CreateQuiz, 
+   Setting, 
+   Help, 
+   Update, 
+   MyProfile,
+   User, 
+   Logout,
   feature_1,
   feature_2,
   feature_3,

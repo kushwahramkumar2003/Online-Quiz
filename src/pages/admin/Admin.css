@@ -1,15 +1,84 @@
 
 .AdminPage{
     height: "full";
-}  
-.sections{
-  width: 20rem;   
-  height: 60rem;
-  background-color: black; 
-  font-size: 2rem;
-  color: white; 
-
 } 
-.adminSections ul li{
-  font-size: 35px;
+.admin-page{
+  display: flex;
+}  
+.admin-navbar{ 
+  display: flex; 
+  justify-content: end;   
+  align-items: center;
+  margin-right: 12rem; 
+  margin-left: 12px;
+  height: 5rem; 
+  width: 78rem; 
+  border-bottom: 0.5px solid black;
+}  
+.admin-name{ 
+   margin-right: 5rem;
+   width: 8rem; 
+   text-align: center;
+   background-color: #DBDADA; 
+   border-radius: 10px; 
+   
+} 
+.admin-name p{
+  font-size: 25px; 
+  font-family: serif;  
+  align-items: center;
+  
+}
+.admin-logo-right img{ 
+  width: 1.8rem;
+}
+.admin-content{ 
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  height: 37rem; 
+  width: 74rem;   
+  margin-left: 3rem;
+  margin-top: 2rem; 
+  /* box-shadow: 3px 5px 5px rgba(1, 1, 1, 0.4);
+  background: #dcdadada;  */ 
+  border: 1px solid black; 
+  border-radius: 10px;
+  
+}  
+
+.create-quiz-bt{
+   margin-left: 8rem;
+} 
+.quiz-create-box{ 
+  box-shadow: 3px 5px 5px rgba(1, 1, 1, 0.4);
+  background: #DBDADA;
+}
+.Admin-manu{
+  height: 46.3rem; 
+  width: 17rem;
+  background-color: #DBDADA;
+} 
+.admin-box{
+  display: flex;  
+  margin-top: 2.5rem; 
+  margin-left: 2rem;
+  
+} 
+.admin-box p{
+  margin-left: 1rem; 
+  font-size: 18px; 
+  font-family: serif;
+}  
+.Grad-logo{
+  margin-top: 1.5rem;
+} 
+.Grad-logo img{
+  width: 13rem; 
+  margin-left: 6px;
+}
+
+.line2{ 
+
+  border-bottom: 2px solid black;
 }
