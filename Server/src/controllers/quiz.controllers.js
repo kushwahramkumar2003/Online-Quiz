@@ -10,9 +10,11 @@ const asyncHandler = require("./../services/asyncHandler.js");
  * @kushwahramkumar2003
  **********************************************************************/
 exports.createQuiz = asyncHandler(async (req, res) => {
-  const { title, description, category } = req.body;
+  const { title, description, category, duration, difficulty } = req.body;
 
-  if (!title || !description || !category) {
+  console.log("req.body : ", req.body);
+
+  if (!title || !description || !category || !duration || !difficulty) {
     res.status(400);
     throw new Error("Title, Description and category are required");
   }
@@ -21,6 +23,9 @@ exports.createQuiz = asyncHandler(async (req, res) => {
     title,
     description,
     category,
+    duration,
+    difficulty,
+    createdBy: req.user._id,
   });
 
   const createdQuiz = await quiz.save();
@@ -553,4 +558,39 @@ exports.deleteAllQuizResults = asyncHandler(async (req, res) => {
     console.error(error);
     res.status(500).json({ message: "Server error" });
   }
+});
+
+exports.updateQuizPublishStatus = asyncHandler(async (req, res) => {
+  const quizId = req.params.quizId;
+  const { publish } = req.body;
+
+  if (!quizId) {
+    res.status(401).json({
+      success: false,
+      message: "Must have QuizId",
+    });
+  }
+
+  const quiz = await Quiz.findById({ _id: quizId });
+
+  if (!quiz) {
+    res.status(404);
+    throw new Error("Quiz not found");
+  }
+
+  quiz.publish = publish || quiz.publish;
+
+  if (quiz.question.length !== quiz.numberOfQuestions) {
+    res.status(401).json({
+      success: false,
+      message: "Please add all questions",
+    });
+  }
+
+  const updatedQuiz = await quiz.save();
+
+  res.status(200).json({
+    success: true,
+    data: updatedQuiz,
+  });
 });
