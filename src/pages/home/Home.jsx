@@ -46,7 +46,7 @@ const Home = () => {
       </div>
 
 
-      <div className="line2"></div>
+      {/* <div className="line2"></div> */}
 
       {/***************** How does it Works? page **********************************/}
       <div className="page-2" id="works">
