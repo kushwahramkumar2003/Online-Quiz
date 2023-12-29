@@ -30,7 +30,7 @@ const OneQuestionApper = ({
       
       <ul>
         {options?.map((option, index) => (
-          <li key={index} onClick={() => handleOptionClick(option)}>
+          <li key={index} onClick={() => handleOptionClick(option)} className="text-green-500 font-semibold ml-4">
             {option}
           </li>
         ))}
