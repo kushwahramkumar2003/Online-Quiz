@@ -10,11 +10,11 @@ const asyncHandler = require("./../services/asyncHandler.js");
  * @kushwahramkumar2003
  **********************************************************************/
 exports.createQuiz = asyncHandler(async (req, res) => {
-  const { title, description, category, duration, difficulty } = req.body;
+  const { title, description, category, duration, level } = req.body;
 
   console.log("req.body : ", req.body);
 
-  if (!title || !description || !category || !duration || !difficulty) {
+  if (!title || !description || !category || !duration || !level) {
     res.status(400);
     throw new Error("Title, Description and category are required");
   }
@@ -24,7 +24,7 @@ exports.createQuiz = asyncHandler(async (req, res) => {
     description,
     category,
     duration,
-    difficulty,
+    difficulty: level,
     createdBy: req.user._id,
   });
 
@@ -107,8 +107,13 @@ exports.addQuestionToQuiz = asyncHandler(async (req, res) => {
  * @kushwahramkumar2003
  **************************************************************************/
 exports.getAllQuizzes = asyncHandler(async (req, res) => {
-  const quizzes = await Quiz.find({}).populate().exec();
-  res.json(quizzes);
+  if (req.user.role === "USER") {
+    const quizzes = await Quiz.find({ published: true }).populate().exec();
+    res.json(quizzes);
+  } else {
+    const quizzes = await Quiz.find({}).populate().exec();
+    res.json(quizzes);
+  }
 });
 
 /*************************************************************************
@@ -578,9 +583,9 @@ exports.updateQuizPublishStatus = asyncHandler(async (req, res) => {
     throw new Error("Quiz not found");
   }
 
-  quiz.publish = publish || quiz.publish;
+  quiz.published = publish || quiz.published;
 
-  if (quiz.question.length !== quiz.numberOfQuestions) {
+  if (quiz.questions.length !== quiz.numberOfQuestions) {
     res.status(401).json({
       success: false,
       message: "Please add all questions",

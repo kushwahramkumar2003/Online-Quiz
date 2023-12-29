@@ -112,11 +112,12 @@ const Admin = () => {
                       title={q.title}
                       category={q.category}
                       description={q.description}
-                      times_taken={q.times_taken}
+                      times_taken={q.times_taken || q.duration}
                       quiz_id={q._id}
                       questions={q.questions.length}
-                      duration={q.duration}
+                      duration={q.duration || q?.times_taken}
                       level={q.level}
+                      numberOfQuestions={q.numberOfQuestions}
                       published={q.published}
                       key={q._id}
                       setRefresh={setRefresh}

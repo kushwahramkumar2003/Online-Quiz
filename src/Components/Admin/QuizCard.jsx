@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { deleteQuiz } from "../../services/quiz";
+import { deleteQuiz, publishQuiz } from "../../services/quiz";
 import toast from "react-hot-toast";
 
 const QuizCard = ({
@@ -12,8 +12,8 @@ const QuizCard = ({
   quiz_id,
   questions,
   setRefresh,
-  level = null,
-  published = null,
+  level,
+  published,
   numberOfQuestions,
 }) => {
   const { mutate, isLoading } = useMutation({
@@ -30,27 +30,39 @@ const QuizCard = ({
       console.log(error);
     },
   });
-  const { mutate: publishQuiz, isLoading: publishQuizIsLoading } = useMutation({
-    mutationFn: ({ quizId }) => {
-      return publishQuiz({ quizId });
-    },
-    onSuccess: (data) => {
-      toast.success("Quiz Published successfully");
-      setRefresh((prev) => !prev);
-      console.log(data);
-    },
-    onError: (error) => {
-      toast.error(error.message);
-      console.log(error);
-    },
-  });
+  const { mutate: publishQuizMutate, isLoading: publishQuizIsLoading } =
+    useMutation({
+      mutationFn: ({ quizId }) => {
+        return publishQuiz({ quizId, publish: true });
+      },
+      onSuccess: (data) => {
+        toast.success("Quiz Published successfully");
+        setRefresh((prev) => !prev);
+        console.log(data);
+      },
+      onError: (error) => {
+        toast.error(error.message);
+        console.log(error);
+      },
+    });
+
+  useEffect(() => {
+    console.log("Quiz : ", title);
+    console.log("published === true : ", published === true);
+    console.log("numberOfQuestions : ", numberOfQuestions);
+    console.log("questions.length : ", questions);
+    console.log(
+      "numberOfQuestions !== questions.length : ",
+      numberOfQuestions !== questions
+    );
+  }, []);
 
   const deleteHandler = (data, error) => {
     mutate({ quiz_id });
   };
 
   const handlePublish = () => {
-    publishQuiz({ quizId: quiz_id });
+    publishQuizMutate({ quizId: quiz_id });
   };
   return (
     <>
@@ -68,7 +80,7 @@ const QuizCard = ({
         <button onClick={deleteHandler}>Delete</button>
 
         <button
-          disabled={published || !questions.length !== numberOfQuestions}
+          // disabled={published === true || numberOfQuestions !== questions}
           onClick={() => handlePublish()}
         >
           {published === true ? "Published" : "Publish"}

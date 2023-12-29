@@ -7,6 +7,12 @@ export const createNewQuiz = async ({
   duration,
   level,
 }) => {
+  console.log("Title", title);
+  console.log("Description", description);
+  console.log("Category", category);
+  console.log("Duration", duration);
+  console.log("Level", level);
+
   try {
     const { data } = await axios.post("/api/v1/quiz/create", {
       title,
@@ -143,9 +149,11 @@ export const deleteQuestionByQuizId = async ({ quizId, questionId }) => {
   }
 };
 
-export const publishQuiz = async ({ quizId }) => {
+export const publishQuiz = async ({ quizId,publish }) => {
   try {
-    const { data } = await axios.put(`/api/v1/quiz/${quizId}/publish`);
+    const { data } = await axios.put(`/api/v1/quiz/${quizId}/publish`, {
+      publish
+    });
     return data;
   } catch (error) {
     if (error.response) {

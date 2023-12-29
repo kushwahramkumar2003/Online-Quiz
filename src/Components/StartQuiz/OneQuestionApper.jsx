@@ -15,23 +15,27 @@ const OneQuestionApper = ({
   setStart,
   setOptionSelected,
 }) => {
-  const handleOptionClick = (option) => {
-    setOptionSelected(option);
-    
-    if (option === correct) {
-      setOptionSelected((prevCorrect) => prevCorrect + 1);
-    }
+  const handleOptionChange = (e) => {
+    setOptionSelected(e.target.value);
   };
 
   return (
     <div>
-      <p className="quiz-questn"> Question {questionNumber}</p>
+      <p className="quiz-questn">Question {questionNumber}</p>
       <p className="question-show">{question}</p>
-      
+
       <ul>
         {options?.map((option, index) => (
-          <li key={index} onClick={() => handleOptionClick(option)}>
-            {option}
+          <li key={option}>
+            <input
+              id={`question_${option}`}
+              type="radio"
+              name={`question_${option}`}
+              value={option}
+              checked={option === selected}
+              onChange={handleOptionChange}
+            />
+            <label htmlFor={`question_${option}`}>{option}</label>
           </li>
         ))}
       </ul>

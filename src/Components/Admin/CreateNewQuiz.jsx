@@ -37,9 +37,9 @@ const CreateNewQuiz = ({ setIsOpen }) => {
   });
 
   const submitHandler = (data, error) => {
-    const { title, description, category } = data;
+    const { title, description, category, duration, level } = data;
     // console.log(data);
-    mutate({ title, description, category });
+    mutate({ title, description, category, duration, level });
   };
 
   return (
