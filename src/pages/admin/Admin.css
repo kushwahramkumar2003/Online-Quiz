@@ -21,14 +21,26 @@
   background-color: #dbdada;
   border-radius: 10px;
 }
+
+.admin-name {
+  margin-right: 5rem;
+  width: 8rem;
+  text-align: center;
+  background-color: #dbdada;
+  border-radius: 10px;
+}
 .admin-name p {
   font-size: 25px;
   font-family: serif;
+
   align-items: center;
 }
+
 .admin-logo-right img {
   width: 1.8rem;
+  cursor: pointer;
 }
+
 .admin-content {
   display: flex;
   justify-content: center;
@@ -54,6 +66,18 @@
 .Admin-manu {
   height: 46.3rem;
   width: 17rem;
+
+  background-color: #dbdada;
+}
+.admin-box {
+  display: flex;
+  margin-top: 2.5rem;
+  margin-left: 2rem;
+  cursor: pointer;
+}
+.admin-box p {
+  margin-left: 1rem;
+  font-size: 18px;
   background-color: #dbdada;
 }
 .admin-box {
@@ -64,6 +88,7 @@
 .admin-box p {
   margin-left: 1rem;
   font-size: 18px;
+
   font-family: serif;
 }
 .Grad-logo {
