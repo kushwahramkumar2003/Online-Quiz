@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { createNewQuiz } from "../../services/quiz";
+import "./CreateNewQuiz.css"; 
 
 const CreateNewQuiz = ({ setIsOpen }) => {
   const { mutate, isLoading } = useMutation({
@@ -44,11 +45,12 @@ const CreateNewQuiz = ({ setIsOpen }) => {
 
   return (
     <div className="text-black">
-      <h1>Create new Quiz</h1>
+      <h1 className="createNew">Create new Quiz</h1>
       <form onSubmit={handleSubmit(submitHandler)}>
         <div className="form-control">
-          <label htmlFor="title">Quiz Title</label>
-          <input
+          <label htmlFor="title" >Quiz Title</label>
+          <input 
+          className="input-box"
             type="text"
             id="title"
             {...register("title", {
@@ -63,7 +65,8 @@ const CreateNewQuiz = ({ setIsOpen }) => {
         </div>
         <div className="form-control">
           <label htmlFor="description">Quiz Description</label>
-          <input
+          <input 
+           className="input-box"
             type="text"
             id="description"
             {...register("description", {
@@ -79,7 +82,8 @@ const CreateNewQuiz = ({ setIsOpen }) => {
 
         <div className="form-control">
           <label htmlFor="category">Quiz Category</label>
-          <input
+          <input 
+           className="input-box"
             type="text"
             id="category"
             {...register("category", {
@@ -125,13 +129,13 @@ const CreateNewQuiz = ({ setIsOpen }) => {
         </div>
         <button
           type="submit"
-          className="bg-red-500 rounded-full"
+          className="submit-button"
           disabled={!isValid || isLoading}
           typeof="submit"
         >
           Save
         </button>
-        <button onClick={() => setIsOpen(false)}>Cancel</button>
+        <button onClick={() => setIsOpen(false)}  className="cancel-button">Cancel</button>
       </form>
     </div>
   );

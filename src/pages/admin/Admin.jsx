@@ -24,9 +24,9 @@ const Admin = () => {
   useEffect(() => {
     const role = userState?.userInfo?.user?.role || userState?.userInfo?.role;
 
-    if (!role) {
-      navigate("/");
-    }
+    // if (!role) {
+    //   navigate("/");
+    // }
 
     console.log("Role", role);
     async function fetchData() {
