@@ -28,9 +28,27 @@ const quizSchema = new mongoose.Schema({
       message: "Questions must have at least one item",
     },
   },
-  times_taken: {
+  numberOfQuestions: {
     type: Number,
     default: 0,
+  },
+  duration: {
+    type: Number,
+    default: 60,
+  },
+  difficulty: {
+    type: String,
+    enum: ["easy", "medium", "hard"],
+    default: "easy",
+  },
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  published: {
+    type: Boolean,
+    default: false,
   },
 });
 

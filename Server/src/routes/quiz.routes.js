@@ -15,11 +15,13 @@ const {
   getRemainingTime,
   getQuizResultsForUser,
   deleteQuestionById,
+  updateQuizPublishStatus,
 } = require("../controllers/quiz.controllers.js");
 const {
   isAdmin,
   isAuthenticated,
 } = require("../middlewares/auth.middlewares.js");
+const limiter = require("../middlewares/rateLimit.middlewares.js");
 
 // GET all quizzes
 router.get("/", getAllQuizzes);
@@ -80,7 +82,14 @@ router.get(
   getQuizResultsForUser
 );
 
-// Exporting the router
-module.exports = router;
+//PUT - Update quiz publish status
+router.put(
+  "/:quizId/publish",
+  isAuthenticated,
+  isAdmin,
+  limiter({ time: 10, limit: 5 }),
+  updateQuizPublishStatus
+);
 
+// Exporting the router
 module.exports = router;
