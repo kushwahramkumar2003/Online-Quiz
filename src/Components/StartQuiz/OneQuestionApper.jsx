@@ -28,12 +28,20 @@ const OneQuestionApper = ({
       <p className="quiz-questn"> Question {questionNumber}</p>
       <p className="question-show">{question}</p>
       
-      <ul>
+      <ul className="quiz-optn">
         {options?.map((option, index) => (
-          <li key={index} onClick={() => handleOptionClick(option)} className="text-green-500 font-semibold ml-4">
-            {option}
+          <li key={index} onClick={() => handleOptionClick(option)} className="Quiz-options text-green-500 font-semibold ml-4">
+            {/* {option} */}
+            <input
+              className="quiz-radio-btn"
+              type="radio"
+              name="quizOption"
+              value={option}
+              onChange={() => handleOptionClick(option)}
+            />
+            <label onClick={() => handleOptionClick(option)}>{option}</label>
           </li>
-        ))}
+        ))} 
       </ul>
     </div>
   );
