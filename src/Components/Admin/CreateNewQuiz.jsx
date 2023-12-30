@@ -6,10 +6,9 @@ import { createNewQuiz } from "../../services/quiz";
 import "./CreateNewQuiz.css"; 
 
 const CreateNewQuiz = ({ setIsOpen }) => {
-  
   const { mutate, isLoading } = useMutation({
-    mutationFn: ({ title, description, category }) => {
-      return createNewQuiz({ title, description, category });
+    mutationFn: ({ title, description, category, duration, level }) => {
+      return createNewQuiz({ title, description, category, duration, level });
     },
     onSuccess: (data) => {
       toast.success("Quiz created successfully");
@@ -32,14 +31,16 @@ const CreateNewQuiz = ({ setIsOpen }) => {
       title: "",
       description: "",
       category: "",
+      duration: "",
+      level: "easy",
     },
     mode: "onChange",
   });
 
   const submitHandler = (data, error) => {
-    const { title, description, category } = data;
+    const { title, description, category, duration, level } = data;
     // console.log(data);
-    mutate({ title, description, category });
+    mutate({ title, description, category, duration, level });
   };
 
   return (
@@ -78,6 +79,7 @@ const CreateNewQuiz = ({ setIsOpen }) => {
           />
           {errors.description && <p>{errors.description.message}</p>}
         </div>
+
         <div className="form-control">
           <label htmlFor="category">Quiz Category</label>
           <input 
@@ -93,6 +95,37 @@ const CreateNewQuiz = ({ setIsOpen }) => {
             })}
           />
           {errors.category && <p>{errors.category.message}</p>}
+        </div>
+
+        <div className="form-control">
+          <label htmlFor="duration">Duration</label>
+          <input
+            type="text"
+            id="duration"
+            placeholder="Enter duration in minutes"
+            {...register("duration", {
+              required: "Duration is required",
+              minLength: {
+                value: 1,
+                message: "Duration should be at least 1 number",
+              },
+            })}
+          />
+          {errors.duration && <p>{errors.duration.message}</p>}
+        </div>
+        <div className="form-control">
+          <label htmlFor="level">Quiz Level</label>
+          <select
+            id="level"
+            {...register("level", {
+              required: "Level is required",
+            })}
+          >
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+          {errors.level && <p>{errors.level.message}</p>}
         </div>
         <button
           type="submit"

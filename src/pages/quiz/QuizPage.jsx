@@ -21,17 +21,18 @@ const QuizPage = () => {
   const [optionSelected, setOptionSelected] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const { quizId } = useParams();
-  // console.log("quizId : ", quizId);
+  const [duration, setDuration] = useState(0);
 
   useEffect(() => {
-    setIsLoading(true);
     const fetchQuiz = async () => {
+      setIsLoading(true);
       const data = await getQuizByIdForUser({ quizId });
       // console.log("Quiz Data : ", data);
       // console.log("data?.questions : ", data?.questions);
       console.log("Arrived res : ", data);
       setIsLoading(false);
       setQuestionsArr(data?.questions);
+      setDuration(data?.duration);
     };
     fetchQuiz();
   }, []);
@@ -104,74 +105,69 @@ const QuizPage = () => {
         <h2 className="head">Loading </h2>
       ) : (
         QuestionsArr && (
-      <div>
-
+          <div>
             <p className="main-heading-Quiz"> OBJECTIVE QUESTIONS</p>
             <div className="bottom-line"></div>
-        
-         <div className="main_2-quiz"> 
-            
 
-            <div className="quiz-items">
-              <OneQuestionApper
-                question={QuestionsArr[questionNumber]?.text}
-                questionNumber={questionNumber + 1}
-                totalQuestions={QuestionsArr.length}
-                options={QuestionsArr[questionNumber]?.options}
-                selected={QuestionsArr[questionNumber]?.selected}
-                setSelected={QuestionsArr[questionNumber]?.setSelected}
-                correct={QuestionsArr[questionNumber]?.correct}
-                setQuestionNumber={setQuestionNumber}
-                setQuestions={setQuestionsArr}
-                setOptionSelected={setOptionSelected}
-              />
+            <div className="main_2-quiz">
+              <div className="quiz-items">
+                <OneQuestionApper
+                  question={QuestionsArr[questionNumber]?.text}
+                  questionNumber={questionNumber + 1}
+                  totalQuestions={QuestionsArr.length}
+                  options={QuestionsArr[questionNumber]?.options}
+                  selected={optionSelected}
+                  correct={QuestionsArr[questionNumber]?.correct}
+                  setQuestionNumber={setQuestionNumber}
+                  setQuestions={setQuestionsArr}
+                  setOptionSelected={setOptionSelected}
+                />
 
-              <div className="quiz-Timer">
-                <Timer time={1} submitHandler={submitHandler} />
+                <div className="quiz-Timer">
+                  <Timer time={duration || 10} submitHandler={submitHandler} />
+                </div>
+
+                <div className="quiz-btns">
+                  <button
+                    className="prev-btn"
+                    onClick={() => prevHandler()}
+                    disabled={questionNumber <= 0 || isPending}
+                  >
+                    Previous
+                  </button>
+
+                  <button
+                    className="next-btn"
+                    onClick={() => {
+                      const isNext = questionNumber !== QuestionsArr.length - 1;
+                      nextHandler({ isNext });
+                    }}
+                    disabled={isPending}
+                  >
+                    {questionNumber === QuestionsArr.length - 1
+                      ? "Save"
+                      : "Next"}
+                  </button>
+                </div>
+
+                <div className="submit-quiz-btn">
+                  <button
+                    className="submit-btn"
+                    onClick={() => submitHandler()}
+                  >
+                    Submit
+                  </button>
+                </div>
               </div>
-            
 
-            <div className="quiz-btns">
-              <button
-                className="prev-btn"
-                onClick={() => prevHandler()}
-                disabled={questionNumber <= 0 || isPending}
-              >
-                Previous
-              </button>
-
-              <button
-                className="next-btn"
-                onClick={() => {
-                  const isNext = questionNumber !== QuestionsArr.length - 1;
-                  nextHandler({ isNext });
-                }}
-                disabled={isPending}
-              >
-                {questionNumber === QuestionsArr.length - 1 ? "Save" : "Next"}
-              </button>
-            </div>
-
-            <div className="submit-quiz-btn">
-              <button 
-                className="submit-btn"
-                onClick={() => submitHandler()}>Submit</button>
+              <div className="question-bar">
+                <QuestionAttempBar
+                  questionNumber={questionNumber}
+                  setquestionNumber={setQuestionNumber}
+                />
+              </div>
             </div>
           </div>
-
-
-
-          <div className="question-bar">
-              <QuestionAttempBar
-                questionNumber={questionNumber}
-                setquestionNumber={setQuestionNumber}
-              />
-          </div>
-
-
-          </div>
-        
-      </div>
         )
       )}
     </div>
