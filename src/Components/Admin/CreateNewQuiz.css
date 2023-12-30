@@ -29,8 +29,9 @@
  font-family: serif; 
  height: 2.5rem; 
  width: 6rem; 
- border-radius: 5px;
-} 
+ border-radius: 5px; 
+ cursor: pointer;
+}  
 .cancel-button{
    border: 2px solid rgb(66, 133, 244); 
    margin-top: 5rem; 

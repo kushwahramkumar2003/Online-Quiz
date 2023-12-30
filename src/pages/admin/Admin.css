@@ -20,7 +20,7 @@
    width: 8rem; 
    text-align: center;
    background-color: #DBDADA; 
-   border-radius: 10px; 
+   border-radius: 10px;  
    
 } 
 .admin-name p{
@@ -30,7 +30,8 @@
   
 }
 .admin-logo-right img{ 
-  width: 1.8rem;
+  width: 1.8rem; 
+ cursor: pointer;
 }
 .admin-content{ 
   display: flex; 
@@ -62,7 +63,8 @@
 .admin-box{
   display: flex;  
   margin-top: 2.5rem; 
-  margin-left: 2rem;
+  margin-left: 2rem; 
+  cursor: pointer;
   
 } 
 .admin-box p{
