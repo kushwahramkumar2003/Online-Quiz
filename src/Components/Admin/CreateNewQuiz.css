@@ -1,0 +1,45 @@
+ .createNew{
+   font-family: serif; 
+   font-size: 30px; 
+   margin-left: 2.5rem;
+ }
+ .text-black{
+   margin-left: 16rem; 
+} 
+.form-control{
+   margin-top: 2rem;
+}  
+.form-control label{
+   font-family: serif; 
+   font-size: 22px;
+}
+.input-box{
+   border: 0.581px solid #C1BBBB; 
+   border-radius: 5px; 
+   height: 3rem;
+}  
+.input-box:hover{
+    color: rgb(66, 133, 244);
+}
+.submit-button{
+ background:rgb(66, 133, 244);  
+ color: white; 
+ margin-top: 5rem; 
+ font-size: 18px; 
+ font-family: serif; 
+ height: 2.5rem; 
+ width: 6rem; 
+ border-radius: 5px; 
+ cursor: pointer;
+}  
+.cancel-button{
+   border: 2px solid rgb(66, 133, 244); 
+   margin-top: 5rem; 
+   color: rgb(66, 133, 244); 
+   margin-left: 6rem; 
+   font-size: 18px; 
+   font-family: serif; 
+   height: 2.5rem;  
+   width: 6rem; 
+   border-radius: 5px;
+}

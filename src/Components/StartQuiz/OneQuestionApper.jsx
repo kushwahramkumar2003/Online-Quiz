@@ -23,10 +23,9 @@ const OneQuestionApper = ({
     <div>
       <p className="quiz-questn">Question {questionNumber}</p>
       <p className="question-show">{question}</p>
-
       <ul>
         {options?.map((option, index) => (
-          <li key={option}>
+          <li key={option} className="Quiz-options text-green-500 font-semibold ml-4">
             <input
               id={`question_${option}`}
               type="radio"
@@ -36,8 +35,9 @@ const OneQuestionApper = ({
               onChange={handleOptionChange}
             />
             <label htmlFor={`question_${option}`}>{option}</label>
+
           </li>
-        ))}
+        ))} 
       </ul>
     </div>
   );
