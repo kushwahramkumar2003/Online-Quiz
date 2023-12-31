@@ -23,11 +23,11 @@ const OneQuestionApper = ({
     <div>
       <p className="quiz-questn">Question {questionNumber}</p>
       <p className="question-show">{question}</p>
-      <ul>
+      <ul className="mt-9">
         {options?.map((option, index) => (
           <li
             key={option}
-            className="ml-4 font-semibold text-green-500 Quiz-options"
+            className="ml-4 font-semibold"
           >
             <input
               id={`question_${option}`}
@@ -36,6 +36,7 @@ const OneQuestionApper = ({
               value={option}
               checked={option === selected}
               onChange={handleOptionChange}
+              className="Quiz-options"
             />
             <label htmlFor={`question_${option}`}>{option}</label>
           </li>
