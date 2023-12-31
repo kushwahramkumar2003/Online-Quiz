@@ -9,8 +9,8 @@
     flex-wrap: wrap;
     /* border: 2px solid black; */
     font-size: 17px;
-    margin-top: 4.2%;
-    margin-left: 2.5%;
+    margin-top: 5%;
+    margin-left: 3%;
     margin-right: 2.5%;
 }
 .quiz-optn {
@@ -19,11 +19,25 @@
     padding-top: 1%;
     padding-bottom: 1%;
 }
-.Quiz-options {
-    /* border: 2px solid black; */
+li {
     margin-right: 2.5%;
-    margin-left: 4.2%;
-    margin-top: 2.5%;
+    margin-top: 2%;
+    color: green;
+}
+ .Quiz-options {
+    /* border: 2px solid black; */
+    display: inline-block;
+    height: 1rem;
+} 
+input[type='radio']{
+    /* width: 18px;
+    height: 18px; */
+    margin-right: 8px;
+}
+input {
+    width: 20px;
+    margin-top: 1.2%;
+    margin-left: 2.5%;
 }
 .quiz-radio-btn {
     width: 20px;
