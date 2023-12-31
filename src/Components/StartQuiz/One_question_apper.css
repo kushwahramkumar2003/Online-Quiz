@@ -13,3 +13,20 @@
     margin-left: 2.5%;
     margin-right: 2.5%;
 }
+.quiz-optn {
+    /* border: 2px solid black; */
+    margin-top: -3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+.Quiz-options {
+    /* border: 2px solid black; */
+    margin-right: 2.5%;
+    margin-left: 4.2%;
+    margin-top: 2.5%;
+}
+.quiz-radio-btn {
+    width: 20px;
+    /* margin-top: 1%; */
+}
+

@@ -23,10 +23,12 @@ const OneQuestionApper = ({
     <div>
       <p className="quiz-questn">Question {questionNumber}</p>
       <p className="question-show">{question}</p>
-
       <ul>
         {options?.map((option, index) => (
-          <li key={option}>
+          <li
+            key={option}
+            className="ml-4 font-semibold text-green-500 Quiz-options"
+          >
             <input
               id={`question_${option}`}
               type="radio"

@@ -21,6 +21,7 @@ const {
   isAdmin,
   isAuthenticated,
 } = require("../middlewares/auth.middlewares.js");
+const limiter = require("../middlewares/rateLimit.middlewares.js");
 
 // GET all quizzes
 router.get("/", getAllQuizzes);
@@ -86,6 +87,7 @@ router.put(
   "/:quizId/publish",
   isAuthenticated,
   isAdmin,
+  limiter({ time: 10, limit: 5 }),
   updateQuizPublishStatus
 );
 
