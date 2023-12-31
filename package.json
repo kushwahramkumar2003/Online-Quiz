@@ -1,5 +1,6 @@
 {
   "name": "quiz-app",
+  "homepage": "https://kushwahramkumar2003.github.io/Online-Quiz",
   "version": "0.1.0",
   "private": true,
   "proxy": "https://quiz-app-test-01.azurewebsites.net/",
@@ -24,6 +25,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build",
     "server": "cd Server && npm run dev",
     "dev": "concurrently -n \"client,server\" -c \"bgBlue,bgYellow\" \"npm start\" \"npm run server\"",
     "start": "react-scripts start",
@@ -50,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^6.1.1",
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.9",
     "react-scripts": "^5.0.1",
