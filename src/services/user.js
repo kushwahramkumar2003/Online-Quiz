@@ -1,5 +1,4 @@
 import axios from "axios";
-import { toast } from "react-hot-toast";
 
 export const signup = async ({ name, email, password }) => {
   try {
