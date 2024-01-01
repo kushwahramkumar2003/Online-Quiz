@@ -1,8 +1,4 @@
-import axios from "axios";
+// apiConfig.js
+const baseURL = process.env.REACT_APP_API_BASE_URL || "http://localhost:3001";
 
-const api = axios.create({
-//   baseURL: "https://quiz-app-test-01.azurewebsites.net",
-    // baseURL: "http://localhost:3001",
-});
-
-export default api;
+export default baseURL;

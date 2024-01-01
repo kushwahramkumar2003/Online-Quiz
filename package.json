@@ -2,7 +2,6 @@
   "name": "quiz-app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://quiz-app-test-01.azurewebsites.net/",
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
     "@svgr/webpack": "^8.1.0",
