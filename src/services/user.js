@@ -1,8 +1,8 @@
-import axios from "axios";
+import api from "./baseUrl";
 
 export const signup = async ({ name, email, password }) => {
   try {
-    const { data } = await axios.post("api/v1/auth/register", {
+    const { data } = await api.post("api/v1/auth/register", {
       name,
       email,
       password,
@@ -19,7 +19,7 @@ export const signup = async ({ name, email, password }) => {
 
 export const login = async ({ email, password }) => {
   try {
-    const { data } = await axios.post("/api/v1/auth/login", {
+    const { data } = await api.post("/api/v1/auth/login", {
       email,
       password,
     });

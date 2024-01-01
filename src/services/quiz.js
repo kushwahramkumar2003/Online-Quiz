@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "./baseUrl";
 
 export const createNewQuiz = async ({
   title,
@@ -14,7 +14,7 @@ export const createNewQuiz = async ({
   console.log("Level", level);
 
   try {
-    const { data } = await axios.post("/api/v1/quiz/create", {
+    const { data } = await api.post("/api/v1/quiz/create", {
       title,
       description,
       category,
@@ -41,7 +41,7 @@ export const addQuestionInQuiz = async ({
     console.log("Question", question);
     console.log("Options", options);
     console.log("Correct Answer", correctAnswer);
-    const { data } = await axios.post(
+    const { data } = await api.post(
       `/api/v1/quiz//create/addQuestion/${quizId}`,
       {
         question,
@@ -60,7 +60,9 @@ export const addQuestionInQuiz = async ({
 
 export const getAllQuizs = async () => {
   try {
-    const { data } = await axios.get(`/api/v1/quiz`);
+    const { data } = await api.get(`/api/v1/quiz`, {
+      withCredentials: true,
+    });
     console.log("All Quezzes", data);
     return data;
   } catch (error) {
@@ -74,7 +76,7 @@ export const getAllQuizs = async () => {
 export const getQuizById = async ({ quizId }) => {
   try {
     console.log("Quiz Id", quizId);
-    const { data } = await axios.get(`/api/v1/quiz/${quizId}`);
+    const { data } = await api.get(`/api/v1/quiz/${quizId}`);
     return data;
   } catch (error) {
     if (error.response) {
@@ -86,7 +88,7 @@ export const getQuizById = async ({ quizId }) => {
 
 export const updateQuizById = async ({ title, quizId }) => {
   try {
-    const { data } = await axios.put(`/api/v1/quiz/${quizId}/update`, {
+    const { data } = await api.put(`/api/v1/quiz/${quizId}/update`, {
       title,
     });
     return data;
@@ -106,7 +108,7 @@ export const updateQuestionByQuizId = async ({
   correctAnswer,
 }) => {
   try {
-    const { data } = await axios.put(
+    const { data } = await api.put(
       `/api/v1/quiz/${quizId}/question/${questionId}/update`,
       {
         question,
@@ -125,7 +127,7 @@ export const updateQuestionByQuizId = async ({
 
 export const deleteQuiz = async ({ quizId }) => {
   try {
-    const { data } = await axios.delete(`/api/v1/quiz/${quizId}/delete`);
+    const { data } = await api.delete(`/api/v1/quiz/${quizId}/delete`);
     return data;
   } catch (error) {
     if (error.response) {
@@ -137,7 +139,7 @@ export const deleteQuiz = async ({ quizId }) => {
 
 export const deleteQuestionByQuizId = async ({ quizId, questionId }) => {
   try {
-    const { data } = await axios.delete(
+    const { data } = await api.delete(
       `/api/v1/quiz/${quizId}/question/${questionId}/delete`
     );
     return data;
@@ -149,10 +151,10 @@ export const deleteQuestionByQuizId = async ({ quizId, questionId }) => {
   }
 };
 
-export const publishQuiz = async ({ quizId,publish }) => {
+export const publishQuiz = async ({ quizId, publish }) => {
   try {
-    const { data } = await axios.put(`/api/v1/quiz/${quizId}/publish`, {
-      publish
+    const { data } = await api.put(`/api/v1/quiz/${quizId}/publish`, {
+      publish,
     });
     return data;
   } catch (error) {

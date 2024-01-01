@@ -24,15 +24,15 @@ export default function Login() {
     color: "black",
   };
 
-  const { mutate} = useMutation({
+  const { mutate } = useMutation({
     mutationFn: ({ email, password }) => {
       return login({ email, password });
     },
-    onSuccess: (data) => {
+    onSuccess: async (data) => {
       const { user } = data;
 
-      dispatch(userActions.setUserInfo(data.user));
-      localStorage.setItem("account", JSON.stringify(data));
+      await dispatch(userActions.setUserInfo(data.user));
+      await localStorage.setItem("account", JSON.stringify(data));
       toast.success("Login successfully");
 
       // console.log("User.role : ", user.role);
