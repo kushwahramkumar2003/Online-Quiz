@@ -1,6 +1,5 @@
 {
   "name": "quiz-app",
-  "homepage": "https://kushwahramkumar2003.github.io/Online-Quiz",
   "version": "0.1.0",
   "private": true,
   "proxy": "https://quiz-app-test-01.azurewebsites.net/",
