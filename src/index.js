@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { Provider } from "react-redux";
 import { Toaster } from "react-hot-toast";
@@ -12,12 +12,12 @@ const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
+  <HashRouter>
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         <App className="transition-all scroll-smooth " />
         <Toaster />
       </QueryClientProvider>
     </Provider>
-  </BrowserRouter>
+  </HashRouter>
 );
