@@ -1,4 +1,8 @@
-import api from "./baseUrl";
+// import api from "./baseUrl";
+
+import axios from "axios";
+
+const api = axios;
 
 export const submitFeedback = async (formData) => {
   try {

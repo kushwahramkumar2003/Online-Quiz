@@ -1,5 +1,8 @@
-import api from "./baseUrl";
+// import api from "./baseUrl";
 import { toast } from "react-hot-toast";
+import axios from "axios";
+
+const api = axios;
 
 export const getQuizByIdForUser = async ({ quizId }) => {
   try {
