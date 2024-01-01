@@ -27,8 +27,6 @@
   "scripts": {
     "deploy": "gh-pages -d build",
     "predeploy": "npm run build",
-    "server": "cd Server && npm run dev",
-    "dev": "concurrently -n \"client,server\" -c \"bgBlue,bgYellow\" \"npm start\" \"npm run server\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
