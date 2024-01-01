@@ -10,6 +10,8 @@ export const signup = async ({ name, email, password }) => {
       name,
       email,
       password,
+    },{
+      withCredentials: true, 
     });
     // console.log(data);
     return data;
@@ -26,6 +28,8 @@ export const login = async ({ email, password }) => {
     const { data } = await api.post("/api/v1/auth/login", {
       email,
       password,
+    },{
+      withCredentials: true, 
     });
 
  

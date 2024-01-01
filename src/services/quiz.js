@@ -10,11 +10,6 @@ export const createNewQuiz = async ({
   duration,
   level,
 }) => {
-  console.log("Title", title);
-  console.log("Description", description);
-  console.log("Category", category);
-  console.log("Duration", duration);
-  console.log("Level", level);
 
   try {
     const { data } = await api.post("/api/v1/quiz/create", {
@@ -23,6 +18,8 @@ export const createNewQuiz = async ({
       category,
       duration,
       level,
+    },{
+      withCredentials: true, 
     });
     return data;
   } catch (error) {
@@ -50,6 +47,8 @@ export const addQuestionInQuiz = async ({
         question,
         options,
         correctAnswer,
+      },{
+        withCredentials: true, 
       }
     );
     return data;
@@ -79,7 +78,9 @@ export const getAllQuizs = async () => {
 export const getQuizById = async ({ quizId }) => {
   try {
     console.log("Quiz Id", quizId);
-    const { data } = await api.get(`/api/v1/quiz/${quizId}`);
+    const { data } = await api.get(`/api/v1/quiz/${quizId}`,{
+      withCredentials: true, 
+    });
     return data;
   } catch (error) {
     if (error.response) {
@@ -93,6 +94,8 @@ export const updateQuizById = async ({ title, quizId }) => {
   try {
     const { data } = await api.put(`/api/v1/quiz/${quizId}/update`, {
       title,
+    },{
+      withCredentials: true, 
     });
     return data;
   } catch (error) {
@@ -117,6 +120,8 @@ export const updateQuestionByQuizId = async ({
         question,
         options,
         correctAnswer,
+      },{
+        withCredentials: true, 
       }
     );
     return data;
@@ -130,7 +135,9 @@ export const updateQuestionByQuizId = async ({
 
 export const deleteQuiz = async ({ quizId }) => {
   try {
-    const { data } = await api.delete(`/api/v1/quiz/${quizId}/delete`);
+    const { data } = await api.delete(`/api/v1/quiz/${quizId}/delete`,{
+      withCredentials: true, 
+    });
     return data;
   } catch (error) {
     if (error.response) {
@@ -143,7 +150,9 @@ export const deleteQuiz = async ({ quizId }) => {
 export const deleteQuestionByQuizId = async ({ quizId, questionId }) => {
   try {
     const { data } = await api.delete(
-      `/api/v1/quiz/${quizId}/question/${questionId}/delete`
+      `/api/v1/quiz/${quizId}/question/${questionId}/delete`,{
+        withCredentials: true, 
+      }
     );
     return data;
   } catch (error) {
@@ -158,6 +167,8 @@ export const publishQuiz = async ({ quizId, publish }) => {
   try {
     const { data } = await api.put(`/api/v1/quiz/${quizId}/publish`, {
       publish,
+    },{
+      withCredentials: true, 
     });
     return data;
   } catch (error) {
