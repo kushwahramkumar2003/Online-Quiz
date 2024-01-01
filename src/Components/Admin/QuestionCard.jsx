@@ -16,7 +16,7 @@ const QuestionCard = ({
   const [isEdit, setIsEdit] = useState(false);
 
 
-  const { mutate, isLoading } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: ({ questionId, quizId }) => {
       return deleteQuestionByQuizId({
         questionId,
@@ -55,9 +55,9 @@ const QuestionCard = ({
       <div>
         <div>
           <h3>{question}</h3>
-          <ul className="text-green-800 font-semibold ml-5">
+          <ul className="ml-5 font-semibold text-green-800">
             {options.map((option, index) => {
-              return <li key={questionId + index} className="text-green-800 font-semibold ml-5">{option}</li>;
+              return <li key={questionId + index} className="ml-5 font-semibold text-green-800">{option}</li>;
             })}
           </ul>
           <p>Answer: {answer}</p>

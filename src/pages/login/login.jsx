@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import images from "../../constants/images";
 import { login } from "../../services/user";
 import toast from "react-hot-toast";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { userActions } from "../../store/reducers/userReducers.js";
 
 import "./Login.css";
@@ -12,7 +12,7 @@ import "./Login.css";
 export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const userState = useSelector((state) => state.user);
+  // const userState = useSelector((state) => state.user);
 
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -24,7 +24,7 @@ export default function Login() {
     color: "black",
   };
 
-  const { mutate, isLoading, isError, isSuccess } = useMutation({
+  const { mutate} = useMutation({
     mutationFn: ({ email, password }) => {
       return login({ email, password });
     },

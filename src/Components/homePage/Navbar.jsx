@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import image from "../../constants/images.js";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { Link as Link2 } from "react-scroll";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 const menuLinks = [
@@ -31,26 +31,26 @@ const NavItem = ({ menu }) => {
   );
 };
 
-const TempNav = () => {
-  return (
-    <>
-      <nav className="">
-        <div className="">
-          <Link to={"/"} className="">
-            <img src={image.capLogo} alt="alt" className="w-[12rem] mx-7"></img>
-          </Link>
-        </div>
-        <section>
+// const TempNav = () => {
+//   return (
+//     <>
+//       <nav className="">
+//         <div className="">
+//           <Link to={"/"} className="">
+//             <img src={image.capLogo} alt="alt" className="w-[12rem] mx-7"></img>
+//           </Link>
+//         </div>
+//         <section>
           
-        </section>
-      </nav>
-    </>
-  );
-};
+//         </section>
+//       </nav>
+//     </>
+//   );
+// };
 
 const Navbar = () => {
-  const navigate = useNavigate();
-  const [profileDrowpdown, setProfileDrowpdown] = useState(false);
+  // const navigate = useNavigate();
+  // const [profileDrowpdown, setProfileDrowpdown] = useState(false);
   const [navIsVisible, setNavIsVisible] = React.useState(false);
   const navVisibilityHandler = () => {
     setNavIsVisible((prev) => !prev);

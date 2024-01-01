@@ -17,7 +17,7 @@ const Quizes = () => {
       toast.error(error.name, { duration: 4000 });
     }
     console.log("data : ", data);
-  }, [isError, isLoading, data]);
+  }, [isError, isLoading, data, error.name]);
 
   return (
     <div className="Main-quiz">

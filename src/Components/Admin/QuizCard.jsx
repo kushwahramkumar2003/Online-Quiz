@@ -16,7 +16,7 @@ const QuizCard = ({
   published,
   numberOfQuestions,
 }) => {
-  const { mutate, isLoading } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: ({ quiz_id }) => {
       return deleteQuiz({ quizId: quiz_id });
     },
@@ -45,6 +45,7 @@ const QuizCard = ({
         console.log(error);
       },
     });
+  console.log(publishQuizIsLoading);
 
   useEffect(() => {
     console.log("Quiz : ", title);
@@ -55,7 +56,7 @@ const QuizCard = ({
       "numberOfQuestions !== questions.length : ",
       numberOfQuestions !== questions
     );
-  }, []);
+  }, [numberOfQuestions,published,questions,title]);
 
   const deleteHandler = (data, error) => {
     mutate({ quiz_id });

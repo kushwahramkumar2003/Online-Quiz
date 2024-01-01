@@ -27,7 +27,7 @@ const UpdateQuestion = ({
     setOptions(initialOptions.map((value, id) => ({ id: id + 1, value })));
   }, [initialAnswer, initialOptions]);
 
-  const { mutate, isLoading } = useMutation({
+  const { mutate} = useMutation({
     mutationFn: ({ question, options, correctAnswer, quizId }) => {
       return updateQuestionByQuizId({
         question,

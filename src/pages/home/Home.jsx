@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Link as Link2 } from "react-scroll";
 
 import "./navbar.css";

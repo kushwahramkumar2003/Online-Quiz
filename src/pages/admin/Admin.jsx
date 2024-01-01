@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useDispatch, useSelector } from "react-redux";
+// import { useQueryClient } from "@tanstack/react-query";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getAllQuizs } from "../../services/quiz";
 import QuizCard from "../../Components/Admin/QuizCard";
-import { IoMdAdd } from "react-icons/io";
+// import { IoMdAdd } from "react-icons/io";
 import Modal from "../../Components/modal/Modal";
 import CreateNewQuiz from "../../Components/Admin/CreateNewQuiz";
 import "./Admin.css";
@@ -12,7 +12,7 @@ import images from "../../constants/images.js";
 
 const Admin = () => {
   const navigate = useNavigate();
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
   const [quiz, setQuiz] = React.useState([]);
   const [isOpen, setIsOpen] = React.useState(false);
   const [refresh, setRefresh] = React.useState(false);
