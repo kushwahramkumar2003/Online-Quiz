@@ -1,4 +1,11 @@
+// import api from "./baseUrl";
 import axios from "axios";
+import baseURL from "../constants/baseUrl";
+
+axios.defaults.baseURL = baseURL;
+axios.defaults.withCredentials = true;
+
+const api = axios;
 
 export const createNewQuiz = async ({
   title,
@@ -7,20 +14,20 @@ export const createNewQuiz = async ({
   duration,
   level,
 }) => {
-  console.log("Title", title);
-  console.log("Description", description);
-  console.log("Category", category);
-  console.log("Duration", duration);
-  console.log("Level", level);
-
   try {
-    const { data } = await axios.post("/api/v1/quiz/create", {
-      title,
-      description,
-      category,
-      duration,
-      level,
-    });
+    const { data } = await api.post(
+      "/api/v1/quiz/create",
+      {
+        title,
+        description,
+        category,
+        duration,
+        level,
+      },
+      {
+        withCredentials: true,
+      }
+    );
     return data;
   } catch (error) {
     if (error.response) {
@@ -41,12 +48,15 @@ export const addQuestionInQuiz = async ({
     console.log("Question", question);
     console.log("Options", options);
     console.log("Correct Answer", correctAnswer);
-    const { data } = await axios.post(
+    const { data } = await api.post(
       `/api/v1/quiz//create/addQuestion/${quizId}`,
       {
         question,
         options,
         correctAnswer,
+      },
+      {
+        withCredentials: true,
       }
     );
     return data;
@@ -60,7 +70,9 @@ export const addQuestionInQuiz = async ({
 
 export const getAllQuizs = async () => {
   try {
-    const { data } = await axios.get(`/api/v1/quiz`);
+    const { data } = await api.get(`/api/v1/quiz`, {
+      withCredentials: true,
+    });
     console.log("All Quezzes", data);
     return data;
   } catch (error) {
@@ -74,7 +86,9 @@ export const getAllQuizs = async () => {
 export const getQuizById = async ({ quizId }) => {
   try {
     console.log("Quiz Id", quizId);
-    const { data } = await axios.get(`/api/v1/quiz/${quizId}`);
+    const { data } = await api.get(`/api/v1/quiz/${quizId}`, {
+      withCredentials: true,
+    });
     return data;
   } catch (error) {
     if (error.response) {
@@ -86,9 +100,15 @@ export const getQuizById = async ({ quizId }) => {
 
 export const updateQuizById = async ({ title, quizId }) => {
   try {
-    const { data } = await axios.put(`/api/v1/quiz/${quizId}/update`, {
-      title,
-    });
+    const { data } = await api.put(
+      `/api/v1/quiz/${quizId}/update`,
+      {
+        title,
+      },
+      {
+        withCredentials: true,
+      }
+    );
     return data;
   } catch (error) {
     if (error.response) {
@@ -106,12 +126,15 @@ export const updateQuestionByQuizId = async ({
   correctAnswer,
 }) => {
   try {
-    const { data } = await axios.put(
+    const { data } = await api.put(
       `/api/v1/quiz/${quizId}/question/${questionId}/update`,
       {
         question,
         options,
         correctAnswer,
+      },
+      {
+        withCredentials: true,
       }
     );
     return data;
@@ -125,7 +148,9 @@ export const updateQuestionByQuizId = async ({
 
 export const deleteQuiz = async ({ quizId }) => {
   try {
-    const { data } = await axios.delete(`/api/v1/quiz/${quizId}/delete`);
+    const { data } = await api.delete(`/api/v1/quiz/${quizId}/delete`, {
+      withCredentials: true,
+    });
     return data;
   } catch (error) {
     if (error.response) {
@@ -137,8 +162,11 @@ export const deleteQuiz = async ({ quizId }) => {
 
 export const deleteQuestionByQuizId = async ({ quizId, questionId }) => {
   try {
-    const { data } = await axios.delete(
-      `/api/v1/quiz/${quizId}/question/${questionId}/delete`
+    const { data } = await api.delete(
+      `/api/v1/quiz/${quizId}/question/${questionId}/delete`,
+      {
+        withCredentials: true,
+      }
     );
     return data;
   } catch (error) {
@@ -149,11 +177,17 @@ export const deleteQuestionByQuizId = async ({ quizId, questionId }) => {
   }
 };
 
-export const publishQuiz = async ({ quizId,publish }) => {
+export const publishQuiz = async ({ quizId, publish }) => {
   try {
-    const { data } = await axios.put(`/api/v1/quiz/${quizId}/publish`, {
-      publish
-    });
+    const { data } = await api.put(
+      `/api/v1/quiz/${quizId}/publish`,
+      {
+        publish,
+      },
+      {
+        withCredentials: true,
+      }
+    );
     return data;
   } catch (error) {
     if (error.response) {

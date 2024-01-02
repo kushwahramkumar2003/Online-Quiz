@@ -15,7 +15,7 @@ const AddNewQuestion = ({ quizId, setIsOpen }) => {
     { id: 4, value: "" },
   ]);
 
-  const { mutate, isLoading } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: ({ question, options, correctAnswer, quizId }) => {
       return addQuestionInQuiz({ question, options, correctAnswer, quizId });
     },

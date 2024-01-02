@@ -3,8 +3,8 @@ import { useMutation } from "@tanstack/react-query";
 import OneQuestionApper from "../../Components/StartQuiz/OneQuestionApper";
 import Timer from "../../Components/StartQuiz/Timer";
 import QuestionAttempBar from "../../Components/StartQuiz/QuestionAttempBar";
-import { useQuery } from "@tanstack/react-query";
-import { getQuizById } from "../../services/quiz";
+// import { useQuery } from "@tanstack/react-query";
+// import { getQuizById } from "../../services/quiz";
 import { useParams, useNavigate } from "react-router-dom";
 import {
   getQuizByIdForUser,
@@ -35,9 +35,9 @@ const QuizPage = () => {
       setDuration(data?.duration);
     };
     fetchQuiz();
-  }, []);
+  }, [quizId]);
 
-  let QuizData = undefined;
+  // let QuizData = undefined;
 
   const {
     mutate: submitAnswer,
@@ -64,6 +64,7 @@ const QuizPage = () => {
     },
     onSuccess: (data) => {
       // setQuestionNumber((prev) => prev + 1);
+
       const { result } = data;
       toast.success("Quiz submitted successfully");
       console.log("result data : ", data);
@@ -75,6 +76,8 @@ const QuizPage = () => {
       console.log(error);
     },
   });
+
+  console.log(isPendingSubmit);
 
   const submitHandler = async () => {
     console.log("quizId : ", quizId);

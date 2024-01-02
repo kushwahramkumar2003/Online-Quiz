@@ -1,9 +1,7 @@
 {
   "name": "quiz-app",
-  "homepage": "https://kushwahramkumar2003.github.io/Online-Quiz",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://quiz-app-test-01.azurewebsites.net/",
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
     "@svgr/webpack": "^8.1.0",
@@ -13,7 +11,9 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.2",
     "concurrently": "^8.2.2",
+    "dotenv": "^16.3.1",
     "file-loader": "^6.2.0",
+    "process": "^0.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.48.2",
@@ -27,8 +27,6 @@
   "scripts": {
     "deploy": "gh-pages -d build",
     "predeploy": "npm run build",
-    "server": "cd Server && npm run dev",
-    "dev": "concurrently -n \"client,server\" -c \"bgBlue,bgYellow\" \"npm start\" \"npm run server\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -53,6 +51,7 @@
     ]
   },
   "devDependencies": {
+    "@types/node": "^20.10.6",
     "gh-pages": "^6.1.1",
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.9",
