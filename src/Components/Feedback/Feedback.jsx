@@ -1,6 +1,6 @@
 // Feedback.jsx
 import React, { useState } from "react";
-import axios from "axios";
+
 import { useMutation } from "@tanstack/react-query";
 import { submitFeedback } from "../../services/feedback";
 import { toast } from "react-hot-toast";

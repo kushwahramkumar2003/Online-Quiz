@@ -5,7 +5,6 @@ import Quizes from "../../Components/User/quiz/Quizes.jsx";
 import "./User_page.css";
 import Navbar from "../../Components/homePage/Navbar";
 import images from "../../constants/images.js";
-import { Link } from "react-router-dom";
 import { Link as Link2 } from "react-scroll";
 
 const UserPage = () => {
