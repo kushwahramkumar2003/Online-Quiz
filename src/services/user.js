@@ -1,18 +1,26 @@
 // import api from "./baseUrl";
 
 import axios from "axios";
+import baseURL from "../constants/baseUrl";
+
+axios.defaults.baseURL = baseURL;
+axios.defaults.withCredentials = true;
 
 const api = axios;
 
 export const signup = async ({ name, email, password }) => {
   try {
-    const { data } = await api.post("api/v1/auth/register", {
-      name,
-      email,
-      password,
-    },{
-      withCredentials: true, 
-    });
+    const { data } = await api.post(
+      "api/v1/auth/register",
+      {
+        name,
+        email,
+        password,
+      },
+      {
+        withCredentials: true,
+      }
+    );
     // console.log(data);
     return data;
   } catch (error) {
@@ -25,14 +33,17 @@ export const signup = async ({ name, email, password }) => {
 
 export const login = async ({ email, password }) => {
   try {
-    const { data } = await api.post("/api/v1/auth/login", {
-      email,
-      password,
-    },{
-      withCredentials: true, 
-    });
+    const { data } = await api.post(
+      "/api/v1/auth/login",
+      {
+        email,
+        password,
+      },
+      {
+        withCredentials: true,
+      }
+    );
 
- 
     return data;
   } catch (error) {
     console.log(error);
