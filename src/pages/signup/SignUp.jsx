@@ -4,7 +4,7 @@ import "./Signup.css";
 import images from "../../constants/images";
 
 import toast from "react-hot-toast";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { userActions } from "../../store/reducers/userReducers.js";
 
 import { useMutation } from "@tanstack/react-query";
@@ -12,10 +12,10 @@ import { useMutation } from "@tanstack/react-query";
 import { signup } from "../../services/user";
 
 export default function Login() {
-  const textD = {
-    textDecoration: "none",
-    color: "black",
-  };
+  // const textD = {
+  //   textDecoration: "none",
+  //   color: "black",
+  // };
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -24,9 +24,9 @@ export default function Login() {
 
   const naviage = useNavigate();
   const dispatch = useDispatch();
-  const userState = useSelector((state) => state.user);
+  // const userState = useSelector((state) => state.user);
 
-  const { mutate, isLoading } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: ({ name, email, password }) => {
       return signup({ name, email, password });
     },

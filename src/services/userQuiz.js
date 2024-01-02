@@ -1,11 +1,20 @@
-import axios from "axios";
+// import api from "./baseUrl";
 import { toast } from "react-hot-toast";
+import axios from "axios";
+import baseURL from "../constants/baseUrl";
+
+axios.defaults.baseURL = baseURL;
+axios.defaults.withCredentials = true;
+
+const api = axios;
 
 export const getQuizByIdForUser = async ({ quizId }) => {
   try {
     console.log("Quiz Id", quizId);
 
-    const { data } = await axios.get(`/api/v1/userQuiz/${quizId}`);
+    const { data } = await api.get(`/api/v1/userQuiz/${quizId}`, {
+      withCredentials: true,
+    });
 
     // let data = undefined;
     console.log("User Quiz Data : ", data);
@@ -25,11 +34,17 @@ export const getQuizByIdForUser = async ({ quizId }) => {
 
 export const submitOneQuestion = async ({ quizId, questionId, answer }) => {
   try {
-    const { data } = await axios.post(`/api/v1/userQuiz/submitAnswer`, {
-      quizId,
-      questionId,
-      answer,
-    });
+    const { data } = await api.post(
+      `/api/v1/userQuiz/submitAnswer`,
+      {
+        quizId,
+        questionId,
+        answer,
+      },
+      {
+        withCredentials: true,
+      }
+    );
     // console.log("USer Quiz Data : ", data);
     return data;
   } catch (error) {
@@ -44,7 +59,9 @@ export const submitOneQuestion = async ({ quizId, questionId, answer }) => {
 
 export const submitQuiz = async ({ quizId }) => {
   try {
-    const { data } = await axios.post(`/api/v1/userQuiz/${quizId}/finishQuiz`);
+    const { data } = await api.post(`/api/v1/userQuiz/${quizId}/finishQuiz`, {
+      withCredentials: true,
+    });
     // console.log("USer Quiz Data : ", data);
     return data;
   } catch (error) {
@@ -59,8 +76,11 @@ export const submitQuiz = async ({ quizId }) => {
 
 export const getResultByIds = async ({ quizId, resultId }) => {
   try {
-    const { data } = await axios.get(
-      `/api/v1/userQuiz/result/${quizId}/${resultId}`
+    const { data } = await api.get(
+      `/api/v1/userQuiz/result/${quizId}/${resultId}`,
+      {
+        withCredentials: true,
+      }
     );
     // console.log("USer Quiz Data : ", data);
     return data;

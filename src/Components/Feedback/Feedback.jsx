@@ -1,6 +1,6 @@
 // Feedback.jsx
 import React, { useState } from "react";
-import axios from "axios";
+
 import { useMutation } from "@tanstack/react-query";
 import { submitFeedback } from "../../services/feedback";
 import { toast } from "react-hot-toast";
@@ -41,7 +41,9 @@ const Feedback = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8">
+    <div className="max-w-md mx-auto mt-[4.5%]">
+        <h2 className="text-[20px] mb-[2%] align-middle text-center font-bold text-green-600"> Send us your feedback </h2>
+
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
           <label
@@ -58,7 +60,8 @@ const Feedback = () => {
             required
             value={formData.name}
             onChange={handleChange}
-            className="w-full p-2 mt-1 border rounded-md"
+            placeholder="Enter your name"
+            className="w-full p-4.5 mt-1 border rounded-md"
           />
         </div>
         <div>
@@ -76,13 +79,15 @@ const Feedback = () => {
             required
             value={formData.email}
             onChange={handleChange}
-            className="w-full p-2 mt-1 border rounded-md"
+            placeholder="Enter your email address"
+            className="w-full p-4.5 mt-1 border rounded-md"
           />
         </div>
         <div>
           <label
             htmlFor="message"
             className="block text-sm font-medium text-gray-700"
+            placeholder="Enter your message here"
           >
             Message
           </label>
@@ -93,7 +98,8 @@ const Feedback = () => {
             required
             value={formData.message}
             onChange={handleChange}
-            className="w-full p-2 mt-1 border rounded-md"
+            placeholder="Enter your message here"
+            className="w-full p-4 mt-1 mb-[-1%] border rounded-md"
           ></textarea>
         </div>
         <div>
@@ -125,6 +131,7 @@ const Feedback = () => {
           </button>
         </div>
       </form>
+
     </div>
   );
 };

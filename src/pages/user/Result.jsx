@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getResultByIds } from "../../services/userQuiz.js";
 import Feedback from "../../Components/Feedback/Feedback.jsx";
+import "./Result.css";
 
 const Result = () => {
   const { resultId, quizId } = useParams();
@@ -31,15 +32,15 @@ const Result = () => {
     fetchResult();
   }, [quizId, resultId]);
   return (
-    <div>
-      <h1>Result</h1>
+    <div className="quiz_result">
+      <h1 className="quiz-result-heading"> Quiz Results </h1>
 
       {/* {resultData && resultData.length === 0 && <h1>Not Found</h1>} */}
 
       {resultData && (
-        <div>
-          <h2>Score : {resultData.score}</h2>
-          <h2>Marks : {resultData.percentage}</h2>
+        <div className="result-details">
+          <h2>Your Score : {resultData.score}</h2>
+          <h2>Your Marks : {resultData.percentage}</h2>
           <h2>
             Performance :{" "}
             <span className={`font-semibold ${performanceClass}`}>

@@ -12,11 +12,13 @@ const Quizes = () => {
     queryKey: ["quizs"],
   });
 
+
   useEffect(() => {
     if (isError) {
       toast.error(error.name, { duration: 4000 });
     }
     console.log("data : ", data);
+    // eslint-disable-next-line
   }, [isError, isLoading, data]);
 
   return (

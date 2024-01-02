@@ -25,7 +25,7 @@ const CreateNewQuiz = ({ setIsOpen }) => {
     register,
     handleSubmit,
     formState: { errors, isValid },
-    watch,
+    // watch,
   } = useForm({
     defaultValues: {
       title: "",
