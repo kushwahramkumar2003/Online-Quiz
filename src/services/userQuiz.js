@@ -17,9 +17,9 @@ export const getQuizByIdForUser = async ({ quizId }) => {
     });
 
     // let data = undefined;
-    console.log("User Quiz Data : ", data);
-    const { quizData } = data;
-    if (quizData) return quizData;
+    // console.log("User Quiz Data : ", data);
+    // const { quizData } = data;
+    // if (quizData) return quizData;
 
     return data;
   } catch (error) {
