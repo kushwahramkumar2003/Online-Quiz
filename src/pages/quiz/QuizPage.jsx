@@ -22,6 +22,8 @@ const QuizPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { quizId } = useParams();
   const [duration, setDuration] = useState(0);
+
+  // eslint-disable-next-line no-unused-vars
   const [userQuizAlredyStarted, setUserQuizAlredyStarted] = useState({});
   const [attemptQuestions, setAttemptQuestions] = useState({});
   const [loading, setLoading] = useState(false);
