@@ -103,7 +103,7 @@ const Admin = () => {
 
           <div className="admin-content">
             <div className="quiz-create-box">
-              <h2>All Quizes</h2>
+              {/* <h2>All Quizes</h2> */}
 
               <div>
                 {quiz.map((q) => {

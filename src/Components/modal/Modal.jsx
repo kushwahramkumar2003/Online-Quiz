@@ -1,5 +1,5 @@
 import React from "react";
-// import styles from "./modal.css";
+import  "./modal.css";
 import { RiCloseLine } from "react-icons/ri";
 
 const Modal = ({ setIsOpen, children }) => {

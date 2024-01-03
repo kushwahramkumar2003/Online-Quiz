@@ -45,26 +45,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 37rem;
-  /* width: 74rem; */
-  /* margin-left: 3rem;
-  margin-top: 2rem;  */
-  /* box-shadow: 3px 5px 5px rgba(1, 1, 1, 0.4);
-  background: #dcdadada;  */
-  border: 1px solid black;
-  border-radius: 10px;
+   
+  /* border: 1px solid black;
+  border-radius: 10px; */
 }
 
 .create-quiz-bt {
   margin-left: 8rem;
 }
-.quiz-create-box {
-  width: 65rem;
+.quiz-create-box { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65rem; 
+  height: 40.5rem; 
+  /* overflow-y: hidden; */
   box-shadow: 3px 5px 5px rgba(1, 1, 1, 0.4);
   background: #dbdada;
 }
 .Admin-manu {
-  height: 46.3rem;
+  height: 45.5rem;
   width: 17rem;
 
   background-color: #dbdada;

@@ -4,6 +4,7 @@ import "./One_question_apper.css";
 const OneQuestionApper = ({
   question,
   questionNumber,
+
   totalQuestions,
   options,
   selected,
@@ -25,10 +26,7 @@ const OneQuestionApper = ({
       <p className="question-show">{question}</p>
       <ul className="mt-9">
         {options?.map((option, index) => (
-          <li
-            key={option}
-            className="ml-4 font-semibold"
-          >
+          <li key={option} className="ml-4 font-semibold">
             <input
               id={`question_${option}`}
               type="radio"
