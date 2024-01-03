@@ -19,8 +19,8 @@ const Result = () => {
         const performanceClassMap = {
           Poor: "text-red-700",
           Average: "text-yellow-500",
-          Good: "text-green-600",
-          Excellent: "text-green-950",
+          Good: "text-blue-600",
+          Excellent: "text-green-600",
         };
 
         setPerformanceClass(performanceClassMap[data.performance] || "");
