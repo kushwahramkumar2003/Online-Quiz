@@ -1,0 +1,24 @@
+.card-body{
+    border: 1px solid black;  
+    margin-top: 2rem;
+    border-radius: 10px;   
+}  
+/* .card-body:hover{
+    background-color: #FCC822; 
+    border: none; 
+    transition: all 1s ease;
+}   */
+.Quizs-container{ 
+     margin: 5px 5px 5px 5px; 
+}
+.card-text{
+    font-family: serif;  
+    font-size: large;
+} 
+.updating-btn{ 
+    margin-top: 2rem;
+    border: 1px solid black;  
+    margin-left: 0.5rem; 
+    border-radius: 4px; 
+    width: 10rem;
+} 

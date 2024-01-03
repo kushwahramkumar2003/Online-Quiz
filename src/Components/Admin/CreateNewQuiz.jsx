@@ -99,7 +99,8 @@ const CreateNewQuiz = ({ setIsOpen }) => {
 
         <div className="form-control">
           <label htmlFor="duration">Duration</label>
-          <input
+          <input 
+          className="input-box"
             type="text"
             id="duration"
             placeholder="Enter duration in minutes"
