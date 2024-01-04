@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { deleteQuestionByQuizId } from "../../services/quiz";
 import Modal from "../modal/Modal";
 import UpdateQuestion from "./UpdateQuestion";
-
+import "./QuestionCard.css";
 const QuestionCard = ({
   question,
   options,
@@ -38,7 +38,7 @@ const QuestionCard = ({
     mutate({ questionId, quizId });
   };
   return (
-    <div>
+    <div >
       {isEdit && (
         <Modal setIsOpen={setIsEdit}>
           <UpdateQuestion
@@ -51,23 +51,30 @@ const QuestionCard = ({
             setIsEdit={setIsEdit}
           />
         </Modal>
-      )}
-      <div>
-        <div>
-          <h3>{question}</h3>
+      )} 
+      <div className="Edit-section">
+      <div className="Ques-container"> 
+
+        <div className="Ques-boxs">
+          <h3>Question: {question}</h3>
           <ul className="ml-5 font-semibold text-green-800">
             {options.map((option, index) => {
               return <li key={questionId + index} className="ml-5 font-semibold text-green-800">{option}</li>;
             })}
           </ul>
           <p>Answer: {answer}</p>
-        </div>
-        <div>
-          <button onClick={() => setIsEdit(true)}>Edit</button>
-          <button onClick={deleteHandler}>Delete</button>
-        </div>
+        </div> 
+
+        <div className="E-D-btn">
+          <button className="bg-[#34A853]" onClick={() => setIsEdit(true)}>EditQuiz</button>
+          <button className="bg-[#EA4335]" onClick={deleteHandler}>DeleteQuiz</button>
+        </div> 
+
       </div>
-    </div>
+    </div>  
+     
+    </div> 
+
   );
 };
 

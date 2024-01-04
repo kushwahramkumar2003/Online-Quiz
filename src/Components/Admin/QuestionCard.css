@@ -1,0 +1,30 @@
+
+ .Edit-section{
+ display: flex; 
+ justify-content: center; 
+ align-items: center; 
+ 
+}
+ .Ques-container{
+    border: 2px solid rgb(13, 123, 13); 
+    width: 50rem;  
+    margin-top: 2rem; 
+    
+}  
+.E-D-btn{
+   margin: 1rem 1rem 1rem 1rem; 
+   display: flex; 
+} 
+.E-D-btn button{ 
+    width: 6rem; 
+    height: 2.5rem;
+    margin-left: 2.5rem;
+    /* border: 1px solid rgba(0, 0, 0, 0.539);  */
+    color: white;
+} 
+.Ques-boxs{
+    margin: 1rem 1rem 1rem 1rem; 
+} 
+.Ques-boxs p{
+    margin: 1rem 1rem 1rem 1rem;  
+}

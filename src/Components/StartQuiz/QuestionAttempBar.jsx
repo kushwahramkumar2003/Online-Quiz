@@ -1,5 +1,6 @@
 import React from "react";
 import QuestionAttemptChecker from "./QuestionAttemptChecker";
+import "./Question_attempt_bar.css"
 
 const QuestionAttempBar = ({
   questions,
@@ -7,7 +8,7 @@ const QuestionAttempBar = ({
   setQuestionNumber,
   questionNumber,
 }) => {
-  console.log("Type of : ", typeof attemptQuestions);
+  // console.log("Type of : ", typeof attemptQuestions);
 
   const checkr = (question) => {
     if (attemptQuestions[question] !== undefined) {
@@ -18,7 +19,7 @@ const QuestionAttempBar = ({
   };
 
   return (
-    <div className="flex flex-wrap h-full">
+    <div className="quiz-attempt-bar">
       {attemptQuestions &&
         questions.map((question, index) => {
           const isAttempted = checkr(question._id);
