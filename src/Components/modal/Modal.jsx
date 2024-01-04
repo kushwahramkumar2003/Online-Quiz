@@ -5,14 +5,15 @@ import { RiCloseLine } from "react-icons/ri";
 const Modal = ({ setIsOpen, children }) => {
   return (
     <>
-      <div className={"darkBG"} onClick={() => setIsOpen(false)} />
+    <div className={"darkBG"} onClick={() => setIsOpen(false)} />
       <div className={"centered"}>
+        
         <div className={"modal"}>
-          <div className={"modalHeader"}>
+          {/* <div className={"modalHeader"}>
             <h5 className={"heading"}>Dialog</h5>
-          </div>
+          </div> */}
           <button className={"closeBtn"} onClick={() => setIsOpen(false)}>
-            <RiCloseLine style={{ marginBottom: "-3px" }} />
+            <RiCloseLine/>
           </button>
           {/* <div className={"modalContent"}>
             Are you sure you want to delete the item?
@@ -28,9 +29,9 @@ const Modal = ({ setIsOpen, children }) => {
             </div>
           </div> */}
           {children}
-         
         </div>
-      </div>
+
+    </div>
     </>
   );
 };
