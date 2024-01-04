@@ -214,6 +214,8 @@ const QuizPage = () => {
               </div>
 
               <div className="question-bar">
+                <h2 className="type-quiz-going-on"> Questions</h2>
+                <div className="line-quiz-category"></div>
                 <QuestionAttempBar
                   questionNumber={questionNumber}
                   questions={QuestionsArr}
