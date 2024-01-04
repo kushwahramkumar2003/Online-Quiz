@@ -8,7 +8,7 @@ const QuestionAttempBar = ({
   setQuestionNumber,
   questionNumber,
 }) => {
-  console.log("Type of : ", typeof attemptQuestions);
+  // console.log("Type of : ", typeof attemptQuestions);
 
   const checkr = (question) => {
     if (attemptQuestions[question] !== undefined) {
