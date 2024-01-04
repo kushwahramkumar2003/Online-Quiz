@@ -22,6 +22,7 @@ const QuizPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { quizId } = useParams();
   const [duration, setDuration] = useState(0);
+  const [title, setTitle] = useState(null);
 
   // eslint-disable-next-line no-unused-vars
   const [userQuizAlredyStarted, setUserQuizAlredyStarted] = useState({});
@@ -39,6 +40,7 @@ const QuizPage = () => {
         setIsLoading(false);
         setQuestionsArr(data?.quizData.questions);
         setDuration(data?.quizData.duration);
+        setTitle(data?.quizData?.title);
       } else {
         setIsLoading(false);
         setQuestionsArr(data?.questions);
@@ -214,7 +216,7 @@ const QuizPage = () => {
               </div>
 
               <div className="question-bar">
-                <h2 className="type-quiz-going-on"> Questions</h2>
+                <h2 className="type-quiz-going-on">{title} Questions </h2>
                 <div className="line-quiz-category"></div>
                 <QuestionAttempBar
                   questionNumber={questionNumber}
