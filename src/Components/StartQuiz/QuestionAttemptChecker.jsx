@@ -1,4 +1,5 @@
 import React from "react";
+import "./Question_attempt_checker.css";
 
 const QuestionAttemptChecker = ({
   questionStatus,
@@ -6,15 +7,16 @@ const QuestionAttemptChecker = ({
   setQuestionNumber,
   currentQuestionNumber,
 }) => {
-  const circleColor = ["bg-white", "bg-yellow-400", "bg-green-500"];
+  const circleColor = ["bg-[#C4C4C4] font-bold", "bg-[#F3BE00] text-white font-bold", "bg-[#058005] text-white font-bold"];
+  // ****** Grey ****** Yellow ****** Green ******
 
   return (
     <>
       <span
         onClick={() => setQuestionNumber(questionNumber - 1)}
-        className={`border border-black  rounded-3xl border-l-gray-950 ${
+        className={`question-circle ${
           circleColor[questionStatus]
-        } px-2 w-fit h-fit cursor-pointer ${
+        } ${
           currentQuestionNumber + 1 === questionNumber &&
           "border-2 border-blue-500"
         }}`}
