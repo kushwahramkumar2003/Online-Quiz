@@ -44,14 +44,16 @@ const CreateNewQuiz = ({ setIsOpen }) => {
   };
 
   return (
-    <div className="text-black">
+    <div className="text-black border-black">
+     <div className="start-dialog-box">
       <h1 className="createNew">Create new Quiz</h1>
       <form onSubmit={handleSubmit(submitHandler)}>
         <div className="form-control">
-          <label htmlFor="title" >Quiz Title</label>
+          <label htmlFor="title">Quiz Tittle</label>
           <input 
           className="input-box"
             type="text"
+            placeholder="Enter quiz tittle"
             id="title"
             {...register("title", {
               required: "Title is required",
@@ -68,6 +70,7 @@ const CreateNewQuiz = ({ setIsOpen }) => {
           <input 
            className="input-box"
             type="text"
+            placeholder="Enter quiz description"
             id="description"
             {...register("description", {
               required: "Description is required",
@@ -85,6 +88,7 @@ const CreateNewQuiz = ({ setIsOpen }) => {
           <input 
            className="input-box"
             type="text"
+            placeholder="Enter quiz category"
             id="category"
             {...register("category", {
               required: "Category is required",
@@ -103,7 +107,7 @@ const CreateNewQuiz = ({ setIsOpen }) => {
           className="input-box"
             type="text"
             id="duration"
-            placeholder="Enter duration in minutes"
+            placeholder="Enter quiz duration"
             {...register("duration", {
               required: "Duration is required",
               minLength: {
@@ -114,8 +118,9 @@ const CreateNewQuiz = ({ setIsOpen }) => {
           />
           {errors.duration && <p>{errors.duration.message}</p>}
         </div>
-        <div className="form-control">
-          <label htmlFor="level">Quiz Level</label>
+
+        <div className="form-control" id="quiz-level">
+          <label htmlFor="level">Select Quiz Level</label>
           <select
             id="level"
             {...register("level", {
@@ -128,16 +133,23 @@ const CreateNewQuiz = ({ setIsOpen }) => {
           </select>
           {errors.level && <p>{errors.level.message}</p>}
         </div>
+
+
         <button
           type="submit"
           className="submit-button"
           disabled={!isValid || isLoading}
-          typeof="submit"
-        >
-          Save
-        </button>
-        <button onClick={() => setIsOpen(false)}  className="cancel-button">Cancel</button>
+          typeof="submit">
+          Save</button>
+
+        <button 
+        onClick={() => setIsOpen(false)}  
+        className="cancel-button">
+        Cancel</button>
+
       </form>
+     </div>
+  
     </div>
   );
 };
