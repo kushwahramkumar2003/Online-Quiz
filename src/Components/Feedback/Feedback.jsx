@@ -16,7 +16,7 @@ const Feedback = () => {
     rating: 0,
   });
 
-  const { mutate, isLoading } = useMutation({
+  const { mutate, isPending, isPaused } = useMutation({
     mutationFn: ({ name, email, message, rating }) => {
       return submitFeedback({ name, email, message, rating });
     },
@@ -42,7 +42,10 @@ const Feedback = () => {
 
   return (
     <div className="max-w-md mx-auto mt-[4.5%]">
-        <h2 className="text-[20px] mb-[2%] align-middle text-center font-bold text-green-600"> Send us your feedback </h2>
+      <h2 className="text-[20px] mb-[2%] align-middle text-center font-bold text-green-600">
+        {" "}
+        Send us your feedback{" "}
+      </h2>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
@@ -124,14 +127,13 @@ const Feedback = () => {
         <div>
           <button
             type="submit"
-            disabled={isLoading}
-            className="w-full p-3 text-white bg-blue-500 rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:block"
+            disabled={isPending || isPaused}
+            className="w-full p-3 text-white bg-blue-500 rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Submit Feedback
           </button>
         </div>
       </form>
-
     </div>
   );
 };

@@ -23,6 +23,11 @@ const QuizPage = () => {
   const { quizId } = useParams();
   const [duration, setDuration] = useState(0);
 
+  // eslint-disable-next-line no-unused-vars
+  const [userQuizAlredyStarted, setUserQuizAlredyStarted] = useState({});
+  const [attemptQuestions, setAttemptQuestions] = useState({});
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const fetchQuiz = async () => {
       setIsLoading(true);
@@ -30,9 +35,19 @@ const QuizPage = () => {
       // console.log("Quiz Data : ", data);
       // console.log("data?.questions : ", data?.questions);
       console.log("Arrived res : ", data);
-      setIsLoading(false);
-      setQuestionsArr(data?.questions);
-      setDuration(data?.duration);
+      if (data?.quizData) {
+        setIsLoading(false);
+        setQuestionsArr(data?.quizData.questions);
+        setDuration(data?.quizData.duration);
+      } else {
+        setIsLoading(false);
+        setQuestionsArr(data?.questions);
+        setDuration(data?.duration);
+      }
+      if (data?.userQuizAlredyStarted) {
+        setUserQuizAlredyStarted(data?.userQuizAlredyStarted);
+        setAttemptQuestions(data?.userQuizAlredyStarted?.answers);
+      }
     };
     fetchQuiz();
   }, [quizId]);
@@ -80,27 +95,61 @@ const QuizPage = () => {
   console.log(isPendingSubmit);
 
   const submitHandler = async () => {
+    setLoading(true);
     console.log("quizId : ", quizId);
     await SubmitQuiz({ quizId });
+    // setOptionSelected("");
+    setLoading(false);
   };
 
   const nextHandler = async ({ isNext }) => {
+    setLoading(true);
     await submitAnswer({
       quizId,
       questionId: QuestionsArr[questionNumber]._id,
       answer: optionSelected,
     });
-    if (isNext) setQuestionNumber((prev) => prev + 1);
+
+    const obj = { [QuestionsArr[questionNumber]._id]: optionSelected };
+
+    setAttemptQuestions((prev) => Object.assign({}, prev, obj));
+    console.log("Attempt Questions : ", attemptQuestions);
+    if (isNext) {
+      setOptionSelected(
+        attemptQuestions[QuestionsArr[questionNumber]?._id]
+          ? attemptQuestions[QuestionsArr[questionNumber]?._id]
+          : ""
+      );
+      setQuestionNumber((prev) => prev + 1);
+    }
+    setLoading(false);
   };
 
   const prevHandler = async () => {
+    setLoading(true);
     await submitAnswer({
       quizId,
       questionId: QuestionsArr[questionNumber]._id,
       answer: optionSelected,
     });
-    if (isSuccess) setQuestionNumber((prev) => prev - 1);
+    if (isSuccess) {
+      setOptionSelected(
+        attemptQuestions[QuestionsArr[questionNumber]?._id]
+          ? attemptQuestions[QuestionsArr[questionNumber]?._id]
+          : ""
+      );
+      setQuestionNumber((prev) => prev - 1);
+    }
+    setLoading(false);
   };
+
+  useEffect(() => {
+    setOptionSelected(
+      attemptQuestions[QuestionsArr[questionNumber]?._id]
+        ? attemptQuestions[QuestionsArr[questionNumber]?._id]
+        : ""
+    );
+  }, [questionNumber, attemptQuestions, QuestionsArr]);
 
   return (
     <div className="main-quiz-head">
@@ -130,22 +179,22 @@ const QuizPage = () => {
                   <Timer time={duration || 10} submitHandler={submitHandler} />
                 </div>
 
-                <div className="quiz-btns">
+                <div className="quiz-btns ">
                   <button
-                    className="prev-btn"
+                    className="prev-btn disabled:opacity-50 disabled:cursor-not-allowed"
                     onClick={() => prevHandler()}
-                    disabled={questionNumber <= 0 || isPending}
+                    disabled={loading || questionNumber <= 0 || isPending}
                   >
                     Previous
                   </button>
 
                   <button
-                    className="next-btn"
+                    className="next-btn disabled:opacity-50 disabled:cursor-not-allowed"
                     onClick={() => {
                       const isNext = questionNumber !== QuestionsArr.length - 1;
                       nextHandler({ isNext });
                     }}
-                    disabled={isPending}
+                    disabled={isPending || loading}
                   >
                     {questionNumber === QuestionsArr.length - 1
                       ? "Save"
@@ -155,7 +204,8 @@ const QuizPage = () => {
 
                 <div className="submit-quiz-btn">
                   <button
-                    className="submit-btn"
+                    disabled={loading || isPending || isPendingSubmit}
+                    className="submit-btn disabled:opacity-50 disabled:cursor-not-allowed"
                     onClick={() => submitHandler()}
                   >
                     Submit
@@ -164,9 +214,13 @@ const QuizPage = () => {
               </div>
 
               <div className="question-bar">
+                <h2 className="type-quiz-going-on"> Questions</h2>
+                <div className="line-quiz-category"></div>
                 <QuestionAttempBar
                   questionNumber={questionNumber}
-                  setquestionNumber={setQuestionNumber}
+                  questions={QuestionsArr}
+                  attemptQuestions={attemptQuestions}
+                  setQuestionNumber={setQuestionNumber}
                 />
               </div>
             </div>
