@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { updateQuestionByQuizId } from "../../services/quiz";
+import { updateQuestionByQuizId } from "../../services/quiz"; 
+import "./UpdateQuestion.css";
 
 const UpdateQuestion = ({
   quizId,
@@ -90,8 +91,9 @@ const UpdateQuestion = ({
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-control">
             <label htmlFor="question">Question</label>
-            <input
-              type="text"
+            <input 
+            className="update-input-box"
+              // type="text"
               id="question"
               {...register("question", { required: "Question is required" })}
               defaultValue={question}
@@ -108,8 +110,10 @@ const UpdateQuestion = ({
                   defaultValue={option.value}
                   render={({ field }) => (
                     <>
-                      <input
-                        type="radio"
+                      <input 
+                       className="update-input-box" 
+                      //  type="text"
+                        // type="radio"
                         id={`option${option.id}`}
                         name="options"
                         value={`option${option.id}`}
@@ -121,8 +125,9 @@ const UpdateQuestion = ({
                       <label htmlFor={`option${option.id}`}>
                         Option {option.id}
                       </label>
-                      <input
-                        type="text"
+                      <input 
+                       className="update-input-box"
+                        // type="text"
                         id={`option${option.id}`}
                         {...field}
                         onChange={(e) =>
@@ -137,7 +142,8 @@ const UpdateQuestion = ({
           </div>
           <div className="form-control">
             <label htmlFor="answer">Answer</label>
-            <input
+            <input 
+             className="update-input-box"
               type="text"
               id="answer"
               value={answer}
