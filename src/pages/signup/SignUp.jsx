@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { PulseLoader } from "react-spinners";
 import "./Signup.css";
 import images from "../../constants/images";
 
@@ -26,7 +27,7 @@ export default function Login() {
   const dispatch = useDispatch();
   // const userState = useSelector((state) => state.user);
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: ({ name, email, password }) => {
       return signup({ name, email, password });
     },
@@ -66,7 +67,6 @@ export default function Login() {
   const handlePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -136,8 +136,13 @@ export default function Login() {
           </div>
 
           <div className="btn-2">
-            <button type="submit" onClick={submitHandler}>
-              SignUp
+            <button
+              type="submit"
+              onClick={submitHandler}
+              disabled={isPending}
+              className="disabled:opacity-80 disabled:cursor-not-allowed"
+            >
+              {isPending ? <PulseLoader color="#fff" size={10} /> : "SignUp"}
             </button>
           </div>
 

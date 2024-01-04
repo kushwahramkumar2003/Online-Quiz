@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
+import { PulseLoader } from "react-spinners";
 import images from "../../constants/images";
 import { login } from "../../services/user";
 import toast from "react-hot-toast";
@@ -24,7 +25,7 @@ export default function Login() {
     color: "black",
   };
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: ({ email, password }) => {
       return login({ email, password });
     },
@@ -135,13 +136,15 @@ export default function Login() {
           </div>
 
           <div className="btns" style={{}}>
-            <button type="submit" onClick={handleSubmit}>
-              {" "}
-              Login{" "}
+            <button
+              type="submit"
+              onClick={handleSubmit}
+              disabled={isPending}
+              className="disabled:opacity-60 disabled:cursor-not-allowed"
+            >
+              {isPending ? <PulseLoader color="#fff" size={10} /> : "Login"}
             </button>
             {/* <button type='submit'>
-              
-              
             </button> */}
           </div>
 
