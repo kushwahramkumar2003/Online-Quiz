@@ -5,13 +5,13 @@ import { toast } from "react-hot-toast";
 import QuizCard from "./QuizCard";
 import { getAllQuizs } from "../../../services/quiz";
 import "./Quizes.css";
+import QuizCardShimmer from "./QuizCardShimmer";
 
 const Quizes = () => {
   const { data, error, isLoading, isError } = useQuery({
     queryFn: () => getAllQuizs(),
     queryKey: ["quizs"],
   });
-
 
   useEffect(() => {
     if (isError) {
@@ -20,6 +20,8 @@ const Quizes = () => {
     console.log("data : ", data);
     // eslint-disable-next-line
   }, [isError, isLoading, data]);
+
+  const shimmerArr = [1, 2, 3, 4];
 
   return (
     <div className="Main-quiz">
@@ -35,6 +37,10 @@ const Quizes = () => {
 
       <div className="quiz-content">
         <div className="quiz-box ">
+          {isLoading &&
+            shimmerArr.map((item, index) => (
+              <QuizCardShimmer key={index} className="w-10" />
+            ))}
           {data &&
             data.map((quiz) => (
               <QuizCard
