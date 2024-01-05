@@ -17,7 +17,6 @@ import { logout } from "../../store/actions/userActions";
 import { toast } from "react-hot-toast";
 import { logout as Logout } from "../../services/user";
 
-
 const Admin = () => {
   const navigate = useNavigate();
   // const queryClient = useQueryClient();
@@ -81,18 +80,16 @@ const Admin = () => {
     <>
       {/* this code written by deepesh */}
       <div className="admin-page">
-      
         <div className="Admin-manu">
-          
           <div className="Grad-logo">
             <h1 className="logo-name-for-admin">QuizGrad</h1>
-            <img src={images.MyAdmin}></img>
+            <img src={images.MyAdmin} alt="profile"></img>
             <p>Admin</p>
           </div>
 
           <div className="admin-box">
-          <img src={images.Dashboard} alt="MyProfile" id="Admin-icon"></img>
-          {/* <RiDashboard3Fill id="Admin-icon"/> */}
+            <img src={images.Dashboard} alt="MyProfile" id="Admin-icon"></img>
+            {/* <RiDashboard3Fill id="Admin-icon"/> */}
             <p>Dashboard</p>
           </div>
 
@@ -117,12 +114,12 @@ const Admin = () => {
           </div>
 
           <div className="admin-box">
-          <img src={images.Setting} alt="setting" id="Admin-icon"></img>
+            <img src={images.Setting} alt="setting" id="Admin-icon"></img>
             <p>Settings</p>
           </div>
 
           <div className="admin-box">
-          <img src={images.Help} alt="help" id="Admin-icon"></img>
+            <img src={images.Help} alt="help" id="Admin-icon"></img>
             <p>Help</p>
           </div>
 
@@ -132,23 +129,25 @@ const Admin = () => {
           </div>
         </div>
 
-
         <div className="admin-right-page">
           <div className="admin-navbar">
             {/* <div className="admin-name">
               <p>Admin</p>
             </div> */}
             <div className="admin-logo-right">
-              <img src={images.MessageIcon} alt="Message" id="message-bell"></img>
+              <img
+                src={images.MessageIcon}
+                alt="Message"
+                id="message-bell"
+              ></img>
               <img src={images.bellIcon} alt="Bell" id="message-bell"></img>
 
               <img src={images.User} alt="User" id="Admin-logo"></img>
-              <IoMdArrowDropdown id="Drop-down-menu-icon"/>
+              <IoMdArrowDropdown id="Drop-down-menu-icon" />
             </div>
           </div>
           <div className="shaded-line"></div>
 
-          
           <div className="admin-content">
             <div className="quiz-create-box">
               {/* <h2>All Quizes</h2> */}
@@ -186,10 +185,8 @@ const Admin = () => {
                 <IoMdAdd className="w-auto h-10 text-white" />
               </button> */}
             </div>
-            
           </div>
         </div>
-
       </div>
 
       {/* this code written by deepesh */}
