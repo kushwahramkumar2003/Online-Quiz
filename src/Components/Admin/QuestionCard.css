@@ -9,9 +9,10 @@
     /* border: 2px solid rgb(13, 123, 13);  */
     width: 50rem;  
     margin-top: 2rem;  
-    background: #fff; 
-    border-bottom: 5px solid #34A853;
-    
+    background: #fff;  
+    border: 2px solid #34A853; 
+    border-radius: 10px;
+   
 }  
 .E-D-btn{
    margin: 1rem 1rem 1rem 1rem; 
@@ -22,8 +23,12 @@
     height: 2.5rem;
     margin-left: 2.5rem;
     /* border: 1px solid rgba(0, 0, 0, 0.539);  */
-    color: white;
-} 
+    color: white; 
+    border-radius: 5px;
+}  
+.E-D-btn button:hover{
+    opacity: 0.8;
+}
 .Ques-boxs{
     margin: 1rem 1rem 1rem 1rem; 
 } 

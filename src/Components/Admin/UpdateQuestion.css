@@ -38,7 +38,8 @@
   width: 6rem; 
   height: 2.5rem; 
   background: #34A853; 
-  color: white; 
+  color: white;  
+  border-radius: 5px;
 
 }
 .cencel-btn{ 
@@ -46,5 +47,12 @@
     height: 2.5rem; 
     background: #EA4335; 
     margin-left: 2rem; 
-    color: white;
+    color: white; 
+    border-radius: 5px; 
+}  
+.Update-btn:hover{
+    opacity: 0.8;
+} 
+.cencel-btn:hover{
+    opacity: 0.8; 
 }
