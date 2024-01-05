@@ -39,7 +39,7 @@ const EditQuiz = () => {
     fetchData();
   }, [isOpen, quiz_id, refresh]);
   return (
-    <div>
+    <div className="Edit-quiz-page">
       <h1>Edit Quiz</h1>
       <div>
         {questions.map((q) => {
