@@ -84,13 +84,14 @@ const UpdateQuestion = ({
     });
   };
 
-  return (
-    <div className="text-black">
+  return ( 
+    <div className="all-update-content">
+    <div className="update-big-box  text-black">
       <h1>Edit Question</h1>
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="form-control">
-            <label htmlFor="question">Question</label>
+          <div className="form-control"  id="answer-box">
+            <label htmlFor="question">Question:</label>
             <input 
             className="update-input-box"
               // type="text"
@@ -99,9 +100,10 @@ const UpdateQuestion = ({
               defaultValue={question}
             />
             {errors.question && <p>{errors.question.message}</p>}
-          </div>
+          </div> 
+          
           <div className="form-control">
-            <label>Options:</label>
+            {/* <label>Options:</label> */}
             {options.map((option) => (
               <div key={option.id}>
                 <Controller
@@ -109,11 +111,15 @@ const UpdateQuestion = ({
                   control={control}
                   defaultValue={option.value}
                   render={({ field }) => (
-                    <>
+                    <> 
+                  <div className="options-boxs">
+                    <label  className="label-box" htmlFor={`option${option.id}`}>
+                        Option {option.id}
+                      </label>  
+
+                      <div className="input-radio"> 
                       <input 
-                       className="update-input-box" 
-                      //  type="text"
-                        // type="radio"
+                        type="radio"
                         id={`option${option.id}`}
                         name="options"
                         value={`option${option.id}`}
@@ -122,9 +128,8 @@ const UpdateQuestion = ({
                           handleOptionChange(`option${option.id}`, field.value)
                         }
                       />
-                      <label htmlFor={`option${option.id}`}>
-                        Option {option.id}
-                      </label>
+                      
+                      
                       <input 
                        className="update-input-box"
                         // type="text"
@@ -133,15 +138,20 @@ const UpdateQuestion = ({
                         onChange={(e) =>
                           handleInputChange(option.id, e.target.value)
                         }
-                      />
+                      /> 
+ 
+                     </div>  
+                     </div>
                     </>
                   )}
                 />
-              </div>
+              </div> 
+                
+              
             ))}
           </div>
-          <div className="form-control">
-            <label htmlFor="answer">Answer</label>
+          <div className="form-control" id="answer-box">
+            <label htmlFor="answer">Answer:</label>
             <input 
              className="update-input-box"
               type="text"
@@ -151,13 +161,19 @@ const UpdateQuestion = ({
               {...register("answer", { required: "Answer is required" })}
             />
             {errors.answer && <p>{errors.answer.message}</p>}
-          </div>
-          <button type="submit">Update</button>
-          <button type="button" onClick={() => setIsEdit(false)}>
+          </div> 
+ 
+           <div className="submit-cencel-box">
+          <button className="Update-btn" type="submit"  >Update</button>
+          <button className="cencel-btn" type="button" onClick={() => setIsEdit(false)}>
             Cancel
-          </button>
+          </button> 
+          </div>
+
         </form>
       </div>
+    </div> 
+
     </div>
   );
 };

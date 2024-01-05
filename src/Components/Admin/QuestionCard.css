@@ -6,9 +6,11 @@
  
 }
  .Ques-container{
-    border: 2px solid rgb(13, 123, 13); 
+    /* border: 2px solid rgb(13, 123, 13);  */
     width: 50rem;  
-    margin-top: 2rem; 
+    margin-top: 2rem;  
+    background: #fff; 
+    border-bottom: 5px solid #34A853;
     
 }  
 .E-D-btn{

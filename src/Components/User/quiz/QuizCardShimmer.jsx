@@ -1,5 +1,4 @@
 import React from "react";
-import FullscreenButton from "../../StartQuiz/FullscreenButton";
 
 const QuizCardShimmer = () => {
   return (

@@ -5,6 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { submitFeedback } from "../../services/feedback";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import "./Feed_back.css";
 
 const Feedback = () => {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ const Feedback = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-[4.5%]">
+    <div className="main-feedback">
       <h2 className="text-[20px] mb-[2%] align-middle text-center font-bold text-green-600">
         {" "}
         Send us your feedback{" "}
@@ -51,7 +52,7 @@ const Feedback = () => {
         <div>
           <label
             htmlFor="name"
-            className="block text-sm font-medium text-gray-700"
+            className="block feedback-label"
           >
             Name
           </label>
@@ -64,13 +65,14 @@ const Feedback = () => {
             value={formData.name}
             onChange={handleChange}
             placeholder="Enter your name"
-            className="w-full p-4.5 mt-1 border rounded-md"
+            className="feedback-inputs p-4.5 mt-1 border rounded-md"
           />
         </div>
+       
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-gray-700"
+            className="block feedback-label"
           >
             Email
           </label>
@@ -83,13 +85,14 @@ const Feedback = () => {
             value={formData.email}
             onChange={handleChange}
             placeholder="Enter your email address"
-            className="w-full p-4.5 mt-1 border rounded-md"
+            className="feedback-inputs p-4.5 mt-1 border rounded-md"
           />
         </div>
+        
         <div>
           <label
             htmlFor="message"
-            className="block text-sm font-medium text-gray-700"
+            className="block feedback-label"
             placeholder="Enter your message here"
           >
             Message
@@ -102,13 +105,14 @@ const Feedback = () => {
             value={formData.message}
             onChange={handleChange}
             placeholder="Enter your message here"
-            className="w-full p-4 mt-1 mb-[-1%] border rounded-md"
+            className="feedback-inputs p-4 mt-1 mb-[-1%] border rounded-md"
           ></textarea>
         </div>
+        
         <div>
           <label
             htmlFor="rating"
-            className="block text-sm font-medium text-gray-700"
+            className="block feedback-label"
           >
             Rating (0-5)
           </label>
@@ -121,14 +125,15 @@ const Feedback = () => {
             required
             value={formData.rating}
             onChange={handleChange}
-            className="w-full p-2 mt-1 border rounded-md"
+            className="feedback-inputs p-2 mt-1 border rounded-md"
           />
         </div>
+       
         <div>
           <button
             type="submit"
             disabled={isPending || isPaused}
-            className="w-full p-3 text-white bg-blue-500 rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="feedback-submit-btn"
           >
             Submit Feedback
           </button>
