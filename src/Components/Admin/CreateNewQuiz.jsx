@@ -44,10 +44,11 @@ const CreateNewQuiz = ({ setIsOpen }) => {
   };
 
   return (
-    <div className="text-black border-black">
+    <div className="text-black border-black mt-[-1.7%]">
      <div className="start-dialog-box">
       <h1 className="createNew">Create new Quiz</h1>
-      <form onSubmit={handleSubmit(submitHandler)}>
+      <form className="form-of-create-new-quiz" onSubmit={handleSubmit(submitHandler)}>
+        
         <div className="form-control">
           <label htmlFor="title">Quiz Tittle</label>
           <input 
@@ -65,6 +66,7 @@ const CreateNewQuiz = ({ setIsOpen }) => {
           />
           {errors.title && <p>{errors.title.message}</p>}
         </div>
+
         <div className="form-control">
           <label htmlFor="description">Quiz Description</label>
           <input 

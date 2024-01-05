@@ -1,6 +1,7 @@
 .AdminPage {
   height: "full";
-  /* overflow-y: hidden; */
+  position: fixed;
+  overflow-y: hidden;
   /* border: 2px solid black; */
 }
 .admin-page {
