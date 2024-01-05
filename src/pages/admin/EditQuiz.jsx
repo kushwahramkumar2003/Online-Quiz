@@ -6,7 +6,8 @@ import { getQuizById } from "../../services/quiz";
 import QuestionCard from "../../Components/Admin/QuestionCard";
 import { IoMdAdd } from "react-icons/io";
 import AddNewQuestion from "../../Components/Admin/AddNewQuestion";
-import Modal from "../../Components/modal/Modal";
+import Modal from "../../Components/modal/Modal"; 
+import "./EditQuiz.css";
 
 const EditQuiz = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -38,7 +39,9 @@ const EditQuiz = () => {
     }
     fetchData();
   }, [isOpen, quiz_id, refresh]);
-  return (
+  return (  
+   
+    <div className="edit-quiz-contaner">
     <div className="Edit-quiz-page">
       <h1>Edit Quiz</h1>
       <div>
@@ -67,6 +70,7 @@ const EditQuiz = () => {
       >
         <IoMdAdd className="w-auto h-10 text-white" />
       </button>
+    </div> 
     </div>
   );
 };
