@@ -2,14 +2,21 @@ import React, { useEffect } from "react";
 // import { useQueryClient } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
 import { getAllQuizs } from "../../services/quiz";
 import QuizCard from "../../Components/Admin/QuizCard";
+import { useDispatch } from "react-redux";
 // import { IoMdAdd } from "react-icons/io";
 import Modal from "../../Components/modal/Modal";
 import CreateNewQuiz from "../../Components/Admin/CreateNewQuiz";
 import "./Admin.css";
 import images from "../../constants/images.js";
+
 import { IoMdArrowDropdown } from "react-icons/io";
+import { logout } from "../../store/actions/userActions";
+import { toast } from "react-hot-toast";
+import { logout as Logout } from "../../services/user";
+
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -19,6 +26,8 @@ const Admin = () => {
   const [refresh, setRefresh] = React.useState(false);
 
   const userState = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
 
   // const { data } = useQuery();
 
@@ -47,6 +56,27 @@ const Admin = () => {
   //   }
   //   fetchData();
   // }, [isOpen, refresh]);
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: () => {
+      return Logout();
+    },
+    onSuccess: async (data) => {
+      dispatch(logout());
+      toast.success("Logout successfully");
+      navigate("/");
+    },
+    onError: (error) => {
+      toast.error(error.message);
+      console.log(error);
+    },
+  });
+
+  const logoutHandler = (e) => {
+    e.preventDefault();
+    mutate();
+  };
+
   return (
     <>
       {/* this code written by deepesh */}
@@ -96,7 +126,7 @@ const Admin = () => {
             <p>Help</p>
           </div>
 
-          <div className="admin-box">
+          <div className="admin-box" onClick={(e) => logoutHandler(e)}>
             <img src={images.Logout} alt="logout" id="Admin-icon"></img>
             <p>Logout</p>
           </div>

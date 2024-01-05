@@ -7,7 +7,7 @@ const userInfoFromStorage = localStorage.getItem("account")
   : null;
 
 const initialState = {
-  user: { userInfo: userInfoFromStorage },
+  user: { userInfo: userInfoFromStorage.user },
 };
 
 const store = configureStore({
