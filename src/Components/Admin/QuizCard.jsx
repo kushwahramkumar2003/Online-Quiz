@@ -69,17 +69,19 @@ const QuizCard = ({
   return (
     <>
       {/* <div className="card"> */}
-      <div className="card-body"> 
-         <div className="Quizs-container">
-        <h5 className="card-title">Tittle : {title}</h5>
-        <h6 className="mb-2 card-subtitle text-muted">Category : {category}</h6>
-        <p className="card-text">Description : {description}</p>
-        <p className="card-text">Time taken: {duration} min</p>
-        <p className="card-text">Questions: {questions}</p>
+    <div className="card-body"> 
+        
+       <div className="Quizs-container">
+         <h5 className="card-title">Tittle : {title}</h5>
+         <h6 className="mb-2 card-subtitle text-muted">Category : {category}</h6>
+         <p className="card-text">Description : {description}</p>
+         <p className="card-text">Time taken: {duration} min</p>
+         <p className="card-text">Questions: {questions}</p>
 
         <Link to={`/quiz/edit/${quiz_id}`}>
           <button className="updating-btn">Edit Quiz</button>
         </Link>
+        
         <button className="updating-btn" onClick={deleteHandler}>Delete</button>
 
         <button 
@@ -90,8 +92,8 @@ const QuizCard = ({
           {published === true ? "Published" : "Publish"}
         </button> 
         </div>
-      </div> 
-     
+
+    </div>  
       {/* </div> */}
     </>
   );

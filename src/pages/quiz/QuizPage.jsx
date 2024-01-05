@@ -156,7 +156,7 @@ const QuizPage = () => {
   return (
     <div className="main-quiz-head">
       {isLoading ? (
-        <h2 className="head">Loading </h2>
+        <div className="w-full h-4 mb-4 shimmer animate-shimmer"></div>
       ) : (
         QuestionsArr && (
           <div>
