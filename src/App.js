@@ -7,9 +7,9 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import UserPage from "./pages/user/UserPage.jsx";
 import Admin from "./pages/admin/Admin.jsx";
-import EditQuiz from "./pages/admin/EditQuiz.jsx";
 import QuizPage from "./pages/quiz/QuizPage.jsx";
 import Result from "./pages/user/Result.jsx";
+import EditQuiz from "./pages/admin/screens/editQuiz/EditQuiz.jsx";
 
 function App() {
   return (
