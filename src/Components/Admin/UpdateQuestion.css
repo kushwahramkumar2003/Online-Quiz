@@ -1,4 +1,50 @@
-.update-input-box{
-    width: 15rem; 
+.update-input-box {
+    width: 20rem;
     border: 1px solid rgba(0, 0, 0, 0.649);
+}
+
+.update-big-box {
+    margin-left: 27%;
+}
+
+.update-big-box h1 {
+    font-size: 25px;
+    font-family: serif;
+    margin-left: 18%;
+    margin-top: 1rem;
+    
+}
+
+.input-radio {
+    display: flex;
+}
+
+#answer-box {
+    display: flex;
+}
+.label-box {
+    margin-left: 10%;
+
+}
+.options-boxs {
+    margin-top: 7px;
+} 
+.submit-cencel-box{
+    margin-top: 30px; 
+    margin-left: 3.7rem; 
+} 
+.Update-btn{
+  
+  width: 6rem; 
+  height: 2.5rem; 
+  background: #34A853; 
+  color: white; 
+
+}
+.cencel-btn{ 
+    width: 6rem; 
+    height: 2.5rem; 
+    background: #EA4335; 
+    margin-left: 2rem; 
+    color: white;
 }

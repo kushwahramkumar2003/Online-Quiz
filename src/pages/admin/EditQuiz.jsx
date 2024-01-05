@@ -40,7 +40,7 @@ const EditQuiz = () => {
     fetchData();
   }, [isOpen, quiz_id, refresh]);
   return (  
-   
+     
     <div className="edit-quiz-contaner">
     <div className="Edit-quiz-page">
       <h1>Edit Quiz</h1>
