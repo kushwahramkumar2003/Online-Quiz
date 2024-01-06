@@ -1,8 +1,14 @@
 import React from "react";
 import image from "../../constants/images.js";
-import { Link} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Link as Link2 } from "react-scroll";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { logout } from "../../store/actions/userActions.js";
+import { useMutation } from "@tanstack/react-query";
+import { logout as Logout } from "../../services/user";
+import { toast } from "react-hot-toast";
 const menuLinks = [
   { name: "How it works", link: "works" },
   { name: "Features", link: "features" },
@@ -41,7 +47,7 @@ const NavItem = ({ menu }) => {
 //           </Link>
 //         </div>
 //         <section>
-          
+
 //         </section>
 //       </nav>
 //     </>
@@ -55,6 +61,32 @@ const Navbar = () => {
   const navVisibilityHandler = () => {
     setNavIsVisible((prev) => !prev);
   };
+
+  const userState = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: () => {
+      return Logout();
+    },
+    onSuccess: async (data) => {
+      dispatch(logout());
+      toast.success("Logout successfully");
+      navigate("/");
+    },
+    onError: (error) => {
+      toast.error(error.message);
+      console.log(error);
+    },
+  });
+
+  const logoutHandler = (e) => {
+    e.preventDefault();
+    mutate();
+  };
+
   return (
     <nav>
       <div className="flex items-center justify-between" id="nav1">
@@ -71,15 +103,60 @@ const Navbar = () => {
             <AiOutlineMenu className="w-6 h-6" onClick={navVisibilityHandler} />
           )}
         </div>
-        <div
-          className={`${navIsVisible ? "right-0" : "-right-full"} `}
-        >
-          <ul className="flex items-center gap-1 py-2 text-base lg:visible md:visible" id="">
+        <div className={`${navIsVisible ? "right-0" : "-right-full"} `}>
+          <ul
+            className="flex items-center gap-1 py-2 text-base lg:visible md:visible"
+            id=""
+          >
             {menuLinks?.map((menu, i) => (
               <NavItem key={i} menu={menu} />
             ))}
             <li className="px-6 hover:text-[#FCC822]" id="links1">
-              <Link to="/login">Login</Link>
+              {userState.userInfo ? (
+                userState.userInfo.role === "ADMIN" ? (
+                  <>
+                    <Link to="/Admin">Admin</Link>
+                    {/* <button onClick={(e) => logoutHandler(e)}>Logout</button> */}
+                  </>
+                ) : (
+                  <>
+                    <Link to="/User">Profile</Link>
+                    {/* <button onClick={(e) => logoutHandler(e)}>Logout</button> */}
+                  </>
+                )
+              ) : (
+                <Link to="/login">Login</Link>
+              )}
+            </li>
+            <li className="px-6 hover:text-[#FCC822]" id="links1">
+              {userState.userInfo ? (
+                userState.userInfo.role === "ADMIN" ? (
+                  <>
+                    {/* <Link to="/Admin">Admin</Link> */}
+                    <button
+                    className="disabled:opacity-60 disabled:cursor-not-allowed"
+                      onClick={(e) => logoutHandler(e)}
+                      disabled={isPending}
+                    >
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    {/* <Link to="/User">Profile</Link> */}
+                    <button
+                    className="disabled:opacity-60 disabled:cursor-not-allowed"
+                      onClick={(e) => logoutHandler(e)}
+                      disabled={isPending}
+                    >
+                      Logout
+                    </button>
+                  </>
+                )
+              ) : (
+                ""
+                // <Link to="/login">Login</Link>
+              )}
             </li>
           </ul>
         </div>

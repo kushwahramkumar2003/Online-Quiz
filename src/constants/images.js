@@ -12,11 +12,15 @@ import logo from "../assets/Images/logo.svg";
 import CreateQuiz from "../assets/Images/icons/create_quiz.svg"; 
 import Setting from "../assets/Images/icons/setting.svg"; 
 import Help from "../assets/Images/icons/help.svg"; 
+import MyAdmin from "../assets/Images/icons/admin_icon.svg";
 import MyProfile from "../assets/Images/icons/my_profile.svg";
 import Update from "../assets/Images/icons/update_quiz.svg"; 
 import User from "../assets/Images/icons/User.svg";
 import Logout from "../assets/Images/icons/logout.svg";
-
+import Dashboard from "../assets/Images/icons/dashboard.svg";
+import DropDown from "../assets/Images/icons/dropdown.svg";
+import bellIcon from "../assets/Images/icons/bell_regular.svg";
+import MessageIcon from "../assets/Images/icons/messgae.svg";
 
 
 import feature_1 from "../assets/Images/Features images/Diverse Language Coverage.svg";
@@ -27,6 +31,11 @@ import feature_5 from "../assets/Images/Features images/Timed Programming Quizze
 import feature_6 from "../assets/Images/Features images/Aptitude Speed Challenges.svg";
 
 const images = {
+  MessageIcon,
+  bellIcon,
+  DropDown,
+  Dashboard,
+  MyAdmin,
   logo,
   capLogo,
   rightimg,

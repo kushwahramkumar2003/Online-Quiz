@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getQuizById } from "../../services/quiz";
-import QuestionCard from "../../Components/Admin/QuestionCard";
 import { IoMdAdd } from "react-icons/io";
-import AddNewQuestion from "../../Components/Admin/AddNewQuestion";
-import Modal from "../../Components/modal/Modal";
+import { getQuizById } from "../../../../services/quiz";
+import QuestionCard from "../../../../Components/Admin/QuestionCard";
+import AddNewQuestion from "../../../../Components/Admin/AddNewQuestion";
+import Modal from "../../../../Components/modal/Modal";
 
 const EditQuiz = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -39,7 +39,7 @@ const EditQuiz = () => {
     fetchData();
   }, [isOpen, quiz_id, refresh]);
   return (
-    <div>
+    <div className="Edit-quiz-page">
       <h1>Edit Quiz</h1>
       <div>
         {questions.map((q) => {

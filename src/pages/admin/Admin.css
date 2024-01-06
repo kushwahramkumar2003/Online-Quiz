@@ -1,55 +1,133 @@
 .AdminPage {
   height: "full";
+  /* overflow-y: hidden; */
+  /* border: 2px solid black; */
 }
 .admin-page {
   display: flex;
+  overflow-y: hidden;
 }
+
+.Admin-manu {
+  height: 44rem;
+  width: 18rem;
+  color: #fff;
+  background-color: #2D323E;
+}
+.Grad-logo {
+  padding-top: 0.7rem;
+  /* border: 2px solid green; */
+  width: 16rem;
+  height: 12rem;
+  background-color: #1E2129;
+}
+.logo-name-for-admin {
+  /* margin-left: 1rem; */
+  text-align: center;
+  font-size: 35px;
+  font-weight: 700;
+  font-family: serif;
+  letter-spacing: 3px;
+}
+.Grad-logo p {
+  text-align: center;
+  font-size: 17.4px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+}
+.Grad-logo  img {
+  /* border: 2px solid #fff; */
+  width: 26%;
+  height: 35%;
+  margin-left: 6rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.admin-box {
+  display: flex;
+  /* margin-top: 2.5rem; 
+  margin-left: 3rem; */
+  padding-left: 1.1rem;
+  cursor: pointer;
+}
+#Admin-icon {
+  width: 1.39rem;
+  margin-right: 0.15rem;
+  /* background-color: #fff; */
+}
+.admin-box p {
+  margin-left: 1rem;
+  font-size: 18px;
+  font-family: serif;
+  /* background-color: #dbdada; */
+}
+.admin-box {
+  display: flex;
+  margin-top: 2.5rem;
+  margin-left: 2rem;
+}
+
+
 .admin-navbar {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-right: 12rem;
   margin-left: 12px;
-  height: 5rem;
+  height: 4rem;
   width: 78rem;
-  border-bottom: 0.5px solid black;
+  /* border-bottom: 0.5px solid black; */
 }
-.admin-name {
+.shaded-line {
+  border-bottom: 2px solid #dbdada;
+  width: 100%;
+  margin-top: 0.2rem;
+}
+/* .admin-name {
   margin-right: 5rem;
   width: 8rem;
   text-align: center;
   background-color: #dbdada;
   border-radius: 10px;
-}
-
-.admin-name {
-  margin-right: 5rem;
-  width: 8rem;
-  text-align: center;
-  background-color: #dbdada;
-  border-radius: 10px;
-}
-.admin-name p {
+  border: 2px solid black;
+} */
+/* .admin-name p {
   font-size: 25px;
   font-family: serif;
 
   align-items: center;
+} */
+.admin-logo-right {
+  display: flex;
+  margin-right: -1.8%;
+  /* border: 1px solid black; */
 }
-
 .admin-logo-right img {
-  width: 1.8rem;
+  width: 2.4rem;
   cursor: pointer;
+  margin-right: 0.7rem;
 }
-
+#message-bell {
+  width: 1.7rem;
+  cursor: pointer;
+  margin-right: 1.7rem;
+}
+#Drop-down-menu-icon {
+  width: 2.5rem;
+  height: 1.4rem;
+  margin-left: -11%;
+  margin-top: 0.8rem;
+  cursor: pointer;
+  /* border: 1px solid black; */
+}
 .admin-content {
   display: flex;
   justify-content: center;
   align-items: center;
-   
-  /* border: 1px solid black;
-  border-radius: 10px; */
+  padding-top: 1.8rem;
+  /* background-color: #ECF1F7; */
+  /* border: 1px solid black; */
 }
-
 .create-quiz-bt {
   margin-left: 8rem;
 }
@@ -57,48 +135,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 65rem; 
-  height: 40.5rem; 
-  /* overflow-y: hidden; */
-  box-shadow: 3px 5px 5px rgba(1, 1, 1, 0.4);
+  width: 74rem; 
+  height: 36rem; 
+  /* box-shadow: 3px 5px 5px rgba(1, 1, 1, 0.4); */
   background: #dbdada;
+  padding-top: 2rem;
+  border-radius: 12px;
 }
-.Admin-manu {
-  height: 45.5rem;
-  width: 17rem;
-
-  background-color: #dbdada;
-}
-.admin-box {
-  display: flex;
-  margin-top: 2.5rem;
-  margin-left: 2rem;
-  cursor: pointer;
-}
-.admin-box p {
-  margin-left: 1rem;
-  font-size: 18px;
-  background-color: #dbdada;
-}
-.admin-box {
-  display: flex;
-  margin-top: 2.5rem;
-  margin-left: 2rem;
-}
-.admin-box p {
-  margin-left: 1rem;
-  font-size: 18px;
-
-  font-family: serif;
-}
-.Grad-logo {
-  margin-top: 1.5rem;
-}
-.Grad-logo img {
-  width: 13rem;
-  margin-left: 6px;
-}
-
-.line2 {
-  border-bottom: 2px solid black;
-}
+/* .quiz-box-coming {
+  border: 2px solid green;
+} */

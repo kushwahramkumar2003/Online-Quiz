@@ -2,13 +2,20 @@ import React, { useEffect } from "react";
 // import { useQueryClient } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
 import { getAllQuizs } from "../../services/quiz";
 import QuizCard from "../../Components/Admin/QuizCard";
+import { useDispatch } from "react-redux";
 // import { IoMdAdd } from "react-icons/io";
 import Modal from "../../Components/modal/Modal";
 import CreateNewQuiz from "../../Components/Admin/CreateNewQuiz";
 import "./Admin.css";
 import images from "../../constants/images.js";
+
+import { IoMdArrowDropdown } from "react-icons/io";
+import { logout } from "../../store/actions/userActions";
+import { toast } from "react-hot-toast";
+import { logout as Logout } from "../../services/user";
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -18,6 +25,8 @@ const Admin = () => {
   const [refresh, setRefresh] = React.useState(false);
 
   const userState = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
 
   // const { data } = useQuery();
 
@@ -46,13 +55,42 @@ const Admin = () => {
   //   }
   //   fetchData();
   // }, [isOpen, refresh]);
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: () => {
+      return Logout();
+    },
+    onSuccess: async (data) => {
+      dispatch(logout());
+      toast.success("Logout successfully");
+      navigate("/");
+    },
+    onError: (error) => {
+      toast.error(error.message);
+      console.log(error);
+    },
+  });
+
+  const logoutHandler = (e) => {
+    e.preventDefault();
+    mutate();
+  };
+
   return (
     <>
       {/* this code written by deepesh */}
       <div className="admin-page">
         <div className="Admin-manu">
           <div className="Grad-logo">
-            <img src={images.logo} alt="MyProfile" id="Admin-icon"></img>
+            <h1 className="logo-name-for-admin">QuizGrad</h1>
+            <img src={images.MyAdmin} alt="profile"></img>
+            <p>Admin</p>
+          </div>
+
+          <div className="admin-box">
+            <img src={images.Dashboard} alt="MyProfile" id="Admin-icon"></img>
+            {/* <RiDashboard3Fill id="Admin-icon"/> */}
+            <p>Dashboard</p>
           </div>
 
           <div className="admin-box">
@@ -60,7 +98,7 @@ const Admin = () => {
             <p>My Profile</p>
           </div>
 
-          <div className=" admin-box">
+          <div className="admin-box">
             <button
               className="flex flex-row items-center gap-4 text-center"
               onClick={() => setIsOpen(!isOpen)}
@@ -76,16 +114,16 @@ const Admin = () => {
           </div>
 
           <div className="admin-box">
-            <img src={images.Help} alt="help" id="Admin-icon"></img>
-            <p>Help</p>
-          </div>
-
-          <div className="admin-box">
             <img src={images.Setting} alt="setting" id="Admin-icon"></img>
             <p>Settings</p>
           </div>
 
           <div className="admin-box">
+            <img src={images.Help} alt="help" id="Admin-icon"></img>
+            <p>Help</p>
+          </div>
+
+          <div className="admin-box" onClick={(e) => logoutHandler(e)}>
             <img src={images.Logout} alt="logout" id="Admin-icon"></img>
             <p>Logout</p>
           </div>
@@ -93,19 +131,28 @@ const Admin = () => {
 
         <div className="admin-right-page">
           <div className="admin-navbar">
-            <div className="admin-name">
+            {/* <div className="admin-name">
               <p>Admin</p>
-            </div>
+            </div> */}
             <div className="admin-logo-right">
+              <img
+                src={images.MessageIcon}
+                alt="Message"
+                id="message-bell"
+              ></img>
+              <img src={images.bellIcon} alt="Bell" id="message-bell"></img>
+
               <img src={images.User} alt="User" id="Admin-logo"></img>
+              <IoMdArrowDropdown id="Drop-down-menu-icon" />
             </div>
           </div>
+          <div className="shaded-line"></div>
 
           <div className="admin-content">
             <div className="quiz-create-box">
               {/* <h2>All Quizes</h2> */}
 
-              <div>
+              <div className="quiz-box-coming">
                 {quiz.map((q) => {
                   return (
                     <QuizCard
@@ -141,8 +188,6 @@ const Admin = () => {
           </div>
         </div>
       </div>
-
-      <div className="line2"></div>
 
       {/* this code written by deepesh */}
     </>
