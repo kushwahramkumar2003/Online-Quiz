@@ -29,7 +29,7 @@ const NavData = [
   },
 ];
 
-const NavLink = ({ handleSetActiveTab, activeTab }) => {
+const NavLink = ({ handleSetActiveTab, activeTab, isOpenHeader }) => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -55,10 +55,11 @@ const NavLink = ({ handleSetActiveTab, activeTab }) => {
   };
   return (
     <div>
-      <div>
+      <div className="">
         {NavData.map((item, index) => {
           return (
             <Nav
+              isOpenHeader={isOpenHeader}
               key={index}
               name={item.name}
               path={item.path}
@@ -68,9 +69,12 @@ const NavLink = ({ handleSetActiveTab, activeTab }) => {
             />
           );
         })}
-        <button onClick={(e) => logoutHandler(e)}>
+        <button
+          onClick={(e) => logoutHandler(e)}
+          className="flex flex-row items-center h-10 text-gray-500 hover:text-gray-900"
+        >
           {<CiLogout className="" color="red" fontSize={20} fontWeight={5} />}{" "}
-          Logout
+          <p className={`${isOpenHeader ? "hidden" : ""}`}>Logout</p>
         </button>
       </div>
     </div>

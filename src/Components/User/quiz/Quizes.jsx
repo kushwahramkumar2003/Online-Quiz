@@ -24,7 +24,7 @@ const Quizes = () => {
   const shimmerArr = [1, 2, 3, 4];
 
   return (
-    <div className="Main-quiz">
+    <div className="flex flex-wrap Main-quiz ">
       <div className="tag-line">
         <h2> Unleash Your Knowledge, Ignite Your Curiosity </h2>
         <h3> Elevate Learning with Our Dynamic</h3>
