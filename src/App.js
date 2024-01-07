@@ -16,6 +16,14 @@ import AdminLayout from "./pages/admin/AdminLayout.jsx";
 import CreateNewQuiz from "./Components/Admin/CreateNewQuiz.jsx";
 import EditQuiz from "./pages/admin/screens/editQuiz/editQuiz.jsx";
 import Dashboard from "./pages/admin/screens/dashboard/Dashboard.jsx";
+import UserLayout from "./pages/user/UserLayout.jsx";
+import UserDashboard from "./pages/user/screens/dashboard/Dashboard.jsx";
+import UserNotification from "./pages/user/screens/notifications/Notifications.jsx";
+import UserProfile from "./pages/user/screens/profile/Profile.jsx";
+import UserQuizzes from "./pages/user/screens/quizzes/Quizzes.jsx";
+import UserResult from "./pages/user/screens/result/Result.jsx";
+import UserSetting from "./pages/user/screens/settings/Settings.jsx";
+import UserTest from "./pages/user/screens/test/Test.jsx";
 
 function App() {
   return (
@@ -36,6 +44,16 @@ function App() {
           <Route path="help" element={<Help />} />
           {/* <Route path="editQuiz/:quizId" element={<Help />} /> */}
           <Route path="editQuizs/editQuiz/:quiz_id" element={<EditQuiz />} />
+        </Route>
+        <Route path="/user" element={<UserLayout />}>
+          <Route index element={<UserDashboard />} />
+          <Route path="dashboard" index element={<UserDashboard />} />
+          <Route path="profile" element={<UserProfile />} />
+          <Route path="notifications" element={<UserNotification />} />
+          <Route path="quizzes" element={<UserQuizzes />} />
+          <Route path="result" element={<UserResult />} />
+          <Route path="setting" element={<UserSetting />} />
+          <Route path="test" element={<UserTest />} />
         </Route>
         {/* <Route path="/quiz/edit/:quiz_id" element={<EditQuiz />} /> */}
         <Route path="/quiz/start/:quizId" element={<QuizPage />} />
