@@ -1,46 +1,45 @@
 .quiz-questn {
-    color: #666865;
-    text-align: center;
-    font-weight: 600;
-    font-size: 22px;
-    margin-top: 2%;
+  color: #666865;
+  text-align: center;
+  font-weight: 600;
+  font-size: 22px;
+  margin-top: 2%;
 }
 .question-show {
-    flex-wrap: wrap;
-    /* border: 2px solid black; */
-    font-size: 17px;
-    margin-top: 5%;
-    margin-left: 3%;
-    margin-right: 2.5%;
+  flex-wrap: wrap;
+  /* border: 2px solid black; */
+  font-size: 17px;
+  margin-top: 5%;
+  margin-left: 3%;
+  margin-right: 2.5%;
 }
 .quiz-optn {
-    /* border: 2px solid black; */
-    margin-top: -3%;
-    padding-top: 1%;
-    padding-bottom: 1%;
+  /* border: 2px solid black; */
+  margin-top: -3%;
+  padding-top: 1%;
+  padding-bottom: 1%;
 }
 li {
-    margin-right: 2.5%;
-    margin-top: 2%;
-    color: green;
+  margin-right: 2.5%;
+  margin-top: 2%;
+  color: green;
 }
 .Quiz-options {
-    /* border: 2px solid black; */
-    display: inline-block;
-    height: 1rem;
-} 
-input[type='radio']{
-    /* width: 18px;
-    height: 18px; */
-    margin-right: 8px;
+  /* border: 2px solid black; */
+  display: inline-block;
+  height: 1rem;
 }
-input {
-    width: 20px;
-    margin-top: 1.2%;
-    margin-left: 2.5%;
+input[type="radio"] {
+  /* width: 18px;
+    height: 18px; */
+  margin-right: 8px;
+}
+input > .Quiz-options {
+  width: 20px;
+  margin-top: 1.2%;
+  margin-left: 2.5%;
 }
 .quiz-radio-btn {
-    width: 20px;
-    /* margin-top: 1%; */
+  width: 20px;
+  /* margin-top: 1%; */
 }
-

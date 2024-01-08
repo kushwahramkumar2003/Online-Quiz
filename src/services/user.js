@@ -67,3 +67,30 @@ export const logout = async () => {
     throw new Error(error.msg);
   }
 };
+
+export const getAdminProfile = async () => {
+  try {
+    const { data } = await api.get("/api/v1/auth/getAdminDetails", {});
+    return data;
+  } catch (error) {
+    console.log(error);
+    if (error.response && error.response.data.msg)
+      throw new Error(error.response.data.msg);
+    throw new Error(error.msg);
+  }
+};
+
+export const updateAdminProfile = async ({ userData }) => {
+  console.log("userData : ", userData);
+  try {
+    const { data } = await api.put("/api/v1/auth/updateAdminDetails", {
+      ...userData,
+    });
+    return data;
+  } catch (error) {
+    console.log(error);
+    if (error.response && error.response.data.msg)
+      throw new Error(error.response.data.msg);
+    throw new Error(error.msg);
+  }
+};

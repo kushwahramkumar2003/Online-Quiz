@@ -28,6 +28,7 @@ const OneQuestionApper = ({
         {options?.map((option, index) => (
           <li key={option} className="ml-4 font-semibold">
             <input
+            
               id={`question_${option}`}
               type="radio"
               name={`question_${option}`}

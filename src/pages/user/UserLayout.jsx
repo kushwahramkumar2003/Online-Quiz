@@ -8,7 +8,7 @@ import Header from "./header/Header";
 
 const UserLayout = () => {
   const navigate = useNavigate();
-  const [isOpenHeader, setIsOpenHeader] = useState(true);
+  const [isOpenHeader, setIsOpenHeader] = useState(false);
   const userState = useSelector((state) => state.user);
 
   useEffect(() => {
