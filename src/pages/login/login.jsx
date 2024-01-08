@@ -94,6 +94,7 @@ export default function Login() {
               value={email}
               onChange={handleEmailChange}
               placeholder="Email Address"
+              id="input-same-first"
               className="input-same"
             />
             {/* </label> */}
@@ -105,6 +106,7 @@ export default function Login() {
                 value={password}
                 onChange={handlePassword}
                 placeholder="Password"
+                id="input-same-first"
                 className="input-same"
               />
               <span
@@ -140,12 +142,10 @@ export default function Login() {
               type="submit"
               onClick={handleSubmit}
               disabled={isPending}
-              className="disabled:opacity-60 disabled:cursor-not-allowed"
+              className="login-btn"
             >
               {isPending ? <PulseLoader color="#fff" size={10} /> : "Login"}
             </button>
-            {/* <button type='submit'>
-            </button> */}
           </div>
 
           <div className="changing-status">
