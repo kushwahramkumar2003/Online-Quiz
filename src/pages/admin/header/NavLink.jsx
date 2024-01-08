@@ -40,7 +40,10 @@ const NavLink = () => {
     <div className="Admin-manu">
       <div className="Grad-logo">
         <h1 className="logo-name-for-admin">QuizGrad</h1>
-        <img src={images.MyAdmin} alt="profile"></img>
+        <img className="rounded-lg"
+          src={user?.userInfo?.avatar ? user?.userInfo?.avatar : images.MyAdmin}
+          alt="profile"
+        ></img>
         <p>{user?.userInfo?.name}</p>
       </div>
 

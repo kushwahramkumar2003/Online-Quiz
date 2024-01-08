@@ -32,7 +32,7 @@ export default function Login() {
     onSuccess: async (data) => {
       const { user } = data;
 
-      await dispatch(userActions.setUserInfo(data.user));
+      await dispatch(userActions.setUserInfo(data));
       await localStorage.setItem("account", JSON.stringify(data));
       toast.success("Login successfully");
 
