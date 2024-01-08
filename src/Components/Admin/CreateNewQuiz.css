@@ -1,32 +1,28 @@
-.start-dialog-box {
-   /* border: 2px solid black; */
-   margin-top: 2%;
-   /* margin-left: -1rem; */
-}
 .createNew{
    font-family: 'poppins'; 
-   font-size: 29px; 
+   font-size: 31px; 
+   letter-spacing: 1.2px;
    text-align: center;
-   /* width: 100%; */
-   margin-left: -15rem;
+   margin-right: 27rem;
    color: #666865;
    font-weight: 1000;
    /* background-color: #d0cacab7; */
  }
- .text-black{
-   margin-left: 16rem; 
-} 
-form {
-   margin-top: 0.5%;
+.text-black{
+   padding-left: 36%;
    /* border: 2px solid black; */
+} 
+.form-of-create-new-quiz {
+   margin-top: 0.35rem;
 }
 .form-control{
-   margin-top: 1.3rem;
+   margin-top: 1.1rem;
    /* border: 2px solid black; */
 }  
 .form-control label{
    font-family: 'poppins';
    font-size: 19px;
+   letter-spacing: 1px;
 }
 .input-box{
    border: 0.581px solid #C1BBBB; 
@@ -39,6 +35,11 @@ form {
 .input-box:hover{
    color: rgb(66, 133, 244) !important;
    border-color: rgb(66, 133, 244);
+}
+#quiz-level {
+   /* border: 2px solid black; */
+   margin-top: 1.8rem;
+   margin-left: 0.1rem;
 }
 #quiz-level option{
    margin-right: 5%;
@@ -53,10 +54,11 @@ form {
  background:rgb(66, 133, 244);  
  color: white; 
  margin-top: 3rem; 
+ margin-left: 1.9rem;
  font-size: 18px; 
  font-family: serif; 
  height: 2.5rem; 
- width: 6rem; 
+ width: 6.5rem; 
  border-radius: 5px; 
  cursor: pointer;
 }  
@@ -69,11 +71,11 @@ form {
    border: 2px solid rgb(66, 133, 244); 
    margin-top: 2rem; 
    color: rgb(66, 133, 244); 
-   margin-left: 6rem; 
+   margin-left: 5rem; 
    font-size: 18px; 
    font-family: serif; 
    height: 2.5rem;  
-   width: 6rem; 
+   width: 6.5rem; 
    border-radius: 5px;
 }
 .cancel-button:hover {

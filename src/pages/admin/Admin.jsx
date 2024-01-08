@@ -80,6 +80,7 @@ const Admin = () => {
     <>
       {/* this code written by deepesh */}
       <div className="admin-page">
+        
         <div className="Admin-manu">
           <div className="Grad-logo">
             <h1 className="logo-name-for-admin">QuizGrad</h1>
@@ -131,9 +132,6 @@ const Admin = () => {
 
         <div className="admin-right-page">
           <div className="admin-navbar">
-            {/* <div className="admin-name">
-              <p>Admin</p>
-            </div> */}
             <div className="admin-logo-right">
               <img
                 src={images.MessageIcon}

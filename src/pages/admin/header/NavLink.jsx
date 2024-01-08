@@ -64,7 +64,7 @@ const NavLink = () => {
             onClick={() => setIsOpen(!isOpen)}
         > */}
         <img src={images.CreateQuiz} alt="CreateQuiz" id="Admin-icon" />
-        <span>Create Quiz</span>
+        <p>Create Quiz</p>
         {/* </button> */}
       </Link>
 
