@@ -23,9 +23,6 @@ const AdminLayout = () => {
       <Header />
       <div className="admin-right-page">
         <div className="admin-navbar">
-          {/* <div className="admin-name">
-              <p>Admin</p>
-            </div> */}
           <div className="admin-logo-right">
             <img src={images.MessageIcon} alt="Message" id="message-bell"></img>
             <img src={images.bellIcon} alt="Bell" id="message-bell"></img>
@@ -36,7 +33,7 @@ const AdminLayout = () => {
         </div>
         <div className="shaded-line"></div>
 
-        <main className="bg-[#f9f9f9] flex-1 p-4 lg:p-6">
+        <main>
           <Outlet />
         </main>
       </div>
