@@ -12,6 +12,7 @@ import {
 } from "../../../../services/user.js";
 import { userActions } from "../../../../store/reducers/userReducers.js";
 import ProfilePicture from "../../../../Components/common/ProfilePicture.jsx";
+import "./My_profile.css";
 
 const MyProfile = () => {
   const navigate = useNavigate();
@@ -83,11 +84,16 @@ const MyProfile = () => {
 
   return (
     <section
-      className="container w-64 px-5 py-10 mx-auto"
+      className="container admin-profile-section"
       style={{ all: "unset" }}
     >
-      <div className="w-full max-w-sm mx-auto">
+      <div className="profile-heading">
+        <h1>My Profile</h1>
+      </div>
+
+      <div className="w-full max-w-sm ml-[26rem] pt-4 admin-profile-content">
         <ProfilePicture avatar={profileData?.avatar} />
+        
         <form onSubmit={handleSubmit(submitHandler)}>
           <div className="flex flex-col w-full mb-6">
             <label
@@ -109,8 +115,8 @@ const MyProfile = () => {
                   message: "Name is required",
                 },
               })}
-              placeholder="Enter name"
-              className={`placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
+              placeholder="Enter your name"
+              className={`profile-inputs placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
                 errors.name ? "border-red-500" : "border-[#c3cad9]"
               }`}
             />
@@ -120,6 +126,7 @@ const MyProfile = () => {
               </p>
             )}
           </div>
+
           <div className="flex flex-col w-full mb-6">
             <label
               htmlFor="email"
@@ -141,8 +148,8 @@ const MyProfile = () => {
                   message: "Email is required",
                 },
               })}
-              placeholder="Enter email"
-              className={`placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
+              placeholder="Enter your email"
+              className={`profile-inputs placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
                 errors.email ? "border-red-500" : "border-[#c3cad9]"
               }`}
             />
@@ -152,6 +159,7 @@ const MyProfile = () => {
               </p>
             )}
           </div>
+
           <div className="flex flex-col w-full mb-6">
             <label
               htmlFor="password"
@@ -164,7 +172,7 @@ const MyProfile = () => {
               id="password"
               {...register("password")}
               placeholder="Enter new password"
-              className={`placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
+              className={`profile-inputs placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
                 errors.password ? "border-red-500" : "border-[#c3cad9]"
               }`}
             />
@@ -174,10 +182,11 @@ const MyProfile = () => {
               </p>
             )}
           </div>
+
           <button
             type="submit"
             disabled={!isValid || profileIsLoading || updateProfileIsLoading}
-            className="w-full px-8 py-4 mb-6 text-lg font-bold text-white bg-blue-700 rounded-lg bg-primary disabled:opacity-70 disabled:cursor-not-allowed"
+            className="profile-update-btn w-full px-4 py-2.5 mb-6 text-lg font-bold text-white bg-blue-700 rounded-lg bg-primary disabled:opacity-70 disabled:cursor-not-allowed"
           >
             {updateProfileIsLoading ? (
               <PulseLoader color="#fff" size={10} />

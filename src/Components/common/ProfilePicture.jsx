@@ -67,7 +67,7 @@ const ProfilePicture = ({ avatar }) => {
           document.getElementById("portal")
         )}
 
-      <div className="flex items-center w-full p-1 gap-x-4">
+      <div className="flex items-center justify-center w-full p-1 gap-x-4">
         <div className="relative w-20 h-20 overflow-hidden rounded-full outline outline-offset-2 outline-1 lutline-primary">
           <label
             htmlFor="profilePicture"
@@ -95,7 +95,7 @@ const ProfilePicture = ({ avatar }) => {
         <button
           onClick={handleDeleteImage}
           type="button"
-          className="px-4 py-2 text-red-500 border border-red-500 rounded-lg"
+          className="px-6 py-1.5  text-red-500 border border-red-500 rounded-lg"
         >
           Delete
         </button>
