@@ -29,6 +29,7 @@ export const updateProfilePicture = async ({ formData }) => {
 export const getProfile = async () => {
   try {
     const { data } = await axios.get("/api/v1/profile");
+    console.log("Profile data : ", data);
     return data;
   } catch (error) {
     console.log(error);
@@ -40,17 +41,9 @@ export const getProfile = async () => {
 
 export const updateProfile = async ({ formData }) => {
   try {
-    console.log("formData file : ", formData.get("profilePicture"));
-    const config = {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    };
-    const { data } = await axios.put(
-      "/api/v1/profile/updateProfilePicture",
-      formData,
-      config
-    );
+    console.log("Update Profile called");
+
+    const { data } = await axios.put("/api/v1/profile", formData);
     return data;
   } catch (error) {
     console.log(error);
