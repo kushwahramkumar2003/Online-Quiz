@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Quizes from "../../Components/User/quiz/Quizes.jsx";
+import Quizes from "../../Components/User/quiz/Quizes.js";
 import "./User_page.css";
-import Navbar from "../../Components/homePage/Navbar";
+import Navbar from "../../Components/homePage/Navbar.js";
 import images from "../../constants/images.js";
 import { Link as Link2 } from "react-scroll";
 

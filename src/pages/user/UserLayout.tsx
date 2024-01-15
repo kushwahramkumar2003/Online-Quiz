@@ -20,8 +20,8 @@ const UserLayout = () => {
   }, [userState.userInfo, navigate]);
 
   return (
-    <div className="flex flex-row admin-page">
-      <div className="flex flex-col transition-all scroll-smooth">
+    <div className="flex flex-row w-full max-h-screen overflow-hidden">
+      <div className="flex flex-col h-full transition-all scroll-smooth ">
         {isOpenHeader ? (
           <IoCloseSharp
             onClick={() => {
@@ -44,7 +44,7 @@ const UserLayout = () => {
         </div>
       </div>
 
-      <div className=" admin-right-page">
+      <div className="w-full">
         <main className="bg-[#f9f9f9] flex-1 p-4 lg:p-6">
           <Outlet />
         </main>

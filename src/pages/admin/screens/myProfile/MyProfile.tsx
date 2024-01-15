@@ -11,7 +11,7 @@ import {
   updateAdminProfile,
 } from "../../../../services/user.js";
 import { userActions } from "../../../../store/reducers/userReducers.js";
-import ProfilePicture from "../../../../Components/common/ProfilePicture.jsx";
+import ProfilePicture from "../../../../Components/common/ProfilePicture.js";
 import "./My_profile.css";
 
 const MyProfile = () => {
@@ -93,7 +93,7 @@ const MyProfile = () => {
 
       <div className="w-full max-w-sm ml-[26rem] pt-4 admin-profile-content">
         <ProfilePicture avatar={profileData?.avatar} />
-        
+
         <form onSubmit={handleSubmit(submitHandler)}>
           <div className="flex flex-col w-full mb-6">
             <label

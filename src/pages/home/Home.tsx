@@ -3,7 +3,7 @@ import React from "react";
 import { Link as Link2 } from "react-scroll";
 
 import "./navbar.css";
-import Navbar from "../../Components/homePage/Navbar";
+import Navbar from "../../Components/homePage/Navbar.js";
 import images from "../../constants/images.js";
 
 // navbar start here

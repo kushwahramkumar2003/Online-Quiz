@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
 import "./Signup.css";
-import images from "../../constants/images";
+import images from "../../constants/images.js";
 
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
@@ -10,7 +10,7 @@ import { userActions } from "../../store/reducers/userReducers.js";
 
 import { useMutation } from "@tanstack/react-query";
 
-import { signup } from "../../services/user";
+import { signup } from "../../services/user.js";
 
 export default function Login() {
   // const textD = {
