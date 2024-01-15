@@ -3,19 +3,19 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { getAllQuizs } from "../../services/quiz";
-import QuizCard from "../../Components/Admin/QuizCard";
+import { getAllQuizs } from "../../services/quiz.js";
+import QuizCard from "../../Components/Admin/QuizCard.js";
 import { useDispatch } from "react-redux";
 // import { IoMdAdd } from "react-icons/io";
-import Modal from "../../Components/modal/Modal";
-import CreateNewQuiz from "../../Components/Admin/CreateNewQuiz";
+import Modal from "../../Components/modal/Modal.js";
+import CreateNewQuiz from "../../Components/Admin/CreateNewQuiz.js";
 import "./Admin.css";
 import images from "../../constants/images.js";
 
 import { IoMdArrowDropdown } from "react-icons/io";
-import { logout } from "../../store/actions/userActions";
+import { logout } from "../../store/actions/userActions.js";
 import { toast } from "react-hot-toast";
-import { logout as Logout } from "../../services/user";
+import { logout as Logout } from "../../services/user.js";
 
 const Admin = () => {
   const navigate = useNavigate();

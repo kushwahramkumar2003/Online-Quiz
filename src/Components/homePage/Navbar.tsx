@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/actions/userActions.js";
 import { useMutation } from "@tanstack/react-query";
-import { logout as Logout } from "../../services/user";
+import { logout as Logout } from "../../services/user.js";
 import { toast } from "react-hot-toast";
 const menuLinks = [
   { name: "How it works", link: "works" },

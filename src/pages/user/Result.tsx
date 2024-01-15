@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getResultByIds } from "../../services/userQuiz.js";
-import Feedback from "../../Components/Feedback/Feedback.jsx";
+import Feedback from "../../Components/Feedback/Feedback.js";
 import "./Result.css";
 
 const Result = () => {

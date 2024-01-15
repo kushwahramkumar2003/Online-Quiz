@@ -11,7 +11,7 @@ import {
   updateAdminProfile,
 } from "../../../../services/user.js";
 import { userActions } from "../../../../store/reducers/userReducers.js";
-import ProfilePicture from "../../../../Components/common/ProfilePicture.jsx";
+import ProfilePicture from "../../../../Components/common/ProfilePicture.js";
 import "./My_profile.css";
 
 const MyProfile = () => {

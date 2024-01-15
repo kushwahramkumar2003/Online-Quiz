@@ -1,29 +1,29 @@
-import Login from "./pages/login/login.jsx";
-import Signup from "./pages/signup/SignUp.jsx";
-import Home from "./pages/home/Home.jsx";
+import Login from "./pages/login/login.js";
+import Signup from "./pages/signup/SignUp.js";
+import Home from "./pages/home/Home.js";
 
 import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
-import UserPage from "./pages/user/UserPage.jsx";
-import EditQuizs from "./pages/admin/screens/editQuizs/EditQuizs.jsx";
-import QuizPage from "./pages/quiz/QuizPage.jsx";
-import Result from "./pages/user/Result.jsx";
-import MyProfile from "./pages/admin/screens/myProfile/MyProfile.jsx";
-import Setting from "./pages/admin/screens/setting/Setting.jsx";
-import Help from "./pages/admin/screens/help/Help.jsx";
-import AdminLayout from "./pages/admin/AdminLayout.jsx";
-import CreateNewQuiz from "./Components/Admin/CreateNewQuiz.jsx";
-import EditQuiz from "./pages/admin/screens/editQuiz/editQuiz.jsx";
-import Dashboard from "./pages/admin/screens/dashboard/Dashboard.jsx";
-import UserLayout from "./pages/user/UserLayout.jsx";
-import UserDashboard from "./pages/user/screens/dashboard/Dashboard.jsx";
-import UserNotification from "./pages/user/screens/notifications/Notifications.jsx";
-import UserProfile from "./pages/user/screens/profile/Profile.jsx";
-import UserQuizzes from "./pages/user/screens/quizzes/Quizzes.jsx";
-import UserResult from "./pages/user/screens/result/Result.jsx";
-import UserSetting from "./pages/user/screens/settings/Settings.jsx";
-import UserTest from "./pages/user/screens/test/Test.jsx";
+import UserPage from "./pages/user/UserPage.js";
+import EditQuizs from "./pages/admin/screens/editQuizs/EditQuizs.js";
+import QuizPage from "./pages/quiz/QuizPage.js";
+import Result from "./pages/user/Result.js";
+import MyProfile from "./pages/admin/screens/myProfile/MyProfile.js";
+import Setting from "./pages/admin/screens/setting/Setting.js";
+import Help from "./pages/admin/screens/help/Help.js";
+import AdminLayout from "./pages/admin/AdminLayout.js";
+import CreateNewQuiz from "./Components/Admin/CreateNewQuiz.js";
+import EditQuiz from "./pages/admin/screens/editQuiz/editQuiz.tsx";
+import Dashboard from "./pages/admin/screens/dashboard/Dashboard.tsx";
+import UserLayout from "./pages/user/UserLayout.js";
+import UserDashboard from "./pages/user/screens/dashboard/Dashboard.js";
+import UserNotification from "./pages/user/screens/notifications/Notifications.js";
+import UserProfile from "./pages/user/screens/profile/Profile.js";
+import UserQuizzes from "./pages/user/screens/quizzes/Quizzes.js";
+import UserResult from "./pages/user/screens/result/Result.js";
+import UserSetting from "./pages/user/screens/settings/Settings.js";
+import UserTest from "./pages/user/screens/test/Test.js";
 
 function App() {
   return (
