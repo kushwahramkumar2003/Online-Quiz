@@ -21,6 +21,11 @@ import Dashboard from "../assets/Images/icons/dashboard.svg";
 import DropDown from "../assets/Images/icons/dropdown.svg";
 import bellIcon from "../assets/Images/icons/bell_regular.svg";
 import MessageIcon from "../assets/Images/icons/messgae.svg";
+import AvgScore from "../assets/Images/icons/average_score.svg";
+import AvgTime from "../assets/Images/icons/average_time.svg";
+import NoOfParticipants from "../assets/Images/icons/number_participants.svg";
+import QuizName from "../assets/Images/icons/quiz-name.svg";
+
 
 
 import feature_1 from "../assets/Images/Features images/Diverse Language Coverage.svg";
@@ -31,6 +36,10 @@ import feature_5 from "../assets/Images/Features images/Timed Programming Quizze
 import feature_6 from "../assets/Images/Features images/Aptitude Speed Challenges.svg";
 
 const images = {
+  QuizName,
+  NoOfParticipants,
+  AvgTime,
+  AvgScore,
   MessageIcon,
   bellIcon,
   DropDown,

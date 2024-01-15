@@ -10,12 +10,15 @@
   /* border: 2px solid red; */
 }
 
+
+/*<---------- Admin.jsx CSS here ---------->*/
 .Admin-manu {
   height: 44.5rem;
   width: 16rem;
   color: #fff;
   /* overflow-y: hidden; */
   position: fixed;
+  flex-wrap: wrap;
   background-color: #2D323E;
 }
 .Grad-logo {
@@ -71,6 +74,8 @@
   margin-left: 2rem;
 }
 
+
+/*<---------- AdminLayout.jsx CSS here ---------->*/
 .admin-right-page {
   width: 100%;
   margin-top: 3rem;
