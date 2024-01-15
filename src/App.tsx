@@ -1,10 +1,7 @@
 import Login from "./pages/login/login.js";
 import Signup from "./pages/signup/SignUp.js";
 import Home from "./pages/home/Home.js";
-
 import { Routes, Route } from "react-router-dom";
-
-import "./App.css";
 import UserPage from "./pages/user/UserPage.js";
 import EditQuizs from "./pages/admin/screens/editQuizs/EditQuizs.js";
 import QuizPage from "./pages/quiz/QuizPage.js";
@@ -14,7 +11,7 @@ import Setting from "./pages/admin/screens/setting/Setting.js";
 import Help from "./pages/admin/screens/help/Help.js";
 import AdminLayout from "./pages/admin/AdminLayout.js";
 import CreateNewQuiz from "./Components/Admin/CreateNewQuiz.js";
-import EditQuiz from "./pages/admin/screens/editQuiz/editQuiz.tsx";
+import EditQuiz from "./pages/admin/screens/editQuiz/EditQuiz.tsx";
 import Dashboard from "./pages/admin/screens/dashboard/Dashboard.tsx";
 import UserLayout from "./pages/user/UserLayout.js";
 import UserDashboard from "./pages/user/screens/dashboard/Dashboard.js";
@@ -24,6 +21,7 @@ import UserQuizzes from "./pages/user/screens/quizzes/Quizzes.js";
 import UserResult from "./pages/user/screens/result/Result.js";
 import UserSetting from "./pages/user/screens/settings/Settings.js";
 import UserTest from "./pages/user/screens/test/Test.js";
+import "./App.css";
 
 function App() {
   return (
