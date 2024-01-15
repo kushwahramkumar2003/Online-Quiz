@@ -108,9 +108,7 @@ const Navbar = () => {
             className="flex items-center gap-1 py-2 text-base lg:visible md:visible"
             id=""
           >
-            {menuLinks?.map((menu, i) => (
-              <NavItem key={i} menu={menu} />
-            ))}
+            {menuLinks?.map((menu, i) => <NavItem key={i} menu={menu} />)}
             <li className="px-6 hover:text-[#FCC822]" id="links1">
               {userState.userInfo ? (
                 userState.userInfo.role === "ADMIN" ? (
@@ -134,7 +132,7 @@ const Navbar = () => {
                   <>
                     {/* <Link to="/Admin">Admin</Link> */}
                     <button
-                    className="disabled:opacity-60 disabled:cursor-not-allowed"
+                      className="disabled:opacity-60 disabled:cursor-not-allowed"
                       onClick={(e) => logoutHandler(e)}
                       disabled={isPending}
                     >
@@ -145,7 +143,7 @@ const Navbar = () => {
                   <>
                     {/* <Link to="/User">Profile</Link> */}
                     <button
-                    className="disabled:opacity-60 disabled:cursor-not-allowed"
+                      className="disabled:opacity-60 disabled:cursor-not-allowed"
                       onClick={(e) => logoutHandler(e)}
                       disabled={isPending}
                     >

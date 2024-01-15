@@ -1,4 +1,3 @@
-import React from "react";
 // import { Link } from "react-router-dom";
 import { Link as Link2 } from "react-scroll";
 
@@ -45,7 +44,6 @@ const Home = () => {
         </div>
       </div>
 
-
       {/* <div className="line2"></div> */}
 
       {/***************** How does it Works? page **********************************/}
@@ -55,174 +53,188 @@ const Home = () => {
         </div>
 
         <div className="time-line-page-2">
-          <div class="timeline">
-            <div class="timeline__component"></div>
+          <div className="timeline">
+            <div className="timeline__component"></div>
 
-            <div class="timeline__middle">
-              <div class="timeline__point"></div>
+            <div className="timeline__middle">
+              <div className="timeline__point"></div>
             </div>
 
             <div
-              class="timeline__component timeline__component--bg"
+              className="timeline__component timeline__component--bg"
               id="work-card-1"
             >
-              <h2 class="timeline__title"> User Registration/Login </h2>
-              <p class="timeline__paragraph">
+              <h2 className="timeline__title"> User Registration/Login </h2>
+              <p className="timeline__paragraph">
                 Seamlessly log in or register to establish your personalized
                 account, unlocking a tailored quiz experience.
               </p>
             </div>
 
             <div
-              class="timeline__component timeline__component--bg"
+              className="timeline__component timeline__component--bg"
               id="work-card-2"
             >
-              <h2 class="timeline__title">Explore Quiz Categories </h2>
-              <p class="timeline__paragraph">
+              <h2 className="timeline__title">Explore Quiz Categories </h2>
+              <p className="timeline__paragraph">
                 Navigate through diverse quiz categories based on your interests
                 or specific skill focus, ensuring a personalized and engaging
                 quiz selection.
               </p>
             </div>
 
-            <div class="timeline__middle">
-              <div class="timeline__point"></div>
+            <div className="timeline__middle">
+              <div className="timeline__point"></div>
             </div>
 
-            <div class="timeline__component"></div>
+            <div className="timeline__component"></div>
 
-            <div class="timeline__component"></div>
+            <div className="timeline__component"></div>
 
-            <div class="timeline__middle">
-              <div class="timeline__point"></div>
+            <div className="timeline__middle">
+              <div className="timeline__point"></div>
             </div>
 
             <div
-              class="timeline__component timeline__component--bg"
+              className="timeline__component timeline__component--bg"
               id="work-card-3"
             >
-              <h2 class="timeline__title">Real-time Feedback </h2>
-              <p class="timeline__paragraph">
+              <h2 className="timeline__title">Real-time Feedback </h2>
+              <p className="timeline__paragraph">
                 Receive instant feedback for each question, providing immediate
                 clarity on the correctness of your responses.
               </p>
             </div>
 
             <div
-              class="timeline__component timeline__component--bottom timeline__component--bg"
+              className="timeline__component timeline__component--bottom timeline__component--bg"
               id="work-card-4"
             >
-              <h2 class="timeline__title">Completion and Results </h2>
-              <p class="timeline__paragraph">
+              <h2 className="timeline__title">Completion and Results </h2>
+              <p className="timeline__paragraph">
                 Instantly access a comprehensive result summary upon completing
-                a quiz, offering insights into your performance.
+                a quiz, offering insights into your performance.
               </p>
             </div>
 
-            <div class="timeline__middle">
-              <div class="timeline__point"></div>
-              <div class="timeline__point timeline__point--bottom"></div>
+            <div className="timeline__middle">
+              <div className="timeline__point"></div>
+              <div className="timeline__point timeline__point--bottom"></div>
             </div>
           </div>
         </div>
       </div>
 
-{/******************** Our Features & Services Page **********************/}
+      {/******************** Our Features & Services Page **********************/}
 
       <div className="features">
         <h2>Our features & Services</h2>
       </div>
 
-  {/****** new work for section card  start here ******/}  
-  <div className="parent-box">  
-      
-      <div className="card_items">  
-          <div class="card-content-2" id="cds-1">
-              <img src={images.feature_1} alt="feature-img-2" id="feature-img-2"></img>
-              <h2>Diverse Language Coverage </h2>
-              <p>
-                Explore quizzes covering a variety of programming languages,
-                Aptitude, Reasoning Challenges and more.
-              </p>
+      {/****** new work for section card  start here ******/}
+      <div className="parent-box">
+        <div className="card_items">
+          <div className="card-content-2" id="cds-1">
+            <img
+              src={images.feature_1}
+              alt="feature-img-2"
+              id="feature-img-2"
+            ></img>
+            <h2>Diverse Language Coverage </h2>
+            <p>
+              Explore quizzes covering a variety of programming languages,
+              Aptitude, Reasoning Challenges and more.
+            </p>
           </div>
-      </div> 
-      
-      <div className="card_items">    
-          <div class="card-content-2" id="cds-2">
-              <img
-                src={images.feature_2}
-                id="feature-img-2"
-                alt="feature-img-2"
-              ></img>
-              <h2>Personalized Skill Profiles </h2>
-              <p>
-                Track your progress in each category, allowing you to identify
-                strengths and areas for improvement.
-              </p>
-          </div>     
+        </div>
+
+        <div className="card_items">
+          <div className="card-content-2" id="cds-2">
+            <img
+              src={images.feature_2}
+              id="feature-img-2"
+              alt="feature-img-2"
+            ></img>
+            <h2>Personalized Skill Profiles </h2>
+            <p>
+              Track your progress in each category, allowing you to identify
+              strengths and areas for improvement.
+            </p>
+          </div>
+        </div>
+
+        <div className="card_items">
+          <div className="card-content-2" id="cds-3">
+            <img
+              src={images.feature_5}
+              alt="feature-img-2"
+              id="feature-img-2"
+            ></img>
+            <h2> Timed Programming Quizzes</h2>
+            <p>
+              Practice time management in coding with quizzes featuring
+              realistic time constraints.
+            </p>
+          </div>
+        </div>
+
+        <div className="card_items">
+          <div className="card-content-2" id="cds-4">
+            <img
+              src={images.feature_4}
+              alt="feature-img-2"
+              id="feature-img-2"
+            ></img>
+            <h2>Feedback for Improvement </h2>
+            <p>
+              {" "}
+              Leverage detailed feedback to enhance your knowledge and refine
+              your problem-solving strategies.
+            </p>
+          </div>
+        </div>
+
+        <div className="card_items">
+          <div className="card-content-2" id="cds-5">
+            <img
+              src={images.feature_3}
+              alt="feature-img-2"
+              id="feature-img-2"
+            ></img>
+            <h2>Detailed Explanations </h2>
+            <p>
+              {" "}
+              Understand the reasoning behind correct answers with comprehensive
+              explanations, facilitating a deeper understanding of concepts.
+            </p>
+          </div>
+        </div>
+
+        <div className="card_items">
+          <div className="card-content-2" id="cds-6">
+            <img
+              src={images.feature_6}
+              alt="feature-img-2"
+              id="feature-img-2"
+            ></img>
+            <h2>Aptitude Speed Challenges </h2>
+            <p>
+              Enhance your speed and accuracy in aptitude and reasoning with
+              timed challenges.
+            </p>
+          </div>
+        </div>
       </div>
-      
-      <div className="card_items">  
-          <div class="card-content-2" id="cds-3">
-              <img src={images.feature_5} alt="feature-img-2" id="feature-img-2"></img>
-              <h2> Timed Programming Quizzes</h2>
-              <p>
-                Practice time management in coding with quizzes featuring
-                realistic time constraints.
-              </p>
-          </div>       
-      </div>
+      {/********** new work for section card  end  here ******/}
 
-      <div className="card_items">  
-          <div class="card-content-2" id="cds-4">
-              <img src={images.feature_4} alt="feature-img-2" id="feature-img-2"></img>
-              <h2>Feedback for Improvement </h2>
-              <p>
-                {" "}
-                Leverage detailed feedback to enhance your knowledge and refine
-                your problem-solving strategies.
-              </p>
-          </div>       
-      </div>
-      
-      <div className="card_items">     
-          <div class="card-content-2" id="cds-5">
-              <img src={images.feature_3} alt="feature-img-2" id="feature-img-2"></img>
-              <h2>Detailed Explanations </h2>
-              <p>
-                {" "}
-                Understand the reasoning behind correct answers with
-                comprehensive explanations, facilitating a deeper understanding
-                of concepts.
-              </p>
-          </div>    
-      </div>
+      {/********** features & services end here ***********/}
 
-      <div className="card_items">   
-          <div class="card-content-2" id="cds-6">
-              <img src={images.feature_6} alt="feature-img-2" id="feature-img-2"></img>
-              <h2>Aptitude Speed Challenges </h2>
-              <p>
-                Enhance your speed and accuracy in aptitude and reasoning with
-                timed challenges.
-              </p>
-          </div>      
-      </div>
+      {/****************** footer section start here ******************/}
 
-  </div>
-{/********** new work for section card  end  here ******/} 
- 
-  {/********** features & services end here ***********/}
-
-
-
-
-  {/****************** footer section start here ******************/}
- 
-       <footer>
-        <div className="footerBox"> 
+      <footer>
+        <div className="footerBox">
           {/************ Box - 1 ****************/}
-            <div className="section1" id="footer-box-1">
+          <div className="section1" id="footer-box-1">
             <Link2
               to={"start"}
               spy={true}
@@ -262,8 +274,8 @@ const Home = () => {
             <p>
               Quizgrad is a web app which provide a variety of quizzes! Explore
               engaging challenges in programming, aptitude, reasoning, and more.
-              Elevate your knowledge effortlessly at Quizgrad – where learning
-              meets excitement !"
+              Elevate your knowledge effortlessly at Quizgrad - where learning
+              meets excitement !"
             </p>
 
             <div className="contacts">
@@ -274,8 +286,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </footer>  
-            
+      </footer>
     </>
   );
 };
