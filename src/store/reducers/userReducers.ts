@@ -8,7 +8,9 @@ const userSlice = createSlice({
     setUserInfo(state, action) {
       state.userInfo = action.payload;
     },
+    //eslint-disable-next-line
     resetUserInfo(state, action) {
+      console.log(action);
       state.userInfo = null;
     },
   },

@@ -1,17 +1,18 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 import Header from "./header/Header";
 import images from "../../constants/images";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { RootState } from "../../store/types";
 
 const AdminLayout = () => {
   const navigate = useNavigate();
 
-  const userState = useSelector((state) => state.user);
+  const userState = useSelector((state: RootState) => state.user);
 
   useEffect(() => {
-    const role = userState?.userInfo?.user?.role || userState?.userInfo?.role;
+    const role = userState?.userInfo?.role;
 
     if (!userState.userInfo || !role || !(role === "ADMIN")) {
       navigate("/");

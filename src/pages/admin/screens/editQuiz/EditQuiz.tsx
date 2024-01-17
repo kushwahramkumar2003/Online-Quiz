@@ -7,17 +7,19 @@ import { getQuizById } from "../../../../services/quiz";
 import QuestionCard from "../../../../Components/Admin/QuestionCard";
 import AddNewQuestion from "../../../../Components/Admin/AddNewQuestion";
 import Modal from "../../../../Components/modal/Modal";
+import { RootState } from "../../../../store/types";
 
 const EditQuiz = () => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const userState = useSelector((state) => state.user);
+  const userState = useSelector((state: RootState) => state.user);
+
   const { quiz_id } = useParams();
   const navigate = useNavigate();
   const [questions, setQuestions] = React.useState([]);
   const [refresh, setRefresh] = React.useState(false);
 
   useEffect(() => {
-    const role = userState?.userInfo?.role || userState?.userInfo?.user?.role;
+    const role = userState?.userInfo?.role;
 
     if (!role) {
       navigate("/");

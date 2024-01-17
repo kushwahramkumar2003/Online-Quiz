@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 
@@ -38,13 +38,13 @@ const Quizes = () => {
       <div className="quiz-content">
         <div className="quiz-box ">
           {isLoading &&
-            shimmerArr.map((item, index) => (
-              <QuizCardShimmer key={index} className="w-10" />
+            shimmerArr.map(( index) => (
+              <QuizCardShimmer key={index.toString()} />
             ))}
           {data &&
             data.map((quiz) => (
               <QuizCard
-                className="w-10"
+                // className="w-10"
                 key={quiz._id}
                 title={quiz.name}
                 desc={quiz.description}

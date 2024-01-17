@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
 import "./Signup.css";
@@ -28,7 +28,15 @@ export default function Login() {
   // const userState = useSelector((state) => state.user);
 
   const { mutate, isPending } = useMutation({
-    mutationFn: ({ name, email, password }) => {
+    mutationFn: ({
+      name,
+      email,
+      password,
+    }: {
+      name: string;
+      email: string;
+      password: string;
+    }) => {
       return signup({ name, email, password });
     },
     onSuccess: (data) => {
@@ -38,10 +46,7 @@ export default function Login() {
       naviage("/User");
       toast.success("Register successfully");
     },
-    onError: (error) => {
-      console.log("error.response", error.response);
-      console.log("error.response.data", error.response.data);
-      console.log("error.response.data.msg", error.response.data.msg);
+    onError: (error: Error) => {
       toast.error(error.message);
       console.log(error);
     },

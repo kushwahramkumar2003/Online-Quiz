@@ -16,6 +16,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { logout } from "../../store/actions/userActions.js";
 import { toast } from "react-hot-toast";
 import { logout as Logout } from "../../services/user.js";
+import { RootState } from "../../store/types.js";
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -24,14 +25,14 @@ const Admin = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [refresh, setRefresh] = React.useState(false);
 
-  const userState = useSelector((state) => state.user);
+  const userState = useSelector((state: RootState) => state.user);
 
   const dispatch = useDispatch();
 
   // const { data } = useQuery();
 
   useEffect(() => {
-    const role = userState?.userInfo?.user?.role || userState?.userInfo?.role;
+    const role = userState?.userInfo?.role;
 
     // if (!role) {
     //   navigate("/");
@@ -56,11 +57,13 @@ const Admin = () => {
   //   fetchData();
   // }, [isOpen, refresh]);
 
-  const { mutate, isPending } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: () => {
       return Logout();
     },
-    onSuccess: async (data) => {
+    onSuccess: async () => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       dispatch(logout());
       toast.success("Logout successfully");
       navigate("/");
@@ -80,7 +83,6 @@ const Admin = () => {
     <>
       {/* this code written by deepesh */}
       <div className="admin-page">
-        
         <div className="Admin-manu">
           <div className="Grad-logo">
             <h1 className="logo-name-for-admin">QuizGrad</h1>
@@ -157,11 +159,11 @@ const Admin = () => {
                       title={q.title}
                       category={q.category}
                       description={q.description}
-                      times_taken={q.times_taken || q.duration}
+                      // times_taken={q.times_taken || q.duration}
                       quiz_id={q._id}
                       questions={q.questions.length}
                       duration={q.duration || q?.times_taken}
-                      level={q.level}
+                      // level={q.level}
                       numberOfQuestions={q.numberOfQuestions}
                       published={q.published}
                       key={q._id}

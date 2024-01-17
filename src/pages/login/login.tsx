@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { PulseLoader } from "react-spinners";
@@ -26,14 +26,14 @@ export default function Login() {
   };
 
   const { mutate, isPending } = useMutation({
-    mutationFn: ({ email, password }) => {
+    mutationFn: ({ email, password }: { email: string; password: string }) => {
       return login({ email, password });
     },
     onSuccess: async (data) => {
       const { user } = data;
 
-      await dispatch(userActions.setUserInfo(data));
-      await localStorage.setItem("account", JSON.stringify(data));
+      await dispatch(userActions.setUserInfo(user));
+      await localStorage.setItem("account", JSON.stringify(user));
       toast.success("Login successfully");
 
       // console.log("User.role : ", user.role);

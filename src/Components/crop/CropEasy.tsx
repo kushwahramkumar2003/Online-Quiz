@@ -1,30 +1,28 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Cropper from "react-easy-crop";
 import getCroppedImg from "./cropImage";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { userActions } from "../../store/reducers/userReducers";
-import { useToaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { PulseLoader } from "react-spinners";
 // eslint-disable-next-line
-import { set } from "react-hook-form";
 import { updateProfilePicture } from "../../services/profile";
 
 const CropEasy = ({ photo, setOpenCrop }) => {
-  const toast = useToaster();
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
-  const userState = useSelector((state) => state.user);
 
   const hadleCropComplete = (croppedArea, croppedAreaPixels) => {
+    console.log(croppedArea);
     setCroppedAreaPixels(croppedAreaPixels);
   };
 
   const { mutate, isPending } = useMutation({
-    mutationFn: ({ formData }) => {
+    mutationFn: ({ formData }: { formData: FormData }) => {
       return updateProfilePicture({
         formData: formData,
       });
@@ -34,7 +32,7 @@ const CropEasy = ({ photo, setOpenCrop }) => {
       dispatch(userActions.setUserInfo(data));
       setOpenCrop(false);
       localStorage.setItem("account", JSON.stringify(data));
-      queryClient.invalidateQueries(["profile"]);
+      queryClient.invalidateQueries({ queryKey: ["profile"] });
 
       toast.success("Profile Photo is updated");
     },
@@ -47,8 +45,11 @@ const CropEasy = ({ photo, setOpenCrop }) => {
   const handleCropImage = async () => {
     try {
       const croppedImage = await getCroppedImg(photo?.url, croppedAreaPixels);
+
       console.log(croppedImage);
-      const file = new File([croppedImage.file], `${photo?.file?.name}`, {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
+      const file = new File([croppedImage?.file], `${photo?.file?.name}`, {
         type: photo?.file?.type,
       });
 
@@ -92,7 +93,7 @@ const CropEasy = ({ photo, setOpenCrop }) => {
             max={3}
             step={0.1}
             value={zoom}
-            onChange={(e) => setZoom(e.target.value)}
+            onChange={(e) => setZoom(Number(e?.target?.value))}
             className="w-full h-1 mb-6 bg-gray-200 rounded-lg appearance-none cursor-pointer range-sm"
           />
         </div>

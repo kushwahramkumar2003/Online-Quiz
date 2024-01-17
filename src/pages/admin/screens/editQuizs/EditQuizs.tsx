@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getAllQuizs } from "../../../../services/quiz";
 import QuizCard from "../../../../Components/Admin/QuizCard";
 
@@ -36,11 +36,11 @@ const EditQuizs = () => {
                 title={q.title}
                 category={q.category}
                 description={q.description}
-                times_taken={q.times_taken || q.duration}
+                // times_taken={q.times_taken || q.duration}
                 quiz_id={q._id}
                 questions={q.questions.length}
                 duration={q.duration || q?.times_taken}
-                level={q.level}
+                // level={q.level}
                 numberOfQuestions={q.numberOfQuestions}
                 published={q.published}
                 key={q._id}

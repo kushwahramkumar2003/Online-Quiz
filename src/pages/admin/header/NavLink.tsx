@@ -1,4 +1,3 @@
-import React from "react";
 import images from "../../../constants/images";
 import { Link, useNavigate } from "react-router-dom";
 import "../Admin.css";
@@ -8,9 +7,10 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { logout as Logout } from "../../../services/user";
 import { logout } from "../../../store/actions/userActions";
+import { RootState } from "../../../store/types";
 
 const NavLink = () => {
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state:RootState) => state.user);
 
   const navigate = useNavigate();
 
@@ -20,7 +20,9 @@ const NavLink = () => {
     mutationFn: () => {
       return Logout();
     },
-    onSuccess: async (data) => {
+    onSuccess: async () => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       dispatch(logout());
       toast.success("Logout successfully");
       navigate("/");

@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { Provider } from "react-redux";
@@ -16,7 +15,7 @@ root.render(
   <BrowserRouter>
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
-        <App className="transition-all scroll-smooth" />
+        <App />
         <Toaster />
       </QueryClientProvider>
     </Provider>

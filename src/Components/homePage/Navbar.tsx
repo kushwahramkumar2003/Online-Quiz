@@ -9,6 +9,7 @@ import { logout } from "../../store/actions/userActions.js";
 import { useMutation } from "@tanstack/react-query";
 import { logout as Logout } from "../../services/user.js";
 import { toast } from "react-hot-toast";
+import { RootState } from "../../store/types.js";
 const menuLinks = [
   { name: "How it works", link: "works" },
   { name: "Features", link: "features" },
@@ -62,7 +63,7 @@ const Navbar = () => {
     setNavIsVisible((prev) => !prev);
   };
 
-  const userState = useSelector((state) => state.user);
+  const userState = useSelector((state: RootState) => state.user);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -71,7 +72,9 @@ const Navbar = () => {
     mutationFn: () => {
       return Logout();
     },
-    onSuccess: async (data) => {
+    onSuccess: async () => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       dispatch(logout());
       toast.success("Logout successfully");
       navigate("/");

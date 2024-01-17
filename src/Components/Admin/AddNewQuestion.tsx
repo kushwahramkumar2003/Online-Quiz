@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { addQuestionInQuiz } from "../../services/quiz";
+
+type addQuestionArgument = {
+  question: string;
+  options: string[];
+  correctAnswer: string;
+  quizId: string;
+};
 
 const AddNewQuestion = ({ quizId, setIsOpen }) => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -16,7 +23,12 @@ const AddNewQuestion = ({ quizId, setIsOpen }) => {
   ]);
 
   const { mutate } = useMutation({
-    mutationFn: ({ question, options, correctAnswer, quizId }) => {
+    mutationFn: ({
+      question,
+      options,
+      correctAnswer,
+      quizId,
+    }: addQuestionArgument) => {
       return addQuestionInQuiz({ question, options, correctAnswer, quizId });
     },
     onSuccess: (data) => {
@@ -56,9 +68,10 @@ const AddNewQuestion = ({ quizId, setIsOpen }) => {
   const onSubmit = (data) => {
     console.log("data : ", data);
     const { question, option1, option2, option3, option4 } = data;
+    const optionsArr: string[] = [option1, option2, option3, option4];
     mutate({
       question,
-      options: [option1, option2, option3, option4],
+      options: optionsArr,
       correctAnswer: answer,
       quizId,
     });
@@ -76,7 +89,7 @@ const AddNewQuestion = ({ quizId, setIsOpen }) => {
               id="question"
               {...register("question", { required: "Question is required" })}
             />
-            {errors.question && <p>{errors.question.message}</p>}
+            {errors.question && <p>{errors?.question?.message.toString()}</p>}
           </div>
           <div className="form-control">
             <label>Options:</label>
@@ -124,7 +137,7 @@ const AddNewQuestion = ({ quizId, setIsOpen }) => {
               readOnly
               {...register("answer", { required: "Answer is required" })}
             />
-            {errors.answer && <p>{errors.answer.message}</p>}
+            {errors.answer && <p>{errors?.answer?.message.toString()}</p>}
           </div>
           <button type="submit">Submit</button>
         </form>

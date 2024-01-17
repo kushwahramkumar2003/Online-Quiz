@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoCloseSharp } from "react-icons/io5";
 
 import Header from "./header/Header";
+import { RootState } from "../../store/types";
 
 const UserLayout = () => {
   const navigate = useNavigate();
   const [isOpenHeader, setIsOpenHeader] = useState(false);
-  const userState = useSelector((state) => state.user);
+  const userState = useSelector((state:RootState) => state.user);
 
   useEffect(() => {
-    const role = userState?.userInfo?.user?.role || userState?.userInfo?.role;
+    const role =  userState?.userInfo?.role;
 
     if (!userState.userInfo || !role || !(role === "USER")) {
       navigate("/");

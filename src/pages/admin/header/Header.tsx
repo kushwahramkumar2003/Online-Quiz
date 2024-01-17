@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import NavLink  from "./NavLink";
 
 const Header = () => {
@@ -11,7 +11,9 @@ const Header = () => {
   return (
     <div>
       <NavLink
-        activeClass={""}
+        // activeClass={""}
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
         dashboardState={{ isActiveDashboard, setIsActiveDashboard }}
         myProfileState={{ isActiveMyProfile, setIsActiveMyProfile }}
         editQuizState={{ isEditQuiz, setIsEditQuiz }}

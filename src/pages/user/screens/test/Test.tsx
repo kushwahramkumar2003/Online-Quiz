@@ -1,5 +1,3 @@
-import React from "react";
-
 const Test = () => {
   return (
     <div className="flex items-center justify-center text-xl font-semibold text-center opacity-60">

@@ -1,5 +1,5 @@
 // Feedback.jsx
-import React, { useState } from "react";
+import { useState } from "react";
 
 import { useMutation } from "@tanstack/react-query";
 import { submitFeedback } from "../../services/feedback";
@@ -18,7 +18,17 @@ const Feedback = () => {
   });
 
   const { mutate, isPending, isPaused } = useMutation({
-    mutationFn: ({ name, email, message, rating }) => {
+    mutationFn: ({
+      name,
+      email,
+      message,
+      rating,
+    }: {
+      name: string;
+      email: string;
+      message: string;
+      rating: number;
+    }) => {
       return submitFeedback({ name, email, message, rating });
     },
     onSuccess: (data) => {
@@ -50,10 +60,7 @@ const Feedback = () => {
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label
-            htmlFor="name"
-            className="block feedback-label"
-          >
+          <label htmlFor="name" className="block feedback-label">
             Name
           </label>
           <input
@@ -68,12 +75,9 @@ const Feedback = () => {
             className="feedback-inputs p-4.5 mt-1 border rounded-md"
           />
         </div>
-       
+
         <div>
-          <label
-            htmlFor="email"
-            className="block feedback-label"
-          >
+          <label htmlFor="email" className="block feedback-label">
             Email
           </label>
           <input
@@ -88,19 +92,15 @@ const Feedback = () => {
             className="feedback-inputs p-4.5 mt-1 border rounded-md"
           />
         </div>
-        
+
         <div>
-          <label
-            htmlFor="message"
-            className="block feedback-label"
-            placeholder="Enter your message here"
-          >
+          <label htmlFor="message" className="block feedback-label">
             Message
           </label>
           <textarea
             id="message"
             name="message"
-            rows="4"
+            // rows="4"
             required
             value={formData.message}
             onChange={handleChange}
@@ -108,12 +108,9 @@ const Feedback = () => {
             className="feedback-inputs p-4 mt-1 mb-[-1%] border rounded-md"
           ></textarea>
         </div>
-        
+
         <div>
-          <label
-            htmlFor="rating"
-            className="block feedback-label"
-          >
+          <label htmlFor="rating" className="block feedback-label">
             Rating (0-5)
           </label>
           <input
@@ -125,10 +122,10 @@ const Feedback = () => {
             required
             value={formData.rating}
             onChange={handleChange}
-            className="feedback-inputs p-2 mt-1 border rounded-md"
+            className="p-2 mt-1 border rounded-md feedback-inputs"
           />
         </div>
-       
+
         <div>
           <button
             type="submit"
