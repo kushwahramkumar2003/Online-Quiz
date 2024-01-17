@@ -1,5 +1,3 @@
-import React from "react";
-
 import { useNavigate } from "react-router-dom";
 
 import FullscreenButton from "../../StartQuiz/FullscreenButton";
@@ -29,7 +27,7 @@ const QuizCard = ({ title, desc, category, noQuestions, time, quizId }) => {
       {/* <p className="mt-1 text-yellow-400">{time}</p> */}
 
       <div className="flex justify-center mt-4">
-        <FullscreenButton onStartQuiz={onStartQuiz} quizId={quizId} />
+        <FullscreenButton onStartQuiz={onStartQuiz} />
       </div>
     </div>
   );

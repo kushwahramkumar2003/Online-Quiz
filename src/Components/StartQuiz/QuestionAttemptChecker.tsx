@@ -1,4 +1,3 @@
-import React from "react";
 import "./Question_attempt_checker.css";
 
 const QuestionAttemptChecker = ({

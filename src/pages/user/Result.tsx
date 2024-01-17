@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getResultByIds } from "../../services/userQuiz.js";
 import Feedback from "../../Components/Feedback/Feedback.js";

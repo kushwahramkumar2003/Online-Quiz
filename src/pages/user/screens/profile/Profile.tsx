@@ -1,25 +1,22 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import ProfilePicture from "../../../../Components/common/ProfilePicture";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
 import { getProfile, updateProfile } from "../../../../services/profile";
-import { userActions } from "../../../../store/reducers/userReducers";
 import { toast } from "react-hot-toast";
 import { PulseLoader } from "react-spinners";
+import { RootState } from "../../../../store/types";
 
 const Profile = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   const queryClient = useQueryClient();
-  const userState = useSelector((state) => state.user);
+  const userState = useSelector((state: RootState) => state.user);
 
   const {
     data: profileData,
     isLoading: profileIsLoading,
     // eslint-disable-next-line
-    error: profileError,
+    // error: profileError,
   } = useQuery({
     queryFn: () => {
       return getProfile();
@@ -44,8 +41,26 @@ const Profile = () => {
       Education,
       Skills,
       Languages,
+    }: {
+      name: string;
+      email: string;
+      password: string;
+      bio: string;
+      Birthday: Date;
+      Phone: string;
+      Address: string;
+      City: string;
+      State: string;
+      Zip: string;
+      Country: string;
+      Institute: string;
+      Education: string;
+      Skills: string;
+      Languages: string;
     }) => {
       return updateProfile({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         userData: {
           name,
           email,
@@ -65,10 +80,10 @@ const Profile = () => {
         },
       });
     },
-    onSuccess: (data) => {
+    onSuccess: () => {
       // dispatch(userActions.setUserInfo(data));
       // localStorage.setItem("account", JSON.stringify(data));
-      queryClient.invalidateQueries(["user-profile"]);
+      queryClient.invalidateQueries({ queryKey: ["user-profile"] });
       toast.success("Profile is updated");
     },
     onError: (error) => {
@@ -209,7 +224,7 @@ const Profile = () => {
             />
             {errors.name?.message && (
               <p className="mt-1 text-xs text-red-500">
-                {errors.name?.message}
+                {errors?.name?.message.toString()}
               </p>
             )}
           </div>
@@ -242,7 +257,7 @@ const Profile = () => {
             />
             {errors.email?.message && (
               <p className="mt-1 text-xs text-red-500">
-                {errors.email?.message}
+                {errors.email?.message.toString()}
               </p>
             )}
           </div>
@@ -288,7 +303,9 @@ const Profile = () => {
               }`}
             />
             {errors.bio?.message && (
-              <p className="mt-1 text-xs text-red-500">{errors.bio?.message}</p>
+              <p className="mt-1 text-xs text-red-500">
+                {errors.bio?.message.toString()}
+              </p>
             )}
           </div>
 
@@ -302,15 +319,15 @@ const Profile = () => {
             <input
               type="date"
               id="birthday"
-              {...register("birthday")}
+              {...register("Birthday")}
               placeholder="Enter your Birthday"
               className={`profile-inputs placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
-                errors.birthday ? "border-red-500" : "border-[#c3cad9]"
+                errors?.Birthday ? "border-red-500" : "border-[#c3cad9]"
               }`}
             />
-            {errors.birthday?.message && (
+            {errors.Birthday?.message && (
               <p className="mt-1 text-xs text-red-500">
-                {errors.birthday?.message}
+                {errors.Birthday?.message.toString()}
               </p>
             )}
           </div>
@@ -324,15 +341,15 @@ const Profile = () => {
             <input
               type="tel"
               id="phone"
-              {...register("phone")}
+              {...register("Phone")}
               placeholder="Enter your Phone no."
               className={`profile-inputs placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
-                errors.phone ? "border-red-500" : "border-[#c3cad9]"
+                errors.Phone ? "border-red-500" : "border-[#c3cad9]"
               }`}
             />
-            {errors.phone?.message && (
+            {errors.Phone?.message && (
               <p className="mt-1 text-xs text-red-500">
-                {errors.phone?.message}
+                {errors.Phone?.message.toString()}
               </p>
             )}
           </div>
@@ -346,15 +363,15 @@ const Profile = () => {
             <input
               type="text"
               id="address"
-              {...register("address")}
+              {...register("Address")}
               placeholder="Enter your Address"
               className={`profile-inputs placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
-                errors.address ? "border-red-500" : "border-[#c3cad9]"
+                errors.Address ? "border-red-500" : "border-[#c3cad9]"
               }`}
             />
-            {errors.address?.message && (
+            {errors.Address?.message && (
               <p className="mt-1 text-xs text-red-500">
-                {errors.address?.message}
+                {errors.Address?.message.toString()}
               </p>
             )}
           </div>
@@ -368,15 +385,15 @@ const Profile = () => {
             <input
               type="text"
               id="city"
-              {...register("city")}
+              {...register("City")}
               placeholder="Enter your City name"
               className={`profile-inputs placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
-                errors.city ? "border-red-500" : "border-[#c3cad9]"
+                errors.City ? "border-red-500" : "border-[#c3cad9]"
               }`}
             />
-            {errors.city?.message && (
+            {errors.City?.message && (
               <p className="mt-1 text-xs text-red-500">
-                {errors.city?.message}
+                {errors.City?.message.toString()}
               </p>
             )}
           </div>
@@ -390,15 +407,15 @@ const Profile = () => {
             <input
               type="text"
               id="state"
-              {...register("state")}
+              {...register("State")}
               placeholder="Enter your State name"
               className={`profile-inputs placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
-                errors.state ? "border-red-500" : "border-[#c3cad9]"
+                errors.State ? "border-red-500" : "border-[#c3cad9]"
               }`}
             />
-            {errors.state?.message && (
+            {errors.State?.message && (
               <p className="mt-1 text-xs text-red-500">
-                {errors.state?.message}
+                {errors.State?.message.toString()}
               </p>
             )}
           </div>
@@ -409,14 +426,16 @@ const Profile = () => {
             <input
               type="text"
               id="zip"
-              {...register("zip")}
+              {...register("Zip")}
               placeholder="Enter your Zip code"
               className={`profile-inputs placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
-                errors.zip ? "border-red-500" : "border-[#c3cad9]"
+                errors.Zip ? "border-red-500" : "border-[#c3cad9]"
               }`}
             />
-            {errors.zip?.message && (
-              <p className="mt-1 text-xs text-red-500">{errors.zip?.message}</p>
+            {errors.Zip?.message && (
+              <p className="mt-1 text-xs text-red-500">
+                {errors.Zip?.message.toString()}
+              </p>
             )}
           </div>
           <div className="flex flex-col w-full mb-6">
@@ -429,15 +448,15 @@ const Profile = () => {
             <input
               type="text"
               id="country"
-              {...register("country")}
+              {...register("Country")}
               placeholder="Enter your Country name"
               className={`profile-inputs placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
-                errors.country ? "border-red-500" : "border-[#c3cad9]"
+                errors.Country ? "border-red-500" : "border-[#c3cad9]"
               }`}
             />
-            {errors.country?.message && (
+            {errors.Country?.message && (
               <p className="mt-1 text-xs text-red-500">
-                {errors.country?.message}
+                {errors.Country?.message.toString()}
               </p>
             )}
           </div>
@@ -451,15 +470,15 @@ const Profile = () => {
             <input
               type="text"
               id="institute"
-              {...register("institute")}
+              {...register("Institute")}
               placeholder="Enter your Institute name"
               className={`profile-inputs placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
-                errors.institute ? "border-red-500" : "border-[#c3cad9]"
+                errors.Institute ? "border-red-500" : "border-[#c3cad9]"
               }`}
             />
-            {errors.institute?.message && (
+            {errors.Institute?.message && (
               <p className="mt-1 text-xs text-red-500">
-                {errors.institute?.message}
+                {errors.Institute?.message.toString()}
               </p>
             )}
           </div>
@@ -473,15 +492,15 @@ const Profile = () => {
             <input
               type="text"
               id="education"
-              {...register("education")}
+              {...register("Education")}
               placeholder="Enter your Education"
               className={`profile-inputs placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
-                errors.education ? "border-red-500" : "border-[#c3cad9]"
+                errors.Education ? "border-red-500" : "border-[#c3cad9]"
               }`}
             />
-            {errors.education?.message && (
+            {errors.Education?.message && (
               <p className="mt-1 text-xs text-red-500">
-                {errors.education?.message}
+                {errors.Education?.message.toString()}
               </p>
             )}
           </div>
@@ -495,15 +514,15 @@ const Profile = () => {
             <input
               type="text"
               id="skills"
-              {...register("skills")}
+              {...register("Skills")}
               placeholder="Enter your Skills"
               className={`profile-inputs placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
-                errors.skills ? "border-red-500" : "border-[#c3cad9]"
+                errors.Skills ? "border-red-500" : "border-[#c3cad9]"
               }`}
             />
-            {errors.skills?.message && (
+            {errors.Skills?.message && (
               <p className="mt-1 text-xs text-red-500">
-                {errors.skills?.message}
+                {errors.Skills?.message.toString()}
               </p>
             )}
           </div>
@@ -517,15 +536,15 @@ const Profile = () => {
             <input
               type="text"
               id="languages"
-              {...register("languages")}
+              {...register("Languages")}
               placeholder="Enter your Languages"
               className={`profile-inputs placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
-                errors.languages ? "border-red-500" : "border-[#c3cad9]"
+                errors.Languages ? "border-red-500" : "border-[#c3cad9]"
               }`}
             />
-            {errors.languages?.message && (
+            {errors.Languages?.message && (
               <p className="mt-1 text-xs text-red-500">
-                {errors.languages?.message}
+                {errors.Languages?.message.toString()}
               </p>
             )}
           </div>

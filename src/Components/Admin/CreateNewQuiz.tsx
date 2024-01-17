@@ -4,13 +4,25 @@ import toast from "react-hot-toast";
 import { createNewQuiz } from "../../services/quiz";
 import "./CreateNewQuiz.css";
 
-type modal = {
-  setIsOpen?: boolean;
+type QuizDataType = {
+  title: string;
+  description: string;
+  category: string;
+  duration: string;
+  level: string;
 };
 
-const CreateNewQuiz = ({ setIsOpen }: modal) => {
+type CreateNewQuizArgument = { setIsOpen?: (isOpen: boolean) => void };
+
+const CreateNewQuiz = ({ setIsOpen }: CreateNewQuizArgument) => {
   const { mutate, isPending } = useMutation({
-    mutationFn: ({ title, description, category, duration, level }) => {
+    mutationFn: ({
+      title,
+      description,
+      category,
+      duration,
+      level,
+    }: QuizDataType) => {
       return createNewQuiz({ title, description, category, duration, level });
     },
     onSuccess: (data) => {
@@ -40,7 +52,7 @@ const CreateNewQuiz = ({ setIsOpen }: modal) => {
     mode: "onChange",
   });
 
-  const submitHandler = (data, error) => {
+  const submitHandler = (data) => {
     const { title, description, category, duration, level } = data;
     // console.log(data);
     mutate({ title, description, category, duration, level });
@@ -144,7 +156,7 @@ const CreateNewQuiz = ({ setIsOpen }: modal) => {
           <button
             type="submit"
             className="submit-button"
-            disabled={!isValid || isLoading}
+            disabled={!isValid || isPending}
             typeof="submit"
           >
             Save

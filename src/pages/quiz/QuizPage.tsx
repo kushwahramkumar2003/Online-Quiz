@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import OneQuestionApper from "../../Components/StartQuiz/OneQuestionApper";
 import Timer from "../../Components/StartQuiz/Timer";
@@ -24,7 +24,9 @@ const QuizPage = () => {
   const [duration, setDuration] = useState(0);
   const [title, setTitle] = useState(null);
 
-  // eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [userQuizAlredyStarted, setUserQuizAlredyStarted] = useState({});
   const [attemptQuestions, setAttemptQuestions] = useState({});
   const [loading, setLoading] = useState(false);
@@ -61,7 +63,7 @@ const QuizPage = () => {
     isPending,
     isSuccess,
   } = useMutation({
-    mutationFn: ({ quizId, questionId, answer }) => {
+    mutationFn: ({ quizId, questionId, answer }:{quizId:string,questionId:string,answer:string}) => {
       return submitOneQuestion({ quizId, questionId, answer });
     },
     onSuccess: (data) => {
@@ -76,7 +78,7 @@ const QuizPage = () => {
   });
 
   const { mutate: SubmitQuiz, isPending: isPendingSubmit } = useMutation({
-    mutationFn: ({ quizId }) => {
+    mutationFn: ({ quizId }:{quizId:string}) => {
       return submitQuiz({ quizId });
     },
     onSuccess: (data) => {

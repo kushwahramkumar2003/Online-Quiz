@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,21 +13,22 @@ import {
 import { userActions } from "../../../../store/reducers/userReducers.js";
 import ProfilePicture from "../../../../Components/common/ProfilePicture.js";
 import "./My_profile.css";
+import { RootState } from "../../../../store/types.js";
 
 const MyProfile = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const queryClient = useQueryClient();
-  const userState = useSelector((state) => state.user);
+  const userState = useSelector((state: RootState) => state.user);
 
   const {
     data: profileData,
     isLoading: profileIsLoading,
     // eslint-disable-next-line
-    error: profileError,
+    // error: profileError,
   } = useQuery({
     queryFn: () => {
-      return getAdminProfile({ token: userState.userInfo.token });
+      return getAdminProfile();
     },
     queryKey: ["profile"],
   });
@@ -35,7 +36,15 @@ const MyProfile = () => {
   console.log("getAdminProfile : ", profileData);
 
   const { mutate, isPending: updateProfileIsLoading } = useMutation({
-    mutationFn: ({ name, email, password }) => {
+    mutationFn: ({
+      name,
+      email,
+      password,
+    }: {
+      name: string;
+      email: string;
+      password: string;
+    }) => {
       return updateAdminProfile({
         userData: { name, email, password },
       });
@@ -43,7 +52,7 @@ const MyProfile = () => {
     onSuccess: (data) => {
       dispatch(userActions.setUserInfo(data));
       localStorage.setItem("account", JSON.stringify(data));
-      queryClient.invalidateQueries(["profile"]);
+      queryClient.invalidateQueries({ queryKey: ["profile"] });
       toast.success("Profile is updated");
     },
     onError: (error) => {
@@ -72,6 +81,7 @@ const MyProfile = () => {
       return {
         name: profileIsLoading ? "" : profileData.name,
         email: profileIsLoading ? "" : profileData.email,
+        password: "",
       };
     }, [profileData?.email, profileData?.name, profileIsLoading]),
     mode: "onChange",
@@ -122,7 +132,7 @@ const MyProfile = () => {
             />
             {errors.name?.message && (
               <p className="mt-1 text-xs text-red-500">
-                {errors.name?.message}
+                {errors?.name?.message.toString()}
               </p>
             )}
           </div>
@@ -155,7 +165,7 @@ const MyProfile = () => {
             />
             {errors.email?.message && (
               <p className="mt-1 text-xs text-red-500">
-                {errors.email?.message}
+                {errors?.email?.message.toString()}
               </p>
             )}
           </div>
@@ -173,12 +183,12 @@ const MyProfile = () => {
               {...register("password")}
               placeholder="Enter new password"
               className={`profile-inputs placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
-                errors.password ? "border-red-500" : "border-[#c3cad9]"
+                errors?.password ? "border-red-500" : "border-[#c3cad9]"
               }`}
             />
-            {errors.password?.message && (
+            {errors?.password?.message && (
               <p className="mt-1 text-xs text-red-500">
-                {errors.password?.message}
+                {errors?.password?.message}
               </p>
             )}
           </div>

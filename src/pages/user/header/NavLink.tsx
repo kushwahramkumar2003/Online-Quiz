@@ -1,4 +1,4 @@
-import React from "react";
+
 import { RxDashboard } from "react-icons/rx";
 import { CgProfile } from "react-icons/cg";
 import { MdQuiz } from "react-icons/md";
@@ -38,7 +38,9 @@ const NavLink = ({ handleSetActiveTab, activeTab, isOpenHeader }) => {
     mutationFn: () => {
       return Logout();
     },
-    onSuccess: async (data) => {
+    onSuccess: async () => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       dispatch(logout());
       toast.success("Logout successfully");
       navigate("/");

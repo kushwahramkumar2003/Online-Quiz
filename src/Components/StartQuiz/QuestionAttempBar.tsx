@@ -1,4 +1,3 @@
-import React from "react";
 import QuestionAttemptChecker from "./QuestionAttemptChecker";
 import "./Question_attempt_bar.css"
 

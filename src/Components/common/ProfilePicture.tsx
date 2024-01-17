@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { HiOutlineCamera } from "react-icons/hi";
 import { createPortal } from "react-dom";
 
@@ -8,11 +8,12 @@ import toast from "react-hot-toast";
 import CropEasy from "../crop/CropEasy.jsx";
 import { updateProfilePicture } from "../../services/profile.js";
 import { userActions } from "../../store/reducers/userReducers.js";
+import { RootState } from "../../store/types.js";
 
 const ProfilePicture = ({ avatar }) => {
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
-  const userState = useSelector((state) => state.user);
+  const userState = useSelector((state: RootState) => state.user);
   const [openCrop, setOpenCrop] = useState(false);
   const [photo, setPhoto] = useState(null);
 
@@ -24,10 +25,9 @@ const ProfilePicture = ({ avatar }) => {
     }
   };
   // eslint-disable-next-line
-  const { mutate, isLoading } = useMutation({
-    mutationFn: ({ token, formData }) => {
+  const { mutate } = useMutation({
+    mutationFn: ({ formData }: { token: string; formData: FormData }) => {
       return updateProfilePicture({
-        token: token,
         formData: formData,
       });
     },
@@ -35,7 +35,7 @@ const ProfilePicture = ({ avatar }) => {
       dispatch(userActions.setUserInfo(data));
       setOpenCrop(false);
       localStorage.setItem("account", JSON.stringify(data));
-      queryClient.invalidateQueries(["profile"]);
+      queryClient.invalidateQueries({ queryKey: ["profile"] });
 
       toast.success("Profile Photo is Removed");
     },
@@ -46,7 +46,7 @@ const ProfilePicture = ({ avatar }) => {
   });
 
   const handleDeleteImage = () => {
-    if (window.confirm("Do you want to delete your porfile picture")) {
+    if (window.confirm("Do you want to delete your profile picture")) {
       try {
         const formData = new FormData();
         formData.append("profilePicture", undefined);

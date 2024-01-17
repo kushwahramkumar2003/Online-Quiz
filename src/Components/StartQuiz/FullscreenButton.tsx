@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import  { useEffect, useCallback } from "react";
 
 const FullscreenButton = ({ onStartQuiz }) => {
   const handleFullscreenChange = useCallback(() => {

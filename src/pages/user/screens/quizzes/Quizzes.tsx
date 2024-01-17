@@ -1,4 +1,3 @@
-import React from "react";
 import Quizes from "../../../../Components/User/quiz/Quizes";
 
 const Quizzes = () => {
