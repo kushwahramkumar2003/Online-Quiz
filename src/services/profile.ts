@@ -39,11 +39,12 @@ export const getProfile = async () => {
   }
 };
 
-export const updateProfile = async ({ formData }) => {
+export const updateProfile = async ({ userData }) => {
   try {
+    console.log(userData);
     console.log("Update Profile called");
 
-    const { data } = await axios.put("/api/v1/profile", formData);
+    const { data } = await axios.put("/api/v1/profile", userData);
     return data;
   } catch (error) {
     console.log(error);

@@ -8,7 +8,6 @@ import toast from "react-hot-toast";
 import { PulseLoader } from "react-spinners";
 // eslint-disable-next-line
 import { updateProfilePicture } from "../../services/profile";
-
 const CropEasy = ({ photo, setOpenCrop }) => {
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
@@ -28,12 +27,10 @@ const CropEasy = ({ photo, setOpenCrop }) => {
       });
     },
     onSuccess: (data) => {
-      console.log("data : ", data);
-      dispatch(userActions.setUserInfo(data));
+      dispatch(userActions.setUserInfo(data?.user));
       setOpenCrop(false);
-      localStorage.setItem("account", JSON.stringify(data));
+      localStorage.setItem("account", JSON.stringify(data?.user));
       queryClient.invalidateQueries({ queryKey: ["profile"] });
-
       toast.success("Profile Photo is updated");
     },
     onError: (error) => {
