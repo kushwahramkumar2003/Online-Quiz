@@ -40,8 +40,8 @@ export default function Login() {
       return signup({ name, email, password });
     },
     onSuccess: (data) => {
-      dispatch(userActions.setUserInfo(data));
-      localStorage.setItem("account", JSON.stringify(data));
+      dispatch(userActions.setUserInfo(data?.user));
+      localStorage.setItem("account", JSON.stringify(data?.user));
       console.log(data);
       naviage("/User");
       toast.success("Register successfully");
@@ -88,7 +88,7 @@ export default function Login() {
         <p id="head-2">
           <span> Welcome to QuizGrad! </span>
           <br />
-          <span> Please Signup to your account. </span>
+          <span> Please Sighup to your account. </span>
         </p>
 
         <form>

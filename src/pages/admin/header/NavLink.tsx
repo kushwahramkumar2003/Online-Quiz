@@ -10,7 +10,7 @@ import { logout } from "../../../store/actions/userActions";
 import { RootState } from "../../../store/types";
 
 const NavLink = () => {
-  const user = useSelector((state:RootState) => state.user);
+  const user = useSelector((state: RootState) => state.user);
 
   const navigate = useNavigate();
 
@@ -42,7 +42,8 @@ const NavLink = () => {
     <div className="Admin-manu">
       <div className="Grad-logo">
         <h1 className="logo-name-for-admin">QuizGrad</h1>
-        <img className="rounded-lg"
+        <img
+          className="rounded-lg"
           src={user?.userInfo?.avatar ? user?.userInfo?.avatar : images.MyAdmin}
           alt="profile"
         ></img>

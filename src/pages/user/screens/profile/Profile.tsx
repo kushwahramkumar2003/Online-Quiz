@@ -2,14 +2,14 @@ import { useMemo } from "react";
 import ProfilePicture from "../../../../Components/common/ProfilePicture";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { getProfile, updateProfile } from "../../../../services/profile";
 import { toast } from "react-hot-toast";
 import { PulseLoader } from "react-spinners";
 import { RootState } from "../../../../store/types";
 
 const Profile = () => {
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
   const userState = useSelector((state: RootState) => state.user);
 
   const {
@@ -60,7 +60,7 @@ const Profile = () => {
     }) => {
       return updateProfile({
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
+
         userData: {
           name,
           email,
@@ -83,7 +83,7 @@ const Profile = () => {
     onSuccess: () => {
       // dispatch(userActions.setUserInfo(data));
       // localStorage.setItem("account", JSON.stringify(data));
-      queryClient.invalidateQueries({ queryKey: ["user-profile"] });
+      // queryClient.invalidateQueries({ queryKey: ["user-profile"] });
       toast.success("Profile is updated");
     },
     onError: (error) => {
@@ -98,8 +98,8 @@ const Profile = () => {
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
-      name: "",
-      email: "",
+      name: userState.userInfo.name || "",
+      email: userState.userInfo.email || "",
       password: "",
       bio: "",
       Birthday: "",
@@ -116,8 +116,8 @@ const Profile = () => {
     },
     values: useMemo(() => {
       return {
-        name: profileIsLoading ? "" : profileData?.name,
-        email: profileIsLoading ? "" : profileData?.email,
+        name: profileIsLoading ? "" : userState.userInfo?.name,
+        email: profileIsLoading ? "" : userState.userInfo?.email,
         password: "",
         bio: profileIsLoading ? "" : profileData?.bio,
         Birthday: profileIsLoading ? "" : profileData?.Birthday,
@@ -133,8 +133,8 @@ const Profile = () => {
         Languages: profileIsLoading ? "" : profileData?.Languages,
       };
     }, [
-      profileData?.email,
-      profileData?.name,
+      userState.userInfo?.email,
+      userState.userInfo?.name,
       profileIsLoading,
       profileData?.bio,
       profileData?.Birthday,
