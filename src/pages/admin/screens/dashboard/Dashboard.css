@@ -1,0 +1,113 @@
+.admin-dashboard {
+    /* border: 2px solid black; */
+    width: 80rem;
+}
+.admin-heading {
+    text-align: left;
+    font-size: 34px;
+    font-weight: bold;
+    /* border: 2px solid black; */
+    width: 100%;
+    height: 5.4rem;
+    color: #2D323E;
+    opacity: 1;
+    padding-left: 1.5rem;
+    padding-top: 1.5rem;
+    background-color: #c7c9cf40 !important;
+}
+.quiz-starts-info {
+    /* border: 1px solid black; */
+    background-color: #e5e7eb82;
+    border-radius: 8px;
+    flex-direction: row;
+    margin: 1.5rem 1.4rem 1.4rem 1.4rem;
+    padding: 0.8rem 0.8rem 0.8rem 0.8rem;
+}
+#stats-head {
+    font-weight: 600;
+    font-size: 20px;
+    justify-content: left;
+}
+.quiz-stats-main {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* border: 2px solid orange; */
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.quiz-same-stats {
+    /* border: 2px solid green;  */
+    display: flex;
+    width: 17.5rem;
+    height: 6rem;
+    padding-top: 0.8rem;
+    padding-left: 0.3rem;
+}
+.quiz-same-stats p {
+    opacity: 0.65;
+}
+.quiz-same-stats h1 {
+    font-weight: 600;
+    font-size: 22px;
+}
+.quiz-stats-descrip {
+    padding-top: 0.3rem;
+    padding-left: 0.6rem;
+}
+#no_particip {
+    background-color: #7277F9;
+    width: 3.6rem;
+    height: 3.6rem;
+    object-fit: contain;
+    border-radius: 50px;
+}
+#avg-sco-img {
+    background-color: #F9C47C;
+    width: 3.6rem;
+    height: 3.6rem;
+    object-fit: contain;
+    border-radius: 50px;
+}
+#avg-time-img {
+    background-color: #FF6961;
+    width: 3.6rem;
+    height: 3.6rem;
+    object-fit: contain;
+    border-radius: 50px;
+}
+#quiz-name-img {
+    background-color: #75B9F9;
+    width: 3.6rem;
+    height: 3.6rem;
+    object-fit: contain;
+    border-radius: 50px;
+}
+#partici {
+    width: 2.2rem;
+    margin-top: 0.9rem;
+    margin-left: 0.65rem;
+}
+#avgscore {
+    width: 2.1rem;
+    margin-top: 0.65rem;
+    margin-left: 0.75rem;
+}
+#avgtime {
+    width: 2.45rem;
+    margin-top: 0.65rem;
+    margin-left: 0.6rem;
+}
+#quizName {
+    width: 2.45rem;
+    margin-top: 0.65rem;
+    margin-left: 0.7rem;
+}
+
+.user-quiz-stats {
+    background-color: #e5e7eb82;
+    border-radius: 8px;
+    height: 21rem;
+    margin: 1.4rem 1.4rem 1.4rem 1.4rem;
+    padding: 0.8rem 0.8rem 0.8rem 0.8rem;
+}
