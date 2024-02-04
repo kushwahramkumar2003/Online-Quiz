@@ -7,9 +7,10 @@ const userInfoFromStorage = localStorage.getItem("account")
   : null;
 
 const initialState = {
-  user: { userInfo: userInfoFromStorage?.user },
+  user: { userInfo: userInfoFromStorage },
 };
 
+//
 const store: any = configureStore({
   reducer: {
     user: userReducer,
