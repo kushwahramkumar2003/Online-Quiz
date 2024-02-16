@@ -11,10 +11,11 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useMutation } from "@tanstack/react-query";
 import { logout as Logout } from "../../../services/user";
-import { logout } from "../../../store/actions/userActions";
+import { logout } from "@/store/actions/userActions.ts";
 import Nav from "./Nav";
 import {useToast} from "@/components/ui/use-toast.ts";
 import { ToastAction } from "@/components/ui/toast"
+
 
 const NavData = [
   { name: "Dashboard", path: "dashboard", icon: <RxDashboard /> },
@@ -82,13 +83,15 @@ const NavLink = ({setOpen}) => {
             />
           );
         })}
+<div className={"flex flex-row items-center hover:text-slate-500 gap-3 hover:bg-cyan-100 rounded-lg justify-start p-4"}>
         <button
           onClick={(e) => logoutHandler(e)}
-          className="flex flex-row items-center h-10 text-gray-500 hover:text-gray-900"
+          className="flex flex-row items-center gap-3"
         >
-          {<CiLogout className="" color="red" fontSize={20} fontWeight={5} />}{" "}
-          <p >Logout</p>
+          {<CiLogout className="text-2xl text-blue-600 font-bold"  />}
+          <p className={"text-2xl font-bold text-gray-800"}>Logout</p>
         </button>
+</div>
       </div>
     </div>
   );
