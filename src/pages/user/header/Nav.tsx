@@ -5,20 +5,16 @@ const Nav = ({
   name,
   path,
   icon,
-  isActive,
-  handleSetActiveTab,
-  isOpenHeader,
+               setOpen
 }) => {
   return (
     <Link
       to={path}
-      onClick={() => handleSetActiveTab(name)}
-      className={`flex flex-row items-center  h-10  hover:text-gray-900 ${
-        isActive ? "text-gray-900" : "text-gray-500"
-      }`}
+      onClick={()=>setOpen(false)}
+      className={`flex flex-row items-center  h-10  hover:text-gray-900 `}
     >
       {icon}
-      <p className={`${isOpenHeader ? "hidden" : ""}`}>{name}</p>
+      <p >{name}</p>
     </Link>
   );
 };

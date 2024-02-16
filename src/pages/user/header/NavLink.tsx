@@ -11,9 +11,10 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useMutation } from "@tanstack/react-query";
 import { logout as Logout } from "../../../services/user";
-import { toast } from "react-hot-toast";
 import { logout } from "../../../store/actions/userActions";
 import Nav from "./Nav";
+import {useToast} from "@/components/ui/use-toast.ts";
+import { ToastAction } from "@/components/ui/toast"
 
 const NavData = [
   { name: "Dashboard", path: "dashboard", icon: <RxDashboard /> },
@@ -29,7 +30,8 @@ const NavData = [
   },
 ];
 
-const NavLink = ({ handleSetActiveTab, activeTab, isOpenHeader }) => {
+const NavLink = ({setOpen}) => {
+  const {toast} = useToast();
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -42,11 +44,21 @@ const NavLink = ({ handleSetActiveTab, activeTab, isOpenHeader }) => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       dispatch(logout());
-      toast.success("Logout successfully");
+
+      toast({
+        variant: "default",
+        description: "Logout Success",
+      })
       navigate("/");
     },
     onError: (error) => {
-      toast.error(error.message);
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with Logout.",
+        action: <ToastAction altText="Try again">Try again</ToastAction>,
+      })
+
       console.log(error);
     },
   });
@@ -61,13 +73,12 @@ const NavLink = ({ handleSetActiveTab, activeTab, isOpenHeader }) => {
         {NavData.map((item, index) => {
           return (
             <Nav
-              isOpenHeader={isOpenHeader}
+                setOpen={setOpen}
               key={index}
               name={item.name}
               path={item.path}
               icon={item.icon}
-              isActive={activeTab === item.name}
-              handleSetActiveTab={handleSetActiveTab}
+
             />
           );
         })}
@@ -76,7 +87,7 @@ const NavLink = ({ handleSetActiveTab, activeTab, isOpenHeader }) => {
           className="flex flex-row items-center h-10 text-gray-500 hover:text-gray-900"
         >
           {<CiLogout className="" color="red" fontSize={20} fontWeight={5} />}{" "}
-          <p className={`${isOpenHeader ? "hidden" : ""}`}>Logout</p>
+          <p >Logout</p>
         </button>
       </div>
     </div>

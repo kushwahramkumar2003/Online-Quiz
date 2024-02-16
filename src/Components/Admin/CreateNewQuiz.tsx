@@ -59,14 +59,14 @@ const CreateNewQuiz = ({ setIsOpen }: CreateNewQuizArgument) => {
   };
 
   return (
-    <div className="text-black border-black mt-[-1.7%]">
-      <div className="start-dialog-box">
-        <h1 className="createNew">Create new Quiz</h1>
+    <div className="text-black border-black flex h-screen w-screen mt-5 justify-center items-center transition-all">
+      <div className=" h-screen w-screen  items-center justify-evenly">
+        <h1 className="createNew ">Create new Quiz</h1>
         <form
           className="form-of-create-new-quiz"
           onSubmit={handleSubmit(submitHandler)}
         >
-          <div className="form-control">
+          <div className="form-control flex flex-col">
             <label htmlFor="title">Quiz Tittle</label>
             <input
               className="input-box"
@@ -84,7 +84,7 @@ const CreateNewQuiz = ({ setIsOpen }: CreateNewQuizArgument) => {
             {errors.title && <p>{errors.title.message}</p>}
           </div>
 
-          <div className="form-control">
+          <div className="form-control flex flex-col">
             <label htmlFor="description">Quiz Description</label>
             <input
               className="input-box"
@@ -102,7 +102,7 @@ const CreateNewQuiz = ({ setIsOpen }: CreateNewQuizArgument) => {
             {errors.description && <p>{errors.description.message}</p>}
           </div>
 
-          <div className="form-control">
+          <div className="form-control flex flex-col">
             <label htmlFor="category">Quiz Category</label>
             <input
               className="input-box"
@@ -120,7 +120,7 @@ const CreateNewQuiz = ({ setIsOpen }: CreateNewQuizArgument) => {
             {errors.category && <p>{errors.category.message}</p>}
           </div>
 
-          <div className="form-control">
+          <div className="form-control flex flex-col">
             <label htmlFor="duration">Duration</label>
             <input
               className="input-box"
@@ -152,19 +152,26 @@ const CreateNewQuiz = ({ setIsOpen }: CreateNewQuizArgument) => {
             </select>
             {errors.level && <p>{errors.level.message}</p>}
           </div>
+          <div className={"flex flex-row justify-between max-w-72 font-bold text-white mt-5"}>
+            <button
+                type="submit"
 
-          <button
-            type="submit"
-            className="submit-button"
-            disabled={!isValid || isPending}
-            typeof="submit"
-          >
-            Save
-          </button>
+                // className="submit-button"
+                className={"bg-blue-700 rounded pr-4 pl-4 pt-2 pb-2 cursor-pointer hover:bg-blue-600 disabled:block disabled:divide-sky-400 disabled:cursor"}
+                disabled={!isValid || isPending}
 
-          <button onClick={() => setIsOpen(false)} className="cancel-button">
-            Cancel
-          </button>
+                typeof="submit"
+            >
+              Save
+            </button>
+
+            <button onClick={() => setIsOpen(false)}
+                    className="bg-slate-700 rounded pr-4 pl-4 pt-2 pb-2 cursor-pointer hover:bg-slate-600"
+            >
+              Cancel
+            </button>
+          </div>
+
         </form>
       </div>
     </div>
