@@ -16,7 +16,7 @@ const QuestionAttempBar = ({
     }
     return 0;
   };
-
+console.log(questions);
   return (
     <div className="quiz-attempt-bar">
       {attemptQuestions &&
@@ -30,6 +30,7 @@ const QuestionAttempBar = ({
               questionNumber={index + 1}
               setQuestionNumber={setQuestionNumber}
             />
+            
           );
         })}
     </div>
