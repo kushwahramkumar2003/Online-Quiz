@@ -94,3 +94,16 @@ export const updateAdminProfile = async ({ userData }) => {
     throw new Error(error.msg);
   }
 };
+
+
+export const getAllResult = async () => {
+  try {
+    const { data } = await api.get("/api/v1/result/results");
+    return data;
+  } catch (error) {
+    console.log(error);
+    if (error.response && error.response.data.msg)
+      throw new Error(error.response.data.msg);
+    throw new Error(error.msg);
+  }
+};
