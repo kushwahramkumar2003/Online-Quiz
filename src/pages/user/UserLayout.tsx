@@ -1,19 +1,21 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { IoCloseSharp } from "react-icons/io5";
-
-import Header from "./header/Header";
-import { RootState } from "../../store/types";
-
+import { RootState } from "@/store/types";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTrigger,
+} from "@/components/ui/sheet.tsx"
+import NavLink from "@/pages/user/header/NavLink.tsx";
 const UserLayout = () => {
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
-  const [isOpenHeader, setIsOpenHeader] = useState(false);
-  const userState = useSelector((state:RootState) => state.user);
-
+  const userState = useSelector((state: RootState) => state.user);
   useEffect(() => {
-    const role =  userState?.userInfo?.role;
+    const role = userState?.userInfo?.role;
 
     if (!userState.userInfo || !role || !(role === "USER")) {
       navigate("/");
@@ -21,37 +23,39 @@ const UserLayout = () => {
   }, [userState.userInfo, navigate]);
 
   return (
-    <div className="flex flex-row w-full max-h-screen overflow-hidden">
-      <div className="flex flex-col h-full transition-all scroll-smooth ">
-        {isOpenHeader ? (
-          <IoCloseSharp
-            onClick={() => {
-              setIsOpenHeader(false);
-            }}
-          />
-        ) : (
-          <RxHamburgerMenu
-            onClick={() => {
-              setIsOpenHeader(true);
-            }}
-          />
-        )}
-        <div
-          className={`${
-            isOpenHeader ? "" : ""
-          }  border-x-violet-950 border border-r-rose-600`}
-        >
-          <Header userInfo={userState.userInfo} isOpenHeader={isOpenHeader} />
-        </div>
-      </div>
+      <>
+        <div className="flex justify-between pl-6 pr-6">
+          <div className="flex justify-between">
+            <div>
+              <Sheet onOpenChange={setOpen} open={open}>
+                <SheetTrigger> <RxHamburgerMenu
+                    size={40}
+                    className="p-2 transition-all rounded-lg hover:cursor-pointer hover:bg-slate-300"
+                /></SheetTrigger>
+                <SheetContent side={"left"}>
+                  <SheetHeader>
+                    <NavLink setOpen={setOpen}/>
+                  </SheetHeader>
+                </SheetContent>
+              </Sheet>
+            </div>
 
-      <div className="w-full">
-        <main className="bg-[#f9f9f9] flex-1 p-4 lg:p-6">
-          <Outlet />
-        </main>
-      </div>
-    </div>
+          </div>
+          <div className="flex flex-row items-center gap-3 mr-2">
+            <div className="w-10 rounded-full">
+              <img src={userState.userInfo.avatar} alt="profile-img"/>
+            </div>
+            <div>
+              <p>{userState.userInfo.name}</p>
+            </div>
+          </div>
+        </div>
+        <div className="w-full">
+          <main className="bg-[#f9f9f9] flex-1 p-4 lg:p-6">
+            <Outlet/>
+          </main>
+        </div>
+      </>
   );
 };
-
 export default UserLayout;

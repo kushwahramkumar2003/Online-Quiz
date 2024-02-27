@@ -18,7 +18,7 @@ const Timer = ({ time, submitHandler }) => {
         }
       });
     }, 1000);
-
+console.log("time")
     return () => {
       clearInterval(intervalId);
     };

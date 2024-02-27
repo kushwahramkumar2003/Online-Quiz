@@ -86,7 +86,7 @@ const Admin = () => {
         <div className="Admin-manu">
           <div className="Grad-logo">
             <h1 className="logo-name-for-admin">QuizGrad</h1>
-            <img src={images.MyAdmin} alt="profile"></img>
+            <img src={userState.userInfo.avatar ? userState.userInfo.avatar:images.MyAdmin} alt="profile"></img>
             <p>Admin</p>
           </div>
 

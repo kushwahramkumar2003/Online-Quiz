@@ -31,6 +31,7 @@ export default function Login() {
     },
     onSuccess: async (data) => {
       const { user } = data;
+      console.log("User : ",user);
 
       await dispatch(userActions.setUserInfo(user));
       await localStorage.setItem("account", JSON.stringify(user));
