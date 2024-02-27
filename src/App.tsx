@@ -21,6 +21,9 @@ import UserResult from "./pages/user/screens/result/Result.js";
 import UserSetting from "./pages/user/screens/settings/Settings.js";
 import UserTest from "./pages/user/screens/test/Test.js";
 import "./App.css";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 function App() {
   return (
